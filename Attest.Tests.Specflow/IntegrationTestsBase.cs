@@ -6,8 +6,14 @@ using TechTalk.SpecFlow;
 
 namespace Attest.Tests.Specflow
 {
+    interface IRootObjectFactory
+    {
+        object CreateRootObject();
+    }    
+
     public abstract class IntegrationTestsBase<TContainer, TFakeFactory, TRootObject, TBootstrapper> :
-        IntegrationTestsBase<TContainer, TFakeFactory, TRootObject>
+        IntegrationTestsBase<TContainer, TFakeFactory, TRootObject>,
+        IRootObjectFactory
         where TContainer : IIocContainer, new()
         where TFakeFactory : IFakeFactory, new()
         where TRootObject : class
@@ -29,7 +35,8 @@ namespace Attest.Tests.Specflow
         private void SetupCore()
         {
             IocContainer = new TContainer();
-            Activator.CreateInstance(typeof(TBootstrapper), IocContainer); 
+            Activator.CreateInstance(typeof(TBootstrapper), IocContainer);
+            ScenarioHelper.Initialize(IocContainer, this);
         }
 
         protected virtual void SetupOverride()
@@ -39,12 +46,22 @@ namespace Attest.Tests.Specflow
 
         private void TearDownCore()
         {
-            //Dispose();
+            ScenarioHelper.Clear();
         }
 
         protected virtual void TearDownOverride()
         {
 
-        }        
+        }
+
+        private TRootObject CreateRootObjectTyped()
+        {
+            return CreateRootObject();
+        }
+
+        object IRootObjectFactory.CreateRootObject()
+        {
+            return CreateRootObjectTyped();
+        }
     }
 }
