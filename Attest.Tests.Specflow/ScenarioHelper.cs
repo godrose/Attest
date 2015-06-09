@@ -1,3 +1,4 @@
+using System;
 using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
 
@@ -54,10 +55,20 @@ namespace Attest.Tests.Specflow
 
         public static TItem Resolve<TItem>() where TItem : class, new()
         {
+            return ResolveImpl(() => new TItem());
+        }
+
+        public static TItem Resolve<TItem>(Func<TItem> creatorFunc) where TItem : class
+        {
+            return ResolveImpl(creatorFunc);
+        }
+
+        private static TItem ResolveImpl<TItem>(Func<TItem> creatorFunc) where TItem : class
+        {
             TItem item;
             if (Contains<TItem>() == false)
             {
-                item = new TItem();
+                item = creatorFunc();
                 Add(item);
             }
             else
