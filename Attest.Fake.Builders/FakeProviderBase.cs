@@ -6,10 +6,10 @@ namespace Attest.Fake.Builders
         where TService : class
         where TBuilder : FakeBuilderBase<TService>
     {
-        protected TService GetService(Func<TBuilder> createBuilder, Func<TBuilder, TBuilder> setupMiddleware)
+        protected TService GetService(Func<TBuilder> createBuilder, Func<TBuilder, TBuilder> setupBuilder)
         {
             var builder = createBuilder();
-            builder = setupMiddleware(builder);
+            builder = setupBuilder(builder);
             return builder.GetService();
         }
     }

@@ -51,10 +51,6 @@
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Middleware\Attest.Middleware.csproj">
-      <Project>{6CE28FCB-0523-476C-94FB-92ABF2B3849C}</Project>
-      <Name>Attest.Middleware</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
