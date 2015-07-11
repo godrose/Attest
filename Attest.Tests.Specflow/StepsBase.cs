@@ -3,7 +3,7 @@ using Attest.Fake.Core;
 using Attest.Tests.Core;
 using Solid.Practices.IoC;
 
-namespace Attest.Tests.Specflow
+namespace Attest.Tests.SpecFlow
 {
     public abstract class StepsBase<TFakeFactory> where TFakeFactory : IFakeFactory, new()
     {

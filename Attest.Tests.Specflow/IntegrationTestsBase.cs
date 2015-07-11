@@ -4,7 +4,7 @@ using Attest.Tests.Core;
 using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
 
-namespace Attest.Tests.Specflow
+namespace Attest.Tests.SpecFlow
 {
     interface IRootObjectFactory
     {

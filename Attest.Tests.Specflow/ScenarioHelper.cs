@@ -2,7 +2,7 @@ using System;
 using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
 
-namespace Attest.Tests.Specflow
+namespace Attest.Tests.SpecFlow
 {
     public static class ScenarioHelper
     {
