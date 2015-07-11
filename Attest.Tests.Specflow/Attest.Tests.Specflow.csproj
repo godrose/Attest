@@ -7,8 +7,8 @@
     <ProjectGuid>{A1CE31BC-5326-41FD-96D8-6481A011301B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Tests.Specflow</RootNamespace>
-    <AssemblyName>Attest.Tests.Specflow</AssemblyName>
+    <RootNamespace>Attest.Tests.SpecFlow</RootNamespace>
+    <AssemblyName>Attest.Tests.SpecFlow</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
