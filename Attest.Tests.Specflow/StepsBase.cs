@@ -32,6 +32,11 @@ namespace Attest.Tests.SpecFlow
             IntegrationTestsHelper<TFakeFactory>.RegisterMock(GetIocContainer(), fake);
         }
 
+        protected TStepsProvider GetStepsProvider<TStepsProvider>() where TStepsProvider : class, IStepsProvider
+        {
+            return ScenarioHelper.Get<TStepsProvider>();
+        }
+
         private static IIocContainer GetIocContainer()
         {
             return (IIocContainer)ScenarioHelper.Container;

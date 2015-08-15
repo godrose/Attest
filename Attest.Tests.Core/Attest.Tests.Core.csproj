@@ -34,12 +34,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Solid.Practices.IoC.1.0.4\lib\net451\Solid.Practices.IoC.dll</HintPath>
     </Reference>
+    <Reference Include="Solid.Practices.Modularity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Solid.Practices.Modularity.1.0.4\lib\net451\Solid.Practices.Modularity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IntegrationTestsBase.cs" />
     <Compile Include="IntegrationTestsHelper.cs" />
+    <Compile Include="IStepsModule.cs" />
+    <Compile Include="IStepsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

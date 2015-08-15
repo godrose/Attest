@@ -27,12 +27,23 @@ namespace Attest.Tests.SpecFlow
         public static void Add<TItem>(TItem item) where TItem : class
         {           
             var typeName = GetKey<TItem>();
+            AddImpl(item, typeName);
+        }
+
+        public static void Add<TItem>(TItem item, Type addAsType) where TItem : class
+        {
+            var typeName = addAsType.Name;
+            AddImpl(item, typeName);
+        }
+
+        private static void AddImpl<TItem>(TItem item, string typeName) where TItem : class
+        {
             if (ScenarioContext.Current.ContainsKey(typeName))
             {
                 ScenarioContext.Current[typeName] = item;
             }
             else
-            {                
+            {
                 ScenarioContext.Current.Add(typeName, item);
             }
         }
@@ -84,7 +95,6 @@ namespace Attest.Tests.SpecFlow
             var typeName = type.Name;
             return typeName;
         }
-
 
         internal static void Clear()
         {
