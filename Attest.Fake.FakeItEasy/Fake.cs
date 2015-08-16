@@ -24,6 +24,12 @@ namespace Attest.Fake.FakeItEasy
             A.CallTo(expression).MustHaveHappened(Repeated.Exactly.Once);
         }
 
+        public IFake<TFaked> SetupWithCallback(Expression<Action<TFaked>> expression, Action action)
+        {
+            A.CallTo(() => expression.Compile().Invoke(_fake)).Invokes(action);
+            return this;
+        }
+
         public IFake<TFaked> SetupWithResult<TResult>(Expression<Func<TFaked, TResult>> expression, TResult result)
         {
             A.CallTo(() =>expression.Compile().Invoke(_fake)).Returns(result);

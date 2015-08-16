@@ -13,7 +13,13 @@ namespace Attest.Fake.Moq
         {
             _mock = mock;
         }
-        
+
+        public IFake<TFaked> SetupWithCallback(Expression<Action<TFaked>> expression, Action action)
+        {
+            _mock.Setup(expression).Callback(action);
+            return this;
+        }
+
         public IFake<TFaked> SetupWithResult<TResult>(Expression<Func<TFaked, TResult>> expression, TResult result)
         {
             _mock.Setup(expression).Returns(result);
