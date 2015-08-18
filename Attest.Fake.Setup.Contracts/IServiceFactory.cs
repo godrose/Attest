@@ -5,6 +5,6 @@ namespace Attest.Fake.Setup.Contracts
 {
     public interface IServiceFactory<TService> where TService : class
     {
-        TService CreateService(IFake<TService> fake, IEnumerable<object> methodCalls);
+        IFake<TService> SetupFakeService(IFake<TService> fake, IEnumerable<object> methodCalls);
     }
 }

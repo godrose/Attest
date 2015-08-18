@@ -69,7 +69,7 @@ namespace Attest.Fake.Setup
         public IOperation<TService> CreateOperation<TService>() where TService : class
         {
             var match = _services[typeof (TService)];
-            return new FakeOperation<TService>(((IServiceCall<TService>) match).GetService());
+            return new FakeOperation<TService>(((IServiceCall<TService>) match).SetupService().Object);
         }
     }
 }

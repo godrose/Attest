@@ -119,9 +119,9 @@ namespace Attest.Fake.Setup
             return existingMethodInfoMetaData;
         }
 
-        public TService GetService()
+        public IFake<TService> SetupService()
         {
-            return _serviceFactory.CreateService(_fake, MethodCalls);          
+            return _serviceFactory.SetupFakeService(_fake, MethodCalls);          
         }
 
         public void AppendMethods(IHaveMethods<TService> otherMethods)
