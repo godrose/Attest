@@ -5,7 +5,7 @@ using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Fake.Setup
 {
-    public class ServiceFactory<TService> : IServiceFactory<TService> where TService : class
+    class ServiceSetupFactory<TService> : IServiceSetupFactory<TService> where TService : class
     {
         public IFake<TService> SetupFakeService(IFake<TService> fake, IEnumerable<object> methodCalls)
         {            

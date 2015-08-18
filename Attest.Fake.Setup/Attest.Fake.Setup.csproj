@@ -46,7 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultWrapper.cs" />
     <Compile Include="ServiceCall.cs" />
-    <Compile Include="ServiceFactory.cs" />
+    <Compile Include="ServiceSetupFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">

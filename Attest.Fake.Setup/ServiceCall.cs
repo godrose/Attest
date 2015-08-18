@@ -9,7 +9,7 @@ namespace Attest.Fake.Setup
     public class ServiceCall<TService> : IServiceCall<TService>, IHaveNoMethods<TService> where TService : class
     {
         private readonly IFake<TService> _fake;
-        private readonly IServiceFactory<TService> _serviceFactory = new ServiceFactory<TService>();
+        private readonly IServiceSetupFactory<TService> _serviceSetupFactory = new ServiceSetupFactory<TService>();
 
         private ServiceCall(IFake<TService> fake)
         {
@@ -17,9 +17,14 @@ namespace Attest.Fake.Setup
         }
 
         private readonly List<IMethodCallMetaData> _methodCalls = new List<IMethodCallMetaData>();
-        public IEnumerable<IMethodCallMetaData> MethodCalls 
+
+        private IEnumerable<IMethodCallMetaData> MethodCalls
         {
             get { return _methodCalls; }
+        }
+        IEnumerable<IMethodCallMetaData> IHaveMethods<TService>.MethodCalls 
+        {
+            get { return MethodCalls; }
         }
 
         public static IHaveNoMethods<TService> CreateServiceCall(IFake<TService> fake)
@@ -121,7 +126,7 @@ namespace Attest.Fake.Setup
 
         public IFake<TService> SetupService()
         {
-            return _serviceFactory.SetupFakeService(_fake, MethodCalls);          
+            return _serviceSetupFactory.SetupFakeService(_fake, MethodCalls);          
         }
 
         public void AppendMethods(IHaveMethods<TService> otherMethods)

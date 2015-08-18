@@ -52,7 +52,7 @@
     <Compile Include="IMethodInfoMetaData.cs" />
     <Compile Include="IOperation.cs" />
     <Compile Include="IServiceCall.cs" />
-    <Compile Include="IServiceFactory.cs" />
+    <Compile Include="IServiceSetupFactory.cs" />
     <Compile Include="MethodCallback.cs" />
     <Compile Include="MethodCallbackTemplate.cs" />
     <Compile Include="MethodCallbackWithResult.cs" />
