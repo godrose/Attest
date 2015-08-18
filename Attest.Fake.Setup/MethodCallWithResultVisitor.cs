@@ -3,7 +3,7 @@ using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Fake.Setup
 {
-    public class MethodCallWithResultVisitor<TService> : IMethodCallWithResultVisitor<TService> where TService : class
+    class MethodCallWithResultVisitor<TService> : IMethodCallWithResultVisitor<TService> where TService : class
     {
         private readonly IFake<TService> _stubService;
 
