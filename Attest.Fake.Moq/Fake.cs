@@ -7,49 +7,59 @@ namespace Attest.Fake.Moq
 {
     public class Fake<TFaked> : IFake<TFaked> where TFaked: class
     {
-        private readonly Mock<TFaked> _mock;
+        private readonly Mock<TFaked> _fake;
 
-        internal Fake(Mock<TFaked> mock)
+        internal Fake(Mock<TFaked> fake)
         {
-            _mock = mock;
+            _fake = fake;
         }
 
         public IFake<TFaked> SetupWithCallback(Expression<Action<TFaked>> expression, Action action)
         {
-            _mock.Setup(expression).Callback(action);
+            _fake.Setup(expression).Callback(action);
             return this;
         }
 
         public IFake<TFaked> SetupWithResult<TResult>(Expression<Func<TFaked, TResult>> expression, TResult result)
         {
-            _mock.Setup(expression).Returns(result);
+            _fake.Setup(expression).Returns(result);
             return this;
         }
 
         public IFake<TFaked> SetupWithException<TResult>(Expression<Func<TFaked, TResult>> expression, Exception exception)
         {
-            _mock.Setup(expression).Throws(exception);
+            _fake.Setup(expression).Throws(exception);
             return this;
+        }
+
+        public IFakeCallback Setup(Expression<Action<TFaked>> expression)
+        {
+            return new MoqFakeCallback<TFaked>(_fake.Setup(expression));
+        }
+
+        public IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression)
+        {
+            return new MoqFakeCallbackWithResult<TFaked, TResult>(_fake.Setup(expression));
         }
 
         public TFaked Object
         {
-            get { return _mock.Object; }
+            get { return _fake.Object; }
         }
 
         public void VerifyCall(Expression<Action<TFaked>> expression)
         {
-            _mock.Verify(expression);
+            _fake.Verify(expression);
         }
 
         public void VerifyNoCall(Expression<Action<TFaked>> expression)
         {
-            _mock.Verify(expression, Times.Never);
+            _fake.Verify(expression, Times.Never);
         }
 
         public void VerifySingleCall(Expression<Action<TFaked>> expression)
         {
-            _mock.Verify(expression, Times.Once);
+            _fake.Verify(expression, Times.Once);
         }
     }
 }

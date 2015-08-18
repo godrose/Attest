@@ -42,6 +42,16 @@ namespace Attest.Fake.FakeItEasy
             return this;
         }
 
+        public IFakeCallback Setup(Expression<Action<TFaked>> expression)
+        {
+            return new EasyFakeCallback<TFaked>(A.CallTo(expression));
+        }
+
+        public IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression)
+        {
+            throw new NotImplementedException();
+        }
+
         public TFaked Object
         {
             get { return _fake; }

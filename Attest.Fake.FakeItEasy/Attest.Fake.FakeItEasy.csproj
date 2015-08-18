@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeCallback.cs" />
     <Compile Include="Fake.cs" />
     <Compile Include="FakeFactory.cs" />
     <Compile Include="It.cs" />
