@@ -32,6 +32,11 @@ namespace Attest.Fake.Setup
             VisitImpl(methodCall);
         }
 
+        public void Visit<T1, T2, T3, T4, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> methodCall)
+        {
+            VisitImpl(methodCall);
+        }
+
         private void VisitImpl<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall) where TCallback : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<TResult>, TResult>
         {
             var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<TResult>();
@@ -69,6 +74,11 @@ namespace Attest.Fake.Setup
         }
 
         public void Visit<T1, T2, T3, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> methodCall)
+        {
+            AppendCallsVisitorHelper.VisitMethodCall(methodCall, _newMethodCall);
+        }
+
+        public void Visit<T1, T2, T3, T4, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> methodCall)
         {
             AppendCallsVisitorHelper.VisitMethodCall(methodCall, _newMethodCall);
         }
