@@ -67,7 +67,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> WithoutCallback()
         {
-            var progressCallback = ProgressCallbackWithResult0<TResult>.Create();
+            var progressCallback = ProgressCallbackWithResult<TResult>.Create();
             Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
             return this;
         }
@@ -104,7 +104,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> WithoutCallback()
         {
-            var progressCallback = ProgressCallbackWithResult1<T, TResult>.Create();
+            var progressCallback = ProgressCallbackWithResult<T, TResult>.Create();
             Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
             return this;
         }
@@ -141,7 +141,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, TResult>> WithoutCallback()
         {
-            var progressCallback = ProgressCallbackWithResult2<T1, T2, TResult>.Create();
+            var progressCallback = ProgressCallbackWithResult<T1, T2, TResult>.Create();
             Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
             return this;
         }
@@ -178,7 +178,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> WithoutCallback()
         {
-            var progressCallback = ProgressCallbackWithResult3<T1, T2, T3, TResult>.Create();
+            var progressCallback = ProgressCallbackWithResult<T1, T2, T3, TResult>.Create();
             Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
             return this;
         }
@@ -215,7 +215,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>> WithoutCallback()
         {
-            var progressCallback = ProgressCallbackWithResult4<T1, T2, T3, T4, TResult>.Create();
+            var progressCallback = ProgressCallbackWithResult<T1, T2, T3, T4, TResult>.Create();
             Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
             return this;
         }
@@ -252,7 +252,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>> WithoutCallback()
         {
-            var progressCallback = ProgressCallbackWithResult5<T1, T2, T3, T4, T5, TResult>.Create();
+            var progressCallback = ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult>.Create();
             Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
             return this;
         }

@@ -437,16 +437,16 @@ namespace Attest.Fake.Setup.Contracts
         public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
     }
 
-    public class ProgressCallbackWithResult0<TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<TResult>, TResult>, IMethodCallbackWithResult<TResult>
+    public class ProgressCallbackWithResult<TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<TResult>, TResult>, IMethodCallbackWithResult<TResult>
     {
-        private ProgressCallbackWithResult0()
+        private ProgressCallbackWithResult()
         {
 
         }
 
         public static IProgressableProcessRunningWithResult<IMethodCallbackWithResult<TResult>, TResult> Create()
         {
-            return new ProgressCallbackWithResult0<TResult>();
+            return new ProgressCallbackWithResult<TResult>();
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<TResult>, TResult> Complete(TResult result)
@@ -483,16 +483,16 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class ProgressCallbackWithResult1<T, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T, TResult>, TResult>, IMethodCallbackWithResult<T, TResult>
+    public class ProgressCallbackWithResult<T, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T, TResult>, TResult>, IMethodCallbackWithResult<T, TResult>
     {
-        private ProgressCallbackWithResult1()
+        private ProgressCallbackWithResult()
         {
 
         }
 
         public static IProgressableProcessRunningWithResult<IMethodCallbackWithResult<T, TResult>, TResult> Create()
         {
-            return new ProgressCallbackWithResult1<T, TResult>();
+            return new ProgressCallbackWithResult<T, TResult>();
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T, TResult>, TResult> Complete(TResult result)
@@ -530,16 +530,16 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class ProgressCallbackWithResult2<T1, T2, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, TResult>
+    public class ProgressCallbackWithResult<T1, T2, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, TResult>
     {
-        private ProgressCallbackWithResult2()
+        private ProgressCallbackWithResult()
         {
 
         }
 
         public static IProgressableProcessRunningWithResult<IMethodCallbackWithResult<T1, T2, TResult>, TResult> Create()
         {
-            return new ProgressCallbackWithResult2<T1, T2, TResult>();
+            return new ProgressCallbackWithResult<T1, T2, TResult>();
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T1, T2, TResult>, TResult> Complete(TResult result)
@@ -577,16 +577,16 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class ProgressCallbackWithResult3<T1, T2, T3, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, TResult>
+    public class ProgressCallbackWithResult<T1, T2, T3, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, TResult>
     {
-        private ProgressCallbackWithResult3()
+        private ProgressCallbackWithResult()
         {
 
         }
 
         public static IProgressableProcessRunningWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> Create()
         {
-            return new ProgressCallbackWithResult3<T1, T2, T3, TResult>();
+            return new ProgressCallbackWithResult<T1, T2, T3, TResult>();
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> Complete(TResult result)
@@ -624,16 +624,16 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class ProgressCallbackWithResult4<T1, T2, T3, T4, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>
+    public class ProgressCallbackWithResult<T1, T2, T3, T4, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>
     {
-        private ProgressCallbackWithResult4()
+        private ProgressCallbackWithResult()
         {
 
         }
 
         public static IProgressableProcessRunningWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> Create()
         {
-            return new ProgressCallbackWithResult4<T1, T2, T3, T4, TResult>();
+            return new ProgressCallbackWithResult<T1, T2, T3, T4, TResult>();
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> Complete(TResult result)
@@ -671,16 +671,16 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class ProgressCallbackWithResult5<T1, T2, T3, T4, T5, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>
+    public class ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>
     {
-        private ProgressCallbackWithResult5()
+        private ProgressCallbackWithResult()
         {
 
         }
 
         public static IProgressableProcessRunningWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> Create()
         {
-            return new ProgressCallbackWithResult5<T1, T2, T3, T4, T5, TResult>();
+            return new ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult>();
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> Complete(TResult result)
@@ -810,7 +810,7 @@ namespace Attest.Fake.Setup.Contracts
             return onCompleteCallbackWithResult.Result;
         }
 
-        public TResult Visit(ProgressCallbackWithResult0<TResult> progressCallback)
+        public TResult Visit(ProgressCallbackWithResult<TResult> progressCallback)
         {
             if (progressCallback.ProgressMessages.Any())
             {
@@ -819,7 +819,7 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this);
         }
 
-        public TResult Visit<T>(ProgressCallbackWithResult1<T, TResult> progressCallback)
+        public TResult Visit<T>(ProgressCallbackWithResult<T, TResult> progressCallback)
         {
             if (progressCallback.ProgressMessages.Any())
             {
@@ -828,7 +828,7 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this);
         }
 
-        public TResult Visit<T1, T2>(ProgressCallbackWithResult2<T1, T2, TResult> progressCallback)
+        public TResult Visit<T1, T2>(ProgressCallbackWithResult<T1, T2, TResult> progressCallback)
         {
             if (progressCallback.ProgressMessages.Any())
             {
@@ -837,7 +837,7 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this);
         }
 
-        public TResult Visit<T1, T2, T3>(ProgressCallbackWithResult3<T1, T2, T3, TResult> progressCallback)
+        public TResult Visit<T1, T2, T3>(ProgressCallbackWithResult<T1, T2, T3, TResult> progressCallback)
         {
             if (progressCallback.ProgressMessages.Any())
             {
@@ -846,7 +846,7 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this);
         }
 
-        public TResult Visit<T1, T2, T3, T4>(ProgressCallbackWithResult4<T1, T2, T3, T4, TResult> progressCallback)
+        public TResult Visit<T1, T2, T3, T4>(ProgressCallbackWithResult<T1, T2, T3, T4, TResult> progressCallback)
         {
             if (progressCallback.ProgressMessages.Any())
             {
@@ -855,7 +855,7 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this);
         }
 
-        public TResult Visit<T1, T2, T3, T4, T5>(ProgressCallbackWithResult5<T1, T2, T3, T4, T5, TResult> progressCallback)
+        public TResult Visit<T1, T2, T3, T4, T5>(ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult> progressCallback)
         {
             if (progressCallback.ProgressMessages.Any())
             {

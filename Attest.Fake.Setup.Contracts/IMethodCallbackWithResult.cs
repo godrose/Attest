@@ -49,12 +49,12 @@ namespace Attest.Fake.Setup.Contracts
         TResult Visit<T1, T2, T3>(OnCompleteCallbackWithResult<T1, T2, T3, TResult> onCompleteCallbackWithResult);
         TResult Visit<T1, T2, T3, T4>(OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> onCompleteCallbackWithResult);
         TResult Visit<T1, T2, T3, T4, T5>(OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult> onCompleteCallbackWithResult);
-        TResult Visit(ProgressCallbackWithResult0<TResult> progressCallback);
-        TResult Visit<T>(ProgressCallbackWithResult1<T, TResult> progressCallback);
-        TResult Visit<T1, T2>(ProgressCallbackWithResult2<T1, T2, TResult> progressCallback);
-        TResult Visit<T1, T2, T3>(ProgressCallbackWithResult3<T1, T2, T3, TResult> progressCallback);
-        TResult Visit<T1, T2, T3, T4>(ProgressCallbackWithResult4<T1, T2, T3, T4,TResult> progressCallback);
-        TResult Visit<T1, T2, T3, T4, T5>(ProgressCallbackWithResult5<T1, T2, T3, T4, T5, TResult> progressCallback);
+        TResult Visit(ProgressCallbackWithResult<TResult> progressCallback);
+        TResult Visit<T>(ProgressCallbackWithResult<T, TResult> progressCallback);
+        TResult Visit<T1, T2>(ProgressCallbackWithResult<T1, T2, TResult> progressCallback);
+        TResult Visit<T1, T2, T3>(ProgressCallbackWithResult<T1, T2, T3, TResult> progressCallback);
+        TResult Visit<T1, T2, T3, T4>(ProgressCallbackWithResult<T1, T2, T3, T4,TResult> progressCallback);
+        TResult Visit<T1, T2, T3, T4, T5>(ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult> progressCallback);
         TResult Visit(OnWithoutCallbackWithResult<TResult> withoutCallback);
         TResult Visit<T>(OnWithoutCallbackWithResult<T, TResult> withoutCallback);
         TResult Visit<T1, T2>(OnWithoutCallbackWithResult<T1, T2, TResult> withoutCallback);

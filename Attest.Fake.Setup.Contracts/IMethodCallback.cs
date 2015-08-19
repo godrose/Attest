@@ -46,7 +46,7 @@ namespace Attest.Fake.Setup.Contracts
         void Visit<T1, T2, T3>(OnCompleteCallback<T1, T2, T3> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3);
         void Visit<T1, T2, T3, T4>(OnCompleteCallback<T1, T2, T3, T4> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
         void Visit<T1, T2, T3, T4, T5>(OnCompleteCallback<T1, T2, T3, T4, T5> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
-        void Visit(ProgressableCallback0 progressableCallback);
+        void Visit(ProgressableCallback progressableCallback);
         void Visit(OnCancelCallback onCancelCallback);
     }    
 }

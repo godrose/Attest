@@ -169,16 +169,16 @@ namespace Attest.Fake.Setup.Contracts
         public abstract void Accept(IMethodCallbackVisitor visitor);
     }
 
-    public class ProgressableCallback0 : ProgressableCallbackBase<IMethodCallback>
+    public class ProgressableCallback : ProgressableCallbackBase<IMethodCallback>
     {
-        private ProgressableCallback0()
+        private ProgressableCallback()
         {
 
         }
 
         public static IProgressableProcessRunning<IMethodCallback> Create()
         {
-            return new ProgressableCallback0();
+            return new ProgressableCallback();
         }
 
         public override IProgressableProcessFinished<IMethodCallback> Complete()
@@ -274,7 +274,7 @@ namespace Attest.Fake.Setup.Contracts
             onCompleteCallback.Callback(arg1, arg2, arg3, arg4, arg5);
         }
 
-        public void Visit(ProgressableCallback0 progressableCallback)
+        public void Visit(ProgressableCallback progressableCallback)
         {
             throw new ProgressMessageException(progressableCallback.ProgressMessages,
                 () =>
