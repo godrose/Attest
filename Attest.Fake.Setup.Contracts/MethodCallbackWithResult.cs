@@ -79,9 +79,89 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<TResult> : MethodCallbackBaseWithResult<TResult>
+    public class OnErrorCallback<T> : MethodCallbackBase<T>
     {
-        public OnErrorCallback(Exception exception)
+        public OnErrorCallback(Action<T> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T arg)
+        {
+            visitor.Visit(this, arg);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2> : MethodCallbackBase<T1, T2>
+    {
+        public OnErrorCallback(Action<T1, T2> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2)
+        {
+            visitor.Visit(this, arg1, arg2);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2, T3> : MethodCallbackBase<T1, T2, T3>
+    {
+        public OnErrorCallback(Action<T1, T2, T3> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            visitor.Visit(this, arg1, arg2, arg3);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2, T3, T4> : MethodCallbackBase<T1, T2, T3, T4>
+    {
+        public OnErrorCallback(Action<T1, T2, T3, T4> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            visitor.Visit(this, arg1, arg2, arg3, arg4);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2, T3, T4, T5> : MethodCallbackBase<T1, T2, T3, T4, T5>
+    {
+        public OnErrorCallback(Action<T1, T2, T3, T4, T5> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            visitor.Visit(this, arg1, arg2, arg3, arg4, arg5);
+        }
+    }
+
+    public class OnErrorCallbackWithResult<TResult> : MethodCallbackBaseWithResult<TResult>
+    {
+        public OnErrorCallbackWithResult(Exception exception)
         {
             Exception = exception;
         }
@@ -94,9 +174,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
+    public class OnErrorCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
     {
-        public OnErrorCallback(Exception exception)
+        public OnErrorCallbackWithResult(Exception exception)
         {
             Exception = exception;
         }
@@ -109,9 +189,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
+    public class OnErrorCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
     {
-        public OnErrorCallback(Exception exception)
+        public OnErrorCallbackWithResult(Exception exception)
         {
             Exception = exception;
         }
@@ -137,7 +217,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCancelCallback<TResult> : MethodCallbackBaseWithResult<TResult>
+    public class OnCancelCallbackWithResult<TResult> : MethodCallbackBaseWithResult<TResult>
     {
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
@@ -145,7 +225,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCancelCallback<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
+    public class OnCancelCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
     {
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
@@ -153,7 +233,23 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnWithoutCallback<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
+    public class OnCancelCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
+    {
+        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
+    }
+
+    public class OnWithoutCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
+    {
+        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
+    }
+
+    public class OnWithoutCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
     {
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
@@ -200,13 +296,13 @@ namespace Attest.Fake.Setup.Contracts
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<TResult>, TResult> Throw(Exception exception)
         {
-            FinishCallback = new OnErrorCallback<TResult>(exception);
+            FinishCallback = new OnErrorCallbackWithResult<TResult>(exception);
             return this;
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<TResult>, TResult> Cancel()
         {
-            FinishCallback = new OnCancelCallback<TResult>();
+            FinishCallback = new OnCancelCallbackWithResult<TResult>();
             return this;
         }
 
@@ -216,6 +312,53 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         public override IMethodCallbackWithResult<TResult> AsMethodCallback()
+        {
+            return this;
+        }
+
+        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
+    }
+
+    public class ProgressCallbackWithResult1<T, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T, TResult>, TResult>, IMethodCallbackWithResult<T, TResult>
+    {
+        private ProgressCallbackWithResult1()
+        {
+
+        }
+
+        public static IProgressableProcessRunningWithResult<IMethodCallbackWithResult<T, TResult>, TResult> Create()
+        {
+            return new ProgressCallbackWithResult1<T, TResult>();
+        }
+
+        public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T, TResult>, TResult> Complete(TResult result)
+        {
+            FinishCallback = new OnCompleteCallbackWithResult<T, TResult>(result);
+            return this;
+        }
+
+        public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T, TResult>, TResult> Throw(Exception exception)
+        {
+            FinishCallback = new OnErrorCallbackWithResult<T, TResult>(exception);
+            return this;
+        }
+
+        public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T, TResult>, TResult> Cancel()
+        {
+            FinishCallback = new OnCancelCallbackWithResult<T, TResult>();
+            return this;
+        }
+
+        public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T, TResult>, TResult> WithoutCallback()
+        {
+            FinishCallback = new OnWithoutCallbackWithResult<T, TResult>();
+            return this;
+        }
+
+        public override IMethodCallbackWithResult<T, TResult> AsMethodCallback()
         {
             return this;
         }
@@ -246,19 +389,19 @@ namespace Attest.Fake.Setup.Contracts
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T1, T2, TResult>, TResult> Throw(Exception exception)
         {
-            FinishCallback = new OnErrorCallback<T1, T2, TResult>(exception);
+            FinishCallback = new OnErrorCallbackWithResult<T1, T2, TResult>(exception);
             return this;
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T1, T2, TResult>, TResult> Cancel()
         {
-            FinishCallback = new OnCancelCallback<T1, T2, TResult>();
+            FinishCallback = new OnCancelCallbackWithResult<T1, T2, TResult>();
             return this;
         }
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<T1, T2, TResult>, TResult> WithoutCallback()
         {
-            FinishCallback = new OnWithoutCallback<T1, T2, TResult>();
+            FinishCallback = new OnWithoutCallbackWithResult<T1, T2, TResult>();
             return this;
         }
 
@@ -275,27 +418,32 @@ namespace Attest.Fake.Setup.Contracts
 
     public class MethodCallbackWithResultVisitor<TResult> : IMethodCallbackWithResultVisitor<TResult>
     {
-        public TResult Visit(OnErrorCallback<TResult> onErrorCallback)
+        public TResult Visit(OnErrorCallbackWithResult<TResult> onErrorCallback)
         {
             throw onErrorCallback.Exception;
         }
 
-        public TResult Visit<T>(OnErrorCallback<T, TResult> onErrorCallback)
+        public TResult Visit<T>(OnErrorCallbackWithResult<T, TResult> onErrorCallback)
         {
             throw onErrorCallback.Exception;
         }
 
-        public TResult Visit<T1, T2>(OnErrorCallback<T1, T2, TResult> onErrorCallback)
+        public TResult Visit<T1, T2>(OnErrorCallbackWithResult<T1, T2, TResult> onErrorCallback)
         {
             throw onErrorCallback.Exception;
         }
 
-        public TResult Visit(OnCancelCallback<TResult> onCancelCallback)
+        public TResult Visit(OnCancelCallbackWithResult<TResult> onCancelCallback)
         {
             throw new CancelCallbackException();
         }
 
-        public TResult Visit<T1, T2>(OnCancelCallback<T1, T2, TResult> onCancelCallback)
+        public TResult Visit<T>(OnCancelCallbackWithResult<T, TResult> onCancelCallback)
+        {
+            throw new CancelCallbackException();
+        }
+
+        public TResult Visit<T1, T2>(OnCancelCallbackWithResult<T1, T2, TResult> onCancelCallback)
         {
             throw new CancelCallbackException();
         }
@@ -324,6 +472,15 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this);
         }
 
+        public TResult Visit<T>(ProgressCallbackWithResult1<T, TResult> progressCallback)
+        {
+            if (progressCallback.ProgressMessages.Any())
+            {
+                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
+            }
+            return progressCallback.FinishCallback.Accept(this);
+        }
+
         public TResult Visit<T1, T2>(ProgressCallbackWithResult2<T1, T2, TResult> progressCallback)
         {
             if (progressCallback.ProgressMessages.Any())
@@ -333,7 +490,12 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this);
         }
 
-        public TResult Visit<T1, T2>(OnWithoutCallback<T1, T2, TResult> withoutCallback)
+        public TResult Visit<T>(OnWithoutCallbackWithResult<T, TResult> withoutCallback)
+        {
+            throw new WithoutCallbackException();
+        }
+
+        public TResult Visit<T1, T2>(OnWithoutCallbackWithResult<T1, T2, TResult> withoutCallback)
         {
             throw new WithoutCallbackException();
         }

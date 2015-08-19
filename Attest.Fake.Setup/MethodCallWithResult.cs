@@ -61,7 +61,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<TResult>(exception));
+            Callbacks.Add(new OnErrorCallbackWithResult<TResult>(exception));
             return this;
         }
 
@@ -98,13 +98,15 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<T, TResult>(exception));
+            Callbacks.Add(new OnErrorCallbackWithResult<T, TResult>(exception));
             return this;
         }
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> WithoutCallback()
         {
-            throw new NotImplementedException();
+            var progressCallback = ProgressCallbackWithResult1<T, TResult>.Create();
+            Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
+            return this;
         }
 
         public override void Accept(IMethodCallWithResultVisitor<TService> visitor)
@@ -133,7 +135,7 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, TResult>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<T1, T2, TResult>(exception));
+            Callbacks.Add(new OnErrorCallbackWithResult<T1, T2, TResult>(exception));
             return this;
         }
 

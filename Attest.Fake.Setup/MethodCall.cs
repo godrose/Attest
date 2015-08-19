@@ -92,7 +92,8 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallback<T>> Throw(Exception exception)
         {
-            throw new NotImplementedException();
+            Callbacks.Add(new OnErrorCallback<T>(r => { }, exception));
+            return this;
         }
 
         public override void Accept(IMethodCallVisitor<TService> visitor)
@@ -123,7 +124,8 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2>> Throw(Exception exception)
         {
-            throw new NotImplementedException();
+            Callbacks.Add(new OnErrorCallback<T1, T2>((arg1, arg2) => { }, exception));
+            return this;
         }
 
         public override void Accept(IMethodCallVisitor<TService> visitor)
@@ -146,12 +148,16 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3>> Complete()
         {
-            throw new NotImplementedException();
+            Callbacks.Add(
+              CallbackBuilder<ActionWrapper<T1, T2, T3>, MethodCallbackTemplate<T1, T2, T3>, IMethodCallback<T1, T2, T3>>.CreateCallbackBuilder()
+                  .WithDefaultAction());
+            return this;
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3>> Throw(Exception exception)
         {
-            throw new NotImplementedException();
+            Callbacks.Add(new OnErrorCallback<T1, T2, T3>((arg1, arg2, arg3) => { }, exception));
+            return this;
         }
 
         public override void Accept(IMethodCallVisitor<TService> visitor)
@@ -174,12 +180,16 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4>> Complete()
         {
-            throw new NotImplementedException();
+            Callbacks.Add(
+              CallbackBuilder<ActionWrapper<T1, T2, T3, T4>, MethodCallbackTemplate<T1, T2, T3, T4>, IMethodCallback<T1, T2, T3, T4>>.CreateCallbackBuilder()
+                  .WithDefaultAction());
+            return this;
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4>> Throw(Exception exception)
         {
-            throw new NotImplementedException();
+            Callbacks.Add(new OnErrorCallback<T1, T2, T3, T4>((arg1, arg2, arg3, arg4) => { }, exception));
+            return this;
         }
 
         public override void Accept(IMethodCallVisitor<TService> visitor)
@@ -202,12 +212,18 @@ namespace Attest.Fake.Setup
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4, T5>> Complete()
         {
-            throw new NotImplementedException();
+            Callbacks.Add(
+                CallbackBuilder
+                    <ActionWrapper<T1, T2, T3, T4, T5>, MethodCallbackTemplate<T1, T2, T3, T4, T5>,
+                        IMethodCallback<T1, T2, T3, T4, T5>>.CreateCallbackBuilder()
+                    .WithDefaultAction());
+            return this;
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4, T5>> Throw(Exception exception)
         {
-            throw new NotImplementedException();
+            Callbacks.Add(new OnErrorCallback<T1, T2, T3, T4, T5>((arg1, arg2, arg3, arg4, arg5) => { }, exception));
+            return this;
         }
 
         public override void Accept(IMethodCallVisitor<TService> visitor)

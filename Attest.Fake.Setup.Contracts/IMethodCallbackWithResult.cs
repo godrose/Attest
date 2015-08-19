@@ -19,16 +19,19 @@ namespace Attest.Fake.Setup.Contracts
 
     public interface IMethodCallbackWithResultVisitor<TResult>
     {
-        TResult Visit(OnErrorCallback<TResult> onErrorCallback);
-        TResult Visit<T>(OnErrorCallback<T, TResult> onErrorCallback);
-        TResult Visit<T1, T2>(OnErrorCallback<T1, T2, TResult> onErrorCallback);
-        TResult Visit(OnCancelCallback<TResult> onCancelCallback);
-        TResult Visit<T1, T2>(OnCancelCallback<T1, T2, TResult> onCancelCallback);
+        TResult Visit(OnErrorCallbackWithResult<TResult> onErrorCallback);
+        TResult Visit<T>(OnErrorCallbackWithResult<T, TResult> onErrorCallback);
+        TResult Visit<T1, T2>(OnErrorCallbackWithResult<T1, T2, TResult> onErrorCallback);
+        TResult Visit(OnCancelCallbackWithResult<TResult> onCancelCallback);
+        TResult Visit<T>(OnCancelCallbackWithResult<T, TResult> onCancelCallback);
+        TResult Visit<T1, T2>(OnCancelCallbackWithResult<T1, T2, TResult> onCancelCallback);
         TResult Visit(OnCompleteCallbackWithResult<TResult> onCompleteCallbackWithResult);
         TResult Visit<T>(OnCompleteCallbackWithResult<T, TResult> onCompleteCallbackWithResult);
         TResult Visit<T1, T2>(OnCompleteCallbackWithResult<T1, T2, TResult> onCompleteCallbackWithResult);
         TResult Visit(ProgressCallbackWithResult0<TResult> progressCallback);
+        TResult Visit<T>(ProgressCallbackWithResult1<T, TResult> progressCallback);
         TResult Visit<T1, T2>(ProgressCallbackWithResult2<T1, T2, TResult> progressCallback);
-        TResult Visit<T1, T2>(OnWithoutCallback<T1, T2, TResult> withoutCallback);
+        TResult Visit<T>(OnWithoutCallbackWithResult<T, TResult> withoutCallback);
+        TResult Visit<T1, T2>(OnWithoutCallbackWithResult<T1, T2, TResult> withoutCallback);
     }
 }
