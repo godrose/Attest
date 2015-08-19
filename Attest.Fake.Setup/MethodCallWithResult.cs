@@ -151,4 +151,41 @@ namespace Attest.Fake.Setup
             visitor.Visit(this);
         }
     }
+
+    public class MethodCallWithResult3<TService, T1, T2, T3, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> where TService : class
+    {
+        private MethodCallWithResult3(Expression<Func<TService, TResult>> runMethod)
+            : base(runMethod)
+        {
+        }
+
+        public static IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> CreateMethodCall(Expression<Func<TService, TResult>> runMethod)
+        {
+            return new MethodCallWithResult3<TService, T1, T2, T3, TResult>(runMethod);
+        }
+
+        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> Complete(TResult result)
+        {
+            Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, T3, TResult>(result));
+            return this;
+        }
+
+        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> Throw(Exception exception)
+        {
+            Callbacks.Add(new OnErrorCallbackWithResult<T1, T2, T3, TResult>(exception));
+            return this;
+        }
+
+        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> WithoutCallback()
+        {
+            var progressCallback = ProgressCallbackWithResult3<T1, T2, T3, TResult>.Create();
+            Callbacks.Add(progressCallback.WithoutCallback().AsMethodCallback());
+            return this;
+        }
+
+        public override void Accept(IMethodCallWithResultVisitor<TService> visitor)
+        {
+            visitor.Visit(this);
+        }
+    }
 }

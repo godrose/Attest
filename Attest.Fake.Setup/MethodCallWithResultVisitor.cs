@@ -5,11 +5,11 @@ namespace Attest.Fake.Setup
 {
     class MethodCallWithResultVisitor<TService> : IMethodCallWithResultVisitor<TService> where TService : class
     {
-        private readonly IFake<TService> _stubService;
+        private readonly IFake<TService> _fake;
 
-        public MethodCallWithResultVisitor(IFake<TService> stubService)
+        public MethodCallWithResultVisitor(IFake<TService> fake)
         {
-            _stubService = stubService;
+            _fake = fake;
         }
 
         public void Visit<TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<TResult>, TResult> methodCall)
@@ -27,11 +27,16 @@ namespace Attest.Fake.Setup
             VisitImpl(methodCall);
         }
 
+        public void Visit<T1, T2, T3, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> methodCall)
+        {
+            VisitImpl(methodCall);
+        }
+
         private void VisitImpl<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall) where TCallback : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<TResult>, TResult>
         {
             var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<TResult>();
 
-            _stubService.Setup(methodCall.RunMethod).Callback(() =>
+            _fake.Setup(methodCall.RunMethod).Callback(() =>
             {
                 var methodCallback = methodCall.YieldCallback();
                 return methodCallback.Accept(methodCallbackWithResultVisitor);
@@ -41,7 +46,7 @@ namespace Attest.Fake.Setup
 
     public class MethodCallWithResultAppendCallsVisitor<TService> : IMethodCallWithResultVisitor<TService> where TService : class
     {
-        private object _newMethodCall;
+        private readonly object _newMethodCall;
 
         public MethodCallWithResultAppendCallsVisitor(object newMethodCall)
         {
@@ -59,6 +64,11 @@ namespace Attest.Fake.Setup
         }
 
         public void Visit<T1, T2, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult> methodCall)
+        {
+            AppendCallsVisitorHelper.VisitMethodCall(methodCall, _newMethodCall);
+        }
+
+        public void Visit<T1, T2, T3, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> methodCall)
         {
             AppendCallsVisitorHelper.VisitMethodCall(methodCall, _newMethodCall);
         }

@@ -5,12 +5,12 @@ namespace Attest.Fake.Setup
 {
     class MethodCallVisitor<TService> : IMethodCallVisitor<TService> where TService : class
     {
-        private readonly IFake<TService> _stubService;
+        private readonly IFake<TService> _fake;
         private readonly IMethodCallbackVisitor _methodCallbackVisitor = new MethodCallbackVisitor();
 
-        public MethodCallVisitor(IFake<TService> stubService)
+        public MethodCallVisitor(IFake<TService> fake)
         {
-            _stubService = stubService;
+            _fake = fake;
         }
        
         public void Visit(IMethodCall<TService, IMethodCallback> methodCall)
@@ -69,7 +69,7 @@ namespace Attest.Fake.Setup
 
         private IFakeCallback CreateSetup(IMethodCall<TService> methodCall)
         {
-            return _stubService.Setup(methodCall.RunMethod);
+            return _fake.Setup(methodCall.RunMethod);
         }
     }
 
