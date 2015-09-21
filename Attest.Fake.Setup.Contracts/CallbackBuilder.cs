@@ -54,7 +54,7 @@ namespace Attest.Fake.Setup.Contracts
         {
             var callbackTemplateVisitor = PickCallbackTemplateVisitor();
             var actionWrapperVisitor = new ActionWrapperVisitor();
-            return _actionWrapper.Accept(actionWrapperVisitor).Accept(callbackTemplateVisitor);
+            return _actionWrapper.Accept(actionWrapperVisitor, TODO).Accept(callbackTemplateVisitor, TODO);
         }
 
         private IMethodCallbackTemplateVisitor PickCallbackTemplateVisitor()

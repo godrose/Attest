@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 
 namespace Attest.Fake.Setup.Contracts
 {
@@ -10,36 +9,43 @@ namespace Attest.Fake.Setup.Contracts
 
     public abstract class MethodCallbackBaseWithResult<T, TResult> : IMethodCallbackWithResult<T, TResult>
     {
-        public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
+        public abstract TResult Accept(IMethodCallbackWithResultVisitor<T, TResult> visitor, T arg);
     }
 
     public abstract class MethodCallbackBaseWithResult<T1, T2, TResult> : IMethodCallbackWithResult<T1, T2, TResult>
     {
-        public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
+        public abstract TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, TResult> visitor, T1 arg1, T2 arg2);
     }
 
     public abstract class MethodCallbackBaseWithResult<T1, T2, T3, TResult> : IMethodCallbackWithResult<T1, T2, T3, TResult>
     {
-        public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
+        public abstract TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3);
     }
 
     public abstract class MethodCallbackBaseWithResult<T1, T2, T3, T4, TResult> : IMethodCallbackWithResult<T1, T2, T3, T4, TResult>
     {
-        public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
+        public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     }
 
     public abstract class MethodCallbackBaseWithResult<T1, T2, T3, T4, T5, TResult> : IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>
-    {
-        public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
+    {        
+        public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
     }
 
-    public class OnCompleteCallbackWithResult<TResult> : MethodCallbackBaseWithResult<TResult>
+    public class OnCompleteCallbackWithResult<TResult> :
+        MethodCallbackBaseWithResult<TResult>
     {
-        public TResult Result { get; private set; }
+        internal readonly Func<TResult> ValueFunction;
+        //public TResult Result { get; private set; }
+
+        public OnCompleteCallbackWithResult(Func<TResult> valueFunction)
+        {
+            ValueFunction = valueFunction;
+        }
 
         public OnCompleteCallbackWithResult(TResult result)
         {
-            Result = result;
+            ValueFunction = () => result;
         }
 
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
@@ -48,56 +54,81 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
+        //, IReturnResult<TResult>
     {
+        internal Func<T, TResult> ValueFunction { get; set; }
+
         public OnCompleteCallbackWithResult(TResult result)
         {
-            Result = result;
+            ValueFunction = arg => result;
         }
 
-        public TResult Result { get; private set; }
-
-        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        public OnCompleteCallbackWithResult(Func<T, TResult> valueFunction)
         {
-            return visitor.Visit(this);
+            ValueFunction = valueFunction;            
+        }
+
+        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor, T arg)
+        {
+            return visitor.Visit(this, arg);
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
+        //, IReturnResult<TResult>
     {
+        internal Func<T1, T2, TResult> ValueFunction { get; set; }
+
         public OnCompleteCallbackWithResult(TResult result)
         {
-            Result = result;
+            ValueFunction = (arg1, arg2) => result;
         }
 
-        public TResult Result { get; private set; }
-
-        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        public OnCompleteCallbackWithResult(Func<T1, T2, TResult> valueFunction)
         {
-            return visitor.Visit(this);
+            ValueFunction = valueFunction;
+        }
+
+        //public TResult Result { get; private set; }        
+
+        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor, T1 arg1, T2 arg2)
+        {
+            return visitor.Visit(this, arg1, arg2);
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>
+        //, IReturnResult<TResult>
     {
+        internal Func<T1, T2, T3, TResult> ValueFunction { get; set; }
+
         public OnCompleteCallbackWithResult(TResult result)
         {
-            Result = result;
+            ValueFunction = (arg1, arg2, arg3) => result;
         }
 
-        public TResult Result { get; private set; }
-
-        public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        public OnCompleteCallbackWithResult(Func<T1, T2, T3, TResult> valueFunction)
         {
-            return visitor.Visit(this);
+            ValueFunction = valueFunction;
         }
+
+        //public TResult Result { get; private set; }        
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, TResult>, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, TResult>
+        //, IReturnResult<TResult>
     {
+        internal Func<T1, T2, T3, T4, TResult> ValueFunction { get; set; }
+
         public OnCompleteCallbackWithResult(TResult result)
         {
             Result = result;
+        }
+
+        public OnCompleteCallbackWithResult(Func<T1, T2, T3, TResult> valueFunction)
+        {
+            ValueFunction = valueFunction;
         }
 
         public TResult Result { get; private set; }
@@ -245,7 +276,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
-            return visitor.Visit(this);
+            return visitor.Visit(this, TODO);
         }
     }
 
@@ -334,7 +365,7 @@ namespace Attest.Fake.Setup.Contracts
     {
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
-            return visitor.Visit(this);
+            return visitor.Visit(this, TODO);
         }
     }
 
@@ -382,7 +413,7 @@ namespace Attest.Fake.Setup.Contracts
     {
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
-            return visitor.Visit(this);
+            return visitor.Visit(this, TODO);
         }
     }
 
@@ -422,7 +453,8 @@ namespace Attest.Fake.Setup.Contracts
     //try-finally block can't both throw an exception and return a value
     //additionally it's rather strange to have progressable call return a value
     //when all the data can be just transferred over the progress messages path
-    public abstract class ProgressableCallbackWithResultBase<TCallback, TResult> : ProgressMessagesBase, IProgressableProcessRunningWithResult<TCallback, TResult>,
+    public abstract class ProgressableCallbackWithResultBase<TCallback, TResult> : 
+        ProgressMessagesBase, IProgressableProcessRunningWithResult<TCallback, TResult>,
         IProgressableProcessFinishedWithResult<TCallback, TResult>, IMethodCallbackWithResult<TCallback,TResult>
     {
         public abstract IProgressableProcessFinishedWithResult<TCallback, TResult> Complete(TResult result);
@@ -526,7 +558,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
-            return visitor.Visit(this);
+            return visitor.Visit(this, TODO);
         }
     }
 
@@ -717,181 +749,4 @@ namespace Attest.Fake.Setup.Contracts
             return visitor.Visit(this);
         }
     }
-
-    public class MethodCallbackWithResultVisitor<TResult> : IMethodCallbackWithResultVisitor<TResult>
-    {
-        public TResult Visit(OnErrorCallbackWithResult<TResult> onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-
-        public TResult Visit<T>(OnErrorCallbackWithResult<T, TResult> onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-
-        public TResult Visit<T1, T2>(OnErrorCallbackWithResult<T1, T2, TResult> onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-
-        public TResult Visit<T1, T2, T3>(OnErrorCallbackWithResult<T1, T2, T3, TResult> onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-
-        public TResult Visit<T1, T2, T3, T4>(OnErrorCallbackWithResult<T1, T2, T3, T4, TResult> onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-
-        public TResult Visit<T1, T2, T3, T4, T5>(OnErrorCallbackWithResult<T1, T2, T3, T4, T5, TResult> onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-
-        public TResult Visit(OnCancelCallbackWithResult<TResult> onCancelCallback)
-        {
-            throw new CancelCallbackException();
-        }
-
-        public TResult Visit<T>(OnCancelCallbackWithResult<T, TResult> onCancelCallback)
-        {
-            throw new CancelCallbackException();
-        }
-
-        public TResult Visit<T1, T2>(OnCancelCallbackWithResult<T1, T2, TResult> onCancelCallback)
-        {
-            throw new CancelCallbackException();
-        }
-
-        public TResult Visit<T1, T2, T3>(OnCancelCallbackWithResult<T1, T2, T3, TResult> onCancelCallback)
-        {
-            throw new CancelCallbackException();
-        }
-
-        public TResult Visit<T1, T2, T3, T4>(OnCancelCallbackWithResult<T1, T2, T3, T4, TResult> onCancelCallback)
-        {
-            throw new CancelCallbackException();
-        }
-
-        public TResult Visit<T1, T2, T3, T4, T5>(OnCancelCallbackWithResult<T1, T2, T3, T4, T5, TResult> onCancelCallback)
-        {
-            throw new CancelCallbackException();
-        }
-
-        public TResult Visit(OnCompleteCallbackWithResult<TResult> onCompleteCallbackWithResult)
-        {
-            return onCompleteCallbackWithResult.Result;
-        }
-
-        public TResult Visit<T>(OnCompleteCallbackWithResult<T, TResult> onCompleteCallbackWithResult)
-        {
-            return onCompleteCallbackWithResult.Result;
-        }
-
-        public TResult Visit<T1, T2>(OnCompleteCallbackWithResult<T1, T2, TResult> onCompleteCallbackWithResult)
-        {
-            return onCompleteCallbackWithResult.Result;
-        }
-
-        public TResult Visit<T1, T2, T3>(OnCompleteCallbackWithResult<T1, T2, T3, TResult> onCompleteCallbackWithResult)
-        {
-            return onCompleteCallbackWithResult.Result;
-        }
-
-        public TResult Visit<T1, T2, T3, T4>(OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> onCompleteCallbackWithResult)
-        {
-            return onCompleteCallbackWithResult.Result;
-        }
-
-        public TResult Visit<T1, T2, T3, T4, T5>(OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult> onCompleteCallbackWithResult)
-        {
-            return onCompleteCallbackWithResult.Result;
-        }
-
-        public TResult Visit(ProgressCallbackWithResult<TResult> progressCallback)
-        {
-            if (progressCallback.ProgressMessages.Any())
-            {
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            }
-            return progressCallback.FinishCallback.Accept(this);
-        }
-
-        public TResult Visit<T>(ProgressCallbackWithResult<T, TResult> progressCallback)
-        {
-            if (progressCallback.ProgressMessages.Any())
-            {
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            }
-            return progressCallback.FinishCallback.Accept(this);
-        }
-
-        public TResult Visit<T1, T2>(ProgressCallbackWithResult<T1, T2, TResult> progressCallback)
-        {
-            if (progressCallback.ProgressMessages.Any())
-            {
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            }
-            return progressCallback.FinishCallback.Accept(this);
-        }
-
-        public TResult Visit<T1, T2, T3>(ProgressCallbackWithResult<T1, T2, T3, TResult> progressCallback)
-        {
-            if (progressCallback.ProgressMessages.Any())
-            {
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            }
-            return progressCallback.FinishCallback.Accept(this);
-        }
-
-        public TResult Visit<T1, T2, T3, T4>(ProgressCallbackWithResult<T1, T2, T3, T4, TResult> progressCallback)
-        {
-            if (progressCallback.ProgressMessages.Any())
-            {
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            }
-            return progressCallback.FinishCallback.Accept(this);
-        }
-
-        public TResult Visit<T1, T2, T3, T4, T5>(ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult> progressCallback)
-        {
-            if (progressCallback.ProgressMessages.Any())
-            {
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            }
-            return progressCallback.FinishCallback.Accept(this);
-        }
-
-        public TResult Visit(OnWithoutCallbackWithResult<TResult> withoutCallback)
-        {
-            throw new WithoutCallbackException();
-        }
-
-        public TResult Visit<T>(OnWithoutCallbackWithResult<T, TResult> withoutCallback)
-        {
-            throw new WithoutCallbackException();
-        }
-
-        public TResult Visit<T1, T2>(OnWithoutCallbackWithResult<T1, T2, TResult> withoutCallback)
-        {
-            throw new WithoutCallbackException();
-        }
-
-        public TResult Visit<T1, T2, T3>(OnWithoutCallbackWithResult<T1, T2, T3, TResult> withoutCallback)
-        {
-            throw new WithoutCallbackException();
-        }
-
-        public TResult Visit<T1, T2, T3, T4>(OnWithoutCallbackWithResult<T1, T2, T3, T4, TResult> withoutCallback)
-        {
-            throw new WithoutCallbackException();
-        }
-
-        public TResult Visit<T1, T2, T3, T4, T5>(OnWithoutCallbackWithResult<T1, T2, T3, T4, T5, TResult> withoutCallback)
-        {
-            throw new WithoutCallbackException();
-        }
-    }   
 }

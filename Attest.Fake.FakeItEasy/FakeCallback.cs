@@ -58,5 +58,30 @@ namespace Attest.Fake.FakeItEasy
         {
             _callConfiguration.ReturnsLazily(func);
         }
+
+        public void Callback<T>(Func<T, TResult> valueFunction)
+        {
+            _callConfiguration.ReturnsLazily(valueFunction);
+        }
+
+        public void Callback<T1, T2>(Func<T1, T2, TResult> valueFunction)
+        {
+            _callConfiguration.ReturnsLazily(valueFunction);
+        }
+
+        public void Callback<T1, T2, T3>(Func<T1, T2, T3, TResult> valueFunction)
+        {
+            _callConfiguration.ReturnsLazily(valueFunction);
+        }
+
+        public void Callback<T1, T2, T3, T4>(Func<T1, T2, T3, T4, TResult> valueFunction)
+        {
+            _callConfiguration.ReturnsLazily(valueFunction);
+        }
+
+        public void Callback<T1, T2, T3, T4, T5>(Func<T1, T2, T3, T4, T5, TResult> valueFunction)
+        {
+            throw new NotSupportedException("FakeItEasy supports up to 4 parameters");
+        }
     }
 }

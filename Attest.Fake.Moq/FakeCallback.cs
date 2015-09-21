@@ -57,5 +57,30 @@ namespace Attest.Fake.Moq
         {
             _fakeSetup.Returns(func);
         }
+
+        public void Callback<T>(Func<T, TResult> valueFunction)
+        {
+            _fakeSetup.Returns(valueFunction);
+        }
+
+        public void Callback<T1, T2>(Func<T1, T2, TResult> valueFunction)
+        {
+            _fakeSetup.Returns(valueFunction);
+        }
+
+        public void Callback<T1, T2, T3>(Func<T1, T2, T3, TResult> valueFunction)
+        {
+            _fakeSetup.Returns(valueFunction);
+        }
+
+        public void Callback<T1, T2, T3, T4>(Func<T1, T2, T3, T4, TResult> valueFunction)
+        {
+            _fakeSetup.Returns(valueFunction);
+        }
+
+        public void Callback<T1, T2, T3, T4, T5>(Func<T1, T2, T3, T4, T5, TResult> valueFunction)
+        {
+            _fakeSetup.Returns(valueFunction);
+        }
     }
 }

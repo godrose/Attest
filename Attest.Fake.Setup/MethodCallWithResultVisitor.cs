@@ -14,12 +14,24 @@ namespace Attest.Fake.Setup
 
         public void Visit<TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<TResult>, TResult> methodCall)
         {
-            VisitImpl(methodCall);
+            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<TResult>();
+
+            _fake.Setup(methodCall.RunMethod).Callback(() =>
+            {
+                var methodCallback = methodCall.YieldCallback();
+                return methodCallback.Accept(methodCallbackWithResultVisitor);
+            });
         }        
 
         public void Visit<T, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T, TResult>, TResult> methodCall)
         {
-            VisitImpl(methodCall);
+            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<T, TResult>();
+
+            _fake.Setup(methodCall.RunMethod).Callback((T arg) =>
+            {
+                var methodCallback = methodCall.YieldCallback();
+                return methodCallback.Accept(methodCallbackWithResultVisitor, arg);
+            });
         }
 
         public void Visit<T1, T2, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult> methodCall)
@@ -49,7 +61,7 @@ namespace Attest.Fake.Setup
             _fake.Setup(methodCall.RunMethod).Callback(() =>
             {
                 var methodCallback = methodCall.YieldCallback();
-                return methodCallback.Accept(methodCallbackWithResultVisitor);
+                return methodCallback.Accept(methodCallbackWithResultVisitor, TODO);
             });
         }
     }

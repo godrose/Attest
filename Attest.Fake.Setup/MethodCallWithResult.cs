@@ -26,7 +26,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        public abstract IMethodCallbacksContainer<TCallback> Complete(TResult result);
+        public abstract IMethodCallbacksContainer<TCallback> Complete(TResult result);        
 
         public abstract IMethodCallbacksContainer<TCallback> Throw(Exception exception);
 
@@ -56,6 +56,12 @@ namespace Attest.Fake.Setup
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<TResult>(result));
+            return this;
+        }
+
+        public IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> Complete(Func<TResult> valueFunction)
+        {
+            Callbacks.Add(new OnCompleteCallbackWithResult<TResult>(valueFunction));
             return this;
         }
 
@@ -93,6 +99,12 @@ namespace Attest.Fake.Setup
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T, TResult>(result));
+            return this;
+        }
+
+        public IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> Complete(Func<T, TResult> valueFunction)
+        {
+            Callbacks.Add(new OnCompleteCallbackWithResult<T, TResult>(valueFunction));
             return this;
         }
 

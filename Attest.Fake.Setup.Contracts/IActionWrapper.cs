@@ -42,16 +42,19 @@ namespace Attest.Fake.Setup.Contracts
         MethodCallbackTemplate<T1, T2, T3, T4, T5> Visit<T1, T2, T3, T4, T5>(IActionWrapper<T1, T2, T3, T4, T5> actionWrapper);
     }
 
-    public interface IResultWrapper<TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<TResult>>, IReturnResult<TResult>
+    public interface IResultWrapper<TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<TResult>>
+        //, IReturnResult<TResult>
     {
        
     }
 
-    public interface IResultWrapper<T, TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T, TResult>>, IReturnResult<TResult>
+    public interface IResultWrapper<T, TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T, TResult>>
+        //, IReturnResult<TResult>
     {
     }
 
-    public interface IResultWrapper<T1, T2, TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T1, T2, TResult>>, IReturnResult<TResult>
+    public interface IResultWrapper<T1, T2, TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T1, T2, TResult>>
+        //, IReturnResult<TResult>
     {
     }
 
