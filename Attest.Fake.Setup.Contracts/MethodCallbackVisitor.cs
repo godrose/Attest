@@ -5,11 +5,6 @@ namespace Attest.Fake.Setup.Contracts
         public void Visit(OnErrorCallback onErrorCallback)
         {
             VisitErrorImpl(onErrorCallback);
-        }        
-
-        public void Visit<T>(OnErrorCallback<T> onErrorCallback, T arg)
-        {
-            VisitErrorImpl(onErrorCallback);
         }
 
         public void Visit<T1, T2>(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2)
@@ -40,11 +35,6 @@ namespace Attest.Fake.Setup.Contracts
         public void Visit(OnCompleteCallback onCompleteCallback)
         {
             onCompleteCallback.Callback();
-        }
-
-        public void Visit<T>(OnCompleteCallback<T> onCompleteCallback, T arg)
-        {
-            onCompleteCallback.Callback(arg);
         }
 
         public void Visit<T1, T2>(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2)
@@ -82,6 +72,19 @@ namespace Attest.Fake.Setup.Contracts
         public void Visit(OnCancelCallback onCancelCallback)
         {
             throw new CancelCallbackException();
+        }
+    }
+
+    public class MethodCallbackVisitor<T> : IMethodCallbackVisitor<T>
+    {
+        public void Visit(OnErrorCallback<T> onErrorCallback, T arg)
+        {
+            throw onErrorCallback.Exception;
+        }
+
+        public void Visit(OnCompleteCallback<T> onCompleteCallback, T arg)
+        {
+            onCompleteCallback.Callback(arg);
         }
     }
 }

@@ -24,10 +24,11 @@ namespace Attest.Fake.Setup
 
         public void Visit<T>(IMethodCall<TService, IMethodCallback<T>> methodCall)
         {
+            var visitor = new MethodCallbackVisitor<T>();
             CreateSetup(methodCall).Callback((T arg) =>
             {
                 var methodCallback = methodCall.YieldCallback();
-                methodCallback.Accept(_methodCallbackVisitor, arg);
+                methodCallback.Accept(visitor, arg);
             });
         }
 

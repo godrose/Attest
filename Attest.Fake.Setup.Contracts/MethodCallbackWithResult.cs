@@ -2,6 +2,10 @@ using System;
 
 namespace Attest.Fake.Setup.Contracts
 {
+    /// <summary>
+    /// Base class for callback with return value and no parameters
+    /// </summary>
+    /// <typeparam name="TResult"></typeparam>
     public abstract class MethodCallbackBaseWithResult<TResult> : IMethodCallbackWithResult<TResult>
     {
         public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
