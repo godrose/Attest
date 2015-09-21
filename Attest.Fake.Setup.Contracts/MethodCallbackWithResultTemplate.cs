@@ -1,6 +1,8 @@
+using Solid.Patterns.Visitor;
+
 namespace Attest.Fake.Setup.Contracts
 {
-    public class MethodCallbackWithResultTemplate<TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultTemplateVisitor, IMethodCallbackWithResult<TResult>>, IReturnResult<TResult>
+    public class MethodCallbackWithResultTemplate<TResult> : IAcceptor<IMethodCallbackWithResultTemplateVisitor, IMethodCallbackWithResult<TResult>>, IReturnResult<TResult>
     {
         public MethodCallbackWithResultTemplate<TResult> WithResult(TResult result)
         {
@@ -16,7 +18,7 @@ namespace Attest.Fake.Setup.Contracts
         public TResult Result { get; private set; }
     }
 
-    public class MethodCallbackWithResultTemplate<T, TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultTemplateVisitor, IMethodCallbackWithResult<T, TResult>>, IReturnResult<TResult>
+    public class MethodCallbackWithResultTemplate<T, TResult> : IAcceptor<IMethodCallbackWithResultTemplateVisitor, IMethodCallbackWithResult<T, TResult>>, IReturnResult<TResult>
     {
         public MethodCallbackWithResultTemplate<T, TResult> WithResult(TResult result)
         {
@@ -32,7 +34,7 @@ namespace Attest.Fake.Setup.Contracts
         public TResult Result { get; private set; }
     }
 
-    public class MethodCallbackWithResultTemplate<T1, T2, TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultTemplateVisitor, IMethodCallbackWithResult<T1, T2, TResult>>, IReturnResult<TResult>
+    public class MethodCallbackWithResultTemplate<T1, T2, TResult> : IAcceptor<IMethodCallbackWithResultTemplateVisitor, IMethodCallbackWithResult<T1, T2, TResult>>, IReturnResult<TResult>
     {
         public MethodCallbackWithResultTemplate<T1, T2, TResult> WithResult(TResult result)
         {

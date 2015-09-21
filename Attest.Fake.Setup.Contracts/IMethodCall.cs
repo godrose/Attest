@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
 {
@@ -7,9 +8,9 @@ namespace Attest.Fake.Setup.Contracts
     {
         IMethodCall<TService, TCallback> BuildCallbacks(
             Func<IHaveNoCallbacks<TCallback>, IHaveCallbacks<TCallback>> buildCallbacks);        
-    }    
+    }
 
-    public interface IMethodCall<TService> : IAcceptorWithParameters<IMethodCallVisitor<TService>> where TService : class
+    public interface IMethodCall<TService> : IAcceptor<IMethodCallVisitor<TService>> where TService : class
     {
         Expression<Action<TService>> RunMethod { get; }     
     }

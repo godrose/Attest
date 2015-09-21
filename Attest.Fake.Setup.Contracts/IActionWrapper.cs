@@ -1,33 +1,34 @@
 ﻿using System;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
 {
-    public interface IActionWrapper : IAcceptorWithParametersResult<IActionWrapperVisitor, MethodCallbackTemplate>
+    public interface IActionWrapper : IAcceptor<IActionWrapperVisitor, MethodCallbackTemplate>
     {
         Action Action { get; }
     }
 
-    public interface IActionWrapper<T> : IAcceptorWithParametersResult<IActionWrapperVisitor, MethodCallbackTemplate<T>>
+    public interface IActionWrapper<T> : IAcceptor<IActionWrapperVisitor, MethodCallbackTemplate<T>>
     {
         Action<T> Action { get; }
     }
 
-    public interface IActionWrapper<T1, T2> : IAcceptorWithParametersResult<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2>>
+    public interface IActionWrapper<T1, T2> : IAcceptor<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2>>
     {
         Action<T1, T2> Action { get; }
     }
 
-    public interface IActionWrapper<T1, T2, T3> : IAcceptorWithParametersResult<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2, T3>>
+    public interface IActionWrapper<T1, T2, T3> : IAcceptor<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2, T3>>
     {
         Action<T1, T2, T3> Action { get; }
     }
 
-    public interface IActionWrapper<T1, T2, T3, T4> : IAcceptorWithParametersResult<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2, T3, T4>>
+    public interface IActionWrapper<T1, T2, T3, T4> : IAcceptor<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2, T3, T4>>
     {
         Action<T1, T2, T3, T4> Action { get; }
     }
 
-    public interface IActionWrapper<T1, T2, T3, T4, T5> : IAcceptorWithParametersResult<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2, T3, T4, T5>>
+    public interface IActionWrapper<T1, T2, T3, T4, T5> : IAcceptor<IActionWrapperVisitor, MethodCallbackTemplate<T1, T2, T3, T4, T5>>
     {
         Action<T1, T2, T3, T4, T5> Action { get; }
     } 
@@ -42,16 +43,16 @@ namespace Attest.Fake.Setup.Contracts
         MethodCallbackTemplate<T1, T2, T3, T4, T5> Visit<T1, T2, T3, T4, T5>(IActionWrapper<T1, T2, T3, T4, T5> actionWrapper);
     }
 
-    public interface IResultWrapper<TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<TResult>>        
+    public interface IResultWrapper<TResult> : IAcceptor<IResultWrapperVisitor, MethodCallbackWithResultTemplate<TResult>>        
     {
        
     }
 
-    public interface IResultWrapper<T, TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T, TResult>>       
+    public interface IResultWrapper<T, TResult> : IAcceptor<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T, TResult>>       
     {
     }
 
-    public interface IResultWrapper<T1, T2, TResult> : IAcceptorWithParametersResult<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T1, T2, TResult>>        
+    public interface IResultWrapper<T1, T2, TResult> : IAcceptor<IResultWrapperVisitor, MethodCallbackWithResultTemplate<T1, T2, TResult>>        
     {
     }
 

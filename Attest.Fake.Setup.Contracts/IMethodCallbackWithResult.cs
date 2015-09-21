@@ -1,6 +1,8 @@
+using Solid.Patterns.Visitor;
+
 namespace Attest.Fake.Setup.Contracts
 {
-    public interface IMethodCallbackWithResult<TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<TResult>, TResult>
+    public interface IMethodCallbackWithResult<TResult> : IAcceptor<IMethodCallbackWithResultVisitor<TResult>, TResult>
     {
     }
 

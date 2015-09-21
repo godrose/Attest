@@ -1,3 +1,5 @@
+using Solid.Patterns.Visitor;
+
 namespace Attest.Fake.Setup.Contracts
 {
     public interface IMethodCallbackTemplateVisitor
@@ -10,7 +12,7 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallback<T1, T2, T3, T4, T5> Visit<T1, T2, T3, T4, T5>(MethodCallbackTemplate<T1, T2, T3, T4, T5> methodCallbackTemplate);
     }
 
-    public class MethodCallbackTemplate : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, IMethodCallback>
+    public class MethodCallbackTemplate : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback>
     {
         public IMethodCallback Accept(IMethodCallbackTemplateVisitor visitor)
         {
@@ -26,7 +28,7 @@ namespace Attest.Fake.Setup.Contracts
         public IActionWrapper ActionWrapper { get; private set; }
     }
 
-    public class MethodCallbackTemplate<T> : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, IMethodCallback<T>>
+    public class MethodCallbackTemplate<T> : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback<T>>
     {
         public IMethodCallback<T> Accept(IMethodCallbackTemplateVisitor visitor)
         {
@@ -42,7 +44,7 @@ namespace Attest.Fake.Setup.Contracts
         public IActionWrapper<T> ActionWrapper { get; private set; }
     }
 
-    public class MethodCallbackTemplate<T1, T2> : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2>>
+    public class MethodCallbackTemplate<T1, T2> : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2>>
     {
         public IMethodCallback<T1, T2> Accept(IMethodCallbackTemplateVisitor visitor)
         {
@@ -58,7 +60,7 @@ namespace Attest.Fake.Setup.Contracts
         public IActionWrapper<T1, T2> ActionWrapper { get; private set; }
     }
 
-    public class MethodCallbackTemplate<T1, T2, T3> : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2, T3>>
+    public class MethodCallbackTemplate<T1, T2, T3> : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2, T3>>
     {
         public IMethodCallback<T1, T2, T3> Accept(IMethodCallbackTemplateVisitor visitor)
         {
@@ -74,7 +76,7 @@ namespace Attest.Fake.Setup.Contracts
         public IActionWrapper<T1, T2, T3> ActionWrapper { get; private set; }
     }
 
-    public class MethodCallbackTemplate<T1, T2, T3, T4> : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2, T3, T4>>
+    public class MethodCallbackTemplate<T1, T2, T3, T4> : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2, T3, T4>>
     {
         public IMethodCallback<T1, T2, T3, T4> Accept(IMethodCallbackTemplateVisitor visitor)
         {
@@ -90,7 +92,7 @@ namespace Attest.Fake.Setup.Contracts
         public IActionWrapper<T1, T2, T3, T4> ActionWrapper { get; private set; }
     }
 
-    public class MethodCallbackTemplate<T1, T2, T3, T4, T5> : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2, T3, T4, T5>>
+    public class MethodCallbackTemplate<T1, T2, T3, T4, T5> : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback<T1, T2, T3, T4, T5>>
     {
         public IMethodCallback<T1, T2, T3, T4, T5> Accept(IMethodCallbackTemplateVisitor visitor)
         {

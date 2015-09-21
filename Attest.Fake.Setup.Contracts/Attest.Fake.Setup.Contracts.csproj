@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Solid.Patterns.Visitor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Solid.Patterns.Visitor.1.0.3\lib\net451\Solid.Patterns.Visitor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -37,8 +41,6 @@
     <Compile Include="ActionWrapper.cs" />
     <Compile Include="CallbackBuilder.cs" />
     <Compile Include="Exceptions.cs" />
-    <Compile Include="IAcceptorWithParameters.cs" />
-    <Compile Include="IAcceptorWithParametersResult.cs" />
     <Compile Include="IActionWrapper.cs" />
     <Compile Include="IAddCallback.cs" />
     <Compile Include="IAddCallbackWithResult.cs" />
@@ -79,6 +81,9 @@
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

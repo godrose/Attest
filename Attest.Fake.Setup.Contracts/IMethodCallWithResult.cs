@@ -1,10 +1,11 @@
 using System;
 using System.Linq.Expressions;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
 {    
     public interface IMethodCallWithResult<TService, TResult> :
-        IAcceptorWithParameters<IMethodCallWithResultVisitor<TService>> where TService : class
+        IAcceptor<IMethodCallWithResultVisitor<TService>> where TService : class
     {
         Expression<Func<TService, TResult>> RunMethod { get; }
     }

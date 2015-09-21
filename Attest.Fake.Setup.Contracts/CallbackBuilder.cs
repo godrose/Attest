@@ -1,10 +1,11 @@
 using System;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
 {
     public class CallbackBuilder<TActionWrapper, TCallbackTemplate, TCallback>
-        where TActionWrapper : IAcceptorWithParametersResult<IActionWrapperVisitor, TCallbackTemplate>, new()
-        where TCallbackTemplate : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, TCallback>
+        where TActionWrapper : IAcceptor<IActionWrapperVisitor, TCallbackTemplate>, new()
+        where TCallbackTemplate : IAcceptor<IMethodCallbackTemplateVisitor, TCallback>
     {
         private TActionWrapper _actionWrapper;
         private CallbackType _callbackType;

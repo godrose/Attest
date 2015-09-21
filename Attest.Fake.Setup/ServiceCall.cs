@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup
 {      
@@ -33,15 +34,15 @@ namespace Attest.Fake.Setup
         }
 
         private void AddMethodCall(IMethodCallMetaData methodCallMetaData)
-        {                        
-            var newMethodInfo = methodCallMetaData as IAcceptorWithParameters<IMethodCallVisitor<TService>>;
+        {
+            var newMethodInfo = methodCallMetaData as IAcceptor<IMethodCallVisitor<TService>>;
             if (newMethodInfo != null)
             {
                 AddMethodCallImpl(methodCallMetaData, newMethodInfo);
             }
             else
             {
-                var newMethodWithResultInfo = methodCallMetaData as IAcceptorWithParameters<IMethodCallWithResultVisitor<TService>>;
+                var newMethodWithResultInfo = methodCallMetaData as IAcceptor<IMethodCallWithResultVisitor<TService>>;
                 if (newMethodWithResultInfo == null)
                 {
                     throw new ArgumentException(
@@ -65,7 +66,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        private void AddMethodCallImpl(IMethodCallMetaData methodCallMetaData, IAcceptorWithParameters<IMethodCallVisitor<TService>> acceptorWithParameters)
+        private void AddMethodCallImpl(IMethodCallMetaData methodCallMetaData, IAcceptor<IMethodCallVisitor<TService>> acceptorWithParameters)
         {
             var existingMethodCallMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
             if (existingMethodCallMetaData == null)
@@ -81,7 +82,7 @@ namespace Attest.Fake.Setup
             }
         }
 
-        private void AddMethodCallWithResultImpl(IMethodCallMetaData methodCallMetaData, IAcceptorWithParameters<IMethodCallWithResultVisitor<TService>> acceptorWithParameters )
+        private void AddMethodCallWithResultImpl(IMethodCallMetaData methodCallMetaData, IAcceptor<IMethodCallWithResultVisitor<TService>> acceptorWithParameters)
         {
             var existingMethodInfoMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
             if (existingMethodInfoMetaData == null)
@@ -98,7 +99,7 @@ namespace Attest.Fake.Setup
         }
 
         private static void AcceptExistingMethodCall<TAppendCallsVisitor,TMethodCallVisitor>(
-            IAcceptorWithParameters<TMethodCallVisitor> existingMethodInfoMetaData,
+            IAcceptor<TMethodCallVisitor> existingMethodInfoMetaData,
             TAppendCallsVisitor appendCallsVisitor
             ) where TAppendCallsVisitor : TMethodCallVisitor
         {

@@ -1,8 +1,9 @@
 using System;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
 {
-    public interface IMethodCallback : IAcceptorWithParameters<IMethodCallbackVisitor>
+    public interface IMethodCallback : IAcceptor<IMethodCallbackVisitor>
     {
 
     }

@@ -1,10 +1,11 @@
 using System;
 using System.Linq.Expressions;
 using Attest.Fake.Setup.Contracts;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup
 {
-    public abstract class MethodCallWithResultBase<TService, TCallback, TResult> : MethodCallbacksContainerBase<TCallback>, IMethodCallWithResult<TService, TCallback, TResult>, IMethodCallbacksContainer<TCallback>, IHaveCallbacks<TCallback>, IAppendCallbacks<TCallback>, ICallbackYielder<TCallback>, IMethodCallMetaData, IMethodCallWithResult<TService, TResult>, IAcceptorWithParameters<IMethodCallWithResultVisitor<TService>> where TService : class
+    public abstract class MethodCallWithResultBase<TService, TCallback, TResult> : MethodCallbacksContainerBase<TCallback>, IMethodCallWithResult<TService, TCallback, TResult>, IAcceptor<IMethodCallWithResultVisitor<TService>> where TService : class
     {
         public Expression<Func<TService, TResult>> RunMethod { get; private set; }
 

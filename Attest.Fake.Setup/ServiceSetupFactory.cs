@@ -2,6 +2,7 @@
 using System.Linq;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;
+using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup
 {
@@ -17,7 +18,7 @@ namespace Attest.Fake.Setup
 
         private void VisitMethodCalls<TVisitor>(TVisitor visitor, IEnumerable<object> methodCalls)
         {
-            foreach (var methodCall in methodCalls.OfType<IAcceptorWithParameters<TVisitor>>())
+            foreach (var methodCall in methodCalls.OfType<IAcceptor<TVisitor>>())
             {
                 methodCall.Accept(visitor);
             }
