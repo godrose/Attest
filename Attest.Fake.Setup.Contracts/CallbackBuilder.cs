@@ -2,16 +2,15 @@ using System;
 
 namespace Attest.Fake.Setup.Contracts
 {
-    public class CallbackBuilder<TActionWrapper, TCallbackTemplate, TCallback> 
-        where TActionWrapper : IAcceptorWithParametersResult<IActionWrapperVisitor, TCallbackTemplate>, new() 
-        where TCallbackTemplate : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor,TCallback>
+    public class CallbackBuilder<TActionWrapper, TCallbackTemplate, TCallback>
+        where TActionWrapper : IAcceptorWithParametersResult<IActionWrapperVisitor, TCallbackTemplate>, new()
+        where TCallbackTemplate : IAcceptorWithParametersResult<IMethodCallbackTemplateVisitor, TCallback>
     {
-        private TActionWrapper _actionWrapper;        
+        private TActionWrapper _actionWrapper;
         private CallbackType _callbackType;
 
         private CallbackBuilder()
         {
-            
         }
 
         public static CallbackBuilder<TActionWrapper, TCallbackTemplate, TCallback> CreateCallbackBuilder()
@@ -27,7 +26,6 @@ namespace Attest.Fake.Setup.Contracts
 
         public TCallback WithDefaultAction()
         {
-            
             _actionWrapper = new TActionWrapper();
             return BuildCallback();
         }
@@ -52,20 +50,22 @@ namespace Attest.Fake.Setup.Contracts
 
         internal TCallback BuildCallback()
         {
-            var callbackTemplateVisitor = PickCallbackTemplateVisitor();
-            var actionWrapperVisitor = new ActionWrapperVisitor();
-            return _actionWrapper.Accept(actionWrapperVisitor, TODO).Accept(callbackTemplateVisitor, TODO);
+            return _actionWrapper.Accept(new ActionWrapperVisitor()).Accept(PickCallbackTemplateVisitor());
         }
 
         private IMethodCallbackTemplateVisitor PickCallbackTemplateVisitor()
         {
             switch (_callbackType)
             {
-                case CallbackType.Complete: return new OnCompleteCallbackVisitor();
-                case CallbackType.Error: throw new NotImplementedException();
-                case CallbackType.Cancel: throw new NotImplementedException();
+                case CallbackType.Complete:
+                    return new OnCompleteCallbackVisitor();
+                case CallbackType.Error:
+                    throw new NotImplementedException();
+                case CallbackType.Cancel:
+                    throw new NotImplementedException();
+                default:
+                    throw new NotSupportedException("Callback type not supported");
             }
-            throw new NotSupportedException("Callback type not supported");
         }
     }
 

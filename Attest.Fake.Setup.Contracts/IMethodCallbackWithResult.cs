@@ -1,10 +1,5 @@
 namespace Attest.Fake.Setup.Contracts
 {
-    //public interface IReturnResult<out TResult>
-    //{
-    //    TResult Result { get; }
-    //}
-
     public interface IMethodCallbackWithResult<TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<TResult>, TResult>
     {
     }

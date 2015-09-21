@@ -36,32 +36,45 @@ namespace Attest.Fake.Setup
 
         public void Visit<T1, T2, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult> methodCall)
         {
-            VisitImpl(methodCall);
+            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<T1, T2, TResult>();
+
+            _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2) =>
+            {
+                var methodCallback = methodCall.YieldCallback();
+                return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2);
+            });
         }
 
         public void Visit<T1, T2, T3, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> methodCall)
         {
-            VisitImpl(methodCall);
+            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<T1, T2, T3, TResult>();
+
+            _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3) =>
+            {
+                var methodCallback = methodCall.YieldCallback();
+                return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3);
+            });
         }
 
         public void Visit<T1, T2, T3, T4, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> methodCall)
         {
-            VisitImpl(methodCall);
+            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult>();
+
+            _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4) =>
+            {
+                var methodCallback = methodCall.YieldCallback();
+                return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3, arg4);
+            });
         }
 
         public void Visit<T1, T2, T3, T4, T5, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> methodCall)
         {
-            VisitImpl(methodCall);
-        }
+            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<T1, T2, T3, T4, T5, TResult>();
 
-        private void VisitImpl<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall) where TCallback : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<TResult>, TResult>
-        {
-            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitor<TResult>();
-
-            _fake.Setup(methodCall.RunMethod).Callback(() =>
+            _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) =>
             {
                 var methodCallback = methodCall.YieldCallback();
-                return methodCallback.Accept(methodCallbackWithResultVisitor, TODO);
+                return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3, arg4, arg5);
             });
         }
     }

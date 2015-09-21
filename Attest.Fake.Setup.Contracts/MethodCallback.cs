@@ -151,6 +151,115 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    public class OnErrorCallback : MethodCallbackBase
+    {
+        public OnErrorCallback(Action callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+    }
+
+    public class OnErrorCallback<T> : MethodCallbackBase<T>
+    {
+        public OnErrorCallback(Action<T> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T arg)
+        {
+            visitor.Visit(this, arg);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2> : MethodCallbackBase<T1, T2>
+    {
+        public OnErrorCallback(Action<T1, T2> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2)
+        {
+            visitor.Visit(this, arg1, arg2);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2, T3> : MethodCallbackBase<T1, T2, T3>
+    {
+        public OnErrorCallback(Action<T1, T2, T3> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            visitor.Visit(this, arg1, arg2, arg3);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2, T3, T4> : MethodCallbackBase<T1, T2, T3, T4>
+    {
+        public OnErrorCallback(Action<T1, T2, T3, T4> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            visitor.Visit(this, arg1, arg2, arg3, arg4);
+        }
+    }
+
+    public class OnErrorCallback<T1, T2, T3, T4, T5> : MethodCallbackBase<T1, T2, T3, T4, T5>
+    {
+        public OnErrorCallback(Action<T1, T2, T3, T4, T5> callback, Exception exception)
+            : base(callback)
+        {
+            Exception = exception;
+        }
+
+        public Exception Exception { get; private set; }
+
+        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            visitor.Visit(this, arg1, arg2, arg3, arg4, arg5);
+        }
+    }
+
+    public class OnCancelCallback : MethodCallbackBase
+    {
+        public OnCancelCallback(Action callback)
+            : base(callback)
+        {
+        }
+
+        public override void Accept(IMethodCallbackVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+    }
+
     public abstract class ProgressableCallbackBase<TCallback> : ProgressMessagesBase, IProgressableProcessRunning<TCallback>,
         IProgressableProcessFinished<TCallback>, IMethodCallback
     {
