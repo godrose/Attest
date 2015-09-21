@@ -40,6 +40,7 @@
   <ItemGroup>
     <Compile Include="AppendCallsVisitorHelper.cs" />
     <Compile Include="FakeOperation.cs" />
+    <Compile Include="HaveCallbacksBase.cs" />
     <Compile Include="HaveDelegateWrapperBase.cs" />
     <Compile Include="MethodCall.cs" />
     <Compile Include="MethodCallbacksContainerBase.cs" />

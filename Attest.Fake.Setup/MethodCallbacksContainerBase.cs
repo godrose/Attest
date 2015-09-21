@@ -1,19 +1,13 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Fake.Setup
 {
-    public abstract class HaveCallbacksBase<TCallback> : IHaveCallbacks<TCallback>
-    {
-        protected readonly List<TCallback> Callbacks = new List<TCallback>();
-        IEnumerable<TCallback> IHaveCallbacks<TCallback>.Callbacks
-        {
-            get { return Callbacks; }
-        }
-    }
-
+    /// <summary>
+    /// Base class for callbacks container
+    /// </summary>
+    /// <typeparam name="TCallback"></typeparam>
     public abstract class MethodCallbacksContainerBase<TCallback> : 
         HaveCallbacksBase<TCallback>, 
         IMethodCallbacksContainer<TCallback>                
