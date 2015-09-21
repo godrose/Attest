@@ -54,9 +54,9 @@ namespace Attest.Fake.FakeItEasy
             _callConfiguration = callConfiguration;
         }
 
-        public void Callback(Func<TResult> func)
+        public void Callback(Func<TResult> valueFunction)
         {
-            _callConfiguration.ReturnsLazily(func);
+            _callConfiguration.ReturnsLazily(valueFunction);
         }
 
         public void Callback<T>(Func<T, TResult> valueFunction)

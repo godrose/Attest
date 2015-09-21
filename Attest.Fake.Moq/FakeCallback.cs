@@ -53,9 +53,9 @@ namespace Attest.Fake.Moq
             _fakeSetup = fakeSetup;
         }
 
-        public void Callback(Func<TResult> func)
+        public void Callback(Func<TResult> valueFunction)
         {
-            _fakeSetup.Returns(func);
+            _fakeSetup.Returns(valueFunction);
         }
 
         public void Callback<T>(Func<T, TResult> valueFunction)

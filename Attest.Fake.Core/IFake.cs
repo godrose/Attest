@@ -12,6 +12,10 @@ namespace Attest.Fake.Core
         IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression);
     }
 
+    /// <summary>
+    /// Represents an object that fakes another type.
+    /// </summary>
+    /// <typeparam name="TFaked">Type of fake</typeparam>
     public interface IHaveFake<out TFaked> where TFaked : class
     {
         TFaked Object { get; }
