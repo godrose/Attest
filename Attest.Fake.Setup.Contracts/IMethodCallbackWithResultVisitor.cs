@@ -1,16 +1,57 @@
 namespace Attest.Fake.Setup.Contracts
 {
+    /// <summary>
+    /// Represents visitor for different callbacks with return value and no parameters
+    /// </summary>
     public interface IMethodCallbackWithResultVisitor<TResult>
     {
+        /// <summary>
+        /// Visits exception throwing callback
+        /// </summary>
+        /// <param name="onErrorCallback">Callback</param>
+        /// <returns>Return value</returns>
         TResult Visit(OnErrorCallbackWithResult<TResult> onErrorCallback);       
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <returns>Return value</returns>
         TResult Visit(OnCancelCallbackWithResult<TResult> onCancelCallback);        
-        TResult Visit(OnCompleteCallbackWithResult<TResult> onCompleteCallbackWithResult);       
-        TResult Visit(ProgressCallbackWithResult<TResult> progressCallback);        
+
+        /// <summary>
+        /// Visits successful completion callback
+        /// </summary>
+        /// <param name="onCompleteCallbackWithResult">Callback</param>
+        /// <returns>Return value</returns>
+        TResult Visit(OnCompleteCallbackWithResult<TResult> onCompleteCallbackWithResult); 
+      
+        /// <summary>
+        /// Visit progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback</param>
+        /// <returns>Return value</returns>
+        TResult Visit(ProgressCallbackWithResult<TResult> progressCallback); 
+
+        /// <summary>
+        /// Visits never-ending callback 
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <returns>Return value</returns>
         TResult Visit(OnWithoutCallbackWithResult<TResult> withoutCallback);        
     }
 
+    /// <summary>
+    /// Represents visitor for different callbacks with return value and one parameter
+    /// </summary>
     public interface IMethodCallbackWithResultVisitor<T, TResult>
     {
+        /// <summary>
+        /// Visits exception throwing callback
+        /// </summary>
+        /// <param name="onErrorCallback">Callback</param>
+        /// <param name="arg">Parameter</param>
+        /// <returns>Return value</returns>
         TResult Visit(OnErrorCallbackWithResult<T, TResult> onErrorCallback, T arg);
 
         TResult Visit(OnCancelCallbackWithResult<T, TResult> onCancelCallback, T arg);

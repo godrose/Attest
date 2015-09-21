@@ -6,7 +6,6 @@ namespace Attest.Fake.Setup
     class MethodCallVisitor<TService> : IMethodCallVisitor<TService> where TService : class
     {
         private readonly IFake<TService> _fake;
-        private readonly IMethodCallbackVisitor _methodCallbackVisitor = new MethodCallbackVisitor();
 
         public MethodCallVisitor(IFake<TService> fake)
         {
@@ -15,10 +14,11 @@ namespace Attest.Fake.Setup
        
         public void Visit(IMethodCall<TService, IMethodCallback> methodCall)
         {
+            var visitor = new MethodCallbackVisitor();
             CreateSetup(methodCall).Callback(() =>
             {
                 var methodCallback = methodCall.YieldCallback();
-                methodCallback.Accept(_methodCallbackVisitor);
+                methodCallback.Accept(visitor);
             });
         }
 
