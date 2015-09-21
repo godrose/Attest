@@ -5,8 +5,11 @@ namespace Attest.Fake.Core
 {
     public interface IFake<TFaked> : IMock<TFaked> where TFaked: class
     {
+        [Obsolete("Use fake callback returning Setup... methods")]
         IFake<TFaked> SetupWithCallback(Expression<Action<TFaked>> expression, Action action);
+        [Obsolete("Use fake callback returning Setup... methods")]
         IFake<TFaked> SetupWithResult<TResult>(Expression<Func<TFaked, TResult>> expression, TResult result);
+        [Obsolete("Use fake callback returning Setup... methods")]
         IFake<TFaked> SetupWithException<TResult>(Expression<Func<TFaked, TResult>> expression, Exception exception);
         IFakeCallback Setup(Expression<Action<TFaked>> expression);
         IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression);

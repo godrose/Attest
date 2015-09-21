@@ -10,7 +10,7 @@ namespace Attest.Fake.Moq
             return CreateFakeImpl<TFaked>();
         }
 
-        public Attest.Fake.Core.IMock<TFaked> CreateMock<TFaked>() where TFaked : class
+        public Core.IMock<TFaked> CreateMock<TFaked>() where TFaked : class
         {
             return CreateFakeImpl<TFaked>();
         }

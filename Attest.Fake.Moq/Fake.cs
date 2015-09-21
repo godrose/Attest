@@ -27,7 +27,7 @@ namespace Attest.Fake.Moq
         }
 
         public IFake<TFaked> SetupWithException<TResult>(Expression<Func<TFaked, TResult>> expression, Exception exception)
-        {
+        {           
             _fake.Setup(expression).Throws(exception);
             return this;
         }
