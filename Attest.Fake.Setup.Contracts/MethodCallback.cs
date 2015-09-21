@@ -151,7 +151,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback : MethodCallbackBase
+    public class OnErrorCallback : MethodCallbackBase, IThrowException
     {
         public OnErrorCallback(Action callback, Exception exception)
             : base(callback)
@@ -167,7 +167,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<T> : MethodCallbackBase<T>
+    public class OnErrorCallback<T> : MethodCallbackBase<T>, IThrowException
     {
         public OnErrorCallback(Action<T> callback, Exception exception)
             : base(callback)
@@ -183,7 +183,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<T1, T2> : MethodCallbackBase<T1, T2>
+    public class OnErrorCallback<T1, T2> : MethodCallbackBase<T1, T2>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2> callback, Exception exception)
             : base(callback)
@@ -199,7 +199,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<T1, T2, T3> : MethodCallbackBase<T1, T2, T3>
+    public class OnErrorCallback<T1, T2, T3> : MethodCallbackBase<T1, T2, T3>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2, T3> callback, Exception exception)
             : base(callback)
@@ -215,7 +215,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<T1, T2, T3, T4> : MethodCallbackBase<T1, T2, T3, T4>
+    public class OnErrorCallback<T1, T2, T3, T4> : MethodCallbackBase<T1, T2, T3, T4>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2, T3, T4> callback, Exception exception)
             : base(callback)
@@ -231,7 +231,7 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnErrorCallback<T1, T2, T3, T4, T5> : MethodCallbackBase<T1, T2, T3, T4, T5>
+    public class OnErrorCallback<T1, T2, T3, T4, T5> : MethodCallbackBase<T1, T2, T3, T4, T5>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2, T3, T4, T5> callback, Exception exception)
             : base(callback)
@@ -258,7 +258,7 @@ namespace Attest.Fake.Setup.Contracts
         {
             visitor.Visit(this);
         }
-    }
+    }    
 
     public abstract class ProgressableCallbackBase<TCallback> : ProgressMessagesBase, IProgressableProcessRunning<TCallback>,
         IProgressableProcessFinished<TCallback>, IMethodCallback

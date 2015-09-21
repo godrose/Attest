@@ -35,8 +35,7 @@ namespace Attest.Fake.Setup.Contracts
     public class OnCompleteCallbackWithResult<TResult> :
         MethodCallbackBaseWithResult<TResult>
     {
-        internal readonly Func<TResult> ValueFunction;
-        //public TResult Result { get; private set; }
+        internal Func<TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(Func<TResult> valueFunction)
         {
@@ -54,10 +53,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
-        //, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>        
     {
-        internal Func<T, TResult> ValueFunction { get; set; }
+        internal Func<T, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
         {
@@ -75,10 +73,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
-        //, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>        
     {
-        internal Func<T1, T2, TResult> ValueFunction { get; set; }
+        internal Func<T1, T2, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
         {
@@ -98,10 +95,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>
-        //, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>        
     {
-        internal Func<T1, T2, T3, TResult> ValueFunction { get; set; }
+        internal Func<T1, T2, T3, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
         {
@@ -120,10 +116,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, TResult>
-        //, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, TResult>        
     {
-        internal Func<T1, T2, T3, T4, TResult> ValueFunction { get; set; }
+        internal Func<T1, T2, T3, T4, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
         {
@@ -142,10 +137,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, T5, TResult>
-        //, IReturnResult<TResult>
+    public class OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, T5, TResult>        
     {
-        internal Func<T1, T2, T3, T4, T5, TResult> ValueFunction { get; set; }
+        internal Func<T1, T2, T3, T4, T5, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(Func<T1, T2, T3, T4, T5, TResult> valueFunction)
         {
@@ -322,7 +316,6 @@ namespace Attest.Fake.Setup.Contracts
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
         {
             return visitor.Visit(this, arg1, arg2);
-
         }
     }
 
@@ -331,7 +324,6 @@ namespace Attest.Fake.Setup.Contracts
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             return visitor.Visit(this, arg1, arg2, arg3);
-
         }
     }
 
@@ -340,7 +332,6 @@ namespace Attest.Fake.Setup.Contracts
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             return visitor.Visit(this, arg1, arg2, arg3, arg4);
-
         }
     }
 

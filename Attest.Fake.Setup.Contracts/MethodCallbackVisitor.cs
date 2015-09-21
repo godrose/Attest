@@ -4,30 +4,35 @@ namespace Attest.Fake.Setup.Contracts
     {
         public void Visit(OnErrorCallback onErrorCallback)
         {
-            throw onErrorCallback.Exception;
-        }
+            VisitErrorImpl(onErrorCallback);
+        }        
 
         public void Visit<T>(OnErrorCallback<T> onErrorCallback, T arg)
         {
-            throw onErrorCallback.Exception;
+            VisitErrorImpl(onErrorCallback);
         }
 
         public void Visit<T1, T2>(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2)
         {
-            throw onErrorCallback.Exception;
+            VisitErrorImpl(onErrorCallback);
         }
 
         public void Visit<T1, T2, T3>(OnErrorCallback<T1, T2, T3> onErrorCallback, T1 arg1, T2 arg2, T3 arg3)
         {
-            throw onErrorCallback.Exception;
+            VisitErrorImpl(onErrorCallback);
         }
 
         public void Visit<T1, T2, T3, T4>(OnErrorCallback<T1, T2, T3, T4> onErrorCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            throw onErrorCallback.Exception;
+            VisitErrorImpl(onErrorCallback);
         }
 
         public void Visit<T1, T2, T3, T4, T5>(OnErrorCallback<T1, T2, T3, T4, T5> onErrorCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            VisitErrorImpl(onErrorCallback);
+        }
+
+        private static void VisitErrorImpl(IThrowException onErrorCallback)
         {
             throw onErrorCallback.Exception;
         }

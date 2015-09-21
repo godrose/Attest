@@ -64,6 +64,7 @@
     <Compile Include="IReturnResult.cs" />
     <Compile Include="IServiceCall.cs" />
     <Compile Include="IServiceSetupFactory.cs" />
+    <Compile Include="IThrowException.cs" />
     <Compile Include="MethodCallback.cs" />
     <Compile Include="MethodCallbackTemplate.cs" />
     <Compile Include="MethodCallbackVisitor.cs" />
