@@ -47,7 +47,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public Action<T1, T2, T3> Callback { get; private set; }
 
-        public abstract void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3);
+        public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3);
     }
 
     public abstract class MethodCallbackBase<T1, T2, T3, T4> : IMethodCallback<T1, T2, T3, T4>
@@ -59,7 +59,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public Action<T1, T2, T3, T4> Callback { get; private set; }
 
-        public abstract void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+        public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     }
 
     public abstract class MethodCallbackBase<T1, T2, T3, T4, T5> : IMethodCallback<T1, T2, T3, T4, T5>
@@ -71,7 +71,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public Action<T1, T2, T3, T4, T5> Callback { get; private set; }
 
-        public abstract void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
+        public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3, T4, T5> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
     }
 
     public class OnCompleteCallback : MethodCallbackBase
@@ -119,7 +119,7 @@ namespace Attest.Fake.Setup.Contracts
         {
         }
 
-        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3)
+        public override void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             visitor.Visit(this, arg1, arg2, arg3);
         }
@@ -132,7 +132,7 @@ namespace Attest.Fake.Setup.Contracts
         {
         }
 
-        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4);
         }
@@ -145,7 +145,7 @@ namespace Attest.Fake.Setup.Contracts
         {
         }
 
-        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4, T5> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4, arg5);
         }
@@ -209,7 +209,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public Exception Exception { get; private set; }
 
-        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3)
+        public override void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             visitor.Visit(this, arg1, arg2, arg3);
         }
@@ -225,7 +225,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public Exception Exception { get; private set; }
 
-        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4);
         }
@@ -241,7 +241,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public Exception Exception { get; private set; }
 
-        public override void Accept(IMethodCallbackVisitor visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4, T5> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4, arg5);
         }

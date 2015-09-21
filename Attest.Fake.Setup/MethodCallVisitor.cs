@@ -44,28 +44,31 @@ namespace Attest.Fake.Setup
 
         public void Visit<T1, T2, T3>(IMethodCall<TService, IMethodCallback<T1, T2, T3>> methodCall)
         {
+            var visitor = new MethodCallbackVisitor<T1, T2, T3>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2, T3 arg3) =>
             {
                 var methodCallback = methodCall.YieldCallback();
-                methodCallback.Accept(_methodCallbackVisitor, arg1, arg2, arg3);
+                methodCallback.Accept(visitor, arg1, arg2, arg3);
             });
         }
 
         public void Visit<T1, T2, T3, T4>(IMethodCall<TService, IMethodCallback<T1, T2, T3, T4>> methodCall)
         {
+            var visitor = new MethodCallbackVisitor<T1, T2, T3, T4>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4) =>
             {
                 var methodCallback = methodCall.YieldCallback();
-                methodCallback.Accept(_methodCallbackVisitor, arg1, arg2, arg3, arg4);
+                methodCallback.Accept(visitor, arg1, arg2, arg3, arg4);
             });
         }
 
         public void Visit<T1, T2, T3, T4, T5>(IMethodCall<TService, IMethodCallback<T1, T2, T3, T4, T5>> methodCall)
         {
+            var visitor = new MethodCallbackVisitor<T1, T2, T3, T4, T5>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) =>
             {
                 var methodCallback = methodCall.YieldCallback();
-                methodCallback.Accept(_methodCallbackVisitor, arg1, arg2, arg3, arg4, arg5);
+                methodCallback.Accept(visitor, arg1, arg2, arg3, arg4, arg5);
             });
         }
 
