@@ -7,11 +7,6 @@ namespace Attest.Fake.Setup.Contracts
             VisitErrorImpl(onErrorCallback);
         }
 
-        public void Visit<T1, T2>(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2)
-        {
-            VisitErrorImpl(onErrorCallback);
-        }
-
         public void Visit<T1, T2, T3>(OnErrorCallback<T1, T2, T3> onErrorCallback, T1 arg1, T2 arg2, T3 arg3)
         {
             VisitErrorImpl(onErrorCallback);
@@ -35,11 +30,6 @@ namespace Attest.Fake.Setup.Contracts
         public void Visit(OnCompleteCallback onCompleteCallback)
         {
             onCompleteCallback.Callback();
-        }
-
-        public void Visit<T1, T2>(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2)
-        {
-            onCompleteCallback.Callback(arg1, arg2);
         }
 
         public void Visit<T1, T2, T3>(OnCompleteCallback<T1, T2, T3> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3)
@@ -73,18 +63,39 @@ namespace Attest.Fake.Setup.Contracts
         {
             throw new CancelCallbackException();
         }
-    }
+    }    
 
-    public class MethodCallbackVisitor<T> : IMethodCallbackVisitor<T>
+    public class MethodCallbackVisitor<T> : MethodCallbackVisitorBase, IMethodCallbackVisitor<T>
     {
         public void Visit(OnErrorCallback<T> onErrorCallback, T arg)
         {
-            throw onErrorCallback.Exception;
+            VisitErrorImpl(onErrorCallback);
         }
 
         public void Visit(OnCompleteCallback<T> onCompleteCallback, T arg)
         {
             onCompleteCallback.Callback(arg);
+        }
+    }
+
+    public class MethodCallbackVisitor<T1, T2> : MethodCallbackVisitorBase, IMethodCallbackVisitor<T1, T2>
+    {
+        public void Visit(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2)
+        {
+            VisitErrorImpl(onErrorCallback);
+        }
+
+        public void Visit(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2)
+        {
+            onCompleteCallback.Callback(arg1, arg2);
+        }
+    }
+
+    public abstract class MethodCallbackVisitorBase
+    {
+        protected static void VisitErrorImpl(IThrowException onErrorCallback)
+        {
+            throw onErrorCallback.Exception;
         }
     }
 }

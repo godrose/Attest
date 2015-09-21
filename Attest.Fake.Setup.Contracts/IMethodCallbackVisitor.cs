@@ -21,4 +21,10 @@ namespace Attest.Fake.Setup.Contracts
         void Visit(OnErrorCallback<T> onErrorCallback, T arg);
         void Visit(OnCompleteCallback<T> onCompleteCallback, T arg);
     }
+
+    public interface IMethodCallbackVisitor<T1, T2>
+    {
+        void Visit(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2);
+        void Visit(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2);
+    }
 }
