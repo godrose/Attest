@@ -11,7 +11,7 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     public interface IMethodCallWithResult<TService, TCallback, TResult> : 
-        IMethodCallbacksContainer<TCallback>,
+        IMethodCallbacksContainer<TCallback>,        
         IMethodCallWithResult<TService, TResult> where TService : class
     {
         

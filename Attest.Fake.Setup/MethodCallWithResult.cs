@@ -1,11 +1,13 @@
 using System;
 using System.Linq.Expressions;
 using Attest.Fake.Setup.Contracts;
-using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup
 {
-    public abstract class MethodCallWithResultBase<TService, TCallback, TResult> : MethodCallbacksContainerBase<TCallback>, IMethodCallWithResult<TService, TCallback, TResult>, IAcceptor<IMethodCallWithResultVisitor<TService>> where TService : class
+    public abstract class MethodCallWithResultBase<TService, TCallback, TResult> : 
+        MethodCallbacksContainerBase<TCallback>,
+        IAddCallbackWithResultShared<TCallback, TResult>,
+        IMethodCallWithResult<TService, TCallback, TResult> where TService : class
     {
         public Expression<Func<TService, TResult>> RunMethod { get; private set; }
 
@@ -75,7 +77,7 @@ namespace Attest.Fake.Setup
 
         public IMethodCallWithResult<TService, IMethodCallbackWithResult<TResult>, TResult> BuildCallbacks(Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IHaveCallbacks<IMethodCallbackWithResult<TResult>>> buildCallbacks)
         {
-            IHaveCallbacks<IMethodCallbackWithResult<TResult>> haveCallbacks = buildCallbacks(this);
+            buildCallbacks(this);
             return this;
         }
     }

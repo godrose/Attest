@@ -43,8 +43,8 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         public OnCompleteCallbackWithResult(TResult result)
-        {
-            ValueFunction = () => result;
+            :this(() => result)
+        {            
         }
 
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
@@ -53,13 +53,13 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>        
+    public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
     {
         internal Func<T, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
-        {
-            ValueFunction = arg => result;
+            :this(arg => result)
+        {            
         }
 
         public OnCompleteCallbackWithResult(Func<T, TResult> valueFunction)
@@ -73,43 +73,40 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>        
+    public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
     {
         internal Func<T1, T2, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
-        {
-            ValueFunction = (arg1, arg2) => result;
+            : this((arg1, arg2) => result)
+        {            
         }
 
         public OnCompleteCallbackWithResult(Func<T1, T2, TResult> valueFunction)
         {
             ValueFunction = valueFunction;
         }
-
-        //public TResult Result { get; private set; }        
-
+        
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
         {
             return visitor.Visit(this, arg1, arg2);
         }
     }
 
-    public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>        
+    public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>
     {
         internal Func<T1, T2, T3, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
-        {
-            ValueFunction = (arg1, arg2, arg3) => result;
+            : this((arg1, arg2, arg3) => result)
+        {            
         }
 
         public OnCompleteCallbackWithResult(Func<T1, T2, T3, TResult> valueFunction)
         {
             ValueFunction = valueFunction;
         }
-
-        //public TResult Result { get; private set; }        
+     
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             return visitor.Visit(this, arg1, arg2, arg3);
@@ -121,16 +118,15 @@ namespace Attest.Fake.Setup.Contracts
         internal Func<T1, T2, T3, T4, TResult> ValueFunction { get; private set; }
 
         public OnCompleteCallbackWithResult(TResult result)
-        {
-            ValueFunction = (arg1, arg2, arg3, arg4) => result;
+            : this((arg1, arg2, arg3, arg4) => result)
+        {            
         }
 
         public OnCompleteCallbackWithResult(Func<T1, T2, T3, T4, TResult> valueFunction)
         {
             ValueFunction = valueFunction;
         }
-
-        //public TResult Result { get; private set; }
+        
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             return visitor.Visit(this, arg1, arg2, arg3, arg4);
@@ -147,11 +143,9 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         public OnCompleteCallbackWithResult(TResult result)
-        {
-            ValueFunction = (arg1, arg2, arg3, arg4, arg5) => result;
-        }
-
-        //public TResult Result { get; private set; }        
+            : this((arg1, arg2, arg3, arg4, arg5) => result)
+        {            
+        }        
 
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, T4, T5, TResult> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
@@ -401,7 +395,6 @@ namespace Attest.Fake.Setup.Contracts
         {
             return this;
         }
-
 
         public TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
         {
