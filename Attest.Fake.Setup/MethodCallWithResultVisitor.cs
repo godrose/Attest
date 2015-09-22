@@ -79,7 +79,7 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCallWithResultAppendCallsVisitor<TService> : IMethodCallWithResultVisitor<TService> where TService : class
+    class MethodCallWithResultAppendCallsVisitor<TService> : IMethodCallWithResultVisitor<TService> where TService : class
     {
         private readonly object _newMethodCall;
 

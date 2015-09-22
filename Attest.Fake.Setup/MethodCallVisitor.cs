@@ -78,7 +78,7 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCallAppendCallsVisitor<TService> : IMethodCallVisitor<TService> where TService : class
+    class MethodCallAppendCallsVisitor<TService> : IMethodCallVisitor<TService> where TService : class
     {
         private readonly object _newMethodCall;
 

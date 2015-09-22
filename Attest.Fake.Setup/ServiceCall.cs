@@ -35,14 +35,14 @@ namespace Attest.Fake.Setup
 
         private void AddMethodCall(IMethodCallMetaData methodCallMetaData)
         {
-            var newMethodInfo = methodCallMetaData as IAcceptor<IMethodCallVisitor<TService>>;
+            var newMethodInfo = methodCallMetaData as IMethodCall<TService>;
             if (newMethodInfo != null)
             {
                 AddMethodCallImpl(methodCallMetaData, newMethodInfo);
             }
             else
             {
-                var newMethodWithResultInfo = methodCallMetaData as IAcceptor<IMethodCallWithResultVisitor<TService>>;
+                var newMethodWithResultInfo = methodCallMetaData as IMethodCallWithResult<TService>;
                 if (newMethodWithResultInfo == null)
                 {
                     throw new ArgumentException(
