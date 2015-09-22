@@ -16,11 +16,29 @@ namespace Attest.Fake.Setup
             return fake;
         }
 
+        public IFake<TService> SetupFakeService(
+            IFake<TService> fake, 
+            IEnumerable<IMethodCall<TService>> methodCalls, 
+            IEnumerable<IMethodCallWithResult<TService>> methodCallsWithResult)
+        {
+            var methodCallVisitor = new MethodCallVisitor<TService>(fake) as IMethodCallVisitor<TService>;
+            var methodCallWithResultVisitor = new MethodCallWithResultVisitor<TService>(fake);
+            AcceptMany(methodCalls, methodCallVisitor);            
+            AcceptMany(methodCallsWithResult, methodCallWithResultVisitor);
+            return fake;
+        }        
+
         private static void VisitMethodCalls<TVisitor>(TVisitor visitor, IEnumerable<object> methodCalls)
         {
-            foreach (var methodCall in methodCalls.OfType<IAcceptor<TVisitor>>())
+            AcceptMany(methodCalls.OfType<IAcceptor<TVisitor>>(),visitor);            
+        }
+
+        private static void AcceptMany<TAcceptor, TVisitor>(IEnumerable<TAcceptor> methodCalls, TVisitor methodCallVisitor)
+            where TAcceptor : IAcceptor<TVisitor>
+        {
+            foreach (var methodCall in methodCalls)
             {
-                methodCall.Accept(visitor);
+                methodCall.Accept(methodCallVisitor);
             }
         }
     }

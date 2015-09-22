@@ -127,7 +127,8 @@ namespace Attest.Fake.Setup
 
         public IFake<TService> SetupService()
         {
-            return _serviceSetupFactory.SetupFakeService(_fake, MethodCalls);          
+            return _serviceSetupFactory.SetupFakeService(_fake, MethodCalls.OfType<IMethodCall<TService>>(), 
+                MethodCalls.OfType<IMethodCallWithResult<TService>>());          
         }
 
         public void AppendMethods(IHaveMethods<TService> otherMethods)
