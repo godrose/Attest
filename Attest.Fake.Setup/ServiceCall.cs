@@ -51,7 +51,6 @@ namespace Attest.Fake.Setup
                 }
                 AddMethodCallWithResultImpl(methodCallMetaData, newMethodWithResultInfo);
             }
-            return;
         }        
 
         public IServiceCall<TService> AddMethodCall<TCallback>(IMethodCall<TService,TCallback> methodCall)
@@ -66,7 +65,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        private void AddMethodCallImpl(IMethodCallMetaData methodCallMetaData, IAcceptor<IMethodCallVisitor<TService>> acceptorWithParameters)
+        private void AddMethodCallImpl(IMethodCallMetaData methodCallMetaData, IAcceptor<IMethodCallVisitor<TService>> acceptor)
         {
             var existingMethodCallMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
             if (existingMethodCallMetaData == null)
@@ -77,23 +76,24 @@ namespace Attest.Fake.Setup
             {
                 AssertCallbackType(methodCallMetaData, existingMethodCallMetaData);                
                 AcceptExistingMethodCall(
-                    acceptorWithParameters,
+                    acceptor,
                     new MethodCallAppendCallsVisitor<TService>(methodCallMetaData));
             }
         }
 
-        private void AddMethodCallWithResultImpl(IMethodCallMetaData methodCallMetaData, IAcceptor<IMethodCallWithResultVisitor<TService>> acceptorWithParameters)
+        private void AddMethodCallWithResultImpl(IMethodCallMetaData methodCallMetaData, 
+            IAcceptor<IMethodCallWithResultVisitor<TService>> acceptor)
         {
-            var existingMethodInfoMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
-            if (existingMethodInfoMetaData == null)
+            var existingMethodCallMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
+            if (existingMethodCallMetaData == null)
             {
                 _methodCalls.Add(methodCallMetaData);
             }
             else
             {
-                AssertCallbackType(methodCallMetaData, existingMethodInfoMetaData);                
+                AssertCallbackType(methodCallMetaData, existingMethodCallMetaData);                
                 AcceptExistingMethodCall(
-                        acceptorWithParameters,
+                        acceptor,
                         new MethodCallWithResultAppendCallsVisitor<TService>(methodCallMetaData));
             }
         }

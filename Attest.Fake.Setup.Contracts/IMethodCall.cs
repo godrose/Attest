@@ -16,7 +16,7 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents a service's method call
+    /// Represents a service's method call without return value
     /// </summary>
     /// <typeparam name="TService">Type of service</typeparam>
     public interface IMethodCall<TService> : IAcceptor<IMethodCallVisitor<TService>> where TService : class

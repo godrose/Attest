@@ -61,7 +61,6 @@
     <Compile Include="IMethodCallWithResult.cs" />
     <Compile Include="IMethodCallWithResultInitialTemplate.cs" />
     <Compile Include="IMethodCallWithResultVisitor.cs" />
-    <Compile Include="IMethodInfoMetaData.cs" />
     <Compile Include="IOperation.cs" />
     <Compile Include="IReturnResult.cs" />
     <Compile Include="IServiceCall.cs" />
