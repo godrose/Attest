@@ -3,7 +3,7 @@
 namespace Attest.Fake.Core
 {
     /// <summary>
-    /// Represents an abstraction over calling methods with return result on the fake
+    /// Represents an abstraction over calling methods with return value on the fake
     /// </summary>
     public interface IFakeCallbackWithResult<in TResult>
     {

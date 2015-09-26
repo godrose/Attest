@@ -3,6 +3,9 @@ using Moq;
 
 namespace Attest.Fake.Moq
 {
+    /// <summary>
+    /// Implementation of fake factory using Moq framework
+    /// </summary>
     public class FakeFactory : IFakeFactory
     {
         public IFake<TFaked> CreateFake<TFaked>() where TFaked : class

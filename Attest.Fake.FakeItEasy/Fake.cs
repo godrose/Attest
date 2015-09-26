@@ -5,6 +5,10 @@ using FakeItEasy;
 
 namespace Attest.Fake.FakeItEasy
 {
+    /// <summary>
+    /// Implementation of fake using FakeItEasy framework
+    /// </summary>
+    /// <typeparam name="TFaked">Type of faked service</typeparam>
     public class Fake<TFaked> : IFake<TFaked> where TFaked : class
     {
         private readonly TFaked _fake = A.Fake<TFaked>();
@@ -48,7 +52,7 @@ namespace Attest.Fake.FakeItEasy
         }
 
         public IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression)
-        {
+        {            
             throw new NotImplementedException();
         }
 

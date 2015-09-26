@@ -6,7 +6,7 @@
     public interface IFakeFactory
     {
         /// <summary>
-        /// Returns an intance of fake
+        /// Returns an instance of fake
         /// </summary>
         /// <typeparam name="TFaked">Type of fake</typeparam>
         /// <returns>Fake instance</returns>

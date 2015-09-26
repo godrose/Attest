@@ -4,6 +4,10 @@ using Moq.Language.Flow;
 
 namespace Attest.Fake.Moq
 {
+    /// <summary>
+    /// Implementation of fake callback without return value using Moq framework
+    /// </summary>
+    /// <typeparam name="TFake">Type of faked service</typeparam>
     class MoqFakeCallback<TFake> : IFakeCallback where TFake : class
     {
         private readonly ISetup<TFake> _fakeSetup;
@@ -44,6 +48,11 @@ namespace Attest.Fake.Moq
         }
     }
 
+    /// <summary>
+    /// Implementation of fake callback with return value using Moq framework
+    /// </summary>
+    /// <typeparam name="TFake">Type of faked service</typeparam>
+    /// <typeparam name="TResult">Type of return value</typeparam>
     class MoqFakeCallbackWithResult<TFake, TResult> : IFakeCallbackWithResult<TResult> where TFake : class
     {
         private readonly ISetup<TFake, TResult> _fakeSetup;

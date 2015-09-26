@@ -5,6 +5,10 @@ using Moq;
 
 namespace Attest.Fake.Moq
 {
+    /// <summary>
+    /// Implementation of fake using Moq framework
+    /// </summary>
+    /// <typeparam name="TFaked">Type of faked service</typeparam>
     public class Fake<TFaked> : IFake<TFaked> where TFaked: class
     {
         private readonly Mock<TFaked> _fake;
