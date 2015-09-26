@@ -4,7 +4,7 @@ using Solid.Practices.Modularity;
 namespace Attest.Tests.Core
 {
     /// <summary>
-    /// This interface models a composable module
+    /// This interface represents a composable module
     /// that contains steps providers
     /// </summary>
     public interface IStepsModule : ICompositionModule
