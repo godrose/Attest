@@ -8,7 +8,7 @@ namespace Attest.Tests.SpecFlow
 {
     /// <summary>
     /// Base class for all integration-tests fixtures that involve real IoC container and test bootstrapper
-    /// ans use SpecFlow as test framework provider
+    /// and use SpecFlow as test framework provider
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
     /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>
