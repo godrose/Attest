@@ -50,6 +50,9 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TService"></typeparam>
     public interface IHaveMethods<TService> : ICanAddMethods<TService> where TService: class
     {
+        /// <summary>
+        /// Collection of method calls
+        /// </summary>
         IEnumerable<IMethodCallMetaData> MethodCalls { get; }        
     }
 }

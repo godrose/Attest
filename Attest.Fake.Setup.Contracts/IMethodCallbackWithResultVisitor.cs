@@ -27,7 +27,7 @@ namespace Attest.Fake.Setup.Contracts
         TResult Visit(OnCompleteCallbackWithResult<TResult> onCompleteCallbackWithResult); 
       
         /// <summary>
-        /// Visit progress callback
+        /// Visits progress callback
         /// </summary>
         /// <param name="progressCallback">Callback</param>
         /// <returns>Return value</returns>
@@ -54,13 +54,37 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns>Return value</returns>
         TResult Visit(OnErrorCallbackWithResult<T, TResult> onErrorCallback, T arg);
 
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg">Parameter</param>
+        /// <returns>Return value</returns>
         TResult Visit(OnCancelCallbackWithResult<T, TResult> onCancelCallback, T arg);
 
+        /// <summary>
+        /// Visits successful completion callback
+        /// </summary>
+        /// <param name="onCompleteCallbackWithResult">Callback</param>
+        /// <param name="arg">Parameter</param>
+        /// <returns>Return value</returns>
         TResult Visit(OnCompleteCallbackWithResult<T, TResult> onCompleteCallbackWithResult, T arg);
 
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback</param>
+        /// <param name="arg">Parameter</param>
+        /// <returns>Return value</returns>
         TResult Visit(ProgressCallbackWithResult<T, TResult> progressCallback, T arg);
 
-        TResult Visit(OnWithoutCallbackWithResult<T, TResult> onWithoutCallback, T arg);
+        /// <summary>
+        /// Visits never-ending callback 
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg">Parameter</param>
+        /// <returns>Return value</returns>
+        TResult Visit(OnWithoutCallbackWithResult<T, TResult> withoutCallback, T arg);
     }
 
     public interface IMethodCallbackWithResultVisitor<T1, T2, TResult>

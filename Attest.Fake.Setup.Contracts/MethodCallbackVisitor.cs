@@ -96,6 +96,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Base class for method callback visitors
+    /// </summary>
     public abstract class MethodCallbackVisitorBase
     {
         protected static void VisitErrorImpl(IThrowException onErrorCallback)

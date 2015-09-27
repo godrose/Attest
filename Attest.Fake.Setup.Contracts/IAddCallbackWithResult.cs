@@ -67,6 +67,13 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallbacksContainer<TCallback> Complete(Func<T, TResult> valueFunction);
     }
 
+    /// <summary>
+    /// Represents an object that allows to add callbacks to the callbacks container
+    /// </summary>
+    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="TResult">Type of return value</typeparam>    
     public interface IAddCallbackWithResult<TCallback, T1, T2, in TResult> : IAddCallbackWithResultShared<TCallback, TResult>
     {
         /// <summary>
@@ -76,6 +83,14 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallbacksContainer<TCallback> Complete(Func<T1, T2, TResult> valueFunction);
     }
 
+    /// <summary>
+    /// Represents an object that allows to add callbacks to the callbacks container
+    /// </summary>
+    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="TResult">Type of return value</typeparam>
     public interface IAddCallbackWithResult<TCallback, T1, T2, T3, in TResult> : IAddCallbackWithResultShared<TCallback, TResult>
     {
         /// <summary>
@@ -85,6 +100,16 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallbacksContainer<TCallback> Complete(Func<T1, T2, T3, TResult> valueFunction);        
     }
 
+    /// <summary>
+    /// Represents an object that allows to add callbacks to the callbacks container
+    /// </summary>
+    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
+    /// <typeparam name="T5">Type of fifth parameter</typeparam>
+    /// <typeparam name="TResult">Type of return value</typeparam>
     public interface IAddCallbackWithResult<TCallback, T1, T2, T3, T4, in TResult> : IAddCallbackWithResultShared<TCallback, TResult>
     {
         /// <summary>
@@ -94,6 +119,16 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallbacksContainer<TCallback> Complete(Func<T1, T2, T3, T4, TResult> valueFunction);
     }
 
+    /// <summary>
+    /// Represents an object that allows to add callbacks to the callbacks container
+    /// </summary>
+    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
+    /// <typeparam name="T5">Type of fifth parameter</typeparam>
+    /// <typeparam name="TResult">Type of return value</typeparam>
     public interface IAddCallbackWithResult<TCallback, T1, T2, T3, T4, T5, in TResult> : IAddCallbackWithResultShared<TCallback, TResult>
     {
         /// <summary>

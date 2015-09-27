@@ -8,6 +8,9 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TCallback"></typeparam>
     public interface IHaveCallbacks<out TCallback>
     {
+        /// <summary>
+        /// Collection of callbacks
+        /// </summary>
         IEnumerable<TCallback> Callbacks { get; } 
     }
 }

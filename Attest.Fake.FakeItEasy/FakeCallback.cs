@@ -5,6 +5,10 @@ using FakeItEasy.Configuration;
 
 namespace Attest.Fake.FakeItEasy
 {
+    /// <summary>
+    /// Implementation of fake callback without return value using FakeItEasy framework
+    /// </summary>
+    /// <typeparam name="TFaked"></typeparam>
     class EasyFakeCallback<TFaked> : IFakeCallback
     {
         private readonly IAnyCallConfigurationWithNoReturnTypeSpecified _callConfiguration;
@@ -45,6 +49,11 @@ namespace Attest.Fake.FakeItEasy
         }
     }
 
+    /// <summary>
+    /// Implementation of fake callback with return value using FakeItEasy framework
+    /// </summary>
+    /// <typeparam name="TFaked"></typeparam>
+    /// <typeparam name="TResult"></typeparam>
     class EasyFakeCallbackWithResult<TFaked, TResult> : IFakeCallbackWithResult<TResult>
     {
         private readonly IAnyCallConfigurationWithReturnTypeSpecified<TResult> _callConfiguration;

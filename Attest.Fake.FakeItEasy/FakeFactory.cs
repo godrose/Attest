@@ -2,6 +2,9 @@
 
 namespace Attest.Fake.FakeItEasy
 {
+    /// <summary>
+    /// Implementation of Fake Factory using FakeItEasy framework
+    /// </summary>
     public class FakeFactory : IFakeFactory
     {
         public IFake<TFaked> CreateFake<TFaked>() where TFaked : class

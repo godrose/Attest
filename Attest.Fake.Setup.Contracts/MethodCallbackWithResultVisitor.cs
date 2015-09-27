@@ -57,7 +57,7 @@ namespace Attest.Fake.Setup.Contracts
             return progressCallback.FinishCallback.Accept(this, arg);
         }
 
-        public TResult Visit(OnWithoutCallbackWithResult<T, TResult> onWithoutCallback, T arg)
+        public TResult Visit(OnWithoutCallbackWithResult<T, TResult> withoutCallback, T arg)
         {
             throw new WithoutCallbackException();
         }

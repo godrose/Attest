@@ -392,6 +392,7 @@ namespace Attest.Fake.Setup.Contracts
 
         public override IProgressableProcessFinishedWithResult<IMethodCallbackWithResult<TResult>, TResult> WithoutCallback()
         {
+            FinishCallback = new OnWithoutCallbackWithResult<TResult>();
             return this;
         }
 

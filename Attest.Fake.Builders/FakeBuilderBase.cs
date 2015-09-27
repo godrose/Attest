@@ -54,7 +54,7 @@ namespace Attest.Fake.Builders
         }
 
         /// <summary>
-        /// Verifies that the method on the fake was not called
+        /// Verifies that the method on the fake was called exacty once
         /// </summary>
         /// <param name="expression">Method definition</param>
         public void VerifySingleCall(Expression<Action<TService>> expression)
@@ -62,6 +62,9 @@ namespace Attest.Fake.Builders
             FakeService.VerifySingleCall(expression);
         }
 
+        /// <summary>
+        /// Faked service
+        /// </summary>
         public TService Object
         {
             get { return FakeService.Object; }

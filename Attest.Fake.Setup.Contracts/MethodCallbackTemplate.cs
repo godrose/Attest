@@ -2,6 +2,9 @@ using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
 {
+    /// <summary>
+    /// Represents visitor for different method callback templates without return value
+    /// </summary>
     public interface IMethodCallbackTemplateVisitor
     {
         IMethodCallback Visit(MethodCallbackTemplate methodCallbackTemplate);
@@ -12,6 +15,9 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallback<T1, T2, T3, T4, T5> Visit<T1, T2, T3, T4, T5>(MethodCallbackTemplate<T1, T2, T3, T4, T5> methodCallbackTemplate);
     }
 
+    /// <summary>
+    /// Represents method callback template without return value and no parameters
+    /// </summary>
     public class MethodCallbackTemplate : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback>
     {
         public IMethodCallback Accept(IMethodCallbackTemplateVisitor visitor)
@@ -19,6 +25,11 @@ namespace Attest.Fake.Setup.Contracts
             return visitor.Visit(this);
         }
 
+        /// <summary>
+        /// Sets action wrapper value
+        /// </summary>
+        /// <param name="actionWrapper">Action wrapper</param>
+        /// <returns>Method callback template after the setup</returns>
         public MethodCallbackTemplate SetActionWrapper(IActionWrapper actionWrapper)
         {
             ActionWrapper = actionWrapper;
@@ -28,6 +39,10 @@ namespace Attest.Fake.Setup.Contracts
         public IActionWrapper ActionWrapper { get; private set; }
     }
 
+    /// <summary>
+    /// Represents method callback template without return value and no parameters
+    /// </summary>
+    /// <typeparam name="T">Type of parameter</typeparam>
     public class MethodCallbackTemplate<T> : IAcceptor<IMethodCallbackTemplateVisitor, IMethodCallback<T>>
     {
         public IMethodCallback<T> Accept(IMethodCallbackTemplateVisitor visitor)

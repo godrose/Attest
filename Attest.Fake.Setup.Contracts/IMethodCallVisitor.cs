@@ -1,5 +1,8 @@
 namespace Attest.Fake.Setup.Contracts
 {
+    /// <summary>
+    /// Represents visitor for different method calls without return value
+    /// </summary>
     public interface IMethodCallVisitor<TService> where TService : class
     {
         void Visit(IMethodCall<TService, IMethodCallback> methodCall);

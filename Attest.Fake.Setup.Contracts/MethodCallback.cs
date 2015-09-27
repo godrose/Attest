@@ -2,6 +2,9 @@
 
 namespace Attest.Fake.Setup.Contracts
 {    
+    /// <summary>
+    /// Base class for method callbacks without return value and no parameters
+    /// </summary>
     public abstract class MethodCallbackBase : IMethodCallback
     {
         protected MethodCallbackBase(Action callback)
@@ -14,6 +17,10 @@ namespace Attest.Fake.Setup.Contracts
         public Action Callback { get; private set; }
     }
 
+    /// <summary>
+    /// Base class for method callbacks without return value and one parameter
+    /// </summary>
+    /// <typeparam name="T">Type of parameter</typeparam>
     public abstract class MethodCallbackBase<T> : IMethodCallback<T>
     {
         protected MethodCallbackBase(Action<T> callback)
@@ -26,6 +33,11 @@ namespace Attest.Fake.Setup.Contracts
         public abstract void Accept(IMethodCallbackVisitor<T> visitor, T arg);
     }
 
+    /// <summary>
+    /// Base class for method callbacks without return value and two parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2> : IMethodCallback<T1, T2>
     {
         protected MethodCallbackBase(Action<T1, T2> callback)
@@ -38,6 +50,12 @@ namespace Attest.Fake.Setup.Contracts
         public abstract void Accept(IMethodCallbackVisitor<T1, T2> visitor, T1 arg1, T2 arg2);
     }
 
+    /// <summary>
+    /// Base class for method callbacks without return value and three parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2, T3> : IMethodCallback<T1, T2, T3>
     {
         protected MethodCallbackBase(Action<T1, T2, T3> callback)
@@ -50,6 +68,13 @@ namespace Attest.Fake.Setup.Contracts
         public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3);
     }
 
+    /// <summary>
+    /// Base class for method callbacks without return value and four parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2, T3, T4> : IMethodCallback<T1, T2, T3, T4>
     {
         protected MethodCallbackBase(Action<T1, T2, T3, T4> callback)
@@ -62,6 +87,14 @@ namespace Attest.Fake.Setup.Contracts
         public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     }
 
+    /// <summary>
+    /// Base class for method callbacks without return value and five parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
+    /// <typeparam name="T5">Type of fifth parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2, T3, T4, T5> : IMethodCallback<T1, T2, T3, T4, T5>
     {
         protected MethodCallbackBase(Action<T1, T2, T3, T4, T5> callback)
@@ -74,6 +107,9 @@ namespace Attest.Fake.Setup.Contracts
         public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3, T4, T5> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
     }
 
+    /// <summary>
+    /// Represents successful completion callback without return value and no parameters
+    /// </summary>
     public class OnCompleteCallback : MethodCallbackBase
     {
         public OnCompleteCallback(Action callback) : base(callback)
@@ -86,6 +122,10 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents successful completion callback without return value and one parameter
+    /// </summary>
+    /// <typeparam name="T">Type of parameter</typeparam>
     public class OnCompleteCallback<T> : MethodCallbackBase<T>
     {
         public OnCompleteCallback(Action<T> callback)
@@ -99,6 +139,11 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents successful completion callback without return value and two parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
     public class OnCompleteCallback<T1, T2> : MethodCallbackBase<T1, T2>
     {
         public OnCompleteCallback(Action<T1, T2> callback)
@@ -112,6 +157,12 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents successful completion callback without return value and three parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
     public class OnCompleteCallback<T1, T2, T3> : MethodCallbackBase<T1, T2, T3>
     {
         public OnCompleteCallback(Action<T1, T2, T3> callback)
@@ -125,6 +176,13 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents successful completion callback without return value and four parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
     public class OnCompleteCallback<T1, T2, T3, T4> : MethodCallbackBase<T1, T2, T3, T4>
     {
         public OnCompleteCallback(Action<T1, T2, T3, T4> callback)
@@ -138,6 +196,14 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents successful completion callback without return value and five parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
+    /// <typeparam name="T5">Type of fifth parameter</typeparam>
     public class OnCompleteCallback<T1, T2, T3, T4, T5> : MethodCallbackBase<T1, T2, T3, T4, T5>
     {
         public OnCompleteCallback(Action<T1, T2, T3, T4, T5> callback)
@@ -151,6 +217,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents exception throwing callback with no parameters
+    /// </summary>
     public class OnErrorCallback : MethodCallbackBase, IThrowException
     {
         public OnErrorCallback(Action callback, Exception exception)
@@ -167,6 +236,10 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents exception throwing callback with no parameters
+    /// </summary>
+    /// <typeparam name="T">Type of parameter</typeparam>
     public class OnErrorCallback<T> : MethodCallbackBase<T>, IThrowException
     {
         public OnErrorCallback(Action<T> callback, Exception exception)
@@ -183,6 +256,11 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents exception throwing callback with two parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
     public class OnErrorCallback<T1, T2> : MethodCallbackBase<T1, T2>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2> callback, Exception exception)
@@ -199,6 +277,12 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents exception throwing callback with two parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
     public class OnErrorCallback<T1, T2, T3> : MethodCallbackBase<T1, T2, T3>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2, T3> callback, Exception exception)
@@ -215,6 +299,13 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents exception throwing callback with two parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
     public class OnErrorCallback<T1, T2, T3, T4> : MethodCallbackBase<T1, T2, T3, T4>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2, T3, T4> callback, Exception exception)
@@ -231,6 +322,14 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents exception throwing callback with two parameters
+    /// </summary>
+    /// <typeparam name="T1">Type of first parameter</typeparam>
+    /// <typeparam name="T2">Type of second parameter</typeparam>
+    /// <typeparam name="T3">Type of third parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>
+    /// <typeparam name="T5">Type of fifth parameter</typeparam>
     public class OnErrorCallback<T1, T2, T3, T4, T5> : MethodCallbackBase<T1, T2, T3, T4, T5>, IThrowException
     {
         public OnErrorCallback(Action<T1, T2, T3, T4, T5> callback, Exception exception)
@@ -247,6 +346,9 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
+    /// <summary>
+    /// Represents cancellation callback with no parameters
+    /// </summary>
     public class OnCancelCallback : MethodCallbackBase
     {
         public OnCancelCallback(Action callback)
@@ -260,6 +362,10 @@ namespace Attest.Fake.Setup.Contracts
         }
     }    
 
+    /// <summary>
+    /// Base class for progress callbacks
+    /// </summary>
+    /// <typeparam name="TCallback">Type of callback</typeparam>
     public abstract class ProgressableCallbackBase<TCallback> : ProgressMessagesBase, IProgressableProcessRunning<TCallback>,
         IProgressableProcessFinished<TCallback>, IMethodCallback
     {
@@ -278,6 +384,9 @@ namespace Attest.Fake.Setup.Contracts
         public abstract void Accept(IMethodCallbackVisitor visitor);
     }
 
+    /// <summary>
+    /// Represents progress callback
+    /// </summary>
     public class ProgressableCallback : ProgressableCallbackBase<IMethodCallback>
     {
         private ProgressableCallback()

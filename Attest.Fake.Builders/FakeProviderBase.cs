@@ -12,11 +12,11 @@ namespace Attest.Fake.Builders
         where TBuilder : FakeBuilderBase<TService>
     {
         /// <summary>
-        /// Gets an instance of the faked service, after the builder setup
+        /// Gets an instance of the faked service, after the builder setup is applied
         /// </summary>
         /// <param name="createBuilder">Builder instantiation function</param>
         /// <param name="setupBuilder">Builder setup function</param>
-        /// <returns></returns>
+        /// <returns>Instance of service after the setup is applied</returns>
         protected TService GetService(Func<TBuilder> createBuilder, Func<TBuilder, TBuilder> setupBuilder)
         {
             var builder = createBuilder();
