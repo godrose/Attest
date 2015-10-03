@@ -1,5 +1,4 @@
-﻿using System;
-using Attest.Fake.Core;
+﻿using Attest.Fake.Core;
 using Attest.Tests.Core;
 using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
@@ -21,11 +20,11 @@ namespace Attest.Tests.SpecFlow
         where TFakeFactory : IFakeFactory, new()
         where TRootObject : class where TBootstrapper : new()
     {
-        private IBootstrapperManager<TBootstrapper, TContainer> _bootstrapperManager;
+        private readonly IInitializationParametersManager<TBootstrapper, TContainer> _initializationParametersManager;
 
-        protected IntegrationTestsBase(BootstrapperResolutionStyle bootstrapperResolutionStyle = BootstrapperResolutionStyle.PerRequest)
+        protected IntegrationTestsBase(InitializationParametersResolutionStyle initializationParametersResolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {
-            _bootstrapperManager = new BootstrapperManager<TBootstrapper, TContainer>(bootstrapperResolutionStyle);
+            _initializationParametersManager = new InitializationParametersManager<TBootstrapper, TContainer>(initializationParametersResolutionStyle);
         }
 
         [BeforeScenario]
@@ -43,11 +42,9 @@ namespace Attest.Tests.SpecFlow
         }
 
         private void SetupCore()
-        {            
-            //First a new instance of the IoC container created for each test run
-            IocContainer = new TContainer();
-            //Then the bootstrapper is instantiated - its signature is constrained to have the IoC container as its only parameter
-            Activator.CreateInstance(typeof(TBootstrapper), IocContainer);
+        {
+            var initializationParameters = _initializationParametersManager.GetInitializationParameters();            
+            IocContainer = initializationParameters.IocContainer;            
             //Then the scenario helper is initialized with the new instance of the IoC container and the root object factory
             ScenarioHelper.Initialize(IocContainer, this);
         }

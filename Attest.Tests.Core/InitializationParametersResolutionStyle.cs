@@ -1,6 +1,6 @@
 ﻿namespace Attest.Tests.Core
 {
-    public enum BootstrapperResolutionStyle
+    public enum InitializationParametersResolutionStyle
     {
         PerRequest,
         PerFixture,
