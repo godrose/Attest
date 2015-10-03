@@ -42,6 +42,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootstrapperManager.cs" />
+    <Compile Include="BootstrapperPerFolderResolutionStrategy.cs" />
+    <Compile Include="BootstrapperPerRequestResolutionStrategy.cs" />
+    <Compile Include="BootstrapperResolutionStyle.cs" />
+    <Compile Include="BootstrapperResolutionStrategy.cs" />
     <Compile Include="IntegrationTestsBase.cs" />
     <Compile Include="IntegrationTestsHelper.cs" />
     <Compile Include="IStepsModule.cs" />

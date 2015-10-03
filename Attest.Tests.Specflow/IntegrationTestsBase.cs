@@ -19,8 +19,15 @@ namespace Attest.Tests.SpecFlow
         IRootObjectFactory
         where TContainer : IIocContainer, new()
         where TFakeFactory : IFakeFactory, new()
-        where TRootObject : class
-    {        
+        where TRootObject : class where TBootstrapper : new()
+    {
+        private IBootstrapperManager<TBootstrapper, TContainer> _bootstrapperManager;
+
+        protected IntegrationTestsBase(BootstrapperResolutionStyle bootstrapperResolutionStyle = BootstrapperResolutionStyle.PerRequest)
+        {
+            _bootstrapperManager = new BootstrapperManager<TBootstrapper, TContainer>(bootstrapperResolutionStyle);
+        }
+
         [BeforeScenario]
         protected override void Setup()
         {
@@ -36,7 +43,7 @@ namespace Attest.Tests.SpecFlow
         }
 
         private void SetupCore()
-        {
+        {            
             //First a new instance of the IoC container created for each test run
             IocContainer = new TContainer();
             //Then the bootstrapper is instantiated - its signature is constrained to have the IoC container as its only parameter
