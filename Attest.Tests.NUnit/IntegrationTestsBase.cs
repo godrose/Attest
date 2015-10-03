@@ -14,8 +14,7 @@ namespace Attest.Tests.NUnit
     /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts</typeparam>
     /// <typeparam name="TBootstrapper">Type of bootstrapper</typeparam>
     public abstract class IntegrationTestsBase<TContainer, TFakeFactory, TRootObject, TBootstrapper> : 
-        IntegrationTestsBase<TContainer, TFakeFactory, TRootObject>
-        where TBootstrapper : new()
+        IntegrationTestsBase<TContainer, TFakeFactory, TRootObject>        
         where TContainer : IIocContainer, new()
         where TFakeFactory : IFakeFactory, new() 
         where TRootObject : class         

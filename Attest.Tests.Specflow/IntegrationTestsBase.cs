@@ -18,7 +18,7 @@ namespace Attest.Tests.SpecFlow
         IRootObjectFactory
         where TContainer : IIocContainer, new()
         where TFakeFactory : IFakeFactory, new()
-        where TRootObject : class where TBootstrapper : new()
+        where TRootObject : class         
     {
         private readonly IInitializationParametersManager<TBootstrapper, TContainer> _initializationParametersManager;
 

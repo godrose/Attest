@@ -3,15 +3,14 @@ using Solid.Practices.IoC;
 
 namespace Attest.Tests.Core
 {
-    interface IInitializationParametersResolutionStrategy<TBootstrapper, TContainer>
-        where TBootstrapper : new()
+    interface IInitializationParametersResolutionStrategy<TBootstrapper, TContainer>        
         where TContainer : IIocContainer, new()
     {
         IInitializationParameters<TBootstrapper, TContainer> GetInitializationParameters();
     }
 
     abstract class InitializationParametersResolutionStrategyBase<TBootstrapper, TContainer>
-        :IInitializationParametersResolutionStrategy<TBootstrapper, TContainer> where TBootstrapper : new()
+        :IInitializationParametersResolutionStrategy<TBootstrapper, TContainer>         
         where TContainer : IIocContainer, new()
     {
         protected IInitializationParameters<TBootstrapper, TContainer> CreateInitializationParameters()

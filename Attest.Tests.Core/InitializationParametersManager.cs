@@ -8,7 +8,9 @@ namespace Attest.Tests.Core
         IInitializationParameters<TBootstrapper, TContainer> GetInitializationParameters();
     }
 
-    public class InitializationParametersManager<TBootstrapper, TContainer> : IInitializationParametersManager<TBootstrapper, TContainer> where TBootstrapper : new() where TContainer : IIocContainer, new()
+    public class InitializationParametersManager<TBootstrapper, TContainer> : 
+        IInitializationParametersManager<TBootstrapper, TContainer>        
+        where TContainer : IIocContainer, new()
     {
         private readonly IInitializationParametersResolutionStrategy<TBootstrapper, TContainer> _initializationParametersResolutionStrategy;
 

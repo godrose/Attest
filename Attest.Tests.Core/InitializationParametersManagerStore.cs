@@ -5,7 +5,8 @@ using Solid.Practices.IoC;
 
 namespace Attest.Tests.Core
 {
-    public static class InitializationParametersManagerStore<TBootstrapper, TContainer> where TBootstrapper : new() where TContainer : IIocContainer, new()
+    public static class InitializationParametersManagerStore<TBootstrapper, TContainer>         
+        where TContainer : IIocContainer, new()
     {
         private static readonly Dictionary
                 <InitializationParametersResolutionStyle, IInitializationParametersManager<TBootstrapper, TContainer>>

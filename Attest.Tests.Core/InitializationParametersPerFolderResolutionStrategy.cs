@@ -5,8 +5,7 @@ using Solid.Practices.IoC;
 namespace Attest.Tests.Core
 {
     class InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer> : 
-        InitializationParametersResolutionStrategyBase<TBootstrapper, TContainer>
-        where TBootstrapper : new()
+        InitializationParametersResolutionStrategyBase<TBootstrapper, TContainer>        
         where TContainer : IIocContainer, new()
     {
         private readonly ConcurrentDictionary<string, IInitializationParameters<TBootstrapper, TContainer>>
