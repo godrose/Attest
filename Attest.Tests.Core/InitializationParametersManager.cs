@@ -24,13 +24,21 @@ namespace Attest.Tests.Core
                     case InitializationParametersResolutionStyle.PerFolder:
                     _initializationParametersResolutionStrategy = new InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer>();
                     break;
+                    case InitializationParametersResolutionStyle.PerFixture:
+                    break;
+                    case InitializationParametersResolutionStyle.Singleton:
+                    break;
                 default:
-                    throw new NotSupportedException("Only per request and per folder styles are supported");
+                    break;
             }
         }
 
         public IInitializationParameters<TBootstrapper, TContainer> GetInitializationParameters()
         {
+            if (_initializationParametersResolutionStrategy == null)
+            {
+                throw new NotSupportedException("Only per request and per folder styles are supported");
+            }
             return _initializationParametersResolutionStrategy.GetInitializationParameters();
         }
     }
