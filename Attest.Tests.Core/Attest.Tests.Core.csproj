@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InitializationParametersManager.cs" />
+    <Compile Include="InitializationParametersManagerStore.cs" />
     <Compile Include="InitializationParametersPerFolderResolutionStrategy.cs" />
     <Compile Include="InitializationParametersPerRequestResolutionStrategy.cs" />
     <Compile Include="InitializationParametersResolutionStyle.cs" />

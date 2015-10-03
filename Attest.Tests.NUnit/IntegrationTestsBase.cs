@@ -22,9 +22,11 @@ namespace Attest.Tests.NUnit
     {
         private readonly IInitializationParametersManager<TBootstrapper, TContainer> _initializationParametersManager;
 
-        protected IntegrationTestsBase(InitializationParametersResolutionStyle initializationParametersResolutionStyle = InitializationParametersResolutionStyle.PerRequest)
+        protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {
-            _initializationParametersManager = new InitializationParametersManager<TBootstrapper, TContainer>(initializationParametersResolutionStyle);
+            _initializationParametersManager =
+                InitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
+                    resolutionStyle);
         }
 
         [SetUp]
