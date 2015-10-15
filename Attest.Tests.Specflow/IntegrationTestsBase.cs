@@ -62,6 +62,7 @@ namespace Attest.Tests.SpecFlow
         private void TearDownCore()
         {
             ScenarioHelper.Clear();
+            IocContainer.Dispose();
         }
 
         /// <summary>

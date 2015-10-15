@@ -58,6 +58,7 @@ namespace Attest.Tests.NUnit
 
         private void TearDownCore()
         {
+            IocContainer.Dispose();
             //Dispose();
         }
 
