@@ -39,8 +39,9 @@ namespace Attest.Tests.SpecFlow
         [AfterScenario]
         protected override void TearDown()
         {
+            OnBeforeTeardown();
             TearDownCore();
-            TearDownOverride();
+            OnAfterTeardown();
         }
 
         private void SetupCore()
@@ -66,12 +67,20 @@ namespace Attest.Tests.SpecFlow
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test teardown logic
+        /// Called when the teardown starts
         /// </summary>
-        protected virtual void TearDownOverride()
+        protected virtual void OnBeforeTeardown()
         {
-
+            
         }
+
+        /// <summary>
+        /// Called when the teardown finishes
+        /// </summary>
+        protected virtual void OnAfterTeardown()
+        {
+            
+        }        
 
         private TRootObject CreateRootObjectTyped()
         {
