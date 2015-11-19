@@ -23,6 +23,12 @@ namespace Attest.Tests.Core
             container.RegisterInstance(instance);
         }
 
+        public static void RegisterTransient<TService, TImplementation>(IIocContainer container)
+            where TImplementation : class, TService
+        {
+            container.RegisterTransient<TService, TImplementation>();
+        }
+
         /// <summary>
         /// Registers service bulder into the IoC container
         /// </summary>

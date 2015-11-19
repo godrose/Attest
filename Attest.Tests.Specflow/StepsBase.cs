@@ -22,6 +22,17 @@ namespace Attest.Tests.SpecFlow
         }
 
         /// <summary>
+        /// Registers the service and its implementation types in a transient manner
+        /// </summary>
+        /// <typeparam name="TService">The type of the service.</typeparam>
+        /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
+        public static void RegisterTransient<TService, TImplementation>()
+            where TImplementation : class, TService
+        {
+            IntegrationTestsHelper<TFakeFactory>.RegisterTransient<TService, TImplementation>(GetIocContainer());
+        }
+
+        /// <summary>
         /// Registers service builder into the scenario context
         /// </summary>
         /// <typeparam name="TService">Type of service</typeparam>
