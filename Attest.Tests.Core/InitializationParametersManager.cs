@@ -3,16 +3,16 @@ using Solid.Practices.IoC;
 
 namespace Attest.Tests.Core
 {
-    public interface IInitializationParametersManager<TBootstrapper, TContainer>
+    public interface IInitializationParametersManager<TContainer>
     {
-        IInitializationParameters<TBootstrapper, TContainer> GetInitializationParameters();
+        IInitializationParameters<TContainer> GetInitializationParameters();
     }
 
     public class InitializationParametersManager<TBootstrapper, TContainer> : 
-        IInitializationParametersManager<TBootstrapper, TContainer>        
+        IInitializationParametersManager<TContainer>        
         where TContainer : IIocContainer, new()
     {
-        private readonly IInitializationParametersResolutionStrategy<TBootstrapper, TContainer> _initializationParametersResolutionStrategy;
+        private readonly IInitializationParametersResolutionStrategy<TContainer> _initializationParametersResolutionStrategy;
 
         public InitializationParametersManager(InitializationParametersResolutionStyle initializationParametersResolutionStyle)
         {
@@ -33,12 +33,28 @@ namespace Attest.Tests.Core
             }
         }
 
-        public IInitializationParameters<TBootstrapper, TContainer> GetInitializationParameters()
+        public IInitializationParameters<TContainer> GetInitializationParameters()
         {
             if (_initializationParametersResolutionStrategy == null)
             {
                 throw new NotSupportedException("Only per request and per folder styles are supported");
             }
+            return _initializationParametersResolutionStrategy.GetInitializationParameters();
+        }
+    }
+
+    public class InitializationParametersManager<TContainer> : IInitializationParametersManager<TContainer> 
+        where TContainer : IIocContainer, new()
+    {
+        private readonly IInitializationParametersResolutionStrategy<TContainer> _initializationParametersResolutionStrategy;
+
+        public InitializationParametersManager(TContainer container)
+        {
+            _initializationParametersResolutionStrategy = new InitializationParametersPredefinedResolutionStrategy<TContainer>(container);
+        }
+
+        public IInitializationParameters<TContainer> GetInitializationParameters()
+        {
             return _initializationParametersResolutionStrategy.GetInitializationParameters();
         }
     }

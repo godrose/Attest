@@ -8,14 +8,14 @@ namespace Attest.Tests.Core
         InitializationParametersResolutionStrategyBase<TBootstrapper, TContainer>        
         where TContainer : IIocContainer, new()
     {
-        private readonly ConcurrentDictionary<string, IInitializationParameters<TBootstrapper, TContainer>>
+        private readonly ConcurrentDictionary<string, IInitializationParameters<TContainer>>
             _initializationParametersCollection =
-                new ConcurrentDictionary<string, IInitializationParameters<TBootstrapper, TContainer>>();
+                new ConcurrentDictionary<string, IInitializationParameters<TContainer>>();
 
-        public override IInitializationParameters<TBootstrapper, TContainer> GetInitializationParameters()
+        public override IInitializationParameters<TContainer> GetInitializationParameters()
         {
             var currentDirectory = Environment.CurrentDirectory;
-            IInitializationParameters<TBootstrapper, TContainer> existingInitializationParameters;
+            IInitializationParameters<TContainer> existingInitializationParameters;
             _initializationParametersCollection.TryGetValue(currentDirectory, out existingInitializationParameters);
             if (existingInitializationParameters == null)
             {

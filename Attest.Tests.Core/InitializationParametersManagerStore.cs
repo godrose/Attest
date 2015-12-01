@@ -9,11 +9,11 @@ namespace Attest.Tests.Core
         where TContainer : IIocContainer, new()
     {
         private static readonly Dictionary
-                <InitializationParametersResolutionStyle, IInitializationParametersManager<TBootstrapper, TContainer>>
+                <InitializationParametersResolutionStyle, IInitializationParametersManager<TContainer>>
             InternalStorage =
                 InitializeDictionary();
 
-        private static Dictionary<InitializationParametersResolutionStyle, IInitializationParametersManager<TBootstrapper, TContainer>> InitializeDictionary()
+        private static Dictionary<InitializationParametersResolutionStyle, IInitializationParametersManager<TContainer>> InitializeDictionary()
         {            
             var enums =
                 Enum.GetValues(typeof (InitializationParametersResolutionStyle))
@@ -21,15 +21,15 @@ namespace Attest.Tests.Core
                     .ToArray();
             return enums.ToDictionary(t => t,
                 t =>
-                    (IInitializationParametersManager<TBootstrapper, TContainer>)
+                    (IInitializationParametersManager<TContainer>)
                         new InitializationParametersManager<TBootstrapper, TContainer>(t));
         }
 
-        public static IInitializationParametersManager<TBootstrapper, TContainer> 
+        public static IInitializationParametersManager<TContainer> 
             GetInitializationParametersManager(
             InitializationParametersResolutionStyle resolutionStyle)
         {
-            IInitializationParametersManager<TBootstrapper, TContainer> value;
+            IInitializationParametersManager<TContainer> value;
             InternalStorage.TryGetValue(resolutionStyle, out value);
             return value;
         }

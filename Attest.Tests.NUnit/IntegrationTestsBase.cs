@@ -19,7 +19,7 @@ namespace Attest.Tests.NUnit
         where TFakeFactory : IFakeFactory, new() 
         where TRootObject : class         
     {
-        private readonly IInitializationParametersManager<TBootstrapper, TContainer> _initializationParametersManager;
+        private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
 
         protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {

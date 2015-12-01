@@ -1,11 +1,11 @@
 ﻿namespace Attest.Tests.Core
 {
-    public interface IInitializationParameters<TBootstrapper, TContainer>
+    public interface IInitializationParameters<TContainer>
     {
         TContainer IocContainer { get; }
     }
 
-    class InitializationParameters<TBootstrapper, TContainer> : IInitializationParameters<TBootstrapper, TContainer>
+    class InitializationParameters<TContainer> : IInitializationParameters<TContainer>
     {
         public InitializationParameters(TContainer iocContainer)
         {

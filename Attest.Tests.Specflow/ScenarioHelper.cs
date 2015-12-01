@@ -21,6 +21,12 @@ namespace Attest.Tests.SpecFlow
             ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);
         }
 
+        internal static void Initialize(
+            IIocContainer iocContainer)
+        {
+            ScenarioContext.Current.Add(ContainerKey, iocContainer);            
+        }
+
         /// <summary>
         /// Creates the root object and adds it to the scenario context
         /// </summary>

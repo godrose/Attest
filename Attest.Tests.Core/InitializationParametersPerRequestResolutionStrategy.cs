@@ -6,7 +6,7 @@ namespace Attest.Tests.Core
         InitializationParametersResolutionStrategyBase<TBootstrapper, TContainer>        
         where TContainer : IIocContainer, new()
     {
-        public override IInitializationParameters<TBootstrapper, TContainer> GetInitializationParameters()
+        public override IInitializationParameters<TContainer> GetInitializationParameters()
         {
             return CreateInitializationParameters();
         }

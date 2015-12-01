@@ -10,23 +10,16 @@ namespace Attest.Tests.SpecFlow
     /// and use SpecFlow as test framework provider
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
-    /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts</typeparam>
-    /// <typeparam name="TBootstrapper">Type of bootstrapper</typeparam>
-    public abstract class IntegrationTestsBase<TContainer, TFakeFactory, TRootObject, TBootstrapper> :
-        IntegrationTestsBase<TContainer, TFakeFactory, TRootObject>,
-        IRootObjectFactory
-        where TContainer : IIocContainer, new()
+    /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>    
+    class EndToEndTestsBase<TContainer, TFakeFactory> : Core.EndToEndTestsBase<TContainer, TFakeFactory> 
+        where TContainer : IIocContainer, new() 
         where TFakeFactory : IFakeFactory, new()
-        where TRootObject : class         
     {
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
 
-        protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
+        protected EndToEndTestsBase(TContainer container)
         {
-            _initializationParametersManager =
-                InitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
-                    resolutionStyle);
+            _initializationParametersManager = new InitializationParametersManager<TContainer>(container);
         }
 
         [BeforeScenario]
@@ -48,8 +41,8 @@ namespace Attest.Tests.SpecFlow
         {
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();            
             IocContainer = initializationParameters.IocContainer;            
-            //Then the scenario helper is initialized with the new instance of the IoC container and the root object factory
-            ScenarioHelper.Initialize(IocContainer, this);
+            //Then the scenario helper is initialized with the new instance of the IoC container
+            ScenarioHelper.Initialize(IocContainer);
         }
 
         /// <summary>
@@ -62,8 +55,7 @@ namespace Attest.Tests.SpecFlow
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();
-            IocContainer.Dispose();
+            ScenarioHelper.Clear();            
         }
 
         /// <summary>
@@ -80,16 +72,6 @@ namespace Attest.Tests.SpecFlow
         protected virtual void OnAfterTeardown()
         {
             
-        }        
-
-        private TRootObject CreateRootObjectTyped()
-        {
-            return CreateRootObject();
-        }
-
-        object IRootObjectFactory.CreateRootObject()
-        {
-            return CreateRootObjectTyped();
-        }
+        }                
     }
 }

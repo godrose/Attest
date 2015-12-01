@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndToEndTestsBase.cs" />
     <Compile Include="IntegrationTestsBase.cs" />
     <Compile Include="IRootObjectFactory.cs" />
     <Compile Include="ModuleRegistrator.cs" />

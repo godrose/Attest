@@ -46,10 +46,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndToEndTestsBase.cs" />
     <Compile Include="InitializationParametersManager.cs" />
     <Compile Include="InitializationParametersManagerStore.cs" />
     <Compile Include="InitializationParametersPerFolderResolutionStrategy.cs" />
     <Compile Include="InitializationParametersPerRequestResolutionStrategy.cs" />
+    <Compile Include="InitializationParametersPredefinedResolutionStrategy.cs" />
     <Compile Include="InitializationParametersResolutionStyle.cs" />
     <Compile Include="InitializationParametersResolutionStrategy.cs" />
     <Compile Include="InitializationParameters.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="IStepsModule.cs" />
     <Compile Include="IStepsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
