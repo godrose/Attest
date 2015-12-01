@@ -11,7 +11,7 @@ namespace Attest.Tests.SpecFlow
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
     /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>    
-    class EndToEndTestsBase<TContainer, TFakeFactory> : Core.EndToEndTestsBase<TContainer, TFakeFactory> 
+    public abstract class EndToEndTestsBase<TContainer, TFakeFactory> : Core.EndToEndTestsBase<TContainer, TFakeFactory> 
         where TContainer : IIocContainer, new() 
         where TFakeFactory : IFakeFactory, new()
     {
