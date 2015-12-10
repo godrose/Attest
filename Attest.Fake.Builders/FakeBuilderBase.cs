@@ -8,16 +8,23 @@ namespace Attest.Fake.Builders
     /// Base class for service builders, supporting mock and fake capabilties
     /// </summary>
     /// <typeparam name="TService"></typeparam>
+    [Serializable]
     public abstract class FakeBuilderBase<TService> : IMock<TService> where TService : class
     {
+        private readonly IFakeFactory _fakeFactory;
+
+        private IFake<TService> _fakeService;
         /// <summary>
         /// Fake that wraps the faked service
-        /// </summary>
-        protected readonly IFake<TService> FakeService;
+        /// </summary>                    
+        protected IFake<TService> FakeService
+        {
+            get { return _fakeService ?? (_fakeService = _fakeFactory.CreateFake<TService>()); }
+        }
 
         protected FakeBuilderBase(IFakeFactory fakeFactory)
         {
-            FakeService = fakeFactory.CreateFake<TService>();
+            _fakeFactory = fakeFactory;            
         }
 
         /// <summary>
