@@ -1,31 +1,30 @@
-using System;
-using Attest.Tests.Core;
+﻿using System;
 using Solid.Practices.IoC;
-using TechTalk.SpecFlow;
 
-namespace Attest.Tests.SpecFlow
+namespace Attest.Tests.Core
 {
     /// <summary>
     /// Wrapper class over the scenario context which provides concise API of adding and retrieving services
+    /// as well as scenario initialization logic with respect to the Root Object and IoC Container
     /// </summary>
     public static class ScenarioHelper
     {
         private const string RootObjectFactoryKey = "rootObjectFactory";
         private const string RootObjectKey = "rootObject";
-        private const string ContainerKey = "container";
+        private const string ContainerKey = "container";        
 
-        internal static void Initialize(
+        public static void Initialize(
             IIocContainer iocContainer,
             IRootObjectFactory rootObjectFactory)
         {
             ScenarioContext.Current.Add(ContainerKey, iocContainer);
-            ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);
+            ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);                        
         }
 
-        internal static void Initialize(
+        public static void Initialize(
             IIocContainer iocContainer)
         {
-            ScenarioContext.Current.Add(ContainerKey, iocContainer);            
+            ScenarioContext.Current.Add(ContainerKey, iocContainer);
         }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace Attest.Tests.SpecFlow
         /// <typeparam name="TItem">Type of item</typeparam>
         /// <param name="item">Item</param>
         public static void Add<TItem>(TItem item) where TItem : class
-        {           
+        {
             var typeName = GetKey<TItem>();
             AddImpl(item, typeName);
         }
@@ -138,17 +137,17 @@ namespace Attest.Tests.SpecFlow
 
         private static string GetKey<TItem>() where TItem : class
         {
-            var type = typeof (TItem);
+            var type = typeof(TItem);
             var typeName = type.Name;
             return typeName;
         }
 
-        internal static void Clear()
+        public static void Clear()
         {
             ScenarioContext.Current.Clear();
         }
 
-        internal static object Container
+        public static object Container
         {
             get { return ScenarioContext.Current[ContainerKey]; }
         }

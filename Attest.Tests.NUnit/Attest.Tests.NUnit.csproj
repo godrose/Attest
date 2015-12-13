@@ -42,8 +42,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EndToEndTestsBase.cs" />
     <Compile Include="IntegrationTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenario.cs" />
+    <Compile Include="StepsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,9 +1,9 @@
-using Attest.Fake.Builders;
+﻿using Attest.Fake.Builders;
 using Attest.Fake.Core;
 using Attest.Tests.Core;
 using Solid.Practices.IoC;
 
-namespace Attest.Tests.SpecFlow
+namespace Attest.Tests.NUnit
 {
     /// <summary>
     /// Base class for step-containing classes, primarily used for [Given] steps

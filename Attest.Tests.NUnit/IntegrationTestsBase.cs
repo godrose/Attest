@@ -14,7 +14,8 @@ namespace Attest.Tests.NUnit
     /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts</typeparam>
     /// <typeparam name="TBootstrapper">Type of bootstrapper</typeparam>
     public abstract class IntegrationTestsBase<TContainer, TFakeFactory, TRootObject, TBootstrapper> : 
-        IntegrationTestsBase<TContainer, TFakeFactory, TRootObject>        
+        IntegrationTestsBase<TContainer, TFakeFactory, TRootObject>,
+        IRootObjectFactory       
         where TContainer : IIocContainer, new()
         where TFakeFactory : IFakeFactory, new() 
         where TRootObject : class         
@@ -26,6 +27,7 @@ namespace Attest.Tests.NUnit
             _initializationParametersManager =
                 InitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
+            ScenarioContext.Current = new Scenario();
         }
 
         [SetUp]
@@ -38,14 +40,17 @@ namespace Attest.Tests.NUnit
         [TearDown]
         protected override void TearDown()
         {
-            TearDownCore();
-            TearDownOverride();
+            OnBeforeTeardown();
+            TearDownCore();                
+            OnAfterTeardown();        
         }
 
         private void SetupCore()
         {
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();
-            IocContainer = initializationParameters.IocContainer;            
+            IocContainer = initializationParameters.IocContainer;
+            //Then the scenario helper is initialized with the new instance of the IoC container and the root object factory
+            ScenarioHelper.Initialize(IocContainer, this);
         }
 
         /// <summary>
@@ -58,16 +63,35 @@ namespace Attest.Tests.NUnit
 
         private void TearDownCore()
         {
+            ScenarioHelper.Clear();
             IocContainer.Dispose();
             //Dispose();
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test teardown logic
+        /// Called when the teardown starts
         /// </summary>
-        protected virtual void TearDownOverride()
+        protected virtual void OnBeforeTeardown()
         {
-            
-        }        
+
+        }
+
+        /// <summary>
+        /// Called when the teardown finishes
+        /// </summary>
+        protected virtual void OnAfterTeardown()
+        {
+
+        }
+
+        private TRootObject CreateRootObjectTyped()
+        {
+            return CreateRootObject();
+        }
+
+        object IRootObjectFactory.CreateRootObject()
+        {
+            return CreateRootObjectTyped();
+        }
     }
 }

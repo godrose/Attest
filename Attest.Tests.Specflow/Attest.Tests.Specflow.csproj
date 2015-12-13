@@ -51,10 +51,9 @@
   <ItemGroup>
     <Compile Include="EndToEndTestsBase.cs" />
     <Compile Include="IntegrationTestsBase.cs" />
-    <Compile Include="IRootObjectFactory.cs" />
     <Compile Include="ModuleRegistrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioHelper.cs" />
+    <Compile Include="Scenario.cs" />
     <Compile Include="StepsBase.cs" />
   </ItemGroup>
   <ItemGroup>

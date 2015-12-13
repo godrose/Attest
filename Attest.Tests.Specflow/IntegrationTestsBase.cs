@@ -27,6 +27,7 @@ namespace Attest.Tests.SpecFlow
             _initializationParametersManager =
                 InitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
+            Core.ScenarioContext.Current = new Scenario();
         }
 
         [BeforeScenario]

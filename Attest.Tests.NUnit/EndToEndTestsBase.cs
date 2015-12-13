@@ -1,17 +1,17 @@
 ﻿using Attest.Fake.Core;
 using Attest.Tests.Core;
+using NUnit.Framework;
 using Solid.Practices.IoC;
-using TechTalk.SpecFlow;
 
-namespace Attest.Tests.SpecFlow
+namespace Attest.Tests.NUnit
 {
     /// <summary>
-    /// Base class for all End-To-End tests that use SpecFlow as test framework provider
+    /// Base class for all End-To-End tests that use NUnit as test framework provider
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
     /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>    
-    public abstract class EndToEndTestsBase<TContainer, TFakeFactory> : Core.EndToEndTestsBase<TContainer, TFakeFactory> 
-        where TContainer : IIocContainer, new() 
+    public abstract class EndToEndTestsBase<TContainer, TFakeFactory> : Core.EndToEndTestsBase<TContainer, TFakeFactory>
+        where TContainer : IIocContainer, new()
         where TFakeFactory : IFakeFactory, new()
     {
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
@@ -19,17 +19,17 @@ namespace Attest.Tests.SpecFlow
         protected EndToEndTestsBase(TContainer container)
         {
             _initializationParametersManager = new InitializationParametersManager<TContainer>(container);
-            Core.ScenarioContext.Current = new Scenario();
+            ScenarioContext.Current = new Scenario();
         }
 
-        [BeforeScenario]
+        [SetUp]
         protected override void Setup()
         {
             SetupCore();
             SetupOverride();
         }
 
-        [AfterScenario]
+        [TearDown]
         protected override void TearDown()
         {
             OnBeforeTeardown();
@@ -39,8 +39,8 @@ namespace Attest.Tests.SpecFlow
 
         private void SetupCore()
         {
-            var initializationParameters = _initializationParametersManager.GetInitializationParameters();            
-            IocContainer = initializationParameters.IocContainer;            
+            var initializationParameters = _initializationParametersManager.GetInitializationParameters();
+            IocContainer = initializationParameters.IocContainer;
             //Then the scenario helper is initialized with the new instance of the IoC container
             ScenarioHelper.Initialize(IocContainer);
         }
@@ -55,7 +55,7 @@ namespace Attest.Tests.SpecFlow
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();            
+            ScenarioHelper.Clear();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Attest.Tests.SpecFlow
         /// </summary>
         protected virtual void OnBeforeTeardown()
         {
-            
+
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Attest.Tests.SpecFlow
         /// </summary>
         protected virtual void OnAfterTeardown()
         {
-            
-        }                
+
+        }
     }
 }
