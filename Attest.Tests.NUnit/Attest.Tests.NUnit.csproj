@@ -61,6 +61,10 @@
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj">
+      <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
+      <Name>Attest.Fake.Registration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Attest.Tests.Core\Attest.Tests.Core.csproj">
       <Project>{CA530825-0F66-41C4-9623-2B54985E1E46}</Project>
       <Name>Attest.Tests.Core</Name>

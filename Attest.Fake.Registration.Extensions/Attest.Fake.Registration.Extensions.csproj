@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1CE31BC-5326-41FD-96D8-6481A011301B}</ProjectGuid>
+    <ProjectGuid>{C0C0308E-000E-4DC7-9990-A870D1D446F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Tests.SpecFlow</RootNamespace>
-    <AssemblyName>Attest.Tests.SpecFlow</AssemblyName>
+    <RootNamespace>Attest.Fake.Registration.Extensions</RootNamespace>
+    <AssemblyName>Attest.Fake.Registration.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Tests\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,60 +24,38 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\Tests\</OutputPath>
+    <OutputPath>..\bin\Release\Fake\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\Tests\Attest.Tests.SpecFlow.XML</DocumentationFile>
+    <DocumentationFile>..\bin\Release\Fake\Attest.Fake.Registration.Extensions.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Solid.Practices.IoC, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Solid.Practices.IoC.1.0.6\lib\portable-net45+sl4+wp7+win8\Solid.Practices.IoC.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Solid.Practices.Middleware, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Middleware.1.0.3\lib\net451\Solid.Practices.Middleware.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Solid.Practices.Modularity, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Modularity.1.0.5\lib\net451\Solid.Practices.Modularity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EndToEndTestsBase.cs" />
-    <Compile Include="IntegrationTestsBase.cs" />
-    <Compile Include="ModuleRegistrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenario.cs" />
-    <Compile Include="StepsBase.cs" />
+    <Compile Include="RegistrationHelperEx.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
-      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
-      <Name>Attest.Fake.Builders</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj">
-      <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
-      <Name>Attest.Fake.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Tests.Core\Attest.Tests.Core.csproj">
-      <Project>{CA530825-0F66-41C4-9623-2B54985E1E46}</Project>
-      <Name>Attest.Tests.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

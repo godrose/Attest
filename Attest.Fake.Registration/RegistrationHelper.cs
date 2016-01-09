@@ -2,12 +2,12 @@
 using Attest.Fake.Core;
 using Solid.Practices.IoC;
 
-namespace Attest.Tests.Core
+namespace Attest.Fake.Registration
 {
     /// <summary>
     /// Provides utilities for registering different types of fake objects into IoC container
     /// </summary>
-    public static class TestsHelper
+    public static class RegistrationHelper
     {
         /// <summary>
         /// Registers service instance into the IoC container

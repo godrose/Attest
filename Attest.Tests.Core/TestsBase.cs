@@ -1,5 +1,6 @@
 ﻿using Attest.Fake.Builders;
 using Attest.Fake.Core;
+using Attest.Fake.Registration;
 using Solid.Practices.IoC;
 
 namespace Attest.Tests.Core
@@ -33,7 +34,7 @@ namespace Attest.Tests.Core
         /// <param name="instance">Instance to be registered</param>
         protected void RegisterInstance<TService>(TService instance) where TService : class
         {
-            TestsHelper.RegisterInstance(IocContainer, instance);
+            RegistrationHelper.RegisterInstance(IocContainer, instance);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Attest.Tests.Core
         /// <param name="builder">Builder to be registered</param>
         protected void RegisterBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
         {
-            TestsHelper.RegisterBuilder(IocContainer, builder);
+            RegistrationHelper.RegisterBuilder(IocContainer, builder);
         }        
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Attest.Tests.Core
         /// <param name="fake">Fake to be registered</param>
         protected void RegisterFake<TService>(IFake<TService> fake) where TService : class
         {
-            TestsHelper.RegisterFake(IocContainer, fake);
+            RegistrationHelper.RegisterFake(IocContainer, fake);
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Attest.Tests.Core
         /// <param name="fake">Mock to be registered</param>
         protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
         {
-            TestsHelper.RegisterMock(IocContainer, fake);
+            RegistrationHelper.RegisterMock(IocContainer, fake);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Attest.Tests.Core
         /// <returns>Resolved service</returns>
         protected TService Resolve<TService>() where TService : class
         {
-            return TestsHelper.Resolve<TService>(IocContainer);
+            return RegistrationHelper.Resolve<TService>(IocContainer);
         }
     }
 }

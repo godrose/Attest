@@ -1,5 +1,6 @@
 ﻿using Attest.Fake.Builders;
 using Attest.Fake.Core;
+using Attest.Fake.Registration;
 using Attest.Tests.Core;
 using Solid.Practices.IoC;
 
@@ -17,7 +18,7 @@ namespace Attest.Tests.NUnit
         /// <param name="instance">Instance to be registered</param>
         protected void RegisterInstance<TService>(TService instance) where TService : class
         {
-            TestsHelper.RegisterInstance(GetIocContainer(), instance);
+            RegistrationHelper.RegisterInstance(GetIocContainer(), instance);
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace Attest.Tests.NUnit
         public static void RegisterTransient<TService, TImplementation>()
             where TImplementation : class, TService
         {
-            TestsHelper.RegisterTransient<TService, TImplementation>(GetIocContainer());
+            RegistrationHelper.RegisterTransient<TService, TImplementation>(GetIocContainer());
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Attest.Tests.NUnit
         /// <param name="builder">Builder to be registered</param>
         protected void RegisterBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
         {
-            TestsHelper.RegisterBuilder(GetIocContainer(), builder);
+            RegistrationHelper.RegisterBuilder(GetIocContainer(), builder);
         }        
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace Attest.Tests.NUnit
         /// <param name="fake">Fake to be registered</param>
         protected void RegisterFake<TService>(IFake<TService> fake) where TService : class
         {
-            TestsHelper.RegisterFake(GetIocContainer(), fake);
+            RegistrationHelper.RegisterFake(GetIocContainer(), fake);
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace Attest.Tests.NUnit
         /// <param name="fake">Mock to be registered</param>
         protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
         {
-            TestsHelper.RegisterMock(GetIocContainer(), fake);
+            RegistrationHelper.RegisterMock(GetIocContainer(), fake);
         }
 
         /// <summary>
