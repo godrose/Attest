@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fake", "Fake", "{A4686CE3-29EA-4BB0-BA45-9882BC3F675C}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Setup.Contracts", "Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj", "{FB22E8C7-0F5F-4344-A2F6-EE824389568E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Setup", "Attest.Fake.Setup\Attest.Fake.Setup.csproj", "{451FA9C6-0A3A-4B70-A6A3-4216848A95F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Tests.Extensions", "Attest.Tests.Extensions\Attest.Tests.Extensions.csproj", "{4901A2AC-67E1-49DC-93AB-ABD9FC4B4EC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{451FA9C6-0A3A-4B70-A6A3-4216848A95F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{451FA9C6-0A3A-4B70-A6A3-4216848A95F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{451FA9C6-0A3A-4B70-A6A3-4216848A95F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4901A2AC-67E1-49DC-93AB-ABD9FC4B4EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4901A2AC-67E1-49DC-93AB-ABD9FC4B4EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4901A2AC-67E1-49DC-93AB-ABD9FC4B4EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4901A2AC-67E1-49DC-93AB-ABD9FC4B4EC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,5 +87,6 @@ Global
 		{A1CE31BC-5326-41FD-96D8-6481A011301B} = {70BEEE77-3E24-446C-97EC-27D6C5DA90C2}
 		{FB22E8C7-0F5F-4344-A2F6-EE824389568E} = {A4686CE3-29EA-4BB0-BA45-9882BC3F675C}
 		{451FA9C6-0A3A-4B70-A6A3-4216848A95F4} = {A4686CE3-29EA-4BB0-BA45-9882BC3F675C}
+		{4901A2AC-67E1-49DC-93AB-ABD9FC4B4EC4} = {70BEEE77-3E24-446C-97EC-27D6C5DA90C2}
 	EndGlobalSection
 EndGlobal

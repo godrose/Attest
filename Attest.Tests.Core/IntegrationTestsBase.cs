@@ -1,5 +1,4 @@
-﻿using Attest.Fake.Core;
-using Solid.Practices.IoC;
+﻿using Solid.Practices.IoC;
 
 namespace Attest.Tests.Core
 {
@@ -7,13 +6,13 @@ namespace Attest.Tests.Core
     /// Base class for all integration-tests fixtures that involve real IoC container
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
-    /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>
     /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts</typeparam>
-    public abstract class IntegrationTestsBase<TContainer, TFakeFactory, TRootObject> : TestsBase<TContainer, TFakeFactory>
-        where TContainer : IIocContainer, new()
-        where TFakeFactory : IFakeFactory, new()
-        where TRootObject : class
+    public abstract class IntegrationTestsBase<TContainer, TRootObject> : TestsBase<TContainer>
+        where TContainer : IIocContainer, new() where TRootObject : class
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IntegrationTestsBase{TContainer, TRootObject}"/> class.
+        /// </summary>
         protected IntegrationTestsBase()
         {
             IocContainer = new TContainer();

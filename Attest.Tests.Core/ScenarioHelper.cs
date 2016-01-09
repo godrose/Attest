@@ -11,8 +11,13 @@ namespace Attest.Tests.Core
     {
         private const string RootObjectFactoryKey = "rootObjectFactory";
         private const string RootObjectKey = "rootObject";
-        private const string ContainerKey = "container";        
+        private const string ContainerKey = "container";
 
+        /// <summary>
+        /// Initializes the <see cref="ScenarioContext"/>. with the provided container and root object factory.
+        /// </summary>
+        /// <param name="iocContainer">The ioc container.</param>
+        /// <param name="rootObjectFactory">The root object factory.</param>
         public static void Initialize(
             IIocContainer iocContainer,
             IRootObjectFactory rootObjectFactory)
@@ -21,6 +26,10 @@ namespace Attest.Tests.Core
             ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);                        
         }
 
+        /// <summary>
+        /// Initializes the <see cref="ScenarioContext"/>. with the provided container.
+        /// </summary>
+        /// <param name="iocContainer">The ioc container.</param>
         public static void Initialize(
             IIocContainer iocContainer)
         {
@@ -142,14 +151,23 @@ namespace Attest.Tests.Core
             return typeName;
         }
 
+        /// <summary>
+        /// Clears the <see cref="ScenarioContext"/>.
+        /// </summary>
         public static void Clear()
         {
             ScenarioContext.Current.Clear();
         }
 
-        public static object Container
+        /// <summary>
+        /// Gets the container.
+        /// </summary>
+        /// <value>
+        /// The container.
+        /// </value>
+        public static IIocContainer Container
         {
-            get { return ScenarioContext.Current[ContainerKey]; }
+            get { return (IIocContainer)ScenarioContext.Current[ContainerKey]; }
         }
 
         /// <summary>

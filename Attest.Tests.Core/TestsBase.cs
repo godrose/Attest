@@ -5,13 +5,11 @@ using Solid.Practices.IoC;
 namespace Attest.Tests.Core
 {
     /// <summary>
-    /// Base class for all tests
+    /// Base class for tests
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
-    /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>
-    public abstract class TestsBase<TContainer, TFakeFactory>
+    public abstract class TestsBase<TContainer>
         where TContainer : IIocContainer, new()
-        where TFakeFactory : IFakeFactory, new()
     {       
         /// <summary>
         /// IoC container
@@ -35,7 +33,7 @@ namespace Attest.Tests.Core
         /// <param name="instance">Instance to be registered</param>
         protected void RegisterInstance<TService>(TService instance) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterInstance(IocContainer, instance);
+            TestsHelper.RegisterInstance(IocContainer, instance);
         }
 
         /// <summary>
@@ -45,17 +43,8 @@ namespace Attest.Tests.Core
         /// <param name="builder">Builder to be registered</param>
         protected void RegisterBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterBuilder(IocContainer, builder);
-        }
-
-        /// <summary>
-        /// Registers service stub into the IoC container
-        /// </summary>
-        /// <typeparam name="TService">Type of service</typeparam>
-        protected void RegisterStub<TService>() where TService : class
-        {
-            IntegrationTestsHelper<TFakeFactory>.RegisterStub<TService>(IocContainer);
-        }
+            TestsHelper.RegisterBuilder(IocContainer, builder);
+        }        
 
         /// <summary>
         /// Registers service fake into the IoC container
@@ -64,7 +53,7 @@ namespace Attest.Tests.Core
         /// <param name="fake">Fake to be registered</param>
         protected void RegisterFake<TService>(IFake<TService> fake) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterFake(IocContainer, fake);
+            TestsHelper.RegisterFake(IocContainer, fake);
         }
 
         /// <summary>
@@ -74,7 +63,7 @@ namespace Attest.Tests.Core
         /// <param name="fake">Mock to be registered</param>
         protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterMock(IocContainer, fake);
+            TestsHelper.RegisterMock(IocContainer, fake);
         }
 
         /// <summary>
@@ -84,7 +73,7 @@ namespace Attest.Tests.Core
         /// <returns>Resolved service</returns>
         protected TService Resolve<TService>() where TService : class
         {
-            return IntegrationTestsHelper<TFakeFactory>.Resolve<TService>(IocContainer);
+            return TestsHelper.Resolve<TService>(IocContainer);
         }
     }
 }

@@ -5,6 +5,11 @@ using Solid.Practices.IoC;
 
 namespace Attest.Tests.Core
 {
+    /// <summary>
+    /// Allows returning <see cref="IInitializationParametersManager{TContainer}"/> according to the resolution style.
+    /// </summary>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+    /// <typeparam name="TContainer">The type of the container.</typeparam>
     public static class InitializationParametersManagerStore<TBootstrapper, TContainer>         
         where TContainer : IIocContainer, new()
     {
@@ -25,6 +30,11 @@ namespace Attest.Tests.Core
                         new InitializationParametersManager<TBootstrapper, TContainer>(t));
         }
 
+        /// <summary>
+        /// Gets the initialization parameters manager.
+        /// </summary>
+        /// <param name="resolutionStyle">The resolution style.</param>
+        /// <returns></returns>
         public static IInitializationParametersManager<TContainer> 
             GetInitializationParametersManager(
             InitializationParametersResolutionStyle resolutionStyle)

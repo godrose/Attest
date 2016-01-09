@@ -1,5 +1,4 @@
-﻿using Attest.Fake.Core;
-using Attest.Tests.Core;
+﻿using Attest.Tests.Core;
 using NUnit.Framework;
 using Solid.Practices.IoC;
 
@@ -9,19 +8,24 @@ namespace Attest.Tests.NUnit
     /// Base class for all End-To-End tests that use NUnit as test framework provider
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
-    /// <typeparam name="TFakeFactory">Type of fake factory</typeparam>    
-    public abstract class EndToEndTestsBase<TContainer, TFakeFactory> : Core.EndToEndTestsBase<TContainer, TFakeFactory>
+    public abstract class EndToEndTestsBase<TContainer> : Core.EndToEndTestsBase<TContainer>
         where TContainer : IIocContainer, new()
-        where TFakeFactory : IFakeFactory, new()
     {
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EndToEndTestsBase{TContainer}"/> class.
+        /// </summary>
+        /// <param name="container">The container.</param>
         protected EndToEndTestsBase(TContainer container)
         {
             _initializationParametersManager = new InitializationParametersManager<TContainer>(container);
             ScenarioContext.Current = new Scenario();
         }
 
+        /// <summary>
+        /// Override this method to implement custom test setup logic
+        /// </summary>
         [SetUp]
         protected override void Setup()
         {
@@ -29,6 +33,9 @@ namespace Attest.Tests.NUnit
             SetupOverride();
         }
 
+        /// <summary>
+        /// Override this method to implement custom test teardown logic
+        /// </summary>
         [TearDown]
         protected override void TearDown()
         {

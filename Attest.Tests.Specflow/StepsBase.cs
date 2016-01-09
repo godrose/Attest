@@ -8,8 +8,7 @@ namespace Attest.Tests.SpecFlow
     /// <summary>
     /// Base class for step-containing classes, primarily used for [Given] steps
     /// </summary>
-    /// <typeparam name="TFakeFactory"></typeparam>
-    public abstract class StepsBase<TFakeFactory> where TFakeFactory : IFakeFactory, new()
+    public abstract class StepsBase
     {
         /// <summary>
         /// Registers service instance into the scenario context
@@ -18,7 +17,7 @@ namespace Attest.Tests.SpecFlow
         /// <param name="instance">Instance to be registered</param>
         protected void RegisterInstance<TService>(TService instance) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterInstance(GetIocContainer(), instance);
+            TestsHelper.RegisterInstance(GetIocContainer(), instance);
         }
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace Attest.Tests.SpecFlow
         public static void RegisterTransient<TService, TImplementation>()
             where TImplementation : class, TService
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterTransient<TService, TImplementation>(GetIocContainer());
+            TestsHelper.RegisterTransient<TService, TImplementation>(GetIocContainer());
         }
 
         /// <summary>
@@ -39,17 +38,8 @@ namespace Attest.Tests.SpecFlow
         /// <param name="builder">Builder to be registered</param>
         protected void RegisterBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterBuilder(GetIocContainer(), builder);
-        }
-
-        /// <summary>
-        /// Registers service stub into the scenario context
-        /// </summary>
-        /// <typeparam name="TService">Type of service</typeparam>
-        protected void RegisterStub<TService>() where TService : class
-        {
-            IntegrationTestsHelper<TFakeFactory>.RegisterStub<TService>(GetIocContainer());
-        }
+            TestsHelper.RegisterBuilder(GetIocContainer(), builder);
+        }        
 
         /// <summary>
         /// Registers service fake into the scenario context
@@ -58,7 +48,7 @@ namespace Attest.Tests.SpecFlow
         /// <param name="fake">Fake to be registered</param>
         protected void RegisterFake<TService>(IFake<TService> fake) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterFake(GetIocContainer(), fake);
+            TestsHelper.RegisterFake(GetIocContainer(), fake);
         }
 
         /// <summary>
@@ -68,7 +58,7 @@ namespace Attest.Tests.SpecFlow
         /// <param name="fake">Mock to be registered</param>
         protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
         {
-            IntegrationTestsHelper<TFakeFactory>.RegisterMock(GetIocContainer(), fake);
+            TestsHelper.RegisterMock(GetIocContainer(), fake);
         }
 
         /// <summary>
@@ -83,7 +73,7 @@ namespace Attest.Tests.SpecFlow
 
         private static IIocContainer GetIocContainer()
         {
-            return (IIocContainer)ScenarioHelper.Container;
+            return ScenarioHelper.Container;
         }
     }
 }
