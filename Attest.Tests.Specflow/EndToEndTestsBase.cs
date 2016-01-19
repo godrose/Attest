@@ -1,25 +1,18 @@
 ﻿using Attest.Tests.Core;
-using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
 
 namespace Attest.Tests.SpecFlow
 {
     /// <summary>
     /// Base class for all End-To-End tests that use SpecFlow as test framework provider
-    /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container</typeparam>
-    public abstract class EndToEndTestsBase<TContainer> : Core.EndToEndTestsBase<TContainer> 
-        where TContainer : IIocContainer, new()
-    {
-        private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
-
+    /// </summary>    
+    public abstract class EndToEndTestsBase : Core.EndToEndTestsBase
+    {        
         /// <summary>
-        /// Initializes a new instance of the <see cref="EndToEndTestsBase{TContainer}"/> class.
-        /// </summary>
-        /// <param name="container">The container.</param>
-        protected EndToEndTestsBase(TContainer container)
-        {
-            _initializationParametersManager = new InitializationParametersManager<TContainer>(container);
+        /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
+        /// </summary>        
+        protected EndToEndTestsBase()
+        {            
             Core.ScenarioContext.Current = new Scenario();
         }
 
@@ -45,11 +38,7 @@ namespace Attest.Tests.SpecFlow
         }
 
         private void SetupCore()
-        {
-            var initializationParameters = _initializationParametersManager.GetInitializationParameters();            
-            IocContainer = initializationParameters.IocContainer;            
-            //Then the scenario helper is initialized with the new instance of the IoC container
-            ScenarioHelper.Initialize(IocContainer);
+        {           
         }
 
         /// <summary>

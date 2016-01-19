@@ -6,17 +6,10 @@ using Solid.Practices.IoC;
 namespace Attest.Tests.Core
 {
     /// <summary>
-    /// Base class for tests
+    /// Base class for all tests
     /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container</typeparam>
-    public abstract class TestsBase<TContainer>
-        where TContainer : IIocContainer, new()
-    {       
-        /// <summary>
-        /// IoC container
-        /// </summary>
-        protected TContainer IocContainer;
-
+    public abstract class TestsBase
+    {
         /// <summary>
         /// Override this method to implement custom test setup logic
         /// </summary>
@@ -26,6 +19,19 @@ namespace Attest.Tests.Core
         /// Override this method to implement custom test teardown logic
         /// </summary>
         protected abstract void TearDown();
+    }
+
+    /// <summary>
+    /// Base class for tests with IoC container
+    /// </summary>
+    /// <typeparam name="TContainer">Type of IoC container</typeparam>
+    public abstract class TestsBase<TContainer> : TestsBase
+        where TContainer : IIocContainer, new()
+    {       
+        /// <summary>
+        /// IoC container
+        /// </summary>
+        protected TContainer IocContainer;       
 
         /// <summary>
         /// Registers service instance into the IoC container

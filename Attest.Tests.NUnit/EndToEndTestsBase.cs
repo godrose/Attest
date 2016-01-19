@@ -1,25 +1,18 @@
 ﻿using Attest.Tests.Core;
 using NUnit.Framework;
-using Solid.Practices.IoC;
 
 namespace Attest.Tests.NUnit
 {
     /// <summary>
     /// Base class for all End-To-End tests that use NUnit as test framework provider
-    /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container</typeparam>
-    public abstract class EndToEndTestsBase<TContainer> : Core.EndToEndTestsBase<TContainer>
-        where TContainer : IIocContainer, new()
-    {
-        private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
-
+    /// </summary>    
+    public abstract class EndToEndTestsBase : Core.EndToEndTestsBase        
+    {        
         /// <summary>
-        /// Initializes a new instance of the <see cref="EndToEndTestsBase{TContainer}"/> class.
-        /// </summary>
-        /// <param name="container">The container.</param>
-        protected EndToEndTestsBase(TContainer container)
+        /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
+        /// </summary>        
+        protected EndToEndTestsBase()
         {
-            _initializationParametersManager = new InitializationParametersManager<TContainer>(container);
             ScenarioContext.Current = new Scenario();
         }
 
@@ -46,10 +39,7 @@ namespace Attest.Tests.NUnit
 
         private void SetupCore()
         {
-            var initializationParameters = _initializationParametersManager.GetInitializationParameters();
-            IocContainer = initializationParameters.IocContainer;
-            //Then the scenario helper is initialized with the new instance of the IoC container
-            ScenarioHelper.Initialize(IocContainer);
+            
         }
 
         /// <summary>
