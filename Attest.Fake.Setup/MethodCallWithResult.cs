@@ -34,16 +34,16 @@ namespace Attest.Fake.Setup
         public abstract void Accept(IMethodCallWithResultVisitor<TService> visitor);
     }
 
-    public class MethodCallWithResult0<TService, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<TResult>, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<TResult>, TResult> where TService : class
+    public class MethodCallWithResult<TService, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<TResult>, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<TResult>, TResult> where TService : class
     {
-        private MethodCallWithResult0(Expression<Func<TService, TResult>> runMethod)
+        private MethodCallWithResult(Expression<Func<TService, TResult>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<TResult>, TResult> CreateMethodCall(Expression<Func<TService, TResult>> runMethod)
         {
-            return new MethodCallWithResult0<TService, TResult>(runMethod);
+            return new MethodCallWithResult<TService, TResult>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> Complete(TResult result)
@@ -82,16 +82,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCallWithResult1<TService, T, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T, TResult>, T, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult> where TService : class
+    public class MethodCallWithResult<TService, T, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T, TResult>, T, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult> where TService : class
     {
-        private MethodCallWithResult1(Expression<Func<TService, TResult>> runMethod)
+        private MethodCallWithResult(Expression<Func<TService, TResult>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T, TResult>, T, TResult> CreateMethodCall(Expression<Func<TService, TResult>> runMethod)
         {
-            return new MethodCallWithResult1<TService, T, TResult>(runMethod);
+            return new MethodCallWithResult<TService, T, TResult>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> Complete(TResult result)
@@ -130,16 +130,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCallWithResult2<TService, T1, T2, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> where TService : class
+    public class MethodCallWithResult<TService, T1, T2, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> where TService : class
     {
-        private MethodCallWithResult2(Expression<Func<TService, TResult>> runMethod)
+        private MethodCallWithResult(Expression<Func<TService, TResult>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> CreateMethodCall(Expression<Func<TService, TResult>> runMethod)
         {
-            return new MethodCallWithResult2<TService, T1, T2, TResult>(runMethod);
+            return new MethodCallWithResult<TService, T1, T2, TResult>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, TResult>> Complete(TResult result)
@@ -178,16 +178,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCallWithResult3<TService, T1, T2, T3, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> where TService : class
+    public class MethodCallWithResult<TService, T1, T2, T3, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> where TService : class
     {
-        private MethodCallWithResult3(Expression<Func<TService, TResult>> runMethod)
+        private MethodCallWithResult(Expression<Func<TService, TResult>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> CreateMethodCall(Expression<Func<TService, TResult>> runMethod)
         {
-            return new MethodCallWithResult3<TService, T1, T2, T3, TResult>(runMethod);
+            return new MethodCallWithResult<TService, T1, T2, T3, TResult>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> Complete(TResult result)
@@ -226,16 +226,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCallWithResult4<TService, T1, T2, T3, T4, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> where TService : class
+    public class MethodCallWithResult<TService, T1, T2, T3, T4, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> where TService : class
     {
-        private MethodCallWithResult4(Expression<Func<TService, TResult>> runMethod)
+        private MethodCallWithResult(Expression<Func<TService, TResult>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> CreateMethodCall(Expression<Func<TService, TResult>> runMethod)
         {
-            return new MethodCallWithResult4<TService, T1, T2, T3, T4, TResult>(runMethod);
+            return new MethodCallWithResult<TService, T1, T2, T3, T4, TResult>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>> Complete(TResult result)
@@ -274,16 +274,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCallWithResult5<TService, T1, T2, T3, T4, T5, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> where TService : class
+    public class MethodCallWithResult<TService, T1, T2, T3, T4, T5, TResult> : MethodCallWithResultBase<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult>, IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>, IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>, IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> where TService : class
     {
-        private MethodCallWithResult5(Expression<Func<TService, TResult>> runMethod)
+        private MethodCallWithResult(Expression<Func<TService, TResult>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallWithResultInitialTemplate<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> CreateMethodCall(Expression<Func<TService, TResult>> runMethod)
         {
-            return new MethodCallWithResult5<TService, T1, T2, T3, T4, T5, TResult>(runMethod);
+            return new MethodCallWithResult<TService, T1, T2, T3, T4, T5, TResult>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>> Complete(TResult result)

@@ -39,15 +39,15 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCall0<TService> : MethodCallBase<TService, IMethodCallback> where TService : class
+    public class MethodCall<TService> : MethodCallBase<TService, IMethodCallback> where TService : class
     {
-        private MethodCall0(Expression<Action<TService>> runMethod) : base(runMethod)
+        private MethodCall(Expression<Action<TService>> runMethod) : base(runMethod)
         {
         }
 
         public static IMethodCallInitialTemplate<TService, IMethodCallback> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
-            return new MethodCall0<TService>(runMethod);
+            return new MethodCall<TService>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallback> Complete()
@@ -70,16 +70,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCall1<TService, T> : MethodCallBase<TService, IMethodCallback<T>> where TService : class
+    public class MethodCall<TService, T> : MethodCallBase<TService, IMethodCallback<T>> where TService : class
     {
-        private MethodCall1(Expression<Action<TService>> runMethod)
+        private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallInitialTemplate<TService, IMethodCallback<T>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
-            return new MethodCall1<TService, T>(runMethod);
+            return new MethodCall<TService, T>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T>> Complete()
@@ -102,16 +102,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCall2<TService, T1, T2> : MethodCallBase<TService, IMethodCallback<T1, T2>> where TService : class
+    public class MethodCall<TService, T1, T2> : MethodCallBase<TService, IMethodCallback<T1, T2>> where TService : class
     {
-        private MethodCall2(Expression<Action<TService>> runMethod)
+        private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
-            return new MethodCall2<TService, T1, T2>(runMethod);
+            return new MethodCall<TService, T1, T2>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2>> Complete()
@@ -134,16 +134,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCall3<TService, T1, T2, T3> : MethodCallBase<TService, IMethodCallback<T1, T2, T3>> where TService : class
+    public class MethodCall<TService, T1, T2, T3> : MethodCallBase<TService, IMethodCallback<T1, T2, T3>> where TService : class
     {
-        private MethodCall3(Expression<Action<TService>> runMethod)
+        private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
-            return new MethodCall3<TService, T1, T2, T3>(runMethod);
+            return new MethodCall<TService, T1, T2, T3>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3>> Complete()
@@ -166,16 +166,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCall4<TService, T1, T2, T3, T4> : MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4>> where TService : class
+    public class MethodCall<TService, T1, T2, T3, T4> : MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4>> where TService : class
     {
-        private MethodCall4(Expression<Action<TService>> runMethod)
+        private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
-            return new MethodCall4<TService, T1, T2, T3, T4>(runMethod);
+            return new MethodCall<TService, T1, T2, T3, T4>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4>> Complete()
@@ -198,16 +198,16 @@ namespace Attest.Fake.Setup
         }
     }
 
-    public class MethodCall5<TService, T1, T2, T3, T4, T5> : MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4, T5>> where TService : class
+    public class MethodCall<TService, T1, T2, T3, T4, T5> : MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4, T5>> where TService : class
     {
-        private MethodCall5(Expression<Action<TService>> runMethod)
+        private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
         {
         }
 
         public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3, T4, T5>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
-            return new MethodCall5<TService, T1, T2, T3, T4, T5>(runMethod);
+            return new MethodCall<TService, T1, T2, T3, T4, T5>(runMethod);
         }
 
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4, T5>> Complete()
