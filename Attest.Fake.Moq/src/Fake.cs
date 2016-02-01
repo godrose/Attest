@@ -39,21 +39,36 @@ namespace Attest.Fake.Moq
             return new MoqFakeCallbackWithResult<TFaked, TResult>(_fake.Setup(expression));
         }
 
+        /// <summary>
+        /// Faked service
+        /// </summary>
         public TFaked Object
         {
             get { return _fake.Object; }
         }
 
+        /// <summary>
+        /// Verifies that a specific method was called on the fake
+        /// </summary>
+        /// <param name="expression">Verified method's call definition</param>
         public void VerifyCall(Expression<Action<TFaked>> expression)
         {
             _fake.Verify(expression);
         }
 
+        /// <summary>
+        /// Verifies that a specific method was not called on the fake
+        /// </summary>
+        /// <param name="expression">Verified method's call definition</param>
         public void VerifyNoCall(Expression<Action<TFaked>> expression)
         {
             _fake.Verify(expression, Times.Never);
         }
 
+        /// <summary>
+        /// Verifies that a specific method was called exactly once on the fake
+        /// </summary>
+        /// <param name="expression">Verified method's call definition</param>
         public void VerifySingleCall(Expression<Action<TFaked>> expression)
         {
             _fake.Verify(expression, Times.Once);

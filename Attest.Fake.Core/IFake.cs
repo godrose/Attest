@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 namespace Attest.Fake.Core
 {
     /// <summary>
-    /// Represents the general interface for a fake
+    /// Represents an abstraction for a fake object.
     /// </summary>
     /// <typeparam name="TFaked">Type of faked service</typeparam>
     public interface IFake<TFaked> : IMock<TFaked> where TFaked: class
