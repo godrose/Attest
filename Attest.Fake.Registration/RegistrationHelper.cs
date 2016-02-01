@@ -33,11 +33,11 @@ namespace Attest.Fake.Registration
         }
 
         /// <summary>
-        /// Registers service bulder into the IoC container
+        /// Registers service from its builder into the IoC container
         /// </summary>
         /// <typeparam name="TService">Type of service</typeparam>
         /// <param name="container">IoC container</param>
-        /// <param name="builder">Builder to be registered</param>
+        /// <param name="builder">Service builder</param>
         public static void RegisterBuilder<TService>(IIocContainer container, FakeBuilderBase<TService> builder) where TService : class
         {
             RegisterInstance(container, builder.GetService());
