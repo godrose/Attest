@@ -107,8 +107,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
     /// <typeparam name="T3">Type of third parameter</typeparam>
-    /// <typeparam name="T4">Type of fourth parameter</typeparam>
-    /// <typeparam name="T5">Type of fifth parameter</typeparam>
+    /// <typeparam name="T4">Type of fourth parameter</typeparam>    
     /// <typeparam name="TResult">Type of return value</typeparam>
     public interface IAddCallbackWithResult<TCallback, T1, T2, T3, T4, in TResult> : IAddCallbackWithResultShared<TCallback, TResult>
     {

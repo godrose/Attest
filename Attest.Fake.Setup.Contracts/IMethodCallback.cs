@@ -17,6 +17,12 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T">Type of parameter</typeparam>
     public interface IMethodCallback<T> : IAcceptorWithParameters<IMethodCallbackVisitor<T>, T>
     {
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
         Action<T> Callback { get; }
     }
 
@@ -27,6 +33,12 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">Type of second parameter</typeparam>
     public interface IMethodCallback<T1, T2> : IAcceptorWithParameters<IMethodCallbackVisitor<T1, T2>, T1, T2>
     {
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
         Action<T1, T2> Callback { get; }
     }
 
@@ -38,6 +50,12 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T3">Type of third parameter</typeparam>
     public interface IMethodCallback<T1, T2, T3> : IAcceptorWithParameters<IMethodCallbackVisitor<T1, T2, T3>, T1, T2, T3>
     {
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
         Action<T1, T2, T3> Callback { get; }
     }
 
@@ -50,6 +68,12 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T4">Type of fourth parameter</typeparam>
     public interface IMethodCallback<T1, T2, T3, T4> : IAcceptorWithParameters<IMethodCallbackVisitor<T1, T2, T3, T4>, T1, T2, T3, T4>
     {
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
         Action<T1, T2, T3, T4> Callback { get; }
     }
 
@@ -63,6 +87,12 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T5">Type of fifth parameter</typeparam>
     public interface IMethodCallback<T1, T2, T3, T4, T5> : IAcceptorWithParameters<IMethodCallbackVisitor<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>
     {
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
         Action<T1, T2, T3, T4, T5> Callback { get; }
     }
 }

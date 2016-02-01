@@ -41,6 +41,10 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TService"></typeparam>
     public interface IAppendMethods<TService> where TService : class
     {
+        /// <summary>
+        /// Appends the method calls.
+        /// </summary>
+        /// <param name="otherMethods">The other methods.</param>
         void AppendMethods(IHaveMethods<TService> otherMethods);
     }
 

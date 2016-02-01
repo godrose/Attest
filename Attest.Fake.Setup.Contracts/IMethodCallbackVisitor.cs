@@ -1,7 +1,7 @@
 namespace Attest.Fake.Setup.Contracts
 {
     /// <summary>
-    /// Represents visitor for different callbacks without return value and no parameters
+    /// Represents visitor for different callbacks without return value and no parameters.
     /// </summary>
     public interface IMethodCallbackVisitor
     {
@@ -31,8 +31,9 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents visitor for different callbacks without return value and one parameter
+    /// Represents visitor for different callbacks without return value and 1 parameter.
     /// </summary>
+    /// <typeparam name="T">The type of the parameter.</typeparam>
     public interface IMethodCallbackVisitor<T>
     {
         /// <summary>
@@ -51,8 +52,10 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents visitor for different callbacks without return value and two parameters
+    /// Represents visitor for different callbacks without return value and 2 parameters.
     /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
     public interface IMethodCallbackVisitor<T1, T2>
     {
         /// <summary>
@@ -73,8 +76,11 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents visitor for different callbacks without return value and three parameters
+    /// Represents visitor for different callbacks without return value and 2 parameters.
     /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third parameter.</typeparam>
     public interface IMethodCallbackVisitor<T1, T2, T3>
     {
         /// <summary>
@@ -97,8 +103,12 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents visitor for different callbacks without return value and four parameters
+    /// Represents visitor for different callbacks without return value and 4 parameters.
     /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third parameter.</typeparam>
+    /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
     public interface IMethodCallbackVisitor<T1, T2, T3, T4>
     {
         /// <summary>
@@ -123,8 +133,13 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents visitor for different callbacks without return value and five parameters
+    /// Represents visitor for different callbacks without return value and 5 parameters.
     /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third parameter.</typeparam>
+    /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
+    /// <typeparam name="T5">The type of the fifth parameter.</typeparam>
     public interface IMethodCallbackVisitor<T1, T2, T3, T4, T5>
     {
         /// <summary>

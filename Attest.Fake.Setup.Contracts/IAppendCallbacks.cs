@@ -6,6 +6,10 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TCallback"></typeparam>
     public interface IAppendCallbacks<in TCallback>
     {
+        /// <summary>
+        /// Appends the callbacks.
+        /// </summary>
+        /// <param name="haveCallbacks">An object that has callbacks.</param>
         void AppendCallbacks(IHaveCallbacks<TCallback> haveCallbacks);
     }
 }
