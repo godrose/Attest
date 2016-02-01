@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</ProjectGuid>
+    <ProjectGuid>{257C1B0E-BD8D-4DDB-AC94-7494382D2C5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Fake.Core</RootNamespace>
-    <AssemblyName>Attest.Fake.Core</AssemblyName>
+    <RootNamespace>Attest.Fake.Moq</RootNamespace>
+    <AssemblyName>Attest.Fake.Moq</AssemblyName>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -26,24 +26,46 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\Fake\</OutputPath>
+    <OutputPath>..\..\bin\portable\Release\Fake\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\Fake\Attest.Fake.Core.XML</DocumentationFile>
+    <DocumentationFile>..\..\bin\portable\Release\Fake\Attest.Fake.Moq.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Shim, Version=1.0.2.0, Culture=neutral, PublicKeyToken=c55ec16d10c4b366, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\shim.1.0.2.50909\lib\portable-net45+netcore45+wpa81\Shim.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IFake.cs" />
-    <Compile Include="IFakeCallback.cs" />
-    <Compile Include="IFakeCallbackWithResult.cs" />
-    <Compile Include="IFakeFactory.cs" />
-    <Compile Include="IHaveFake.cs" />
-    <Compile Include="IMock.cs" />
+    <Compile Include="..\src\Fake.cs">
+      <Link>Fake.cs</Link>
+    </Compile>
+    <Compile Include="..\src\FakeCallback.cs">
+      <Link>FakeCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\FakeFactory.cs">
+      <Link>FakeFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\src\It.cs">
+      <Link>It.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Core\Attest.Fake.Core.csproj">
+      <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
+      <Name>Attest.Fake.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
