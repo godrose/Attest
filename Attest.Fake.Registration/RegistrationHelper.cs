@@ -33,7 +33,7 @@ namespace Attest.Fake.Registration
         }
 
         /// <summary>
-        /// Registers service from its builder into the IoC container
+        /// Builds service from its builder and registers it into the IoC container
         /// </summary>
         /// <typeparam name="TService">Type of service</typeparam>
         /// <param name="container">IoC container</param>

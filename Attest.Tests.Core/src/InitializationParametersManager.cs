@@ -39,9 +39,11 @@ namespace Attest.Tests.Core
                     case InitializationParametersResolutionStyle.PerRequest:
                     _initializationParametersResolutionStrategy = new InitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainer>();
                     break;
+#if NET45
                     case InitializationParametersResolutionStyle.PerFolder:
                     _initializationParametersResolutionStrategy = new InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer>();
                     break;
+#endif
                     case InitializationParametersResolutionStyle.PerFixture:
                     break;
                     case InitializationParametersResolutionStyle.Singleton:

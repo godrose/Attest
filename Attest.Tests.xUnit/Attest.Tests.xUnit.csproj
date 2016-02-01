@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Solid.Practices.IoC, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.IoC.1.0.6\lib\portable-net45+sl4+wp7+win8\Solid.Practices.IoC.dll</HintPath>
+      <HintPath>..\packages\Solid.Practices.IoC.1.0.7\lib\portable-net45+wpa8+win8\Solid.Practices.IoC.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -73,10 +73,6 @@
     <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj">
       <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
       <Name>Attest.Fake.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Tests.Core\Attest.Tests.Core.csproj">
-      <Project>{ca530825-0f66-41c4-9623-2b54985e1e46}</Project>
-      <Name>Attest.Tests.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
