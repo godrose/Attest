@@ -9,7 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Attest.Tests.SpecFlow</RootNamespace>
     <AssemblyName>Attest.Tests.SpecFlow</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -53,6 +55,10 @@
     <Compile Include="StepsBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Builders\portable\Attest.Fake.Builders.csproj">
+      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
+      <Name>Attest.Fake.Builders</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
@@ -61,12 +67,16 @@
       <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
       <Name>Attest.Fake.Registration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Attest.Tests.Core\portable\Attest.Tests.Core.csproj">
+      <Project>{CA530825-0F66-41C4-9623-2B54985E1E46}</Project>
+      <Name>Attest.Tests.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
