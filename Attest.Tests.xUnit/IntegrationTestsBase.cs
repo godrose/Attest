@@ -2,7 +2,7 @@
 using Attest.Tests.Core;
 using Solid.Practices.IoC;
 
-namespace Attest.Tests.XUnit
+namespace Attest.Tests.xUnit
 {
     /// <summary>
     /// Base class for all integration-tests fixtures that involve real IoC container and test bootstrapper

@@ -4,7 +4,7 @@ using Attest.Fake.Registration;
 using Attest.Tests.Core;
 using Solid.Practices.IoC;
 
-namespace Attest.Tests.NUnit
+namespace Attest.Tests.xUnit
 {
     /// <summary>
     /// Base class for step-containing classes, primarily used for [Given] steps
@@ -33,7 +33,7 @@ namespace Attest.Tests.NUnit
         }
 
         /// <summary>
-        /// Registers service builder into the scenario context
+        /// Builds service from its builder and registers it into the IoC container
         /// </summary>
         /// <typeparam name="TService">Type of service</typeparam>
         /// <param name="builder">Builder to be registered</param>

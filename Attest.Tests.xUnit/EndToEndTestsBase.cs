@@ -1,7 +1,7 @@
 ﻿using System;
 using Attest.Tests.Core;
 
-namespace Attest.Tests.XUnit
+namespace Attest.Tests.xUnit
 {
     /// <summary>
     /// Base class for all End-To-End tests that use xUnit.net as test framework provider

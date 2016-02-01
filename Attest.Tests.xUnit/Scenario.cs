@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Attest.Tests.Core;
 
-namespace Attest.Tests.XUnit
+namespace Attest.Tests.xUnit
 {
     internal class Scenario : IScenario
     {
