@@ -582,26 +582,26 @@ namespace Attest.Fake.Setup.Contracts
         IProgressableProcessFinished<TCallback>, IMethodCallback
     {
         /// <summary>
-        /// Completes the progress messsages stream by signaling successful completion.
+        /// Completes the progress messages stream by signaling successful completion.
         /// </summary>
         /// <returns></returns>
         public abstract IProgressableProcessFinished<TCallback> Complete();
 
         /// <summary>
-        /// Completes the progress messsages stream by throwing exception.
+        /// Completes the progress messages stream by throwing exception.
         /// </summary>
         /// <param name="exception">The exception.</param>
         /// <returns></returns>
         public abstract IProgressableProcessFinished<TCallback> Throw(Exception exception);
 
         /// <summary>
-        /// Completes the progress messsages stream by cancelling the associated operation.
+        /// Completes the progress messages stream by cancelling the associated operation.
         /// </summary>
         /// <returns></returns>
         public abstract IProgressableProcessFinished<TCallback> Cancel();
 
         /// <summary>
-        /// Completes the progress messsages stream by singaling a never-ending operation.
+        /// Completes the progress messages stream by signaling a never-ending operation.
         /// </summary>
         /// <returns></returns>
         public abstract IProgressableProcessFinished<TCallback> WithoutCallback();
@@ -650,7 +650,7 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         /// <summary>
-        /// Completes the progress messsages stream by signaling successful completion.
+        /// Completes the progress messages stream by signaling successful completion.
         /// </summary>
         /// <returns></returns>
         public override IProgressableProcessFinished<IMethodCallback> Complete()
@@ -662,7 +662,7 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         /// <summary>
-        /// Completes the progress messsages stream by throwing exception.
+        /// Completes the progress messages stream by throwing exception.
         /// </summary>
         /// <param name="exception">The exception.</param>
         /// <returns></returns>
@@ -673,7 +673,7 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         /// <summary>
-        /// Completes the progress messsages stream by cancelling the associated operation.
+        /// Completes the progress messages stream by cancelling the associated operation.
         /// </summary>
         /// <returns></returns>
         public override IProgressableProcessFinished<IMethodCallback> Cancel()
@@ -683,7 +683,7 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         /// <summary>
-        /// Completes the progress messsages stream by singaling a never-ending operation.
+        /// Completes the progress messages stream by signaling a never-ending operation.
         /// </summary>
         /// <returns></returns>
         public override IProgressableProcessFinished<IMethodCallback> WithoutCallback()

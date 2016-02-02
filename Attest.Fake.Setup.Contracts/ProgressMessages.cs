@@ -24,23 +24,23 @@ namespace Attest.Fake.Setup.Contracts
     public interface IProgressableProcessRunning<TCallback> : ICanAddProgressMessages
     {
         /// <summary>
-        /// Completes the progress messsages stream by signaling successful completion.
+        /// Completes the progress messages stream by signaling successful completion.
         /// </summary>
         /// <returns></returns>
         IProgressableProcessFinished<TCallback> Complete();
         /// <summary>
-        /// Completes the progress messsages stream by throwing exception.
+        /// Completes the progress messages stream by throwing exception.
         /// </summary>
         /// <param name="exception">The exception.</param>
         /// <returns></returns>
         IProgressableProcessFinished<TCallback> Throw(Exception exception);
         /// <summary>
-        /// Completes the progress messsages stream by cancelling the associated operation.
+        /// Completes the progress messages stream by cancelling the associated operation.
         /// </summary>
         /// <returns></returns>
         IProgressableProcessFinished<TCallback> Cancel();
         /// <summary>
-        /// Completes the progress messsages stream by singaling a never-ending operation.
+        /// Completes the progress messages stream by signaling a never-ending operation.
         /// </summary>
         /// <returns></returns>
         IProgressableProcessFinished<TCallback> WithoutCallback();
@@ -55,23 +55,23 @@ namespace Attest.Fake.Setup.Contracts
     public interface IProgressableProcessRunningWithResult<TCallback, TResult> : ICanAddProgressMessages
     {
         /// <summary>
-        /// Completes the progress messsages stream by signaling successful completion.
+        /// Completes the progress messages stream by signaling successful completion.
         /// </summary>
         /// <returns></returns>
         IProgressableProcessFinishedWithResult<TCallback, TResult> Complete(TResult result);
         /// <summary>
-        /// Completes the progress messsages stream by throwing exception.
+        /// Completes the progress messages stream by throwing exception.
         /// </summary>
         /// <param name="exception">The exception.</param>
         /// <returns></returns>
         IProgressableProcessFinishedWithResult<TCallback, TResult> Throw(Exception exception);
         /// <summary>
-        /// Completes the progress messsages stream by cancelling the associated operation.
+        /// Completes the progress messages stream by cancelling the associated operation.
         /// </summary>
         /// <returns></returns>
         IProgressableProcessFinishedWithResult<TCallback, TResult> Cancel();
         /// <summary>
-        /// Completes the progress messsages stream by singaling a never-ending operation.
+        /// Completes the progress messages stream by signaling a never-ending operation.
         /// </summary>
         /// <returns></returns>
         IProgressableProcessFinishedWithResult<TCallback, TResult> WithoutCallback();
@@ -118,6 +118,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
     /// <seealso cref="IHaveProgressMessages" />
+    // ReSharper disable once UnusedTypeParameter - no other way to differentiate between this and w/o return value
     public interface IProgressableProcessFinishedWithResult<out TCallback, TResult> : IHaveProgressMessages
     {
         /// <summary>
