@@ -14,14 +14,34 @@ namespace Attest.Fake.Setup
     {
         private int _index;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MethodCallbacksContainerBase{TCallback}"/> class.
+        /// </summary>
         protected MethodCallbacksContainerBase()
         {
             CallbackType = typeof (TCallback);
         }
 
+        /// <summary>
+        /// Gets the run method description.
+        /// </summary>
+        /// <value>
+        /// The run method description.
+        /// </value>
         public abstract string RunMethodDescription { get; protected set; }
+
+        /// <summary>
+        /// Gets the type of the callback.
+        /// </summary>
+        /// <value>
+        /// The type of the callback.
+        /// </value>
         public Type CallbackType { get; private set; }
 
+        /// <summary>
+        /// Call this method to yield the next callback from the collection of callbacks.
+        /// </summary>
+        /// <returns>Next callback</returns>
         public TCallback YieldCallback()
         {
             //last callback is the default one
@@ -31,11 +51,19 @@ namespace Attest.Fake.Setup
             return Callbacks.Count == 1 ? Callbacks.Single() : Callbacks[_index++];
         }
 
-        protected void AddCallbackImpl(TCallback methodCallback)
+        /// <summary>
+        /// Adds the callback to the end of the collection.
+        /// </summary>
+        /// <param name="methodCallback">The method callback.</param>
+        protected void AddCallbackInternal(TCallback methodCallback)
         {
             Callbacks.Add(methodCallback);
         }
 
+        /// <summary>
+        /// Appends the callbacks.
+        /// </summary>
+        /// <param name="haveCallbacks">An object that has callbacks.</param>
         public void AppendCallbacks(IHaveCallbacks<TCallback> haveCallbacks)
         {
             Callbacks.AddRange(haveCallbacks.Callbacks);

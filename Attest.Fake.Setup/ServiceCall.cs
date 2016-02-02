@@ -6,7 +6,13 @@ using Attest.Fake.Setup.Contracts;
 using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup
-{      
+{
+    /// <summary>
+    /// Represents a list of method calls on a specific type of service.
+    /// </summary>
+    /// <typeparam name="TService">The type of the service.</typeparam>
+    /// <seealso cref="Contracts.IServiceCall{TService}" />
+    /// <seealso cref="Contracts.IHaveNoMethods{TService}" />
     public class ServiceCall<TService> : IServiceCall<TService>, IHaveNoMethods<TService> where TService : class
     {
         private readonly IFake<TService> _fake;
@@ -28,6 +34,11 @@ namespace Attest.Fake.Setup
             get { return MethodCalls; }
         }
 
+        /// <summary>
+        /// Creates a new instance of <see cref="ServiceCall{TService}"/> without method calls.
+        /// </summary>
+        /// <param name="fake"></param>
+        /// <returns></returns>
         public static IHaveNoMethods<TService> CreateServiceCall(IFake<TService> fake)
         {
             return new ServiceCall<TService>(fake);
@@ -51,14 +62,27 @@ namespace Attest.Fake.Setup
                 }
                 AddMethodCallWithResultImpl(methodCallMetaData, newMethodWithResultInfo);
             }
-        }        
+        }
 
+        /// <summary>
+        /// Adds a new method call without return value.
+        /// </summary>
+        /// <typeparam name="TCallback">Type of callback.</typeparam>
+        /// <param name="methodCall">Method call.</param>
+        /// <returns>Service call</returns>
         public IServiceCall<TService> AddMethodCall<TCallback>(IMethodCall<TService,TCallback> methodCall)
         {
             AddMethodCallImpl(methodCall, methodCall);   
             return this;
         }
 
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <typeparam name="TCallback">Type of callback.</typeparam>
+        /// <typeparam name="TResult">Type of return value.</typeparam>
+        /// <param name="methodCall">Method call.</param>
+        /// <returns>Service call</returns>
         public IServiceCall<TService> AddMethodCall<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall)
         {
             AddMethodCallWithResultImpl(methodCall, methodCall);
@@ -125,12 +149,20 @@ namespace Attest.Fake.Setup
             return existingMethodInfoMetaData;
         }
 
+        /// <summary>
+        /// Sets the service calls and returns the fake object as its proxy.
+        /// </summary>
+        /// <returns></returns>
         public IFake<TService> SetupService()
         {
             return _serviceSetupFactory.SetupFakeService(_fake, MethodCalls.OfType<IMethodCall<TService>>(), 
                 MethodCalls.OfType<IMethodCallWithResult<TService>>());          
         }
 
+        /// <summary>
+        /// Appends the method calls.
+        /// </summary>
+        /// <param name="otherMethods">The other methods.</param>
         public void AppendMethods(IHaveMethods<TService> otherMethods)
         {
             foreach (var otherMethod in otherMethods.MethodCalls)

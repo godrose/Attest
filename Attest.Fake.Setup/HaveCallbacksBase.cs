@@ -9,7 +9,11 @@ namespace Attest.Fake.Setup
     /// <typeparam name="TCallback">Type of callback</typeparam>
     public abstract class HaveCallbacksBase<TCallback> : IHaveCallbacks<TCallback>
     {
+        /// <summary>
+        /// The collection of callbacks.
+        /// </summary>
         protected readonly List<TCallback> Callbacks = new List<TCallback>();
+
         IEnumerable<TCallback> IHaveCallbacks<TCallback>.Callbacks
         {
             get { return Callbacks; }
