@@ -133,7 +133,7 @@ namespace Attest.Fake.Setup
         /// <returns>Callbacks container</returns>
         public override IMethodCallbacksContainer<IMethodCallback> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback(() => { }, exception));
+            Callbacks.Add(new OnErrorCallback(exception));
             return this;
         }
 
@@ -198,7 +198,7 @@ namespace Attest.Fake.Setup
         /// <returns>Callbacks container</returns>
         public override IMethodCallbacksContainer<IMethodCallback<T>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<T>(r => { }, exception));
+            Callbacks.Add(new OnErrorCallback<T>(exception));
             return this;
         }
 
@@ -264,7 +264,7 @@ namespace Attest.Fake.Setup
         /// <returns>Callbacks container</returns>
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<T1, T2>((arg1, arg2) => { }, exception));
+            Callbacks.Add(new OnErrorCallback<T1, T2>(exception));
             return this;
         }
 
@@ -321,7 +321,7 @@ namespace Attest.Fake.Setup
         /// <returns>Callbacks container</returns>
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<T1, T2, T3>((arg1, arg2, arg3) => { }, exception));
+            Callbacks.Add(new OnErrorCallback<T1, T2, T3>(exception));
             return this;
         }
 
@@ -379,7 +379,7 @@ namespace Attest.Fake.Setup
         /// <returns>Callbacks container</returns>
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<T1, T2, T3, T4>((arg1, arg2, arg3, arg4) => { }, exception));
+            Callbacks.Add(new OnErrorCallback<T1, T2, T3, T4>(exception));
             return this;
         }
 
@@ -440,7 +440,7 @@ namespace Attest.Fake.Setup
         /// <returns>Callbacks container</returns>
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4, T5>> Throw(Exception exception)
         {
-            Callbacks.Add(new OnErrorCallback<T1, T2, T3, T4, T5>((arg1, arg2, arg3, arg4, arg5) => { }, exception));
+            Callbacks.Add(new OnErrorCallback<T1, T2, T3, T4, T5>(exception));
             return this;
         }
 

@@ -6,29 +6,12 @@ namespace Attest.Fake.Setup.Contracts
     /// Base class for method callbacks without return value and no parameters.
     /// </summary>
     public abstract class MethodCallbackBase : IMethodCallback
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MethodCallbackBase"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
-        protected MethodCallbackBase(Action callback)
-        {
-            Callback = callback;
-        }
-
+    {        
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
         /// <param name="visitor">The visitor.</param>
-        public abstract void Accept(IMethodCallbackVisitor visitor);
-
-        /// <summary>
-        /// Gets the callback.
-        /// </summary>
-        /// <value>
-        /// The callback.
-        /// </value>
-        public Action Callback { get; private set; }
+        public abstract void Accept(IMethodCallbackVisitor visitor);        
     }
 
     /// <summary>
@@ -36,24 +19,7 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="T">Type of parameter</typeparam>
     public abstract class MethodCallbackBase<T> : IMethodCallback<T>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MethodCallbackBase{T}"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
-        protected MethodCallbackBase(Action<T> callback)
-        {
-            Callback = callback;
-        }
-
-        /// <summary>
-        /// Gets the callback.
-        /// </summary>
-        /// <value>
-        /// The callback.
-        /// </value>
-        public Action<T> Callback { get; private set; }
-
+    {                
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -67,24 +33,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2> : IMethodCallback<T1, T2>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MethodCallbackBase{T1, T2}"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
-        protected MethodCallbackBase(Action<T1, T2> callback)
-        {
-            Callback = callback;
-        }
-
-        /// <summary>
-        /// Gets the callback.
-        /// </summary>
-        /// <value>
-        /// The callback.
-        /// </value>
-        public Action<T1, T2> Callback { get; private set; }
-
+    {               
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -99,24 +48,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">Type of second parameter</typeparam>
     /// <typeparam name="T3">Type of third parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2, T3> : IMethodCallback<T1, T2, T3>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MethodCallbackBase{T1, T2, T3}"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
-        protected MethodCallbackBase(Action<T1, T2, T3> callback)
-        {
-            Callback = callback;
-        }
-
-        /// <summary>
-        /// Gets the callback.
-        /// </summary>
-        /// <value>
-        /// The callback.
-        /// </value>
-        public Action<T1, T2, T3> Callback { get; private set; }
-
+    {               
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -132,24 +64,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T3">Type of third parameter</typeparam>
     /// <typeparam name="T4">Type of fourth parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2, T3, T4> : IMethodCallback<T1, T2, T3, T4>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MethodCallbackBase{T1, T2, T3, T4}"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
-        protected MethodCallbackBase(Action<T1, T2, T3, T4> callback)
-        {
-            Callback = callback;
-        }
-
-        /// <summary>
-        /// Gets the callback.
-        /// </summary>
-        /// <value>
-        /// The callback.
-        /// </value>
-        public Action<T1, T2, T3, T4> Callback { get; private set; }
-
+    {        
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -166,24 +81,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T4">Type of fourth parameter</typeparam>
     /// <typeparam name="T5">Type of fifth parameter</typeparam>
     public abstract class MethodCallbackBase<T1, T2, T3, T4, T5> : IMethodCallback<T1, T2, T3, T4, T5>
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MethodCallbackBase{T1, T2, T3, T4, T5}"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
-        protected MethodCallbackBase(Action<T1, T2, T3, T4, T5> callback)
-        {
-            Callback = callback;
-        }
-
-        /// <summary>
-        /// Gets the callback.
-        /// </summary>
-        /// <value>
-        /// The callback.
-        /// </value>
-        public Action<T1, T2, T3, T4, T5> Callback { get; private set; }
-
+    {        
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -200,9 +98,18 @@ namespace Attest.Fake.Setup.Contracts
         /// Initializes a new instance of the <see cref="OnCompleteCallback"/> class.
         /// </summary>
         /// <param name="callback">The callback.</param>
-        public OnCompleteCallback(Action callback) : base(callback)
+        public OnCompleteCallback(Action callback)
         {
+            Callback = callback;
         }
+
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
+        public Action Callback { get; private set; }
 
         /// <summary>
         /// Accepts the specified visitor.
@@ -225,9 +132,17 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         /// <param name="callback">The callback.</param>
         public OnCompleteCallback(Action<T> callback)
-            : base(callback)
         {
+            Callback = callback;
         }
+
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
+        public Action<T> Callback { get; private set; }
 
         /// <summary>
         /// Accepts the specified visitor.
@@ -251,9 +166,17 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         /// <param name="callback">The callback.</param>
         public OnCompleteCallback(Action<T1, T2> callback)
-            : base(callback)
         {
+            Callback = callback;
         }
+
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
+        public Action<T1, T2> Callback { get; private set; }
 
         /// <summary>
         /// Accepts the specified visitor.
@@ -278,9 +201,17 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         /// <param name="callback">The callback.</param>
         public OnCompleteCallback(Action<T1, T2, T3> callback)
-            : base(callback)
         {
+            Callback = callback;
         }
+
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
+        public Action<T1, T2, T3> Callback { get; private set; }
 
         /// <summary>
         /// Accepts the specified visitor.
@@ -306,9 +237,17 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         /// <param name="callback">The callback.</param>
         public OnCompleteCallback(Action<T1, T2, T3, T4> callback)
-            : base(callback)
         {
+            Callback = callback;
         }
+
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
+        public Action<T1, T2, T3, T4> Callback { get; private set; }
 
         /// <summary>
         /// Accepts the specified visitor.
@@ -335,9 +274,17 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         /// <param name="callback">The callback.</param>
         public OnCompleteCallback(Action<T1, T2, T3, T4, T5> callback)
-            : base(callback)
         {
+            Callback = callback;
         }
+
+        /// <summary>
+        /// Gets the callback.
+        /// </summary>
+        /// <value>
+        /// The callback.
+        /// </value>
+        public Action<T1, T2, T3, T4, T5> Callback { get; private set; }
 
         /// <summary>
         /// Accepts the specified visitor.
@@ -356,11 +303,9 @@ namespace Attest.Fake.Setup.Contracts
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OnErrorCallback"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
+        /// </summary>        
         /// <param name="exception">The exception.</param>
-        public OnErrorCallback(Action callback, Exception exception)
-            : base(callback)
+        public OnErrorCallback(Exception exception)            
         {
             Exception = exception;
         }
@@ -389,10 +334,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Initializes a new instance of the <see cref="OnErrorCallback{T}"/> class.
         /// </summary>
-        /// <param name="callback">The callback.</param>
         /// <param name="exception">The exception.</param>
-        public OnErrorCallback(Action<T> callback, Exception exception)
-            : base(callback)
+        public OnErrorCallback(Exception exception)           
         {
             Exception = exception;
         }
@@ -422,10 +365,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Initializes a new instance of the <see cref="OnErrorCallback{T1, T2}"/> class.
         /// </summary>
-        /// <param name="callback">The callback.</param>
         /// <param name="exception">The exception.</param>
-        public OnErrorCallback(Action<T1, T2> callback, Exception exception)
-            : base(callback)
+        public OnErrorCallback(Exception exception)
         {
             Exception = exception;
         }
@@ -456,10 +397,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Initializes a new instance of the <see cref="OnErrorCallback{T1, T2, T3}"/> class.
         /// </summary>
-        /// <param name="callback">The callback.</param>
         /// <param name="exception">The exception.</param>
-        public OnErrorCallback(Action<T1, T2, T3> callback, Exception exception)
-            : base(callback)
+        public OnErrorCallback(Exception exception)
         {
             Exception = exception;
         }
@@ -491,10 +430,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Initializes a new instance of the <see cref="OnErrorCallback{T1, T2, T3, T4}"/> class.
         /// </summary>
-        /// <param name="callback">The callback.</param>
         /// <param name="exception">The exception.</param>
-        public OnErrorCallback(Action<T1, T2, T3, T4> callback, Exception exception)
-            : base(callback)
+        public OnErrorCallback(Exception exception)
         {
             Exception = exception;
         }
@@ -527,10 +464,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Initializes a new instance of the <see cref="OnErrorCallback{T1, T2, T3, T4, T5}"/> class.
         /// </summary>
-        /// <param name="callback">The callback.</param>
         /// <param name="exception">The exception.</param>
-        public OnErrorCallback(Action<T1, T2, T3, T4, T5> callback, Exception exception)
-            : base(callback)
+        public OnErrorCallback(Exception exception)
         {
             Exception = exception;
         }
@@ -555,15 +490,6 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     public class OnCancelCallback : MethodCallbackBase
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OnCancelCallback"/> class.
-        /// </summary>
-        /// <param name="callback">The callback.</param>
-        public OnCancelCallback(Action callback)
-            : base(callback)
-        {
-        }
-
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -668,7 +594,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         public override IProgressableProcessFinished<IMethodCallback> Throw(Exception exception)
         {
-            FinishCallback = new OnErrorCallback(() => { }, exception);
+            FinishCallback = new OnErrorCallback(exception);
             return this;
         }
 
@@ -678,7 +604,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         public override IProgressableProcessFinished<IMethodCallback> Cancel()
         {
-            FinishCallback = new OnCancelCallback(() => { });
+            FinishCallback = new OnCancelCallback();
             return this;
         }
 

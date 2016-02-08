@@ -414,7 +414,6 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         public Exception Exception { get; private set; }
 
-
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
