@@ -28,6 +28,12 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         /// <param name="onCancelCallback">Callback</param>
         void Visit(OnCancelCallback onCancelCallback);
+
+        /// <summary>
+        /// Visits never-ending callback.
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        void Visit(OnWithoutCallback withoutCallback);
     }
 
     /// <summary>
@@ -49,6 +55,27 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="onCompleteCallback">Callback</param>
         /// <param name="arg">Parameter</param>
         void Visit(OnCompleteCallback<T> onCompleteCallback, T arg);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg">Parameter.</param>
+        void Visit(ProgressCallback<T> progressCallback, T arg);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg">Parameter.</param>
+        void Visit(OnCancelCallback<T> onCancelCallback, T arg);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg">Parameter.</param>
+        void Visit(OnWithoutCallback<T> withoutCallback, T arg);
     }
 
     /// <summary>

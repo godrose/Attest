@@ -109,7 +109,7 @@ namespace Attest.Fake.Setup.Contracts
         /// Return the correspondent method callback.
         /// </summary>
         /// <returns></returns>
-        IMethodCallback AsMethodCallback();
+        TCallback AsMethodCallback();
     }
 
     /// <summary>

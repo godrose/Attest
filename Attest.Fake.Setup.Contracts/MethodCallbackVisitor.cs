@@ -1,3 +1,5 @@
+using System;
+
 namespace Attest.Fake.Setup.Contracts
 {
     /// <summary>
@@ -29,14 +31,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="progressCallback">Callback</param>
         public void Visit(ProgressCallback progressCallback)
         {
-            throw new ProgressMessageException(progressCallback.ProgressMessages,
-                () =>
-                {
-                    if (progressCallback.FinishCallback != null)
-                    {
-                        progressCallback.FinishCallback.Accept(this);
-                    }                    
-                });
+            VisitProgressImpl(progressCallback, c => c.Accept(this));           
         }
 
         /// <summary>
@@ -45,7 +40,16 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="onCancelCallback">Callback</param>
         public void Visit(OnCancelCallback onCancelCallback)
         {
-            throw new CancelCallbackException();
+            VisitCancelImpl();
+        }
+
+        /// <summary>
+        /// Visits never-ending callback.
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        public void Visit(OnWithoutCallback withoutCallback)
+        {
+            VisitWithoutImpl();
         }
     }
 
@@ -73,6 +77,36 @@ namespace Attest.Fake.Setup.Contracts
         public void Visit(OnCompleteCallback<T> onCompleteCallback, T arg)
         {
             onCompleteCallback.Callback(arg);
+        }
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg">Parameter.</param>
+        public void Visit(ProgressCallback<T> progressCallback, T arg)
+        {
+            VisitProgressImpl(progressCallback, c => c.Accept(this, arg));            
+        }
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg">Parameter.</param>
+        public void Visit(OnCancelCallback<T> onCancelCallback, T arg)
+        {
+            VisitCancelImpl();
+        }
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg">Parameter.</param>
+        public void Visit(OnWithoutCallback<T> withoutCallback, T arg)
+        {
+            VisitWithoutImpl();
         }
     }
 
@@ -227,6 +261,29 @@ namespace Attest.Fake.Setup.Contracts
         internal static void VisitErrorImpl(IThrowException onErrorCallback)
         {
             throw onErrorCallback.Exception;
+        }
+
+        internal static void VisitProgressImpl<TCallback>(IProgressableProcessFinished<TCallback> progressCallback, 
+            Action<TCallback> callbackAcceptor)
+        {
+            throw new ProgressMessageException(progressCallback.ProgressMessages,
+                () =>
+                {
+                    if (progressCallback.FinishCallback != null)
+                    {
+                        callbackAcceptor(progressCallback.FinishCallback);                        
+                    }
+                });
+        }
+
+        internal static void VisitCancelImpl()
+        {
+            throw new CancelCallbackException();
+        }
+
+        internal static void VisitWithoutImpl()
+        {
+            throw new WithoutCallbackException();
         }
     }
 }

@@ -498,14 +498,63 @@ namespace Attest.Fake.Setup.Contracts
         {
             visitor.Visit(this);
         }
-    }    
+    }
+
+    /// <summary>
+    /// Represents cancellation callback with return value and 1 parameter.
+    /// </summary>
+    /// <typeparam name="T">The type of the parameter.</typeparam>    
+    public class OnCancelCallback<T> : MethodCallbackBase<T>
+    {
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg">The argument.</param>
+        /// <returns/>
+        public override void Accept(IMethodCallbackVisitor<T> visitor, T arg)
+        {
+            visitor.Visit(this, arg);
+        }
+    }
+
+    /// <summary>
+    /// Represents never-ending callback without return value.
+    /// </summary>    
+    public class OnWithoutCallback : MethodCallbackBase
+    {
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        public override void Accept(IMethodCallbackVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+    }
+
+    /// <summary>
+    /// Represents never-ending callback without return value and 1 parameter.
+    /// </summary>
+    /// <typeparam name="T">The type of the parameter.</typeparam>    
+    public class OnWithoutCallback<T> : MethodCallbackBase<T>
+    {
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param><param name="arg">The argument.</param>
+        public override void Accept(IMethodCallbackVisitor<T> visitor, T arg)
+        {
+            visitor.Visit(this, arg);
+        }
+    }
 
     /// <summary>
     /// Base class for progress callbacks
     /// </summary>
     /// <typeparam name="TCallback">Type of callback</typeparam>
     public abstract class ProgressCallbackBase<TCallback> : ProgressMessagesBase, IProgressableProcessRunning<TCallback>,
-        IProgressableProcessFinished<TCallback>, IMethodCallback
+        IProgressableProcessFinished<TCallback>
     {
         /// <summary>
         /// Completes the progress messages stream by signaling successful completion.
@@ -544,22 +593,13 @@ namespace Attest.Fake.Setup.Contracts
         /// Return the correspondent method callback.
         /// </summary>
         /// <returns></returns>
-        public IMethodCallback AsMethodCallback()
-        {
-            return this;
-        }
-
-        /// <summary>
-        /// Accepts the specified visitor.
-        /// </summary>
-        /// <param name="visitor">The visitor.</param>
-        public abstract void Accept(IMethodCallbackVisitor visitor);
+        public abstract TCallback AsMethodCallback();
     }
 
     /// <summary>
     /// Represents progress callback
     /// </summary>
-    public class ProgressCallback : ProgressCallbackBase<IMethodCallback>
+    public class ProgressCallback : ProgressCallbackBase<IMethodCallback>, IMethodCallback
     {
         private ProgressCallback()
         {
@@ -618,12 +658,101 @@ namespace Attest.Fake.Setup.Contracts
         }
 
         /// <summary>
+        /// Return the correspondent method callback.
+        /// </summary>
+        /// <returns></returns>
+        public override IMethodCallback AsMethodCallback()
+        {
+            return this;
+        }
+
+        /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
         /// <param name="visitor">The visitor.</param>
-        public override void Accept(IMethodCallbackVisitor visitor)
+        public virtual void Accept(IMethodCallbackVisitor visitor)
         {
             visitor.Visit(this);
         }
+    }
+
+    /// <summary>
+    /// Represents progress callback with 1 parameter.
+    /// </summary>
+    public class ProgressCallback<T> : ProgressCallbackBase<IMethodCallback<T>>, IMethodCallback<T>
+    {
+        private ProgressCallback()
+        {
+
+        }
+
+        /// <summary>
+        /// Creates new instance of progress message callback with 1 parameter.
+        /// </summary>
+        /// <returns></returns>
+        public static IProgressableProcessRunning<IMethodCallback<T>> Create()
+        {
+            return new ProgressCallback<T>();
+        }
+
+        /// <summary>
+        /// Completes the progress messages stream by signaling successful completion.
+        /// </summary>
+        /// <returns></returns>
+        public override IProgressableProcessFinished<IMethodCallback<T>> Complete()
+        {
+            FinishCallback =
+                CallbackBuilder<ActionWrapper<T>, MethodCallbackTemplate<T>, IMethodCallback<T>>.CreateCallbackBuilder()
+                    .WithDefaultAction();
+            return this;
+        }
+
+        /// <summary>
+        /// Completes the progress messages stream by throwing exception.
+        /// </summary>
+        /// <param name="exception">The exception.</param>
+        /// <returns></returns>
+        public override IProgressableProcessFinished<IMethodCallback<T>> Throw(Exception exception)
+        {
+            FinishCallback = new OnErrorCallback<T>(exception);
+            return this;
+        }
+
+        /// <summary>
+        /// Completes the progress messages stream by cancelling the associated operation.
+        /// </summary>
+        /// <returns></returns>
+        public override IProgressableProcessFinished<IMethodCallback<T>> Cancel()
+        {
+            FinishCallback = new OnCancelCallback<T>();
+            return this;
+        }
+
+        /// <summary>
+        /// Completes the progress messages stream by signaling a never-ending operation.
+        /// </summary>
+        /// <returns></returns>
+        public override IProgressableProcessFinished<IMethodCallback<T>> WithoutCallback()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// Return the correspondent method callback.
+        /// </summary>
+        /// <returns></returns>
+        public override IMethodCallback<T> AsMethodCallback()
+        {
+            return this;
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param><param name="arg">The argument.</param>
+        public void Accept(IMethodCallbackVisitor<T> visitor, T arg)
+        {
+            visitor.Visit(this, arg);
+        }        
     }
 }
