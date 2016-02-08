@@ -254,6 +254,21 @@ namespace Attest.Fake.Setup
             buildCallbacks(this);
             return this;
         }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <param name="arg">The parameter.</param>
+        /// <returns></returns>
+        public IMethodCallWithResult<TService, IMethodCallbackWithResult<T, TResult>, TResult> BuildCallbacks(
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>, 
+                T, IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>> buildCallbacks, 
+            T arg)
+        {
+            buildCallbacks(this, arg);
+            return this;
+        }
     }
 
     /// <summary>
@@ -346,6 +361,23 @@ namespace Attest.Fake.Setup
             buildCallbacks(this);
             return this;
         }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>        
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <returns></returns>
+        public IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult> BuildCallbacks(
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, 
+                T1, T2, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>> buildCallbacks, 
+            T1 arg1, 
+            T2 arg2)
+        {
+            buildCallbacks(this, arg1, arg2);
+            return this;
+        }
     }
 
     /// <summary>
@@ -435,6 +467,25 @@ namespace Attest.Fake.Setup
         public IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> BuildCallbacks(Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>> buildCallbacks)
         {
             buildCallbacks(this);
+            return this;
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>        
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <returns></returns>
+        public IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> BuildCallbacks(
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, 
+                T1, T2, T3, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>> buildCallbacks, 
+            T1 arg1, 
+            T2 arg2, 
+            T3 arg3)
+        {
+            buildCallbacks(this, arg1, arg2, arg3);
             return this;
         }
     }
@@ -530,6 +581,28 @@ namespace Attest.Fake.Setup
             buildCallbacks(this);
             return this;
         }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>        
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <param name="arg4">The fourth parameter.</param>
+        /// <returns></returns>
+        public IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> BuildCallbacks(
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, 
+                T1, T2, T3, T4, TResult>, T1, T2, T3, T4, 
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>> buildCallbacks,
+            T1 arg1, 
+            T2 arg2, 
+            T3 arg3, 
+            T4 arg4)
+        {
+            buildCallbacks(this, arg1, arg2, arg3, arg4);
+            return this;
+        }
     }
 
     /// <summary>
@@ -621,6 +694,30 @@ namespace Attest.Fake.Setup
         public IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> BuildCallbacks(Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>> buildCallbacks)
         {
             buildCallbacks(this);
+            return this;
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>        
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <param name="arg4">The fourth parameter.</param>
+        /// <param name="arg5">The fifth parameter.</param>
+        /// <returns></returns>
+        public IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> BuildCallbacks(
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>,
+                T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, 
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>> buildCallbacks, 
+            T1 arg1, 
+            T2 arg2, 
+            T3 arg3, 
+            T4 arg4, 
+            T5 arg5)
+        {
+            buildCallbacks(this, arg1, arg2, arg3, arg4, arg5);
             return this;
         }
     }
