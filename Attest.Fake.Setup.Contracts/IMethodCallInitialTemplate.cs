@@ -7,7 +7,7 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="TService">Type of service</typeparam>
     /// <typeparam name="TCallback">Type of callback</typeparam>
-    public interface IMethodCallInitialTemplate<TService, TCallback> where TService : class
+    public interface IMethodCallInitialTemplateBase<TService, TCallback> where TService : class
     {
         /// <summary>
         /// Builds the method call with specified callbacks.

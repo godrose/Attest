@@ -11,12 +11,12 @@ namespace Attest.Fake.Setup
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
     /// <seealso cref="Attest.Fake.Setup.MethodCallbacksContainerBase{TCallback}" />
     /// <seealso cref="Attest.Fake.Setup.Contracts.IMethodCall{TService, TCallback}" />
-    /// <seealso cref="Attest.Fake.Setup.Contracts.IMethodCallInitialTemplate{TService, TCallback}" />
+    /// <seealso cref="IMethodCallInitialTemplateBase{TService,TCallback}" />
     /// <seealso cref="Attest.Fake.Setup.Contracts.IHaveNoCallbacks{TCallback}" />
     public abstract class MethodCallBase<TService, TCallback> : 
         MethodCallbacksContainerBase<TCallback>, 
         IMethodCall<TService, TCallback>, 
-        IMethodCallInitialTemplate<TService, TCallback>,        
+        IMethodCallInitialTemplateBase<TService, TCallback>,        
         IHaveNoCallbacks<TCallback>
         where TService : class
     {
@@ -109,7 +109,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplate<TService, IMethodCallback> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplateBase<TService, IMethodCallback> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService>(runMethod);
         }
@@ -174,7 +174,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplate<TService, IMethodCallback<T>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T>(runMethod);
         }
@@ -240,7 +240,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2>(runMethod);
         }
@@ -297,7 +297,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2, T3>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2, T3>(runMethod);
         }
@@ -355,7 +355,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2, T3, T4>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2, T3, T4>(runMethod);
         }
@@ -414,7 +414,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3, T4, T5>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2, T3, T4, T5>> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2, T3, T4, T5>(runMethod);
         }

@@ -4,8 +4,17 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents a callbacks container without method callbacks.
     /// </summary>
     /// <typeparam name="TCallback">The type of the method callback.</typeparam>
-    public interface IHaveNoCallbacks<TCallback> : IAddCallbackShared<TCallback>
+    public interface IHaveNoCallbacks<TCallback> : IAddCallback<TCallback>
     {
 
+    }
+
+    /// <summary>
+    /// Represents a callbacks container without method callbacks.
+    /// </summary>
+    /// <typeparam name="TCallback">Type of method callback.</typeparam>    
+    /// <typeparam name="T">Type of parameter</typeparam>
+    public interface IHaveNoCallbacks<TCallback, T> : IAddCallbackWithResult<TCallback, T>
+    {
     }
 }
