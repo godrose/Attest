@@ -57,7 +57,7 @@ namespace Attest.Fake.Setup
                 if (newMethodWithResultInfo == null)
                 {
                     throw new ArgumentException(
-                        "Only method calls that implement acceptor for either MethodInfo or MethodInfoWithResult visitors are allowed",
+                        "Only method calls that implement acceptor for either MethodCall or MethodCallWithResult visitors are allowed",
                         "methodCallMetaData");
                 }
                 AddMethodCallWithResultImpl(methodCallMetaData, newMethodWithResultInfo);

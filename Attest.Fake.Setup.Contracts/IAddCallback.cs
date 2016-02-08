@@ -6,7 +6,7 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents an object that allows to add callbacks to the callbacks container
     /// </summary>
     /// <typeparam name="TCallback">Type of callback</typeparam>
-    public interface IAddCallback<TCallback>
+    public interface IAddCallbackShared<TCallback>
     {
         /// <summary>
         /// Adds custom callback to the callbacks container

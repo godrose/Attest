@@ -48,11 +48,14 @@
     <Compile Include="IAddCallback.cs" />
     <Compile Include="IAddCallbackWithResult.cs" />
     <Compile Include="IAppendCallbacks.cs" />
+    <Compile Include="IAppendMethods.cs" />
     <Compile Include="ICallbackYielder.cs" />
+    <Compile Include="ICanAddMethods.cs" />
     <Compile Include="IHaveCallbacks.cs" />
     <Compile Include="IHaveMethods.cs" />
     <Compile Include="IHaveNoCallbacks.cs" />
     <Compile Include="IHaveNoCallbacksWithResult.cs" />
+    <Compile Include="IHaveNoMethods.cs" />
     <Compile Include="IMethodCall.cs" />
     <Compile Include="IMethodCallback.cs" />
     <Compile Include="IMethodCallbacksContainer.cs" />
