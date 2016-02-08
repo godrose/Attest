@@ -70,6 +70,12 @@ namespace Attest.Fake.Setup
         /// <returns>Callbacks container</returns>
         public abstract IMethodCallbacksContainer<TCallback> Throw(Exception exception);
 
+        ///// <summary>
+        ///// Adds never-ending callback to the callbacks container
+        ///// </summary>
+        ///// <returns>Callbacks container</returns>
+        //public abstract IMethodCallbacksContainer<TCallback> WithoutCallback();
+
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -131,6 +137,16 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        ///// <summary>
+        ///// Adds never-ending callback to the callbacks container
+        ///// </summary>
+        ///// <returns>Callbacks container</returns>
+        //public override IMethodCallbacksContainer<IMethodCallback> WithoutCallback()
+        //{
+        //    Callbacks.Add(ProgressCallback.Create().WithoutCallback().AsMethodCallback());
+        //    return this;
+        //}
+
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -185,6 +201,16 @@ namespace Attest.Fake.Setup
             Callbacks.Add(new OnErrorCallback<T>(r => { }, exception));
             return this;
         }
+
+        ///// <summary>
+        ///// Adds never-ending callback to the callbacks container
+        ///// </summary>
+        ///// <returns>Callbacks container</returns>
+        //public override IMethodCallbacksContainer<IMethodCallback<T>> WithoutCallback()
+        //{
+        //    Callbacks.Add(ProgressCallback<T>.Create().WithoutCallback().AsMethodCallback());
+        //    return this;
+        //}
 
         /// <summary>
         /// Accepts the specified visitor.

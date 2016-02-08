@@ -844,7 +844,7 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    public abstract class ProgressableCallbackWithResultBase<TCallback, TResult> :
+    public abstract class ProgressCallbackWithResultBase<TCallback, TResult> :
         ProgressMessagesBase, 
         IProgressableProcessRunningWithResult<TCallback, TResult>, 
         IProgressableProcessFinishedWithResult<TCallback, TResult>
@@ -893,7 +893,7 @@ namespace Attest.Fake.Setup.Contracts
     /// Represent progress message callback with return value.
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
-    public class ProgressCallbackWithResult<TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<TResult>, TResult>, IMethodCallbackWithResult<TResult>
+    public class ProgressCallbackWithResult<TResult> : ProgressCallbackWithResultBase<IMethodCallbackWithResult<TResult>, TResult>, IMethodCallbackWithResult<TResult>
     {
         private ProgressCallbackWithResult()
         {
@@ -975,7 +975,7 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    public class ProgressCallbackWithResult<T, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T, TResult>, TResult>, IMethodCallbackWithResult<T, TResult>
+    public class ProgressCallbackWithResult<T, TResult> : ProgressCallbackWithResultBase<IMethodCallbackWithResult<T, TResult>, TResult>, IMethodCallbackWithResult<T, TResult>
     {
         private ProgressCallbackWithResult()
         {
@@ -1059,7 +1059,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    public class ProgressCallbackWithResult<T1, T2, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, TResult>
+    public class ProgressCallbackWithResult<T1, T2, TResult> : ProgressCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, TResult>
     {
         private ProgressCallbackWithResult()
         {
@@ -1145,7 +1145,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    public class ProgressCallbackWithResult<T1, T2, T3, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, TResult>
+    public class ProgressCallbackWithResult<T1, T2, T3, TResult> : ProgressCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, TResult>
     {
         private ProgressCallbackWithResult()
         {
@@ -1233,7 +1233,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    public class ProgressCallbackWithResult<T1, T2, T3, T4, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>
+    public class ProgressCallbackWithResult<T1, T2, T3, T4, TResult> : ProgressCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>
     {
         private ProgressCallbackWithResult()
         {
@@ -1319,7 +1319,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
     /// <typeparam name="T5">The type of the fifth parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    public class ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult> : ProgressableCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>
+    public class ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult> : ProgressCallbackWithResultBase<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult>, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>
     {
         private ProgressCallbackWithResult()
         {
