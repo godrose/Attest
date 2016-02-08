@@ -1,19 +1,19 @@
 namespace Attest.Fake.Setup.Contracts
 {
     /// <summary>
-    /// Represents a callbacks container without callbacks
+    /// Represents a callbacks container without method callbacks.
     /// </summary>
-    /// <typeparam name="TCallback">Type of callback</typeparam>
-    /// <typeparam name="TResult">Type of return value</typeparam>
+    /// <typeparam name="TCallback">Type of method callback.</typeparam>
+    /// <typeparam name="TResult">Type of return value.</typeparam>
     public interface IHaveNoCallbacksWithResult<TCallback, in TResult> : IAddCallbackWithResult<TCallback, TResult>
     {
 
     }
 
     /// <summary>
-    /// Represents a callbacks container without callbacks
+    /// Represents a callbacks container without method callbacks.
     /// </summary>
-    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="TCallback">Type of method callback.</typeparam>
     /// <typeparam name="TResult">Type of return value</typeparam>
     /// <typeparam name="T">Type of parameter</typeparam>
     public interface IHaveNoCallbacksWithResult<TCallback, T, in TResult> : IAddCallbackWithResult<TCallback, T, TResult>
@@ -21,9 +21,9 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents a callbacks container without callbacks
+    /// Represents a callbacks container without method callbacks.
     /// </summary>
-    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="TCallback">Type of method callback.</typeparam>
     /// <typeparam name="TResult">Type of return value</typeparam>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
@@ -32,9 +32,9 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents a callbacks container without callbacks
+    /// Represents a callbacks container without method callbacks.
     /// </summary>
-    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="TCallback">Type of method callback.</typeparam>
     /// <typeparam name="TResult">Type of return value</typeparam>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
@@ -44,9 +44,9 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents a callbacks container without callbacks
+    /// Represents a callbacks container without method callbacks.
     /// </summary>
-    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="TCallback">Type of method callback.</typeparam>
     /// <typeparam name="TResult">Type of return value</typeparam>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
@@ -57,9 +57,9 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents a callbacks container without callbacks
+    /// Represents a callbacks container without method callbacks.
     /// </summary>
-    /// <typeparam name="TCallback">Type of callback</typeparam>
+    /// <typeparam name="TCallback">Type of method callback.</typeparam>
     /// <typeparam name="TResult">Type of return value</typeparam>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>

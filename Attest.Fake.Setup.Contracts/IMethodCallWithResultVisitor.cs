@@ -11,6 +11,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <typeparam name="TResult">The type of the return value.</typeparam>
         /// <param name="methodCall">The method call.</param>
         void Visit<TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<TResult>, TResult> methodCall);
+
         /// <summary>
         /// Visits the specified method call.
         /// </summary>
@@ -18,6 +19,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <typeparam name="TResult">The type of the return value.</typeparam>
         /// <param name="methodCall">The method call.</param>
         void Visit<T, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T, TResult>, TResult> methodCall);
+
         /// <summary>
         /// Visits the specified method call.
         /// </summary>
@@ -26,6 +28,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <typeparam name="TResult">The type of the return value.</typeparam>
         /// <param name="methodCall">The method call.</param>
         void Visit<T1, T2, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult> methodCall);
+
         /// <summary>
         /// Visits the specified method call.
         /// </summary>
@@ -35,6 +38,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <typeparam name="TResult">The type of the return value.</typeparam>
         /// <param name="methodCall">The method call.</param>
         void Visit<T1, T2, T3, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, TResult>, TResult> methodCall);
+
         /// <summary>
         /// Visits the specified method call.
         /// </summary>
@@ -45,6 +49,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <typeparam name="TResult">The type of the return value.</typeparam>
         /// <param name="methodCall">The method call.</param>
         void Visit<T1, T2, T3, T4, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> methodCall);
+
         /// <summary>
         /// Visits the specified method call.
         /// </summary>

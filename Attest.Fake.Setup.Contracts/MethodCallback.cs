@@ -3,7 +3,7 @@
 namespace Attest.Fake.Setup.Contracts
 {    
     /// <summary>
-    /// Base class for method callbacks without return value and no parameters
+    /// Base class for method callbacks without return value and no parameters.
     /// </summary>
     public abstract class MethodCallbackBase : IMethodCallback
     {
@@ -578,7 +578,7 @@ namespace Attest.Fake.Setup.Contracts
     /// Base class for progress callbacks
     /// </summary>
     /// <typeparam name="TCallback">Type of callback</typeparam>
-    public abstract class ProgressableCallbackBase<TCallback> : ProgressMessagesBase, IProgressableProcessRunning<TCallback>,
+    public abstract class ProgressCallbackBase<TCallback> : ProgressMessagesBase, IProgressableProcessRunning<TCallback>,
         IProgressableProcessFinished<TCallback>, IMethodCallback
     {
         /// <summary>
@@ -633,9 +633,9 @@ namespace Attest.Fake.Setup.Contracts
     /// <summary>
     /// Represents progress callback
     /// </summary>
-    public class ProgressableCallback : ProgressableCallbackBase<IMethodCallback>
+    public class ProgressCallback : ProgressCallbackBase<IMethodCallback>
     {
-        private ProgressableCallback()
+        private ProgressCallback()
         {
 
         }
@@ -646,7 +646,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         public static IProgressableProcessRunning<IMethodCallback> Create()
         {
-            return new ProgressableCallback();
+            return new ProgressCallback();
         }
 
         /// <summary>

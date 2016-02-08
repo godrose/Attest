@@ -7,9 +7,9 @@ namespace Attest.Fake.Setup.Contracts
     public interface ICallbackYielder<out TCallback>
     {
         /// <summary>
-        /// Call this method to yield the next callback from the collection of callbacks
+        /// Call this method to yield the next callback from the collection of callbacks.
         /// </summary>
-        /// <returns>Next callback</returns>
+        /// <returns>Next callback.</returns>
         TCallback YieldCallback();
     }
 }

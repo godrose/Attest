@@ -9,7 +9,7 @@ namespace Attest.Fake.Setup.Contracts
     public interface IServiceCall<TService> : IHaveMethods<TService>, IAppendMethods<TService> where TService : class
     {
         /// <summary>
-        /// Sets the service calls and returns the fake object as its proxy
+        /// Sets the service calls and returns the fake object as its proxy.
         /// </summary>
         /// <returns></returns>
         IFake<TService> SetupService();

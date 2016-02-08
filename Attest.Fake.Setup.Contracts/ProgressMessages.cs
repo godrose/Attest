@@ -138,8 +138,8 @@ namespace Attest.Fake.Setup.Contracts
     /// <summary>
     /// Base class for progress messages container.
     /// </summary>
-    /// <seealso cref="Attest.Fake.Setup.Contracts.IHaveProgressMessages" />
-    /// <seealso cref="Attest.Fake.Setup.Contracts.ICanAddProgressMessages" />
+    /// <seealso cref="IHaveProgressMessages" />
+    /// <seealso cref="ICanAddProgressMessages" />
     public abstract class ProgressMessagesBase : IHaveProgressMessages, ICanAddProgressMessages
     {
         private readonly List<object> _progressMessages = new List<object>();

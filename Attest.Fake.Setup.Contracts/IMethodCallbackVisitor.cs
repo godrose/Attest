@@ -20,8 +20,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Visits progress callback
         /// </summary>
-        /// <param name="progressableCallback">Callback</param>
-        void Visit(ProgressableCallback progressableCallback);
+        /// <param name="progressCallback">Callback</param>
+        void Visit(ProgressCallback progressCallback);
 
         /// <summary>
         /// Visits cancellation callback

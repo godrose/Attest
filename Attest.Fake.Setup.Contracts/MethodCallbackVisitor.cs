@@ -26,15 +26,15 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Visits progress callback
         /// </summary>
-        /// <param name="progressableCallback">Callback</param>
-        public void Visit(ProgressableCallback progressableCallback)
+        /// <param name="progressCallback">Callback</param>
+        public void Visit(ProgressCallback progressCallback)
         {
-            throw new ProgressMessageException(progressableCallback.ProgressMessages,
+            throw new ProgressMessageException(progressCallback.ProgressMessages,
                 () =>
                 {
-                    if (progressableCallback.FinishCallback != null)
+                    if (progressCallback.FinishCallback != null)
                     {
-                        progressableCallback.FinishCallback.Accept(this);
+                        progressCallback.FinishCallback.Accept(this);
                     }                    
                 });
         }
