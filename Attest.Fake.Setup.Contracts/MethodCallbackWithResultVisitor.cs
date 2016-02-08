@@ -17,7 +17,7 @@ namespace Attest.Fake.Setup.Contracts
         /// </returns>
         public TResult Visit(OnErrorCallbackWithResult<TResult> onErrorCallback)
         {
-            throw onErrorCallback.Exception;
+            return MethodCallbackWithResultVisitorHelper.VisitErrorWithResult<TResult>(onErrorCallback);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="CancelCallbackException"></exception>
         public TResult Visit(OnCancelCallbackWithResult<TResult> onCancelCallback)
         {
-            throw new CancelCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitCancelWithResult<TResult>();
         }
 
         /// <summary>
@@ -55,9 +55,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="System.NotSupportedException">Value-returning calls with progress messages are not supported</exception>
         public TResult Visit(ProgressCallbackWithResult<TResult> progressCallback)
         {
-            if (progressCallback.ProgressMessages.Any())
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            return progressCallback.FinishCallback.Accept(this);
+            return MethodCallbackWithResultVisitorHelper.VisitProgressWithResult(progressCallback, c => c.Accept(this));            
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="WithoutCallbackException"></exception>
         public TResult Visit(OnWithoutCallbackWithResult<TResult> withoutCallback)
         {
-            throw new WithoutCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
         }
     }
 
@@ -89,7 +87,7 @@ namespace Attest.Fake.Setup.Contracts
         /// </returns>
         public TResult Visit(OnErrorCallbackWithResult<T, TResult> onErrorCallback, T arg)
         {
-            throw onErrorCallback.Exception;
+            return MethodCallbackWithResultVisitorHelper.VisitErrorWithResult<TResult>(onErrorCallback);
         }
 
         /// <summary>
@@ -103,7 +101,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="CancelCallbackException"></exception>
         public TResult Visit(OnCancelCallbackWithResult<T, TResult> onCancelCallback, T arg)
         {
-            throw new CancelCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitCancelWithResult<TResult>();
         }
 
         /// <summary>
@@ -130,9 +128,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="System.NotSupportedException">Value-returning calls with progress messages are not supported</exception>
         public TResult Visit(ProgressCallbackWithResult<T, TResult> progressCallback, T arg)
         {
-            if (progressCallback.ProgressMessages.Any())
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            return progressCallback.FinishCallback.Accept(this, arg);
+            return MethodCallbackWithResultVisitorHelper.VisitProgressWithResult(progressCallback,
+                c => c.Accept(this, arg));            
         }
 
         /// <summary>
@@ -146,7 +143,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="WithoutCallbackException"></exception>
         public TResult Visit(OnWithoutCallbackWithResult<T, TResult> withoutCallback, T arg)
         {
-            throw new WithoutCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
         }
     }
 
@@ -167,7 +164,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         public TResult Visit(OnErrorCallbackWithResult<T1, T2, TResult> onErrorCallback, T1 arg1, T2 arg2)
         {
-            throw onErrorCallback.Exception;
+            return MethodCallbackWithResultVisitorHelper.VisitErrorWithResult<TResult>(onErrorCallback);
         }
 
         /// <summary>
@@ -180,7 +177,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="CancelCallbackException"></exception>
         public TResult Visit(OnCancelCallbackWithResult<T1, T2, TResult> onCancelCallback, T1 arg1, T2 arg2)
         {
-            throw new CancelCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitCancelWithResult<TResult>();
         }
 
         /// <summary>
@@ -205,9 +202,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="System.NotSupportedException">Value-returning calls with progress messages are not supported</exception>
         public TResult Visit(ProgressCallbackWithResult<T1, T2, TResult> progressCallback, T1 arg1, T2 arg2)
         {
-            if (progressCallback.ProgressMessages.Any())
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            return progressCallback.FinishCallback.Accept(this, arg1, arg2);
+            return MethodCallbackWithResultVisitorHelper.VisitProgressWithResult(progressCallback,
+                c => c.Accept(this, arg1, arg2));            
         }
 
         /// <summary>
@@ -220,7 +216,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="WithoutCallbackException"></exception>
         public TResult Visit(OnWithoutCallbackWithResult<T1, T2, TResult> onWithoutCallback, T1 arg1, T2 arg2)
         {
-            throw new WithoutCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
         }
     }
     /// <summary>
@@ -321,7 +317,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         public TResult Visit(OnErrorCallbackWithResult<T1, T2, T3, T4, TResult> onErrorCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            throw onErrorCallback.Exception;
+            return MethodCallbackWithResultVisitorHelper.VisitErrorWithResult<TResult>(onErrorCallback);
         }
 
         /// <summary>
@@ -336,7 +332,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="CancelCallbackException"></exception>
         public TResult Visit(OnCancelCallbackWithResult<T1, T2, T3, T4, TResult> onCancelCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            throw new CancelCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitCancelWithResult<TResult>();
         }
 
         /// <summary>
@@ -365,9 +361,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="System.NotSupportedException">Value-returning calls with progress messages are not supported</exception>
         public TResult Visit(ProgressCallbackWithResult<T1, T2, T3, T4, TResult> progressCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            if (progressCallback.ProgressMessages.Any())
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            return progressCallback.FinishCallback.Accept(this, arg1, arg2, arg3, arg4);
+            return MethodCallbackWithResultVisitorHelper.VisitProgressWithResult(progressCallback,
+                c => c.Accept(this, arg1, arg2, arg3, arg4));
         }
 
         /// <summary>
@@ -382,7 +377,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="WithoutCallbackException"></exception>
         public TResult Visit(OnWithoutCallbackWithResult<T1, T2, T3, T4, TResult> onWithoutCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            throw new WithoutCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
         }
     }
 
@@ -409,7 +404,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         public TResult Visit(OnErrorCallbackWithResult<T1, T2, T3, T4, T5, TResult> onErrorCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
-            throw onErrorCallback.Exception;
+            return MethodCallbackWithResultVisitorHelper.VisitErrorWithResult<TResult>(onErrorCallback);
         }
 
         /// <summary>
@@ -425,7 +420,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="CancelCallbackException"></exception>
         public TResult Visit(OnCancelCallbackWithResult<T1, T2, T3, T4, T5, TResult> onCancelCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
-            throw new CancelCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitCancelWithResult<TResult>();
         }
 
         /// <summary>
@@ -456,9 +451,8 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="System.NotSupportedException">Value-returning calls with progress messages are not supported</exception>
         public TResult Visit(ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult> progressCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
-            if (progressCallback.ProgressMessages.Any())
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            return progressCallback.FinishCallback.Accept(this, arg1, arg2, arg3, arg4, arg5);
+            return MethodCallbackWithResultVisitorHelper.VisitProgressWithResult(progressCallback,
+                c => c.Accept(this, arg1, arg2, arg3, arg4, arg5));           
         }
 
         /// <summary>
@@ -474,7 +468,39 @@ namespace Attest.Fake.Setup.Contracts
         /// <exception cref="WithoutCallbackException"></exception>
         public TResult Visit(OnWithoutCallbackWithResult<T1, T2, T3, T4, T5, TResult> onWithoutCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
-            throw new WithoutCallbackException();
+            return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
+        }
+    }
+
+    static class MethodCallbackWithResultVisitorHelper
+    {
+        internal static TResult VisitErrorWithResult<TResult>(IThrowException onErrorCallback)
+        {
+            return VisitWithResult<TResult>(() => MethodCallbackVisitorHelper.VisitError(onErrorCallback));
+        }
+
+        internal static TResult VisitProgressWithResult<TCallback, TResult>(
+            IProgressableProcessFinishedWithResult<TCallback, TResult> progressCallback, Func<TCallback, TResult> acceptor)
+        {
+            if (progressCallback.ProgressMessages.Any())
+                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
+            return acceptor(progressCallback.FinishCallback);
+        }
+
+        internal static TResult VisitCancelWithResult<TResult>()
+        {
+            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitCancel);
+        }
+
+        internal static TResult VisitWithoutWithResult<TResult>()
+        {
+            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitWithout);
+        }
+
+        private static TResult VisitWithResult<TResult>(Action visitMethod)
+        {
+            visitMethod();
+            return default(TResult);
         }
     }
 }

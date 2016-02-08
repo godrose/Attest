@@ -1,11 +1,11 @@
 using System;
 
 namespace Attest.Fake.Setup.Contracts
-{
+{    
     /// <summary>
     /// Represents visitor for different callbacks without return value and no parameters.
     /// </summary>
-    public class MethodCallbackVisitor : MethodCallbackVisitorBase, IMethodCallbackVisitor
+    public class MethodCallbackVisitor : IMethodCallbackVisitor
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -13,7 +13,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="onErrorCallback">Callback</param>
         public void Visit(OnErrorCallback onErrorCallback)
         {
-            VisitErrorImpl(onErrorCallback);
+            MethodCallbackVisitorHelper.VisitError(onErrorCallback);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="progressCallback">Callback</param>
         public void Visit(ProgressCallback progressCallback)
         {
-            VisitProgressImpl(progressCallback, c => c.Accept(this));           
+            MethodCallbackVisitorHelper.VisitProgress(progressCallback, c => c.Accept(this));           
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="onCancelCallback">Callback</param>
         public void Visit(OnCancelCallback onCancelCallback)
         {
-            VisitCancelImpl();
+            MethodCallbackVisitorHelper.VisitCancel();
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="withoutCallback">Callback</param>
         public void Visit(OnWithoutCallback withoutCallback)
         {
-            VisitWithoutImpl();
+            MethodCallbackVisitorHelper.VisitWithout();
         }
     }
 
@@ -57,7 +57,7 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents visitor for different callbacks without return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
-    public class MethodCallbackVisitor<T> : MethodCallbackVisitorBase, IMethodCallbackVisitor<T>
+    public class MethodCallbackVisitor<T> : IMethodCallbackVisitor<T>
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -66,7 +66,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg">Parameter</param>
         public void Visit(OnErrorCallback<T> onErrorCallback, T arg)
         {
-            VisitErrorImpl(onErrorCallback);
+            MethodCallbackVisitorHelper.VisitError(onErrorCallback);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg">Parameter.</param>
         public void Visit(ProgressCallback<T> progressCallback, T arg)
         {
-            VisitProgressImpl(progressCallback, c => c.Accept(this, arg));            
+            MethodCallbackVisitorHelper.VisitProgress(progressCallback, c => c.Accept(this, arg));            
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg">Parameter.</param>
         public void Visit(OnCancelCallback<T> onCancelCallback, T arg)
         {
-            VisitCancelImpl();
+            MethodCallbackVisitorHelper.VisitCancel();
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg">Parameter.</param>
         public void Visit(OnWithoutCallback<T> withoutCallback, T arg)
         {
-            VisitWithoutImpl();
+            MethodCallbackVisitorHelper.VisitWithout();
         }
     }
 
@@ -115,8 +115,8 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
-    /// <seealso cref="MethodCallbackVisitorBase" />    
-    public class MethodCallbackVisitor<T1, T2> : MethodCallbackVisitorBase, IMethodCallbackVisitor<T1, T2>
+    /// <seealso cref="MethodCallbackVisitorHelper" />    
+    public class MethodCallbackVisitor<T1, T2> : IMethodCallbackVisitor<T1, T2>
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -126,7 +126,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg2">Second parameter</param>
         public void Visit(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2)
         {
-            VisitErrorImpl(onErrorCallback);
+            MethodCallbackVisitorHelper.VisitError(onErrorCallback);
         }
 
         /// <summary>
@@ -147,8 +147,8 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
-    /// <seealso cref="MethodCallbackVisitorBase" />    
-    public class MethodCallbackVisitor<T1, T2, T3> : MethodCallbackVisitorBase, IMethodCallbackVisitor<T1, T2, T3>
+    /// <seealso cref="MethodCallbackVisitorHelper" />    
+    public class MethodCallbackVisitor<T1, T2, T3> : IMethodCallbackVisitor<T1, T2, T3>
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -159,7 +159,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg3">Third parameter</param>
         public void Visit(OnErrorCallback<T1, T2, T3> onErrorCallback, T1 arg1, T2 arg2, T3 arg3)
         {
-            VisitErrorImpl(onErrorCallback);
+            MethodCallbackVisitorHelper.VisitError(onErrorCallback);
         }
 
         /// <summary>
@@ -182,8 +182,8 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
-    /// <seealso cref="MethodCallbackVisitorBase" />
-    public class MethodCallbackVisitor<T1, T2, T3, T4> : MethodCallbackVisitorBase, IMethodCallbackVisitor<T1, T2, T3, T4>
+    /// <seealso cref="MethodCallbackVisitorHelper" />
+    public class MethodCallbackVisitor<T1, T2, T3, T4> : IMethodCallbackVisitor<T1, T2, T3, T4>
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -195,7 +195,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg4">Fourth parameter</param>
         public void Visit(OnErrorCallback<T1, T2, T3, T4> onErrorCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            VisitErrorImpl(onErrorCallback);
+            MethodCallbackVisitorHelper.VisitError(onErrorCallback);
         }
 
         /// <summary>
@@ -220,9 +220,8 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
     /// <typeparam name="T5">The type of the fifth parameter.</typeparam>
-    /// <seealso cref="MethodCallbackVisitorBase" />
-    public class MethodCallbackVisitor<T1, T2, T3, T4, T5> : MethodCallbackVisitorBase,
-        IMethodCallbackVisitor<T1, T2, T3, T4, T5>
+    /// <seealso cref="MethodCallbackVisitorHelper" />
+    public class MethodCallbackVisitor<T1, T2, T3, T4, T5> : IMethodCallbackVisitor<T1, T2, T3, T4, T5>
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -235,7 +234,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg5">Fifth parameter</param>
         public void Visit(OnErrorCallback<T1, T2, T3, T4, T5> onErrorCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
-            VisitErrorImpl(onErrorCallback);
+            MethodCallbackVisitorHelper.VisitError(onErrorCallback);
         }
 
         /// <summary>
@@ -253,17 +252,17 @@ namespace Attest.Fake.Setup.Contracts
         }
     }
 
-    /// <summary>
-    /// Base class for method callback visitors
+   /// <summary>
+    /// Helper class for method callback visitors
     /// </summary>
-    public abstract class MethodCallbackVisitorBase
+    static class MethodCallbackVisitorHelper
     {
-        internal static void VisitErrorImpl(IThrowException onErrorCallback)
+        internal static void VisitError(IThrowException onErrorCallback)
         {
             throw onErrorCallback.Exception;
         }
-
-        internal static void VisitProgressImpl<TCallback>(IProgressableProcessFinished<TCallback> progressCallback, 
+        
+        internal static void VisitProgress<TCallback>(IProgressableProcessFinished<TCallback> progressCallback, 
             Action<TCallback> callbackAcceptor)
         {
             throw new ProgressMessageException(progressCallback.ProgressMessages,
@@ -276,12 +275,12 @@ namespace Attest.Fake.Setup.Contracts
                 });
         }
 
-        internal static void VisitCancelImpl()
+        internal static void VisitCancel()
         {
             throw new CancelCallbackException();
         }
 
-        internal static void VisitWithoutImpl()
+        internal static void VisitWithout()
         {
             throw new WithoutCallbackException();
         }
