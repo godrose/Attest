@@ -100,6 +100,30 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg1">First parameter</param>
         /// <param name="arg2">Second parameter</param>
         void Visit(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        void Visit(ProgressCallback<T1, T2> progressCallback, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        void Visit(OnCancelCallback<T1, T2> onCancelCallback, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        void Visit(OnWithoutCallback<T1, T2> withoutCallback, T1 arg1, T2 arg2);
     }
 
     /// <summary>
@@ -127,6 +151,33 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg2">Second parameter</param>
         /// <param name="arg3">Third parameter</param>
         void Visit(OnCompleteCallback<T1, T2, T3> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        void Visit(ProgressCallback<T1, T2, T3> progressCallback, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        void Visit(OnCancelCallback<T1, T2, T3> onCancelCallback, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        void Visit(OnWithoutCallback<T1, T2, T3> withoutCallback, T1 arg1, T2 arg2, T3 arg3);
     }
 
     /// <summary>
@@ -157,6 +208,36 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg3">Third parameter</param>
         /// <param name="arg4">Fourth parameter</param>
         void Visit(OnCompleteCallback<T1, T2, T3, T4> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        void Visit(ProgressCallback<T1, T2, T3, T4> progressCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        void Visit(OnCancelCallback<T1, T2, T3, T4> onCancelCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        void Visit(OnWithoutCallback<T1, T2, T3, T4> withoutCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     }
 
     /// <summary>
@@ -190,5 +271,38 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg4">Fourth parameter</param>
         /// <param name="arg5">Fifth parameter</param>
         void Visit(OnCompleteCallback<T1, T2, T3, T4, T5> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        void Visit(ProgressCallback<T1, T2, T3, T4, T5> progressCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        void Visit(OnCancelCallback<T1, T2, T3, T4, T5> onCancelCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        void Visit(OnWithoutCallback<T1, T2, T3, T4, T5> withoutCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
     }
 }

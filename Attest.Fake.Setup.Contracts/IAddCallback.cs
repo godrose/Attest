@@ -28,11 +28,11 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns>Callbacks container</returns>
         IMethodCallbacksContainer<TCallback> Throw(Exception exception);
 
-        ///// <summary>
-        ///// Adds never-ending callback to the callbacks container
-        ///// </summary>
-        ///// <returns>Callbacks container</returns>
-        //IMethodCallbacksContainer<TCallback> WithoutCallback();
+        /// <summary>
+        /// Adds never-ending callback to the callbacks container
+        /// </summary>
+        /// <returns>Callbacks container</returns>
+        IMethodCallbacksContainer<TCallback> WithoutCallback();
     }
 
     /// <summary>
