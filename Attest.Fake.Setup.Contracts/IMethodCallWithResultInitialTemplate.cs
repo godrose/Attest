@@ -158,5 +158,5 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallWithResult<TService, TCallback, TResult> BuildCallbacks(
             Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5,
                 IHaveCallbacks<TCallback>> buildCallbacks, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
-    }
+    }   
 }

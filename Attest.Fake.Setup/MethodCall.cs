@@ -10,14 +10,12 @@ namespace Attest.Fake.Setup
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
     /// <seealso cref="Attest.Fake.Setup.MethodCallbacksContainerBase{TCallback}" />
-    /// <seealso cref="Attest.Fake.Setup.Contracts.IMethodCall{TService, TCallback}" />
-    /// <seealso cref="IMethodCallInitialTemplateBase{TService,TCallback}" />
+    /// <seealso cref="Attest.Fake.Setup.Contracts.IMethodCall{TService, TCallback}" />    
     /// <seealso cref="Attest.Fake.Setup.Contracts.IHaveNoCallbacks{TCallback}" />
     public abstract class MethodCallBase<TService, TCallback> : 
         MethodCallbacksContainerBase<TCallback>, 
-        IMethodCall<TService, TCallback>, 
-        IMethodCallInitialTemplateBase<TService, TCallback>,        
-        IHaveNoCallbacks<TCallback>
+        IMethodCall<TService, TCallback>,         
+        IAddCallbackShared<TCallback>
         where TService : class
     {
         /// <summary>
@@ -81,24 +79,15 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         public abstract void Accept(IMethodCallVisitor<TService> visitor);
-
-        /// <summary>
-        /// Builds the method call with specified callbacks.
-        /// </summary>
-        /// <param name="buildCallbacks">The build callbacks.</param>
-        /// <returns></returns>
-        public IMethodCall<TService, TCallback> BuildCallbacks(Func<IHaveNoCallbacks<TCallback>, IHaveCallbacks<TCallback>> buildCallbacks)
-        {
-            buildCallbacks(this);
-            return this;
-        }
     }
 
     /// <summary>
     /// Represents method call without return value.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>    
-    public class MethodCall<TService> : MethodCallBase<TService, IMethodCallback> where TService : class
+    public class MethodCall<TService> : MethodCallBase<TService, IMethodCallback>,
+        IMethodCallInitialTemplate<TService,IMethodCallback>,
+        IHaveNoCallbacks<IMethodCallback> where TService : class
     {
         private MethodCall(Expression<Action<TService>> runMethod) : base(runMethod)
         {
@@ -109,7 +98,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplateBase<TService, IMethodCallback> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplate<TService, IMethodCallback> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService>(runMethod);
         }
@@ -155,6 +144,17 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Builds the method call with specified callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback>, IHaveCallbacks<IMethodCallback>> buildCallbacks)
+        {
+            buildCallbacks(this);
+            return this;
+        }
     }
 
     /// <summary>
@@ -162,7 +162,10 @@ namespace Attest.Fake.Setup
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T">The type of the parameter</typeparam>    
-    public class MethodCall<TService, T> : MethodCallBase<TService, IMethodCallback<T>> where TService : class
+    public class MethodCall<TService, T> : 
+        MethodCallBase<TService, IMethodCallback<T>>,
+        IMethodCallInitialTemplate<TService, IMethodCallback<T>, T>,
+        IHaveNoCallbacks<IMethodCallback<T>, T>  where TService : class
     {
         private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
@@ -174,7 +177,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplate<TService, IMethodCallback<T>, T> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T>(runMethod);
         }
@@ -220,6 +223,39 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Builds the method call with specified callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T>, T>, IHaveCallbacks<IMethodCallback<T>>> buildCallbacks)
+        {
+            buildCallbacks(this);
+            return this;
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <param name="arg">The parameter.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T>, T>, T, IHaveCallbacks<IMethodCallback<T>>> buildCallbacks, T arg)
+        {
+            buildCallbacks(this, arg);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="callback">Successful completion callback</param>
+        public IMethodCallbacksContainer<IMethodCallback<T>> Complete(Action<T> callback)
+        {
+            Callbacks.Add(new OnCompleteCallback<T>(callback));
+            return this;
+        }
     }
 
     /// <summary>
@@ -228,7 +264,10 @@ namespace Attest.Fake.Setup
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
-    public class MethodCall<TService, T1, T2> : MethodCallBase<TService, IMethodCallback<T1, T2>> where TService : class
+    public class MethodCall<TService, T1, T2> : 
+        MethodCallBase<TService, IMethodCallback<T1, T2>>,
+        IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2>, T1, T2>,
+        IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2> where TService : class
     {
         private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
@@ -240,7 +279,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2>, T1, T2> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2>(runMethod);
         }
@@ -276,6 +315,40 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Builds the method call with specified callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, IHaveCallbacks<IMethodCallback<T1, T2>>> buildCallbacks)
+        {
+            buildCallbacks(this);
+            return this;
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, T1, T2, IHaveCallbacks<IMethodCallback<T1, T2>>> buildCallbacks, T1 arg1, T2 arg2)
+        {
+            buildCallbacks(this, arg1, arg2);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="callback">Successful completion callback</param>
+        public IMethodCallbacksContainer<IMethodCallback<T1, T2>> Complete(Action<T1, T2> callback)
+        {
+            Callbacks.Add(new OnCompleteCallback<T1, T2>(callback));
+            return this;
+        }
     }
 
     /// <summary>
@@ -285,7 +358,10 @@ namespace Attest.Fake.Setup
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
     /// <typeparam name="T3">The type of the third parameter</typeparam>
-    public class MethodCall<TService, T1, T2, T3> : MethodCallBase<TService, IMethodCallback<T1, T2, T3>> where TService : class
+    public class MethodCall<TService, T1, T2, T3> : 
+        MethodCallBase<TService, IMethodCallback<T1, T2, T3>>,
+        IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3>, T1, T2, T3>,
+        IHaveNoCallbacks<IMethodCallback<T1, T2, T3>, T1, T2, T3> where TService : class
     {
         private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
@@ -297,7 +373,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2, T3>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3>, T1, T2, T3> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2, T3>(runMethod);
         }
@@ -333,6 +409,41 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Builds the method call with specified callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2, T3>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3>, T1, T2, T3>, IHaveCallbacks<IMethodCallback<T1, T2, T3>>> buildCallbacks)
+        {
+            buildCallbacks(this);
+            return this;
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2, T3>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3>, T1, T2, T3>, T1, T2, T3, IHaveCallbacks<IMethodCallback<T1, T2, T3>>> buildCallbacks, T1 arg1, T2 arg2, T3 arg3)
+        {
+            buildCallbacks(this, arg1, arg2, arg3);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="callback">Successful completion callback</param>
+        public IMethodCallbacksContainer<IMethodCallback<T1, T2, T3>> Complete(Action<T1, T2, T3> callback)
+        {
+            Callbacks.Add(new OnCompleteCallback<T1, T2, T3>(callback));
+            return this;
+        }
     }
 
     /// <summary>
@@ -343,7 +454,10 @@ namespace Attest.Fake.Setup
     /// <typeparam name="T2">The type of the second parameter</typeparam>
     /// <typeparam name="T3">The type of the third parameter</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter</typeparam>
-    public class MethodCall<TService, T1, T2, T3, T4> : MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4>> where TService : class
+    public class MethodCall<TService, T1, T2, T3, T4> : 
+        MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4>>,
+        IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4>,
+        IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4> where TService : class
     {
         private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
@@ -355,7 +469,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2, T3, T4>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2, T3, T4>(runMethod);
         }
@@ -391,6 +505,42 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Builds the method call with specified callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2, T3, T4>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4>, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4>>> buildCallbacks)
+        {
+            buildCallbacks(this);
+            return this;
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <param name="arg4">The fourth parameter.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2, T3, T4>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4>, T1, T2, T3, T4, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4>>> buildCallbacks, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            buildCallbacks(this, arg1, arg2, arg3, arg4);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="callback">Successful completion callback</param>
+        public IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4>> Complete(Action<T1, T2, T3, T4> callback)
+        {
+            Callbacks.Add(new OnCompleteCallback<T1, T2, T3, T4>(callback));
+            return this;
+        }
     }
 
     /// <summary>
@@ -402,7 +552,10 @@ namespace Attest.Fake.Setup
     /// <typeparam name="T3">The type of the third parameter</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter</typeparam>
     /// <typeparam name="T5">The type of the fifth parameter</typeparam>
-    public class MethodCall<TService, T1, T2, T3, T4, T5> : MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4, T5>> where TService : class
+    public class MethodCall<TService, T1, T2, T3, T4, T5> : 
+        MethodCallBase<TService, IMethodCallback<T1, T2, T3, T4, T5>>,
+        IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>,
+        IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5> where TService : class
     {
         private MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
@@ -414,7 +567,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="runMethod">The run method.</param>
         /// <returns></returns>
-        public static IMethodCallInitialTemplateBase<TService, IMethodCallback<T1, T2, T3, T4, T5>> CreateMethodCall(Expression<Action<TService>> runMethod)
+        public static IMethodCallInitialTemplate<TService, IMethodCallback<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5> CreateMethodCall(Expression<Action<TService>> runMethod)
         {
             return new MethodCall<TService, T1, T2, T3, T4, T5>(runMethod);
         }
@@ -451,6 +604,43 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallVisitor<TService> visitor)
         {
             visitor.Visit(this);
+        }
+
+        /// <summary>
+        /// Builds the method call with specified callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2, T3, T4, T5>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4, T5>>> buildCallbacks)
+        {
+            buildCallbacks(this);
+            return this;
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <param name="arg1">The first parameter.</param>
+        /// <param name="arg2">The second parameter.</param>
+        /// <param name="arg3">The third parameter.</param>
+        /// <param name="arg4">The fourth parameter.</param>
+        /// <param name="arg5">The fifth parameter.</param>
+        /// <returns></returns>
+        public IMethodCall<TService, IMethodCallback<T1, T2, T3, T4, T5>> BuildCallbacks(Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4, T5>>> buildCallbacks, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            buildCallbacks(this, arg1, arg2, arg3, arg4, arg5);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="callback">Successful completion callback</param>
+        public IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4, T5>> Complete(Action<T1, T2, T3, T4, T5> callback)
+        {
+            Callbacks.Add(new OnCompleteCallback<T1, T2, T3, T4, T5>(callback));
+            return this;
         }
     }
 }
