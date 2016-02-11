@@ -110,7 +110,7 @@ namespace Attest.Fake.Setup
         public override IMethodCallbacksContainer<IMethodCallback> Complete()
         {
             Callbacks.Add(
-                CallbackBuilder<ActionWrapper, MethodCallbackTemplate, IMethodCallback>.CreateCallbackBuilder()
+                CallbackBuilder<ActionWrapper, IMethodCallbackTemplate<IActionWrapper>, IMethodCallback>.CreateCallbackBuilder()
                     .WithDefaultAction());
             return this;
         }
@@ -159,7 +159,7 @@ namespace Attest.Fake.Setup
         IMethodCallbacksContainer<IMethodCallback> IAddCallback<IMethodCallback>.Complete(Action callback)
         {
             Callbacks.Add(
-                CallbackBuilder<ActionWrapper, MethodCallbackTemplate, IMethodCallback>.CreateCallbackBuilder()
+                CallbackBuilder<ActionWrapper, IMethodCallbackTemplate<IActionWrapper>, IMethodCallback>.CreateCallbackBuilder()
                     .WithDefaultAction());
             return this;
         }
@@ -200,7 +200,7 @@ namespace Attest.Fake.Setup
         public override IMethodCallbacksContainer<IMethodCallback<T>> Complete()
         {
             Callbacks.Add(
-                CallbackBuilder<ActionWrapper<T>, MethodCallbackTemplate<T>, IMethodCallback<T>>.CreateCallbackBuilder()
+                CallbackBuilder<ActionWrapper<T>, IMethodCallbackTemplate<IActionWrapper<T>, T>, IMethodCallback<T>>.CreateCallbackBuilder()
                     .WithDefaultAction());
             return this;
         }
@@ -310,7 +310,7 @@ namespace Attest.Fake.Setup
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2>> Complete()
         {
             Callbacks.Add(
-              CallbackBuilder<ActionWrapper<T1, T2>, MethodCallbackTemplate<T1, T2>, IMethodCallback<T1, T2>>.CreateCallbackBuilder()
+              CallbackBuilder<ActionWrapper<T1, T2>, IMethodCallbackTemplate<IActionWrapper<T1, T2>, T1, T2>, IMethodCallback<T1, T2>>.CreateCallbackBuilder()
                   .WithDefaultAction());
             return this;
         }
@@ -420,7 +420,7 @@ namespace Attest.Fake.Setup
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3>> Complete()
         {
             Callbacks.Add(
-              CallbackBuilder<ActionWrapper<T1, T2, T3>, MethodCallbackTemplate<T1, T2, T3>, IMethodCallback<T1, T2, T3>>.CreateCallbackBuilder()
+              CallbackBuilder<ActionWrapper<T1, T2, T3>, IMethodCallbackTemplate<IActionWrapper<T1, T2, T3>, T1, T2, T3>, IMethodCallback<T1, T2, T3>>.CreateCallbackBuilder()
                   .WithDefaultAction());
             return this;
         }
@@ -531,7 +531,7 @@ namespace Attest.Fake.Setup
         public override IMethodCallbacksContainer<IMethodCallback<T1, T2, T3, T4>> Complete()
         {
             Callbacks.Add(
-              CallbackBuilder<ActionWrapper<T1, T2, T3, T4>, MethodCallbackTemplate<T1, T2, T3, T4>, IMethodCallback<T1, T2, T3, T4>>.CreateCallbackBuilder()
+              CallbackBuilder<ActionWrapper<T1, T2, T3, T4>, IMethodCallbackTemplate<IActionWrapper<T1, T2, T3, T4>, T1, T2, T3, T4>, IMethodCallback<T1, T2, T3, T4>>.CreateCallbackBuilder()
                   .WithDefaultAction());
             return this;
         }
@@ -644,7 +644,8 @@ namespace Attest.Fake.Setup
         {
             Callbacks.Add(
                 CallbackBuilder
-                    <ActionWrapper<T1, T2, T3, T4, T5>, MethodCallbackTemplate<T1, T2, T3, T4, T5>,
+                    <ActionWrapper<T1, T2, T3, T4, T5>,
+                        IMethodCallbackTemplate<IActionWrapper<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>,
                         IMethodCallback<T1, T2, T3, T4, T5>>.CreateCallbackBuilder()
                     .WithDefaultAction());
             return this;

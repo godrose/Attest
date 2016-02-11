@@ -39,7 +39,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
-        public MethodCallbackTemplate Accept(IActionWrapperVisitor visitor)
+        public IMethodCallbackTemplate<IActionWrapper> Accept(IActionWrapperVisitor visitor)
         {
             return visitor.Visit(this);
         }
@@ -82,7 +82,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
-        public MethodCallbackTemplate<T> Accept(IActionWrapperVisitor visitor)
+        public IMethodCallbackTemplate<IActionWrapper<T>, T> Accept(IActionWrapperVisitor visitor)
         {
             return visitor.Visit(this);
         }
@@ -127,7 +127,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
-        public MethodCallbackTemplate<T1, T2> Accept(IActionWrapperVisitor visitor)
+        public IMethodCallbackTemplate<IActionWrapper<T1, T2>, T1, T2> Accept(IActionWrapperVisitor visitor)
         {
             return visitor.Visit(this);
         }
@@ -173,7 +173,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
-        public MethodCallbackTemplate<T1, T2, T3> Accept(IActionWrapperVisitor visitor)
+        public IMethodCallbackTemplate<IActionWrapper<T1, T2, T3>, T1, T2, T3> Accept(IActionWrapperVisitor visitor)
         {
             return visitor.Visit(this);
         }
@@ -220,7 +220,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
-        public MethodCallbackTemplate<T1, T2, T3, T4> Accept(IActionWrapperVisitor visitor)
+        public IMethodCallbackTemplate<IActionWrapper<T1, T2, T3, T4>, T1, T2, T3, T4> Accept(IActionWrapperVisitor visitor)
         {
             return visitor.Visit(this);
         }
@@ -268,7 +268,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
-        public MethodCallbackTemplate<T1, T2, T3, T4, T5> Accept(IActionWrapperVisitor visitor)
+        public IMethodCallbackTemplate<IActionWrapper<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5> Accept(IActionWrapperVisitor visitor)
         {
             return visitor.Visit(this);
         }

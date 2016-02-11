@@ -803,7 +803,7 @@ namespace Attest.Fake.Setup
         public override IProgressableProcessFinished<IMethodCallback> Complete()
         {
             FinishCallback =
-                CallbackBuilder<ActionWrapper, MethodCallbackTemplate, IMethodCallback>.CreateCallbackBuilder()
+                CallbackBuilder<ActionWrapper, IMethodCallbackTemplate<IActionWrapper>, IMethodCallback>.CreateCallbackBuilder()
                     .WithDefaultAction();
             return this;
         }
@@ -883,7 +883,7 @@ namespace Attest.Fake.Setup
         public override IProgressableProcessFinished<IMethodCallback<T>> Complete()
         {
             FinishCallback =
-                CallbackBuilder<ActionWrapper<T>, MethodCallbackTemplate<T>, IMethodCallback<T>>.CreateCallbackBuilder()
+                CallbackBuilder<ActionWrapper<T>, IMethodCallbackTemplate<IActionWrapper<T>, T>, IMethodCallback<T>>.CreateCallbackBuilder()
                     .WithDefaultAction();
             return this;
         }
@@ -963,7 +963,7 @@ namespace Attest.Fake.Setup
         public override IProgressableProcessFinished<IMethodCallback<T1, T2>> Complete()
         {
             FinishCallback =
-                CallbackBuilder<ActionWrapper<T1, T2>, MethodCallbackTemplate<T1, T2>, IMethodCallback<T1, T2>>.CreateCallbackBuilder()
+                CallbackBuilder<ActionWrapper<T1, T2>, IMethodCallbackTemplate<IActionWrapper<T1, T2>, T1, T2>, IMethodCallback<T1, T2>>.CreateCallbackBuilder()
                     .WithDefaultAction();
             return this;
         }
@@ -1045,7 +1045,9 @@ namespace Attest.Fake.Setup
         public override IProgressableProcessFinished<IMethodCallback<T1, T2, T3>> Complete()
         {
             FinishCallback =
-                CallbackBuilder<ActionWrapper<T1, T2, T3>, MethodCallbackTemplate<T1, T2, T3>, IMethodCallback<T1, T2, T3>>.CreateCallbackBuilder()
+                CallbackBuilder
+                    <ActionWrapper<T1, T2, T3>, IMethodCallbackTemplate<IActionWrapper<T1, T2, T3>, T1, T2, T3>,
+                        IMethodCallback<T1, T2, T3>>.CreateCallbackBuilder()
                     .WithDefaultAction();
             return this;
         }
@@ -1128,7 +1130,10 @@ namespace Attest.Fake.Setup
         public override IProgressableProcessFinished<IMethodCallback<T1, T2, T3, T4>> Complete()
         {
             FinishCallback =
-                CallbackBuilder<ActionWrapper<T1, T2, T3, T4>, MethodCallbackTemplate<T1, T2, T3, T4>, IMethodCallback<T1, T2, T3, T4>>.CreateCallbackBuilder()
+                CallbackBuilder
+                    <ActionWrapper<T1, T2, T3, T4>,
+                        IMethodCallbackTemplate<IActionWrapper<T1, T2, T3, T4>, T1, T2, T3, T4>,
+                        IMethodCallback<T1, T2, T3, T4>>.CreateCallbackBuilder()
                     .WithDefaultAction();
             return this;
         }
@@ -1212,7 +1217,10 @@ namespace Attest.Fake.Setup
         public override IProgressableProcessFinished<IMethodCallback<T1, T2, T3, T4, T5>> Complete()
         {
             FinishCallback =
-                CallbackBuilder<ActionWrapper<T1, T2, T3, T4, T5>, MethodCallbackTemplate<T1, T2, T3, T4, T5>, IMethodCallback<T1, T2, T3, T4, T5>>.CreateCallbackBuilder()
+                CallbackBuilder
+                    <ActionWrapper<T1, T2, T3, T4, T5>,
+                        IMethodCallbackTemplate<IActionWrapper<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>,
+                        IMethodCallback<T1, T2, T3, T4, T5>>.CreateCallbackBuilder()
                     .WithDefaultAction();
             return this;
         }

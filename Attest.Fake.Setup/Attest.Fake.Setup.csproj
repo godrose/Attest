@@ -66,6 +66,8 @@
     <Compile Include="Contracts\IResultWrapperVisitor.cs" />
     <Compile Include="Contracts\IServiceCall.cs" />
     <Compile Include="Contracts\IServiceSetupFactory.cs" />
+    <Compile Include="Contracts\IMethodCallbackTemplateVisitor.cs" />
+    <Compile Include="Contracts\IMethodCallbackTemplate.cs" />
     <Compile Include="MethodCallback.cs" />
     <Compile Include="MethodCallbackTemplate.cs" />
     <Compile Include="MethodCallbackVisitor.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="MethodCallbackWithResultTemplate.cs" />
     <Compile Include="MethodCallbackWithResultVisitor.cs" />
     <Compile Include="MethodCallbackWithResultVisitorHelper.cs" />
+    <Compile Include="OnCompleteCallbackVisitor.cs" />
     <Compile Include="ProgressMessages.cs" />
     <Compile Include="FakeOperation.cs" />
     <Compile Include="HaveCallbacksBase.cs" />
