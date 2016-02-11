@@ -29,9 +29,4 @@ namespace Attest.Fake.Setup.Contracts
         /// </summary>
         Expression<Func<TService, TResult>> RunMethod { get; }
     }
-
-    public interface IGenerateMethodCallbackWithResult<T1, T2, T3, TResult>
-    {
-        void EvaluateArguments(T1 arg1, T2 arg2, T3 arg3);
-    }
 }

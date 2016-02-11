@@ -51,6 +51,8 @@
     <Compile Include="IAppendMethods.cs" />
     <Compile Include="ICallbackYielder.cs" />
     <Compile Include="ICanAddMethods.cs" />
+    <Compile Include="IGenerateMethodCallback.cs" />
+    <Compile Include="IGenerateMethodCallbackWithResult.cs" />
     <Compile Include="IHaveCallbacks.cs" />
     <Compile Include="IHaveMethods.cs" />
     <Compile Include="IHaveNoCallbacks.cs" />

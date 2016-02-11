@@ -29,6 +29,10 @@ namespace Attest.Fake.Setup
 
             _fake.Setup(methodCall.RunMethod).Callback((T arg) =>
             {
+                if (methodCall is IGenerateMethodCallbackWithResult<T>)
+                {
+                    (methodCall as IGenerateMethodCallbackWithResult<T>).EvaluateArguments(arg);
+                }
                 var methodCallback = methodCall.YieldCallback();
                 return methodCallback.Accept(methodCallbackWithResultVisitor, arg);
             });
@@ -40,6 +44,10 @@ namespace Attest.Fake.Setup
 
             _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2) =>
             {
+                if (methodCall is IGenerateMethodCallbackWithResult<T1, T2>)
+                {
+                    (methodCall as IGenerateMethodCallbackWithResult<T1, T2>).EvaluateArguments(arg1, arg2);
+                }
                 var methodCallback = methodCall.YieldCallback();
                 return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2);
             });
@@ -51,9 +59,9 @@ namespace Attest.Fake.Setup
 
             _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3) =>
             {
-                if (methodCall is IGenerateMethodCallbackWithResult<T1, T2, T3, TResult>)
+                if (methodCall is IGenerateMethodCallbackWithResult<T1, T2, T3>)
                 {
-                    (methodCall as IGenerateMethodCallbackWithResult<T1, T2, T3, TResult>).EvaluateArguments(arg1, arg2, arg3);
+                    (methodCall as IGenerateMethodCallbackWithResult<T1, T2, T3>).EvaluateArguments(arg1, arg2, arg3);
                 }
                 var methodCallback = methodCall.YieldCallback();
                 return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3);
@@ -66,6 +74,10 @@ namespace Attest.Fake.Setup
 
             _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4) =>
             {
+                if (methodCall is IGenerateMethodCallbackWithResult<T1, T2, T3, T4>)
+                {
+                    (methodCall as IGenerateMethodCallbackWithResult<T1, T2, T3, T4>).EvaluateArguments(arg1, arg2, arg3, arg4);
+                }
                 var methodCallback = methodCall.YieldCallback();
                 return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3, arg4);
             });
@@ -77,6 +89,11 @@ namespace Attest.Fake.Setup
 
             _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) =>
             {
+                if (methodCall is IGenerateMethodCallbackWithResult<T1, T2, T3, T4, T5>)
+                {
+                    (methodCall as IGenerateMethodCallbackWithResult<T1, T2, T3, T4, T5>).EvaluateArguments(arg1, arg2,
+                        arg3, arg4, arg5);
+                }
                 var methodCallback = methodCall.YieldCallback();
                 return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3, arg4, arg5);
             });

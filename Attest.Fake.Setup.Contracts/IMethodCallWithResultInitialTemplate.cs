@@ -45,13 +45,13 @@ namespace Attest.Fake.Setup.Contracts
         where TService : class
     {
         /// <summary>
-        /// Builds the method call with return value from the specified build callbacks.
+        /// Builds the method call with return value using specified callbacks producer.
         /// </summary>
-        /// <param name="buildCallbacks">The build callbacks.</param>
-        /// <param name="arg">The parameter.</param>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
         /// <returns></returns>
         IMethodCallWithResult<TService, TCallback, TResult> BuildCallbacks(
-            Func<IHaveNoCallbacksWithResult<TCallback, T, TResult>, T, IHaveCallbacks<TCallback>> buildCallbacks, T arg);
+            Func<IHaveNoCallbacksWithResult<TCallback, T, TResult>,
+                T, IHaveCallbacks<TCallback>> callbacksProducer);
     }
 
     /// <summary>
@@ -67,14 +67,13 @@ namespace Attest.Fake.Setup.Contracts
         where TService : class
     {
         /// <summary>
-        /// Builds the method call with return value from the specified build callbacks.
+        /// Builds the method call with return value using specified callbacks producer.
         /// </summary>
-        /// <param name="buildCallbacks">The build callbacks.</param>        
-        /// <param name="arg1">The first parameter.</param>
-        /// <param name="arg2">The second parameter.</param>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
         /// <returns></returns>
         IMethodCallWithResult<TService, TCallback, TResult> BuildCallbacks(
-            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, TResult>, T1, T2, IHaveCallbacks<TCallback>> buildCallbacks, T1 arg1, T2 arg2);
+            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, TResult>,
+                T1, T2, IHaveCallbacks<TCallback>> callbacksProducer);
     }
 
     /// <summary>
@@ -115,17 +114,13 @@ namespace Attest.Fake.Setup.Contracts
         where TService : class
     {
         /// <summary>
-        /// Builds the method call with return value from the specified build callbacks.
+        /// Builds the method call with return value using specified callbacks producer.
         /// </summary>
-        /// <param name="buildCallbacks">The build callbacks.</param>        
-        /// <param name="arg1">The first parameter.</param>
-        /// <param name="arg2">The second parameter.</param>
-        /// <param name="arg3">The third parameter.</param>
-        /// <param name="arg4">The fourth parameter.</param>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
         /// <returns></returns>
         IMethodCallWithResult<TService, TCallback, TResult> BuildCallbacks(
-            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, TResult>, T1, T2, T3, T4, 
-                IHaveCallbacks<TCallback>> buildCallbacks, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, TResult>,
+                T1, T2, T3, T4, IHaveCallbacks<TCallback>> callbacksProducer);
     }
 
     /// <summary>
@@ -144,17 +139,12 @@ namespace Attest.Fake.Setup.Contracts
         where TService : class
     {
         /// <summary>
-        /// Builds the method call with return value from the specified build callbacks.
+        /// Builds the method call with return value using specified callbacks producer.
         /// </summary>
-        /// <param name="buildCallbacks">The build callbacks.</param>        
-        /// <param name="arg1">The first parameter.</param>
-        /// <param name="arg2">The second parameter.</param>
-        /// <param name="arg3">The third parameter.</param>
-        /// <param name="arg4">The fourth parameter.</param>
-        /// <param name="arg5">The fifth parameter.</param>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
         /// <returns></returns>
         IMethodCallWithResult<TService, TCallback, TResult> BuildCallbacks(
-            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5,
-                IHaveCallbacks<TCallback>> buildCallbacks, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
+            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, T5, TResult>,
+                T1, T2, T3, T4, T5, IHaveCallbacks<TCallback>> callbacksProducer);
     }   
 }
