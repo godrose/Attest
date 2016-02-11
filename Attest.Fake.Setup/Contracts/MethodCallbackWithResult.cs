@@ -109,7 +109,7 @@ namespace Attest.Fake.Setup.Contracts
     public class OnCompleteCallbackWithResult<TResult> :
         MethodCallbackBaseWithResult<TResult>
     {
-        public Func<TResult> ValueFunction { get; private set; }
+        internal Func<TResult> ValueFunction { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnCompleteCallbackWithResult{TResult}"/> class.
@@ -148,7 +148,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T, TResult}" />
     public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
     {
-        public Func<T, TResult> ValueFunction { get; private set; }
+        internal Func<T, TResult> ValueFunction { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnCompleteCallbackWithResult{T, TResult}"/> class.
@@ -189,7 +189,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
     {
-        public Func<T1, T2, TResult> ValueFunction { get; private set; }
+        internal Func<T1, T2, TResult> ValueFunction { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnCompleteCallbackWithResult{T1, T2, TResult}"/> class.
@@ -233,7 +233,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, T3, TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>
     {
-        public Func<T1, T2, T3, TResult> ValueFunction { get; private set; }
+        internal Func<T1, T2, T3, TResult> ValueFunction { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnCompleteCallbackWithResult{T1, T2, T3, TResult}"/> class.
@@ -278,7 +278,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, T3, T4, TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, TResult>        
     {
-        public Func<T1, T2, T3, T4, TResult> ValueFunction { get; private set; }
+        internal Func<T1, T2, T3, T4, TResult> ValueFunction { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnCompleteCallbackWithResult{T1, T2, T3, T4, TResult}"/> class.
@@ -325,7 +325,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, T3, T4, T5, TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, T5, TResult>        
     {
-        public Func<T1, T2, T3, T4, T5, TResult> ValueFunction { get; private set; }
+        internal Func<T1, T2, T3, T4, T5, TResult> ValueFunction { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnCompleteCallbackWithResult{T1, T2, T3, T4, T5, TResult}"/> class.

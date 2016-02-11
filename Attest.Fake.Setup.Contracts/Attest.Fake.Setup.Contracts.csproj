@@ -41,7 +41,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions.cs" />
     <Compile Include="IAddCallback.cs" />
     <Compile Include="IAddCallbackWithResult.cs" />
     <Compile Include="IAppendCallbacks.cs" />

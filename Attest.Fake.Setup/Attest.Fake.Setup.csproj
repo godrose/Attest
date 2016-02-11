@@ -45,6 +45,7 @@
     <Compile Include="Contracts\ActionWrapper.cs" />
     <Compile Include="Contracts\ActionWrapperVisitor.cs" />
     <Compile Include="Contracts\CallbackBuilder.cs" />
+    <Compile Include="Contracts\Exceptions.cs" />
     <Compile Include="Contracts\IActionWrapper.cs" />
     <Compile Include="Contracts\IActionWrapperVisitor.cs" />
     <Compile Include="Contracts\IAppendMethods.cs" />
