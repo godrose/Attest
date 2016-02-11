@@ -1,7 +1,8 @@
 using System;
+using Attest.Fake.Setup.Contracts;
 using Solid.Patterns.Visitor;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Callback builder for creating different types of callbacks to the wrapped action

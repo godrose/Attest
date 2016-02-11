@@ -1,4 +1,6 @@
-namespace Attest.Fake.Setup.Contracts
+using Attest.Fake.Setup.Contracts;
+
+namespace Attest.Fake.Setup
 {
     internal class ActionWrapperVisitor : IActionWrapperVisitor
     {

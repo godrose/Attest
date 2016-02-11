@@ -1,6 +1,7 @@
 using System;
+using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Base class for callback with return value and no parameters
@@ -105,7 +106,7 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents successful completion callback with return value.
     /// </summary>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <seealso cref="Contracts.MethodCallbackBaseWithResult{TResult}" />
+    /// <seealso cref="MethodCallbackBaseWithResult{TResult}" />
     public class OnCompleteCallbackWithResult<TResult> :
         MethodCallbackBaseWithResult<TResult>
     {
@@ -145,7 +146,7 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="T">The type of the parameter</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T, TResult}" />
+    /// <seealso cref="MethodCallbackBaseWithResult{T,TResult}" />
     public class OnCompleteCallbackWithResult<T, TResult> : MethodCallbackBaseWithResult<T, TResult>
     {
         internal Func<T, TResult> ValueFunction { get; private set; }
@@ -186,7 +187,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, TResult}" />
+    /// <seealso cref="MethodCallbackBaseWithResult{T1,T2,TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, TResult> : MethodCallbackBaseWithResult<T1, T2, TResult>
     {
         internal Func<T1, T2, TResult> ValueFunction { get; private set; }
@@ -230,7 +231,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">The type of the second parameter</typeparam>
     /// <typeparam name="T3">The type of the third parameter</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, T3, TResult}" />
+    /// <seealso cref="MethodCallbackBaseWithResult{T1,T2,T3,TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, T3, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, TResult>
     {
         internal Func<T1, T2, T3, TResult> ValueFunction { get; private set; }
@@ -275,7 +276,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T3">The type of the third parameter</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, T3, T4, TResult}" />
+    /// <seealso cref="MethodCallbackBaseWithResult{T1,T2,T3,T4,TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, TResult>        
     {
         internal Func<T1, T2, T3, T4, TResult> ValueFunction { get; private set; }
@@ -322,7 +323,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T4">The type of the fourth parameter</typeparam>
     /// <typeparam name="T5">The type of the fifth parameter</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <seealso cref="Contracts.MethodCallbackBaseWithResult{T1, T2, T3, T4, T5, TResult}" />
+    /// <seealso cref="MethodCallbackBaseWithResult{T1,T2,T3,T4,T5,TResult}" />
     public class OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult> : MethodCallbackBaseWithResult<T1, T2, T3, T4, T5, TResult>        
     {
         internal Func<T1, T2, T3, T4, T5, TResult> ValueFunction { get; private set; }
@@ -365,7 +366,7 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents error-throwing callback with return value.    
     /// </summary>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
-    /// <seealso cref="Contracts.MethodCallbackBaseWithResult{TResult}" />
+    /// <seealso cref="MethodCallbackBaseWithResult{TResult}" />
     public class OnErrorCallbackWithResult<TResult> : MethodCallbackBaseWithResult<TResult>, IThrowException
     {
         /// <summary>

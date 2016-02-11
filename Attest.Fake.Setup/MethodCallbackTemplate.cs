@@ -1,6 +1,7 @@
+using Attest.Fake.Setup.Contracts;
 using Solid.Patterns.Visitor;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Represents visitor for different method callback templates without return value

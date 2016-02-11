@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Represents an object that can add progress messages.

@@ -1,6 +1,7 @@
 ﻿using System;
+using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Base class for method callbacks without return value and no parameters.

@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// This exception is thrown to indicate progress event(s)

@@ -42,10 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppendCallsVisitorHelper.cs" />
-    <Compile Include="Contracts\ActionWrapper.cs" />
-    <Compile Include="Contracts\ActionWrapperVisitor.cs" />
-    <Compile Include="Contracts\CallbackBuilder.cs" />
-    <Compile Include="Contracts\Exceptions.cs" />
+    <Compile Include="ActionWrapper.cs" />
+    <Compile Include="ActionWrapperVisitor.cs" />
+    <Compile Include="CallbackBuilder.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="Contracts\IActionWrapper.cs" />
     <Compile Include="Contracts\IActionWrapperVisitor.cs" />
     <Compile Include="Contracts\IAppendMethods.cs" />
@@ -66,15 +66,15 @@
     <Compile Include="Contracts\IResultWrapperVisitor.cs" />
     <Compile Include="Contracts\IServiceCall.cs" />
     <Compile Include="Contracts\IServiceSetupFactory.cs" />
-    <Compile Include="Contracts\MethodCallback.cs" />
-    <Compile Include="Contracts\MethodCallbackTemplate.cs" />
-    <Compile Include="Contracts\MethodCallbackVisitor.cs" />
-    <Compile Include="Contracts\MethodCallbackVisitorHelper.cs" />
-    <Compile Include="Contracts\MethodCallbackWithResult.cs" />
-    <Compile Include="Contracts\MethodCallbackWithResultTemplate.cs" />
-    <Compile Include="Contracts\MethodCallbackWithResultVisitor.cs" />
-    <Compile Include="Contracts\MethodCallbackWithResultVisitorHelper.cs" />
-    <Compile Include="Contracts\ProgressMessages.cs" />
+    <Compile Include="MethodCallback.cs" />
+    <Compile Include="MethodCallbackTemplate.cs" />
+    <Compile Include="MethodCallbackVisitor.cs" />
+    <Compile Include="MethodCallbackVisitorHelper.cs" />
+    <Compile Include="MethodCallbackWithResult.cs" />
+    <Compile Include="MethodCallbackWithResultTemplate.cs" />
+    <Compile Include="MethodCallbackWithResultVisitor.cs" />
+    <Compile Include="MethodCallbackWithResultVisitorHelper.cs" />
+    <Compile Include="ProgressMessages.cs" />
     <Compile Include="FakeOperation.cs" />
     <Compile Include="HaveCallbacksBase.cs" />
     <Compile Include="HaveDelegateWrapperBase.cs" />

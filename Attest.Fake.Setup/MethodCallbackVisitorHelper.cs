@@ -1,6 +1,7 @@
 using System;
+using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Helper class for method callback visitors

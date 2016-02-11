@@ -1,7 +1,8 @@
 using System;
 using System.Linq;
+using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     static class MethodCallbackWithResultVisitorHelper
     {

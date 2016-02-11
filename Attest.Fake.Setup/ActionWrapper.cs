@@ -1,6 +1,7 @@
 using System;
+using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Contracts
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Wraps an action that has 0 parameters
