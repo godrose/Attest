@@ -27,7 +27,7 @@ namespace Attest.Fake.Setup.Contracts
     public interface IMethodCallInitialTemplate<TService, TCallback> :
         IMethodCallInitialTemplateBase<TService, TCallback, IHaveNoCallbacks<TCallback>>
         where TService : class
-    {
+    {        
     }
 
     /// <summary>

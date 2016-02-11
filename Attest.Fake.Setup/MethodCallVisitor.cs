@@ -29,7 +29,7 @@ namespace Attest.Fake.Setup
             {
                 if (methodCall is IGenerateMethodCallback<T>)
                 {
-                    (methodCall as IGenerateMethodCallback<T>).EvaluateArguments(arg);
+                    (methodCall as IGenerateMethodCallback<T>).GenerateCallback(arg);
                 }
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg);
@@ -43,7 +43,7 @@ namespace Attest.Fake.Setup
             {
                 if (methodCall is IGenerateMethodCallback<T1, T2>)
                 {
-                    (methodCall as IGenerateMethodCallback<T1, T2>).EvaluateArguments(arg1, arg2);
+                    (methodCall as IGenerateMethodCallback<T1, T2>).GenerateCallback(arg1, arg2);
                 }
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2);
@@ -57,7 +57,7 @@ namespace Attest.Fake.Setup
             {
                 if (methodCall is IGenerateMethodCallback<T1, T2, T3>)
                 {
-                    (methodCall as IGenerateMethodCallback<T1, T2, T3>).EvaluateArguments(arg1, arg2, arg3);
+                    (methodCall as IGenerateMethodCallback<T1, T2, T3>).GenerateCallback(arg1, arg2, arg3);
                 }
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2, arg3);
@@ -71,7 +71,7 @@ namespace Attest.Fake.Setup
             {
                 if (methodCall is IGenerateMethodCallback<T1, T2, T3, T4>)
                 {
-                    (methodCall as IGenerateMethodCallback<T1, T2, T3, T4>).EvaluateArguments(arg1, arg2, arg3, arg4);
+                    (methodCall as IGenerateMethodCallback<T1, T2, T3, T4>).GenerateCallback(arg1, arg2, arg3, arg4);
                 }
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2, arg3, arg4);
@@ -85,7 +85,7 @@ namespace Attest.Fake.Setup
             {
                 if (methodCall is IGenerateMethodCallback<T1, T2, T3, T4, T5>)
                 {
-                    (methodCall as IGenerateMethodCallback<T1, T2, T3, T4, T5>).EvaluateArguments(arg1, arg2, arg3, arg4,
+                    (methodCall as IGenerateMethodCallback<T1, T2, T3, T4, T5>).GenerateCallback(arg1, arg2, arg3, arg4,
                         arg5);
                 }
                 var methodCallback = methodCall.YieldCallback();

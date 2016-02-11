@@ -1,5 +1,5 @@
 namespace Attest.Fake.Setup.Contracts
-{
+{    
     /// <summary>
     /// Generates method callback by evaluating provided parameters.
     /// This contract is internal and is not meant to be used from the code.
@@ -8,10 +8,10 @@ namespace Attest.Fake.Setup.Contracts
     public interface IGenerateMethodCallback<T>
     {
         /// <summary>
-        /// Evaluates the provided parameters.
+        /// Generates callback.
         /// </summary>
         /// <param name="arg">The parameter.</param>        
-        void EvaluateArguments(T arg);
+        void GenerateCallback(T arg);
     }
 
     /// <summary>
@@ -23,11 +23,11 @@ namespace Attest.Fake.Setup.Contracts
     public interface IGenerateMethodCallback<T1, T2>
     {
         /// <summary>
-        /// Evaluates the provided parameters.
+        /// Generates callback.
         /// </summary>
         /// <param name="arg1">The first parameter.</param>
         /// <param name="arg2">The second parameter.</param>       
-        void EvaluateArguments(T1 arg1, T2 arg2);
+        void GenerateCallback(T1 arg1, T2 arg2);
     }
 
     /// <summary>
@@ -40,12 +40,12 @@ namespace Attest.Fake.Setup.Contracts
     public interface IGenerateMethodCallback<T1, T2, T3>
     {
         /// <summary>
-        /// Evaluates the provided parameters.
+        /// Generates callback.
         /// </summary>
         /// <param name="arg1">The first parameter.</param>
         /// <param name="arg2">The second parameter.</param>
         /// <param name="arg3">The third parameter.</param>
-        void EvaluateArguments(T1 arg1, T2 arg2, T3 arg3);
+        void GenerateCallback(T1 arg1, T2 arg2, T3 arg3);
     }
 
     /// <summary>
@@ -59,13 +59,13 @@ namespace Attest.Fake.Setup.Contracts
     public interface IGenerateMethodCallback<T1, T2, T3, T4>
     {
         /// <summary>
-        /// Evaluates the provided parameters.
+        /// Generates callback.
         /// </summary>
         /// <param name="arg1">The first parameter.</param>
         /// <param name="arg2">The second parameter.</param>
         /// <param name="arg3">The third parameter.</param>
         /// <param name="arg4">The fourth parameter.</param>
-        void EvaluateArguments(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+        void GenerateCallback(T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     }
 
     /// <summary>
@@ -80,13 +80,13 @@ namespace Attest.Fake.Setup.Contracts
     public interface IGenerateMethodCallback<T1, T2, T3, T4, T5>
     {
         /// <summary>
-        /// Evaluates the provided parameters.
+        /// Generates callback.
         /// </summary>
         /// <param name="arg1">The first parameter.</param>
         /// <param name="arg2">The second parameter.</param>
         /// <param name="arg3">The third parameter.</param>
         /// <param name="arg4">The fourth parameter.</param>
         /// <param name="arg5">The fifth parameter.</param>
-        void EvaluateArguments(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
+        void GenerateCallback(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5);
     }
 }
