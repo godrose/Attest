@@ -62,8 +62,6 @@
     <Compile Include="Contracts\IMethodCallWithResult.cs" />
     <Compile Include="Contracts\IMethodCallWithResultInitialTemplate.cs" />
     <Compile Include="Contracts\IMethodCallWithResultVisitor.cs" />
-    <Compile Include="Contracts\IResultWrapper.cs" />
-    <Compile Include="Contracts\IResultWrapperVisitor.cs" />
     <Compile Include="Contracts\IServiceCall.cs" />
     <Compile Include="Contracts\IServiceSetupFactory.cs" />
     <Compile Include="Contracts\IMethodCallbackTemplateVisitor.cs" />
@@ -89,7 +87,6 @@
     <Compile Include="MethodCallWithResultVisitor.cs" />
     <Compile Include="OperationInvoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResultWrapper.cs" />
     <Compile Include="ServiceCall.cs" />
     <Compile Include="ServiceSetupFactory.cs" />
   </ItemGroup>
