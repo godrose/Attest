@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppendCallsVisitorHelper.cs" />
+    <Compile Include="Contracts\IMethodCallInitialTemplate.cs" />
+    <Compile Include="Contracts\IMethodCallWithResultInitialTemplate.cs" />
+    <Compile Include="Contracts\IServiceSetupFactory.cs" />
     <Compile Include="FakeOperation.cs" />
     <Compile Include="HaveCallbacksBase.cs" />
     <Compile Include="HaveDelegateWrapperBase.cs" />

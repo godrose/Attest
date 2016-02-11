@@ -64,17 +64,14 @@
     <Compile Include="IMethodCallbackVisitor.cs" />
     <Compile Include="IMethodCallbackWithResult.cs" />
     <Compile Include="IMethodCallbackWithResultVisitor.cs" />
-    <Compile Include="IMethodCallInitialTemplate.cs" />
     <Compile Include="IMethodCallMetaData.cs" />
     <Compile Include="IMethodCallVisitor.cs" />
     <Compile Include="IMethodCallWithResult.cs" />
-    <Compile Include="IMethodCallWithResultInitialTemplate.cs" />
     <Compile Include="IMethodCallWithResultVisitor.cs" />
     <Compile Include="IOperation.cs" />
     <Compile Include="IResultWrapper.cs" />
     <Compile Include="IReturnResult.cs" />
     <Compile Include="IServiceCall.cs" />
-    <Compile Include="IServiceSetupFactory.cs" />
     <Compile Include="IThrowException.cs" />
     <Compile Include="MethodCallback.cs" />
     <Compile Include="MethodCallbackTemplate.cs" />
