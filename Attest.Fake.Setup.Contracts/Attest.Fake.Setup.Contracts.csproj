@@ -41,10 +41,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionWrapper.cs" />
-    <Compile Include="CallbackBuilder.cs" />
     <Compile Include="Exceptions.cs" />
-    <Compile Include="IActionWrapper.cs" />
     <Compile Include="IAddCallback.cs" />
     <Compile Include="IAddCallbackWithResult.cs" />
     <Compile Include="IAppendCallbacks.cs" />
@@ -54,9 +51,7 @@
     <Compile Include="IHaveCallbacks.cs" />
     <Compile Include="IHaveNoCallbacks.cs" />
     <Compile Include="IHaveNoCallbacksWithResult.cs" />
-    <Compile Include="IMethodCallback.cs" />
     <Compile Include="IMethodCallbacksContainer.cs" />
-    <Compile Include="IMethodCallbackVisitor.cs" />
     <Compile Include="IMethodCallbackWithResult.cs" />
     <Compile Include="IMethodCallbackWithResultVisitor.cs" />
     <Compile Include="IMethodCallMetaData.cs" />
@@ -64,8 +59,6 @@
     <Compile Include="IResultWrapper.cs" />
     <Compile Include="IReturnResult.cs" />
     <Compile Include="IThrowException.cs" />
-    <Compile Include="MethodCallback.cs" />
-    <Compile Include="MethodCallbackTemplate.cs" />
     <Compile Include="MethodCallbackWithResult.cs" />
     <Compile Include="MethodCallbackWithResultTemplate.cs" />
     <Compile Include="ProgressMessages.cs" />
