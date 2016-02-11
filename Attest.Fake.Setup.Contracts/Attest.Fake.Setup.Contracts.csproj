@@ -48,16 +48,12 @@
     <Compile Include="IAddCallback.cs" />
     <Compile Include="IAddCallbackWithResult.cs" />
     <Compile Include="IAppendCallbacks.cs" />
-    <Compile Include="IAppendMethods.cs" />
     <Compile Include="ICallbackYielder.cs" />
-    <Compile Include="ICanAddMethods.cs" />
     <Compile Include="IGenerateMethodCallback.cs" />
     <Compile Include="IGenerateMethodCallbackWithResult.cs" />
     <Compile Include="IHaveCallbacks.cs" />
-    <Compile Include="IHaveMethods.cs" />
     <Compile Include="IHaveNoCallbacks.cs" />
     <Compile Include="IHaveNoCallbacksWithResult.cs" />
-    <Compile Include="IHaveNoMethods.cs" />
     <Compile Include="IMethodCall.cs" />
     <Compile Include="IMethodCallback.cs" />
     <Compile Include="IMethodCallbacksContainer.cs" />
@@ -71,7 +67,6 @@
     <Compile Include="IOperation.cs" />
     <Compile Include="IResultWrapper.cs" />
     <Compile Include="IReturnResult.cs" />
-    <Compile Include="IServiceCall.cs" />
     <Compile Include="IThrowException.cs" />
     <Compile Include="MethodCallback.cs" />
     <Compile Include="MethodCallbackTemplate.cs" />

@@ -42,8 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppendCallsVisitorHelper.cs" />
+    <Compile Include="Contracts\IAppendMethods.cs" />
+    <Compile Include="Contracts\ICanAddMethods.cs" />
+    <Compile Include="Contracts\IHaveMethods.cs" />
+    <Compile Include="Contracts\IHaveNoMethods.cs" />
     <Compile Include="Contracts\IMethodCallInitialTemplate.cs" />
     <Compile Include="Contracts\IMethodCallWithResultInitialTemplate.cs" />
+    <Compile Include="Contracts\IServiceCall.cs" />
     <Compile Include="Contracts\IServiceSetupFactory.cs" />
     <Compile Include="FakeOperation.cs" />
     <Compile Include="HaveCallbacksBase.cs" />
