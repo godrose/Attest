@@ -52,15 +52,10 @@
     <Compile Include="IHaveNoCallbacks.cs" />
     <Compile Include="IHaveNoCallbacksWithResult.cs" />
     <Compile Include="IMethodCallbacksContainer.cs" />
-    <Compile Include="IMethodCallbackWithResult.cs" />
-    <Compile Include="IMethodCallbackWithResultVisitor.cs" />
     <Compile Include="IMethodCallMetaData.cs" />
     <Compile Include="IOperation.cs" />
-    <Compile Include="IResultWrapper.cs" />
     <Compile Include="IReturnResult.cs" />
     <Compile Include="IThrowException.cs" />
-    <Compile Include="MethodCallbackWithResult.cs" />
-    <Compile Include="MethodCallbackWithResultTemplate.cs" />
     <Compile Include="ProgressMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
