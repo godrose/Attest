@@ -89,17 +89,15 @@ namespace Attest.Fake.Setup.Contracts
     public interface IMethodCallWithResultInitialTemplate<TService, TCallback, T1, T2, T3, TResult> :
         IMethodCallWithResultInitialTemplateBase<TService, TCallback, TResult, IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, TResult>>
         where TService : class
-    {
+    {       
         /// <summary>
-        /// Builds the method call with return value from the specified build callbacks.
+        /// Builds the method call with return value using specified callbacks producer.
         /// </summary>
-        /// <param name="buildCallbacks">The build callbacks.</param>        
-        /// <param name="arg1">The first parameter.</param>
-        /// <param name="arg2">The second parameter.</param>
-        /// <param name="arg3">The third parameter.</param>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
         /// <returns></returns>
         IMethodCallWithResult<TService, TCallback, TResult> BuildCallbacks(
-            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, TResult>, T1, T2, T3, IHaveCallbacks<TCallback>> buildCallbacks, T1 arg1, T2 arg2, T3 arg3);
+            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, TResult>, 
+                T1, T2, T3, IHaveCallbacks<TCallback>> callbacksProducer);
     }
 
     /// <summary>

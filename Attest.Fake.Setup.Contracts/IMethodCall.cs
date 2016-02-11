@@ -26,4 +26,14 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCall<TService> where TService : class
     {        
     }
+
+    public interface IGenerateMethodCallback<T>
+    {
+        void EvaluateArguments(T arg);
+    }
+
+    public interface IGenerateMethodCallback<T1, T2>
+    {
+        void EvaluateArguments(T1 arg1, T2 arg2);
+    }
 }

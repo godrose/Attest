@@ -37,6 +37,10 @@ namespace Attest.Fake.Setup
             var visitor = new MethodCallbackVisitor<T1, T2>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2) =>
             {
+                if (methodCall is IGenerateMethodCallback<T1, T2>)
+                {
+                    (methodCall as IGenerateMethodCallback<T1, T2>).EvaluateArguments(arg1, arg2);
+                }
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2);
             });

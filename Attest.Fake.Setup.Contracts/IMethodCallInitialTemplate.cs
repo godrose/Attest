@@ -43,11 +43,19 @@ namespace Attest.Fake.Setup.Contracts
         /// <summary>
         /// Builds the method call with return value from the specified build callbacks.
         /// </summary>
-        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <param name="callbacksProducer">The build callbacks.</param>
         /// <param name="arg">The parameter.</param>
         /// <returns></returns>
         IMethodCall<TService, TCallback> BuildCallbacks(
-            Func<IHaveNoCallbacks<TCallback, T>, T, IHaveCallbacks<TCallback>> buildCallbacks, T arg);
+            Func<IHaveNoCallbacks<TCallback, T>, T, IHaveCallbacks<TCallback>> callbacksProducer, T arg);
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="callbacksProducer">The build callbacks.</param>        
+        /// <returns></returns>
+        IMethodCall<TService, TCallback> BuildCallbacks(
+            Func<IHaveNoCallbacks<TCallback, T>, T, IHaveCallbacks<TCallback>> callbacksProducer);
     }
 
     /// <summary>
@@ -70,6 +78,14 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         IMethodCall<TService, TCallback> BuildCallbacks(
             Func<IHaveNoCallbacks<TCallback, T1, T2>, T1, T2, IHaveCallbacks<TCallback>> buildCallbacks, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="callbacksProducer">The build callbacks.</param>              
+        /// <returns></returns>
+        IMethodCall<TService, TCallback> BuildCallbacks(
+            Func<IHaveNoCallbacks<TCallback, T1, T2>, T1, T2, IHaveCallbacks<TCallback>> callbacksProducer);
     }
 
     /// <summary>

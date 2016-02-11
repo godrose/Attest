@@ -51,6 +51,10 @@ namespace Attest.Fake.Setup
 
             _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3) =>
             {
+                if (methodCall is IGenerateMethodCallbackWithResult<T1, T2, T3, TResult>)
+                {
+                    (methodCall as IGenerateMethodCallbackWithResult<T1, T2, T3, TResult>).EvaluateArguments(arg1, arg2, arg3);
+                }
                 var methodCallback = methodCall.YieldCallback();
                 return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3);
             });
