@@ -41,7 +41,11 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TCallback">Type of callback</typeparam>    
     public interface IAddCallback<TCallback> : IAddCallbackShared<TCallback>
     {
-        
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="callback">Successful completion callback</param>
+        IMethodCallbacksContainer<TCallback> Complete(Action callback);
     }
 
     /// <summary>
