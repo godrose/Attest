@@ -7,7 +7,7 @@ namespace Attest.Fake.Setup.Contracts
     /// This exception is thrown to indicate progress event(s)
     /// and provide appropriate callback
     /// </summary>
-    class ProgressMessageException : Exception, IHaveProgressMessages
+    public class ProgressMessageException : Exception, IHaveProgressMessages
     {
         public ProgressMessageException(IEnumerable<object> progressMessages, Action callbackAction)
         {
@@ -23,7 +23,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <summary>
     /// This exception is thrown to indicate operation cancellation
     /// </summary>
-    class CancelCallbackException : Exception
+    public class CancelCallbackException : Exception
     {
 
     }
@@ -31,7 +31,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <summary>
     /// This exception is thrown to indicate operation that never completes
     /// </summary>
-    class WithoutCallbackException : Exception
+    public class WithoutCallbackException : Exception
     {
 
     }

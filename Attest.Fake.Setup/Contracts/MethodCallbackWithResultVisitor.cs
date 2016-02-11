@@ -6,7 +6,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <summary>
     /// Represents visitor for different callbacks with return value and no parameters
     /// </summary>
-    public class MethodCallbackWithResultVisitor<TResult> : IMethodCallbackWithResultVisitor<TResult>
+    class MethodCallbackWithResultVisitor<TResult> : IMethodCallbackWithResultVisitor<TResult>
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -75,7 +75,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <summary>
     /// Represents visitor for different callbacks with return value and 1 parameter.
     /// </summary>
-    public class MethodCallbackWithResultVisitor<T, TResult> : IMethodCallbackWithResultVisitor<T, TResult>
+    class MethodCallbackWithResultVisitor<T, TResult> : IMethodCallbackWithResultVisitor<T, TResult>
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -153,7 +153,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public class MethodCallbackWithResultVisitor<T1, T2, TResult> : IMethodCallbackWithResultVisitor<T1, T2, TResult>
+    class MethodCallbackWithResultVisitor<T1, T2, TResult> : IMethodCallbackWithResultVisitor<T1, T2, TResult>
     {
         /// <summary>
         /// Visits the specified error-throwing callback.
@@ -219,6 +219,7 @@ namespace Attest.Fake.Setup.Contracts
             return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
         }
     }
+
     /// <summary>
     /// Represents visitor for different callbacks with return value and 3 parameters.
     /// </summary>
@@ -226,7 +227,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public class MethodCallbackWithResultVisitor<T1, T2, T3, TResult> : IMethodCallbackWithResultVisitor<T1, T2, T3, TResult>
+    class MethodCallbackWithResultVisitor<T1, T2, T3, TResult> : IMethodCallbackWithResultVisitor<T1, T2, T3, TResult>
     {
         /// <summary>
         /// Visits the specified error-throwing callback.
@@ -304,7 +305,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public class MethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult> : IMethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult>
+    class MethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult> : IMethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult>
     {
         /// <summary>
         /// Visits the specified error-throwing callback.
@@ -390,7 +391,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
     /// <typeparam name="T5">The type of the fifth parameter.</typeparam>
     /// <typeparam name="TResult">The type of the result.</typeparam>
-    public class MethodCallbackWithResultVisitor<T1, T2, T3, T4, T5, TResult> : IMethodCallbackWithResultVisitor<T1, T2, T3, T4, T5, TResult>
+    class MethodCallbackWithResultVisitor<T1, T2, T3, T4, T5, TResult> : IMethodCallbackWithResultVisitor<T1, T2, T3, T4, T5, TResult>
     {
         /// <summary>
         /// Visits the specified error-throwing callback.
@@ -469,38 +470,6 @@ namespace Attest.Fake.Setup.Contracts
         public TResult Visit(OnWithoutCallbackWithResult<T1, T2, T3, T4, T5, TResult> onWithoutCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
-        }
-    }
-
-    static class MethodCallbackWithResultVisitorHelper
-    {
-        internal static TResult VisitErrorWithResult<TResult>(IThrowException onErrorCallback)
-        {
-            return VisitWithResult<TResult>(() => MethodCallbackVisitorHelper.VisitError(onErrorCallback));
-        }
-
-        internal static TResult VisitProgressWithResult<TCallback, TResult>(
-            IProgressableProcessFinishedWithResult<TCallback, TResult> progressCallback, Func<TCallback, TResult> acceptor)
-        {
-            if (progressCallback.ProgressMessages.Any())
-                throw new NotSupportedException("Value-returning calls with progress messages are not supported");
-            return acceptor(progressCallback.FinishCallback);
-        }
-
-        internal static TResult VisitCancelWithResult<TResult>()
-        {
-            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitCancel);
-        }
-
-        internal static TResult VisitWithoutWithResult<TResult>()
-        {
-            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitWithout);
-        }
-
-        private static TResult VisitWithResult<TResult>(Action visitMethod)
-        {
-            visitMethod();
-            return default(TResult);
         }
     }
 }

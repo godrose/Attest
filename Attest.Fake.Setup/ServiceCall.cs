@@ -70,7 +70,7 @@ namespace Attest.Fake.Setup
         /// <typeparam name="TCallback">Type of callback.</typeparam>
         /// <param name="methodCall">Method call.</param>
         /// <returns>Service call</returns>
-        public IServiceCall<TService> AddMethodCall<TCallback>(IMethodCall<TService,TCallback> methodCall)
+        IServiceCall<TService> ICanAddMethods<TService>.AddMethodCall<TCallback>(IMethodCall<TService,TCallback> methodCall)
         {
             AddMethodCallImpl(methodCall, methodCall);   
             return this;
@@ -83,7 +83,7 @@ namespace Attest.Fake.Setup
         /// <typeparam name="TResult">Type of return value.</typeparam>
         /// <param name="methodCall">Method call.</param>
         /// <returns>Service call</returns>
-        public IServiceCall<TService> AddMethodCall<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall)
+        IServiceCall<TService> ICanAddMethods<TService>.AddMethodCall<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall)
         {
             AddMethodCallWithResultImpl(methodCall, methodCall);
             return this;
@@ -153,7 +153,7 @@ namespace Attest.Fake.Setup
         /// Sets the service calls and returns the fake object as its proxy.
         /// </summary>
         /// <returns></returns>
-        public IFake<TService> SetupService()
+        IFake<TService> IServiceCall<TService>.SetupService()
         {
             return _serviceSetupFactory.SetupFakeService(_fake, MethodCalls.OfType<IMethodCall<TService>>(), 
                 MethodCalls.OfType<IMethodCallWithResult<TService>>());          
@@ -163,7 +163,7 @@ namespace Attest.Fake.Setup
         /// Appends the method calls.
         /// </summary>
         /// <param name="otherMethods">The other methods.</param>
-        public void AppendMethods(IHaveMethods<TService> otherMethods)
+        void IAppendMethods<TService>.AppendMethods(IHaveMethods<TService> otherMethods)
         {
             foreach (var otherMethod in otherMethods.MethodCalls)
             {

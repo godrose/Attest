@@ -1,11 +1,9 @@
-using System;
-
 namespace Attest.Fake.Setup.Contracts
 {    
     /// <summary>
     /// Represents visitor for different callbacks without return value and no parameters.
     /// </summary>
-    public class MethodCallbackVisitor : IMethodCallbackVisitor
+    class MethodCallbackVisitor : IMethodCallbackVisitor
     {
         /// <summary>
         /// Visits exception throwing callback
@@ -399,40 +397,6 @@ namespace Attest.Fake.Setup.Contracts
         public void Visit(OnWithoutCallback<T1, T2, T3, T4, T5> withoutCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
             MethodCallbackVisitorHelper.VisitWithout();
-        }
-    }
-
-   /// <summary>
-    /// Helper class for method callback visitors
-    /// </summary>
-    static class MethodCallbackVisitorHelper
-    {
-        internal static void VisitError(IThrowException onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-        
-        internal static void VisitProgress<TCallback>(IProgressableProcessFinished<TCallback> progressCallback, 
-            Action<TCallback> callbackAcceptor)
-        {
-            throw new ProgressMessageException(progressCallback.ProgressMessages,
-                () =>
-                {
-                    if (progressCallback.FinishCallback != null)
-                    {
-                        callbackAcceptor(progressCallback.FinishCallback);                        
-                    }
-                });
-        }
-
-        internal static void VisitCancel()
-        {
-            throw new CancelCallbackException();
-        }
-
-        internal static void VisitWithout()
-        {
-            throw new WithoutCallbackException();
         }
     }
 }
