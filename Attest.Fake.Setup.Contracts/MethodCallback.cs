@@ -850,7 +850,7 @@ namespace Attest.Fake.Setup.Contracts
         /// Accepts the specified visitor.
         /// </summary>
         /// <param name="visitor">The visitor.</param>
-        public virtual void Accept(IMethodCallbackVisitor visitor)
+        public void Accept(IMethodCallbackVisitor visitor)
         {
             visitor.Visit(this);
         }
