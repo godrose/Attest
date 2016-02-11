@@ -48,6 +48,7 @@
     <Compile Include="MethodCall.cs" />
     <Compile Include="MethodCallbacksContainerBase.cs" />
     <Compile Include="MethodCallVisitor.cs" />
+    <Compile Include="MethodCallVisitorHelper.cs" />
     <Compile Include="MethodCallWithResult.cs" />
     <Compile Include="MethodCallWithResultVisitor.cs" />
     <Compile Include="OperationInvoker.cs" />

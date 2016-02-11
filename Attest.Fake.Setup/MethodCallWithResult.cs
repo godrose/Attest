@@ -264,6 +264,11 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
+        {
+            get { return _callbacksProducer != null; }
+        }
+
         void IGenerateMethodCallbackWithResult<T>.GenerateCallback(T arg)
         {
             _callbacksProducer(this, arg);
@@ -370,6 +375,11 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
+        {
+            get { return _callbacksProducer != null; }
+        }
+
         void IGenerateMethodCallbackWithResult<T1, T2>.GenerateCallback(T1 arg1, T2 arg2)
         {
             _callbacksProducer(this, arg1, arg2);
@@ -474,6 +484,11 @@ namespace Attest.Fake.Setup
         {
             _callbacksProducer = callbacksProducer;
             return this;
+        }
+
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
+        {
+            get { return _callbacksProducer != null; }
         }
 
         void IGenerateMethodCallbackWithResult<T1, T2, T3>.GenerateCallback(T1 arg1, T2 arg2, T3 arg3)
@@ -583,6 +598,11 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
+        {
+            get { return _callbacksProducer != null; }
+        }
+
         void IGenerateMethodCallbackWithResult<T1, T2, T3, T4>.GenerateCallback(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             _callbacksProducer(this, arg1, arg2, arg3, arg4);
@@ -688,6 +708,11 @@ namespace Attest.Fake.Setup
         {
             _callbacksProducer = callbacksProducer;
             return this;
+        }
+
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
+        {
+            get { return _callbacksProducer != null; }
         }
 
         void IGenerateMethodCallbackWithResult<T1, T2, T3, T4, T5>.GenerateCallback(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)

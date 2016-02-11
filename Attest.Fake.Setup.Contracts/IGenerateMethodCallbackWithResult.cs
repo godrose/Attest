@@ -5,7 +5,7 @@ namespace Attest.Fake.Setup.Contracts
     /// This contract is internal and is not meant to be used from the code.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>    
-    public interface IGenerateMethodCallbackWithResult<T>
+    public interface IGenerateMethodCallbackWithResult<T> : IGenerateMethodCallbackConditionChecker
     {
         /// <summary>
         /// Generates callback.
@@ -20,7 +20,7 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>    
-    public interface IGenerateMethodCallbackWithResult<T1, T2>
+    public interface IGenerateMethodCallbackWithResult<T1, T2> : IGenerateMethodCallbackConditionChecker
     {
         /// <summary>
         /// Generates callback.
@@ -37,7 +37,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
-    public interface IGenerateMethodCallbackWithResult<T1, T2, T3>
+    public interface IGenerateMethodCallbackWithResult<T1, T2, T3> : IGenerateMethodCallbackConditionChecker
     {
         /// <summary>
         /// Generates callback.
@@ -56,7 +56,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
-    public interface IGenerateMethodCallbackWithResult<T1, T2, T3, T4>
+    public interface IGenerateMethodCallbackWithResult<T1, T2, T3, T4> : IGenerateMethodCallbackConditionChecker
     {
         /// <summary>
         /// Generates callback.
@@ -77,7 +77,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T3">The type of the third parameter.</typeparam>
     /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
     /// <typeparam name="T5">The type of the fifth parameter.</typeparam>
-    public interface IGenerateMethodCallbackWithResult<T1, T2, T3, T4, T5>
+    public interface IGenerateMethodCallbackWithResult<T1, T2, T3, T4, T5> : IGenerateMethodCallbackConditionChecker
     {
         /// <summary>
         /// Generates callback.

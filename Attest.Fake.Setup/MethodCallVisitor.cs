@@ -27,24 +27,18 @@ namespace Attest.Fake.Setup
             var visitor = new MethodCallbackVisitor<T>();
             CreateSetup(methodCall).Callback((T arg) =>
             {
-                if (methodCall is IGenerateMethodCallback<T>)
-                {
-                    (methodCall as IGenerateMethodCallback<T>).GenerateCallback(arg);
-                }
+                MethodCallVisitorHelper.GenerateCallbacks<IGenerateMethodCallback<T>>(methodCall, r => r.GenerateCallback(arg));
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg);
             });
-        }
+        }        
 
         public void Visit<T1, T2>(IMethodCall<TService, IMethodCallback<T1, T2>> methodCall)
         {
             var visitor = new MethodCallbackVisitor<T1, T2>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2) =>
             {
-                if (methodCall is IGenerateMethodCallback<T1, T2>)
-                {
-                    (methodCall as IGenerateMethodCallback<T1, T2>).GenerateCallback(arg1, arg2);
-                }
+                MethodCallVisitorHelper.GenerateCallbacks<IGenerateMethodCallback<T1, T2>>(methodCall, r => r.GenerateCallback(arg1, arg2));
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2);
             });
@@ -55,10 +49,7 @@ namespace Attest.Fake.Setup
             var visitor = new MethodCallbackVisitor<T1, T2, T3>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2, T3 arg3) =>
             {
-                if (methodCall is IGenerateMethodCallback<T1, T2, T3>)
-                {
-                    (methodCall as IGenerateMethodCallback<T1, T2, T3>).GenerateCallback(arg1, arg2, arg3);
-                }
+                MethodCallVisitorHelper.GenerateCallbacks<IGenerateMethodCallback<T1, T2, T3>>(methodCall, r => r.GenerateCallback(arg1, arg2, arg3));
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2, arg3);
             });
@@ -69,10 +60,7 @@ namespace Attest.Fake.Setup
             var visitor = new MethodCallbackVisitor<T1, T2, T3, T4>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4) =>
             {
-                if (methodCall is IGenerateMethodCallback<T1, T2, T3, T4>)
-                {
-                    (methodCall as IGenerateMethodCallback<T1, T2, T3, T4>).GenerateCallback(arg1, arg2, arg3, arg4);
-                }
+                MethodCallVisitorHelper.GenerateCallbacks<IGenerateMethodCallback<T1, T2, T3, T4>>(methodCall, r => r.GenerateCallback(arg1, arg2, arg3, arg4));
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2, arg3, arg4);
             });
@@ -83,11 +71,7 @@ namespace Attest.Fake.Setup
             var visitor = new MethodCallbackVisitor<T1, T2, T3, T4, T5>();
             CreateSetup(methodCall).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) =>
             {
-                if (methodCall is IGenerateMethodCallback<T1, T2, T3, T4, T5>)
-                {
-                    (methodCall as IGenerateMethodCallback<T1, T2, T3, T4, T5>).GenerateCallback(arg1, arg2, arg3, arg4,
-                        arg5);
-                }
+                MethodCallVisitorHelper.GenerateCallbacks<IGenerateMethodCallback<T1, T2, T3, T4, T5>>(methodCall, r => r.GenerateCallback(arg1, arg2, arg3, arg4, arg5));
                 var methodCallback = methodCall.YieldCallback();
                 methodCallback.Accept(visitor, arg1, arg2, arg3, arg4, arg5);
             });
