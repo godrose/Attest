@@ -73,6 +73,7 @@
     <Compile Include="Contracts\MethodCallbackWithResultTemplate.cs" />
     <Compile Include="Contracts\MethodCallbackWithResultVisitor.cs" />
     <Compile Include="Contracts\MethodCallbackWithResultVisitorHelper.cs" />
+    <Compile Include="Contracts\ProgressMessages.cs" />
     <Compile Include="FakeOperation.cs" />
     <Compile Include="HaveCallbacksBase.cs" />
     <Compile Include="HaveDelegateWrapperBase.cs" />

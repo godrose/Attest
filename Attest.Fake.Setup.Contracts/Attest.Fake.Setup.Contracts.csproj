@@ -51,12 +51,12 @@
     <Compile Include="IHaveCallbacks.cs" />
     <Compile Include="IHaveNoCallbacks.cs" />
     <Compile Include="IHaveNoCallbacksWithResult.cs" />
+    <Compile Include="IHaveProgressMessages.cs" />
     <Compile Include="IMethodCallbacksContainer.cs" />
     <Compile Include="IMethodCallMetaData.cs" />
     <Compile Include="IOperation.cs" />
     <Compile Include="IReturnResult.cs" />
     <Compile Include="IThrowException.cs" />
-    <Compile Include="ProgressMessages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
