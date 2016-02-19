@@ -89,7 +89,7 @@ namespace Attest.Fake.Setup
         IMethodCallInitialTemplate<TService,IMethodCallback>,
         IHaveNoCallbacks<IMethodCallback> where TService : class
     {
-        private MethodCall(Expression<Action<TService>> runMethod) : base(runMethod)
+        internal MethodCall(Expression<Action<TService>> runMethod) : base(runMethod)
         {
         }
 
@@ -288,7 +288,7 @@ namespace Attest.Fake.Setup
     {
         private Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, T1, T2, IHaveCallbacks<IMethodCallback<T1, T2>>> _callbacksProducer;
 
-        private MethodCall(Expression<Action<TService>> runMethod)
+        internal MethodCall(Expression<Action<TService>> runMethod)
             : base(runMethod)
         {
         }

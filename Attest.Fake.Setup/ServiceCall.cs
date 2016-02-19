@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;
 using Solid.Patterns.Visitor;
@@ -85,6 +86,216 @@ namespace Attest.Fake.Setup
         /// <returns>Service call</returns>
         IServiceCall<TService> ICanAddMethods<TService>.AddMethodCall<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall)
         {
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T>(Expression<Action<TService>> runMethod,
+            Func<IHaveNoCallbacks<IMethodCallback<T>, T>, T, IHaveCallbacks<IMethodCallback<T>>>
+                callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall(Expression<Action<TService>> runMethod, 
+            Func<IHaveNoCallbacks<IMethodCallback>, IHaveCallbacks<IMethodCallback>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T>(
+            Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T>, T>,
+                IHaveCallbacks<IMethodCallback<T>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2>(Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, IHaveCallbacks<IMethodCallback<T1, T2>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }        
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2>(Expression<Action<TService>> runMethod,
+            Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, T1, T2, IHaveCallbacks<IMethodCallback<T1, T2>>>
+                callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3>(Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3>, T1, T2, T3>, IHaveCallbacks<IMethodCallback<T1, T2, T3>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2, T3>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3>(Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3>, T1, T2, T3>, T1, T2, T3, IHaveCallbacks<IMethodCallback<T1, T2, T3>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2, T3>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4>(Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4>, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2, T3, T4>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4>(Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4>, T1, T2, T3, T4, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2, T3, T4>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4, T5>(Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4, T5>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2, T3, T4, T5>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4, T5>(Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5>, T1, T2, T3, T4, T5, IHaveCallbacks<IMethodCallback<T1, T2, T3, T4, T5>>> callbacksProducer)
+        {
+            var methodCall = MethodCall<TService, T1, T2, T3, T4, T5>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<TResult>(
+            Expression<Func<TService, TResult>> runMethod, 
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IHaveCallbacks<IMethodCallbackWithResult<TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T, TResult>(
+            Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService,T, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>, T, IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, T1, T2, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, T3, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>, T1, T2, T3, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, T3, TResult>
+               .CreateMethodCall(runMethod)
+               .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, T3, T4, TResult>
+               .CreateMethodCall(runMethod)
+               .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>, T1, T2, T3, T4, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, T3, T4, TResult>
+               .CreateMethodCall(runMethod)
+               .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, T3, T4, T5, TResult>
+               .CreateMethodCall(runMethod)
+               .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResult<TService, T1, T2, T3, T4, T5, TResult>
+              .CreateMethodCall(runMethod)
+              .BuildCallbacks(callbacksProducer);
             AddMethodCallWithResultImpl(methodCall, methodCall);
             return this;
         }
