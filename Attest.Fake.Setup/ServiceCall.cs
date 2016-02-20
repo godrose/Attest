@@ -364,7 +364,7 @@ namespace Attest.Fake.Setup
         /// Sets the service calls and returns the fake object as its proxy.
         /// </summary>
         /// <returns></returns>
-        IFake<TService> IServiceCall<TService>.SetupService()
+        IFake<TService> IServiceCall<TService>.Build()
         {
             return _serviceSetupFactory.SetupFakeService(_fake, MethodCalls.OfType<IMethodCall<TService>>(), 
                 MethodCalls.OfType<IMethodCallWithResult<TService>>());          
