@@ -12,7 +12,7 @@ namespace Attest.Fake.Setup
     /// <typeparam name="TResult">The type of the return value.</typeparam>
     public abstract class MethodCallWithResultBase<TService, TCallback, TResult> : 
         MethodCallbacksContainerBase<TCallback>,
-        IAddCallbackWithResultShared<TCallback, TResult>,
+        IAddCallbackWithResultShared<TCallback>,
         IMethodCallWithResult<TService, TCallback, TResult> where TService : class
     {
         /// <summary>
@@ -37,38 +37,7 @@ namespace Attest.Fake.Setup
             RunMethod = runMethod;
             RunMethodDescription = RunMethod.ToString();
         }
-
-        /// <summary>
-        /// Adds custom callback to the callbacks container
-        /// </summary>
-        /// <param name="methodCallback">Custom callback</param>
-        /// <returns>Callbacks container</returns>
-        public IMethodCallbacksContainer<TCallback> AddCallback(TCallback methodCallback)
-        {
-            AddCallbackInternal(methodCallback);
-            return this;
-        }
-
-        /// <summary>
-        /// Adds successful completion callback to the callbacks container
-        /// </summary>
-        /// <param name="result">Successful completion return value</param>
-        /// <returns>Callbacks container</returns>
-        public abstract IMethodCallbacksContainer<TCallback> Complete(TResult result);
-
-        /// <summary>
-        /// Adds exception throwing callback to the callbacks container
-        /// </summary>
-        /// <param name="exception">Exception to be thrown</param>
-        /// <returns>Callbacks container</returns>
-        public abstract IMethodCallbacksContainer<TCallback> Throw(Exception exception);
-
-        /// <summary>
-        /// Adds never-ending callback to the callbacks container
-        /// </summary>
-        /// <returns>Callbacks container</returns>
-        public abstract IMethodCallbacksContainer<TCallback> WithoutCallback();
-
+        
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
@@ -102,11 +71,22 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
+        /// Adds custom callback to the callbacks container
+        /// </summary>
+        /// <param name="methodCallback">Custom callback</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<TResult>, TResult> AddCallback(IMethodCallbackWithResult<TResult> methodCallback)
+        {
+            AddCallbackInternal(methodCallback);
+            return this;
+        }
+
+        /// <summary>
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="result">Successful completion return value</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> Complete(TResult result)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<TResult>, TResult> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<TResult>(result));
             return this;
@@ -117,7 +97,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="valueFunction">Successful completion return value's function</param>
         /// <returns>Callbacks container</returns>
-        public IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> Complete(Func<TResult> valueFunction)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<TResult>, TResult> Complete(Func<TResult> valueFunction)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<TResult>(valueFunction));
             return this;
@@ -128,7 +108,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="exception">Exception to be thrown</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> Throw(Exception exception)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<TResult>, TResult> Throw(Exception exception)
         {
             Callbacks.Add(new OnErrorCallbackWithResult<TResult>(exception));
             return this;
@@ -138,7 +118,7 @@ namespace Attest.Fake.Setup
         /// Adds never-ending callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<TResult>> WithoutCallback()
+        public IAddCallbackWithResult<IMethodCallbackWithResult<TResult>, TResult> WithoutCallback()
         {
             Callbacks.Add(ProgressCallbackWithResult<TResult>.Create().WithoutCallback().AsMethodCallback());
             return this;
@@ -195,11 +175,22 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
+        /// Adds custom callback to the callbacks container
+        /// </summary>
+        /// <param name="methodCallback">Custom callback</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult> AddCallback(IMethodCallbackWithResult<T, TResult> methodCallback)
+        {
+            AddCallbackInternal(methodCallback);
+            return this;
+        }
+
+        /// <summary>
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="result">Successful completion return value</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> Complete(TResult result)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T, TResult>(result));
             return this;
@@ -209,7 +200,7 @@ namespace Attest.Fake.Setup
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="valueFunction">Successful completion return value's function</param>
-        public IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> Complete(Func<T, TResult> valueFunction)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult> Complete(Func<T, TResult> valueFunction)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T, TResult>(valueFunction));
             return this;
@@ -220,7 +211,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="exception">Exception to be thrown</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> Throw(Exception exception)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult> Throw(Exception exception)
         {
             Callbacks.Add(new OnErrorCallbackWithResult<T, TResult>(exception));
             return this;
@@ -230,7 +221,7 @@ namespace Attest.Fake.Setup
         /// Adds never-ending callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T, TResult>> WithoutCallback()
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult> WithoutCallback()
         {
             Callbacks.Add(ProgressCallbackWithResult<T, TResult>.Create().WithoutCallback().AsMethodCallback());
             return this;
@@ -306,11 +297,23 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
+        /// Adds custom callback to the callbacks container
+        /// </summary>
+        /// <param name="methodCallback">Custom callback</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> AddCallback(
+            IMethodCallbackWithResult<T1, T2, TResult> methodCallback)
+        {
+            AddCallbackInternal(methodCallback);
+            return this;
+        }
+
+        /// <summary>
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="result">Successful completion return value</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, TResult>> Complete(TResult result)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, TResult>(result));
             return this;
@@ -320,7 +323,7 @@ namespace Attest.Fake.Setup
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="valueFunction">Successful completion return value's function</param>
-        public IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, TResult>> Complete(Func<T1, T2, TResult> valueFunction)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> Complete(Func<T1, T2, TResult> valueFunction)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, TResult>(valueFunction));
             return this;
@@ -331,7 +334,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="exception">Exception to be thrown</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, TResult>> Throw(Exception exception)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> Throw(Exception exception)
         {
             Callbacks.Add(new OnErrorCallbackWithResult<T1, T2, TResult>(exception));
             return this;
@@ -341,7 +344,7 @@ namespace Attest.Fake.Setup
         /// Adds never-ending callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, TResult>> WithoutCallback()
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> WithoutCallback()
         {
             Callbacks.Add(ProgressCallbackWithResult<T1, T2, TResult>.Create().WithoutCallback().AsMethodCallback());
             return this;
@@ -418,11 +421,23 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
+        /// Adds custom callback to the callbacks container
+        /// </summary>
+        /// <param name="methodCallback">Custom callback</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> AddCallback(
+            IMethodCallbackWithResult<T1, T2, T3, TResult> methodCallback)
+        {
+            AddCallbackInternal(methodCallback);
+            return this;
+        }
+
+        /// <summary>
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="result">Successful completion return value</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> Complete(TResult result)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, T3, TResult>(result));
             return this;
@@ -432,7 +447,7 @@ namespace Attest.Fake.Setup
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="valueFunction">Successful completion return value's function</param>
-        public IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> Complete(Func<T1, T2, T3, TResult> valueFunction)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> Complete(Func<T1, T2, T3, TResult> valueFunction)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, T3, TResult>(valueFunction));
             return this;
@@ -443,7 +458,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="exception">Exception to be thrown</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> Throw(Exception exception)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> Throw(Exception exception)
         {
             Callbacks.Add(new OnErrorCallbackWithResult<T1, T2, T3, TResult>(exception));
             return this;
@@ -453,7 +468,7 @@ namespace Attest.Fake.Setup
         /// Adds never-ending callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, TResult>> WithoutCallback()
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult> WithoutCallback()
         {
             Callbacks.Add(ProgressCallbackWithResult<T1, T2, T3, TResult>.Create().WithoutCallback().AsMethodCallback());
             return this;
@@ -531,11 +546,23 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
+        /// Adds custom callback to the callbacks container
+        /// </summary>
+        /// <param name="methodCallback">Custom callback</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> AddCallback(
+            IMethodCallbackWithResult<T1, T2, T3, T4, TResult> methodCallback)
+        {
+            AddCallbackInternal(methodCallback);
+            return this;
+        }
+
+        /// <summary>
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="result">Successful completion return value</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>> Complete(TResult result)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult>(result));
             return this;
@@ -545,7 +572,7 @@ namespace Attest.Fake.Setup
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="valueFunction">Successful completion return value's function</param>
-        public IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>> Complete(Func<T1, T2, T3, T4, TResult> valueFunction)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> Complete(Func<T1, T2, T3, T4, TResult> valueFunction)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, T3, T4, TResult>(valueFunction));
             return this;
@@ -556,7 +583,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="exception">Exception to be thrown</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>> Throw(Exception exception)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> Throw(Exception exception)
         {
             Callbacks.Add(new OnErrorCallbackWithResult<T1, T2, T3, T4, TResult>(exception));
             return this;
@@ -566,7 +593,7 @@ namespace Attest.Fake.Setup
         /// Adds never-ending callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>> WithoutCallback()
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult> WithoutCallback()
         {
             Callbacks.Add(ProgressCallbackWithResult<T1, T2, T3, T4, TResult>.Create().WithoutCallback().AsMethodCallback());
             return this;
@@ -643,11 +670,23 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
+        /// Adds custom callback to the callbacks container
+        /// </summary>
+        /// <param name="methodCallback">Custom callback</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> AddCallback(
+            IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult> methodCallback)
+        {
+            AddCallbackInternal(methodCallback);
+            return this;
+        }
+
+        /// <summary>
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="result">Successful completion return value</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>> Complete(TResult result)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> Complete(TResult result)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult>(result));
             return this;
@@ -657,7 +696,7 @@ namespace Attest.Fake.Setup
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="valueFunction">Successful completion return value's function</param>
-        public IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>> Complete(Func<T1, T2, T3, T4, T5, TResult> valueFunction)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> Complete(Func<T1, T2, T3, T4, T5, TResult> valueFunction)
         {
             Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, T3, T4, T5, TResult>(valueFunction));
             return this;
@@ -668,7 +707,7 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="exception">Exception to be thrown</param>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>> Throw(Exception exception)
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> Throw(Exception exception)
         {
             Callbacks.Add(new OnErrorCallbackWithResult<T1, T2, T3, T4, T5, TResult>(exception));
             return this;
@@ -678,7 +717,7 @@ namespace Attest.Fake.Setup
         /// Adds never-ending callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        public override IMethodCallbacksContainer<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>> WithoutCallback()
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult> WithoutCallback()
         {
             Callbacks.Add(ProgressCallbackWithResult<T1, T2, T3, T4, T5, TResult>.Create().WithoutCallback().AsMethodCallback());
             return this;

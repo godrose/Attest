@@ -150,7 +150,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>        
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IHaveCallbacks<IMethodCallbackWithResult<TResult>>>
                 callbacksProducer);
 
@@ -160,7 +160,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>,
                 IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>>
                 callbacksProducer);        
@@ -171,7 +171,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>, T,
                 IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>>
                 callbacksProducer);
@@ -182,7 +182,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>>
                 callbacksProducer);
@@ -193,7 +193,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
                 T1, T2,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>>
@@ -205,7 +205,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>>
                 callbacksProducer);
@@ -216,7 +216,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>,
                 T1, T2, T3,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>>
@@ -228,7 +228,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>>
                 callbacksProducer);
@@ -239,7 +239,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
                 T1, T2, T3, T4,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>>
@@ -251,7 +251,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>>
                 callbacksProducer);
@@ -262,7 +262,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>,
                 T1, T2, T3, T4, T5,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>>

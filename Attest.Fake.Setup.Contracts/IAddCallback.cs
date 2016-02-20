@@ -3,36 +3,36 @@ using System;
 namespace Attest.Fake.Setup.Contracts
 {
     /// <summary>
-    /// Represents an object that allows to add callbacks to the callbacks container
+    /// Represents an object that allows to add callbacks to the callbacks container.
     /// </summary>
     /// <typeparam name="TCallback">Type of callback</typeparam>
-    public interface IAddCallbackShared<TCallback>
+    public interface IAddCallbackShared<TCallback> : IHaveCallbacks<TCallback>
     {
         /// <summary>
         /// Adds custom callback to the callbacks container
         /// </summary>
         /// <param name="methodCallback">Custom callback</param>
-        /// <returns>Callbacks container</returns>
-        IMethodCallbacksContainer<TCallback> AddCallback(TCallback methodCallback);
+        /// <returns>An object that allows to add callbacks to the callbacks container.</returns>
+        IAddCallbackShared<TCallback> AddCallback(TCallback methodCallback);
 
         /// <summary>
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        IMethodCallbacksContainer<TCallback> Complete();
+        IAddCallbackShared<TCallback> Complete();
 
         /// <summary>
         /// Adds exception throwing callback to the callbacks container
         /// </summary>
         /// <param name="exception"></param>
         /// <returns>Callbacks container</returns>
-        IMethodCallbacksContainer<TCallback> Throw(Exception exception);
+        IAddCallbackShared<TCallback> Throw(Exception exception);
 
         /// <summary>
         /// Adds never-ending callback to the callbacks container
         /// </summary>
         /// <returns>Callbacks container</returns>
-        IMethodCallbacksContainer<TCallback> WithoutCallback();
+        IAddCallbackShared<TCallback> WithoutCallback();
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ namespace Attest.Fake.Setup.Contracts
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="callback">Successful completion callback</param>
-        IMethodCallbacksContainer<TCallback> Complete(Action callback);
+        IAddCallbackShared<TCallback> Complete(Action callback);
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ namespace Attest.Fake.Setup.Contracts
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="callback">Successful completion callback</param>
-        IMethodCallbacksContainer<TCallback> Complete(Action<T> callback);
+        IAddCallbackShared<TCallback> Complete(Action<T> callback);
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ namespace Attest.Fake.Setup.Contracts
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="callback">Successful completion callback</param>
-        IMethodCallbacksContainer<TCallback> Complete(Action<T1, T2> callback);
+        IAddCallbackShared<TCallback> Complete(Action<T1, T2> callback);
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ namespace Attest.Fake.Setup.Contracts
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="callback">Successful completion callback</param>
-        IMethodCallbacksContainer<TCallback> Complete(Action<T1, T2, T3> callback);
+        IAddCallbackShared<TCallback> Complete(Action<T1, T2, T3> callback);
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ namespace Attest.Fake.Setup.Contracts
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="callback">Successful completion callback</param>
-        IMethodCallbacksContainer<TCallback> Complete(Action<T1, T2, T3, T4> callback);
+        IAddCallbackShared<TCallback> Complete(Action<T1, T2, T3, T4> callback);
     }
 
     /// <summary>
@@ -125,6 +125,6 @@ namespace Attest.Fake.Setup.Contracts
         /// Adds successful completion callback to the callbacks container
         /// </summary>
         /// <param name="callback">Successful completion callback</param>
-        IMethodCallbacksContainer<TCallback> Complete(Action<T1, T2, T3, T4, T5> callback);
+        IAddCallbackShared<TCallback> Complete(Action<T1, T2, T3, T4, T5> callback);
     }
 }
