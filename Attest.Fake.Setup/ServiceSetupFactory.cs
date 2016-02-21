@@ -8,7 +8,9 @@ namespace Attest.Fake.Setup
 {
     class ServiceSetupFactory<TService> : IServiceSetupFactory<TService> where TService : class
     {
-        public IFake<TService> SetupFakeService(IFake<TService> fake, IEnumerable<IMethodCallMetaData> methodCalls)
+        IFake<TService> IServiceSetupFactory<TService>.SetupFakeService(
+            IFake<TService> fake, 
+            IEnumerable<IMethodCallMetaData> methodCalls)
         {            
             var calls = methodCalls as IMethodCallMetaData[] ?? methodCalls.ToArray();
             VisitMethodCalls(new MethodCallVisitor<TService>(fake) as IMethodCallVisitor<TService>, calls);
@@ -16,7 +18,7 @@ namespace Attest.Fake.Setup
             return fake;
         }
 
-        public IFake<TService> SetupFakeService(
+        IFake<TService> IServiceSetupFactory<TService>.SetupFakeService(
             IFake<TService> fake, 
             IEnumerable<IMethodCall<TService>> methodCalls, 
             IEnumerable<IMethodCallWithResult<TService>> methodCallsWithResult)

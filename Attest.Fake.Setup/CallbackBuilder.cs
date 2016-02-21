@@ -15,7 +15,7 @@ namespace Attest.Fake.Setup
         where TCallbackTemplate : IAcceptor<IMethodCallbackTemplateVisitor, TCallback>
     {
         private TActionWrapper _actionWrapper;
-        private CallbackType _callbackType;
+        private CallbackType _callbackType = CallbackType.Complete;
 
         private CallbackBuilder()
         {
@@ -81,7 +81,7 @@ namespace Attest.Fake.Setup
         /// Builds new callback according to the current setup
         /// </summary>
         /// <returns>Instance of callback</returns>
-        internal TCallback BuildCallback()
+        private TCallback BuildCallback()
         {
             return _actionWrapper.Accept(new ActionWrapperVisitor()).Accept(PickCallbackTemplateVisitor());
         }

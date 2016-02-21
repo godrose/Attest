@@ -19,7 +19,7 @@ namespace Attest.Fake.Setup
         private readonly IFake<TService> _fake;
         private readonly IServiceSetupFactory<TService> _serviceSetupFactory = new ServiceSetupFactory<TService>();
 
-        private ServiceCall(IFake<TService> fake)
+        internal ServiceCall(IFake<TService> fake)
         {
             _fake = fake;
         }
@@ -38,7 +38,7 @@ namespace Attest.Fake.Setup
         /// <summary>
         /// Creates a new instance of <see cref="ServiceCall{TService}"/> without method calls.
         /// </summary>
-        /// <param name="fake"></param>
+        /// <param name="fake">The initial fake.</param>
         /// <returns></returns>
         public static IHaveNoMethods<TService> CreateServiceCall(IFake<TService> fake)
         {
