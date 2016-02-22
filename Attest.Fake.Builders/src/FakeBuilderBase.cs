@@ -11,24 +11,13 @@ namespace Attest.Fake.Builders
     [Serializable]
     public abstract class FakeBuilderBase<TService> : IMock<TService> where TService : class
     {
-        private readonly IFakeFactory _fakeFactory;
-
         private IFake<TService> _fakeService;
         /// <summary>
         /// Fake that wraps the faked service
         /// </summary>                    
         protected IFake<TService> FakeService
         {
-            get { return _fakeService ?? (_fakeService = _fakeFactory.CreateFake<TService>()); }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FakeBuilderBase{TService}"/> class.
-        /// </summary>
-        /// <param name="fakeFactory">The fake factory.</param>
-        protected FakeBuilderBase(IFakeFactory fakeFactory)
-        {
-            _fakeFactory = fakeFactory;            
+            get { return _fakeService ?? (_fakeService = FakeFactoryContext.Current.CreateFake<TService>()); }
         }
 
         /// <summary>

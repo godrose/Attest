@@ -44,6 +44,9 @@
     <Compile Include="..\src\FakeBuilderBase.cs">
       <Link>FakeBuilderBase.cs</Link>
     </Compile>
+    <Compile Include="..\src\FakeFactoryContext.cs">
+      <Link>FakeFactoryContext.cs</Link>
+    </Compile>
     <Compile Include="..\src\FakeProviderBase.cs">
       <Link>FakeProviderBase.cs</Link>
     </Compile>
