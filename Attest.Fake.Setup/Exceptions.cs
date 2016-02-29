@@ -8,7 +8,7 @@ namespace Attest.Fake.Setup
     /// This exception is thrown to indicate progress event(s)
     /// and provide appropriate callback
     /// </summary>
-    class ProgressMessageException : Exception, IHaveProgressMessages
+    public class ProgressMessageException : Exception, IHaveProgressMessages
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ProgressMessageException"/> class.
@@ -37,7 +37,7 @@ namespace Attest.Fake.Setup
     /// <summary>
     /// This exception is thrown to indicate operation cancellation
     /// </summary>
-    class CancelCallbackException : Exception
+    public class CancelCallbackException : Exception
     {
 
     }
@@ -45,7 +45,7 @@ namespace Attest.Fake.Setup
     /// <summary>
     /// This exception is thrown to indicate operation that never completes
     /// </summary>
-    class WithoutCallbackException : Exception
+    public class WithoutCallbackException : Exception
     {
 
     }

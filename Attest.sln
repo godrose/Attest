@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Tests.Core", "Attest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Tests.Core.NET45", "Attest.Tests.Core\net45\Attest.Tests.Core.NET45.csproj", "{EF968162-F842-4302-9ADD-82694A3D6183}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Setup.Extensions", "Attest.Fake.Setup.Extensions\Attest.Fake.Setup.Extensions.csproj", "{FDC84FBB-5385-46EF-940C-569B90D6DC5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{EF968162-F842-4302-9ADD-82694A3D6183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF968162-F842-4302-9ADD-82694A3D6183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF968162-F842-4302-9ADD-82694A3D6183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDC84FBB-5385-46EF-940C-569B90D6DC5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDC84FBB-5385-46EF-940C-569B90D6DC5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDC84FBB-5385-46EF-940C-569B90D6DC5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDC84FBB-5385-46EF-940C-569B90D6DC5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,5 +138,6 @@ Global
 		{629171C1-81E5-486F-A186-B0EC8274F1C5} = {AEC65BC1-D66D-4C5E-8E93-3A35C77FA3EB}
 		{CA530825-0F66-41C4-9623-2B54985E1E46} = {70BEEE77-3E24-446C-97EC-27D6C5DA90C2}
 		{EF968162-F842-4302-9ADD-82694A3D6183} = {70BEEE77-3E24-446C-97EC-27D6C5DA90C2}
+		{FDC84FBB-5385-46EF-940C-569B90D6DC5C} = {73AF5532-128E-4658-A222-55E7D6CCB693}
 	EndGlobalSection
 EndGlobal

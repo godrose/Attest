@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Fake.Setup
@@ -15,6 +16,13 @@ namespace Attest.Fake.Setup
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
         public abstract TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor);
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public abstract Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<TResult> visitor);
     }
 
     /// <summary>
@@ -110,7 +118,7 @@ namespace Attest.Fake.Setup
     public class OnCompleteCallbackWithResult<TResult> :
         MethodCallbackBaseWithResult<TResult>
     {
-        internal Func<TResult> ValueFunction { get; private set; }
+        public Func<TResult> ValueFunction { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OnCompleteCallbackWithResult{TResult}"/> class.
@@ -136,6 +144,16 @@ namespace Attest.Fake.Setup
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<TResult> visitor)
         {
             return visitor.Visit(this);
         }
@@ -392,6 +410,16 @@ namespace Attest.Fake.Setup
         {
             return visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 
     /// <summary>
@@ -589,6 +617,16 @@ namespace Attest.Fake.Setup
         {
             return visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 
     /// <summary>
@@ -715,6 +753,17 @@ namespace Attest.Fake.Setup
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
         public override TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
+
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<TResult> visitor)
         {
             return visitor.Visit(this);
         }
@@ -965,6 +1014,16 @@ namespace Attest.Fake.Setup
         /// <param name="visitor">The visitor.</param>
         /// <returns/>
         public TResult Accept(IMethodCallbackWithResultVisitor<TResult> visitor)
+        {
+            return visitor.Visit(this);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<TResult> visitor)
         {
             return visitor.Visit(this);
         }
