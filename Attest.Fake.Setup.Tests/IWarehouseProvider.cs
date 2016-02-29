@@ -7,5 +7,6 @@ namespace Attest.Fake.Setup.Tests
     {
         Task<IEnumerable<WarehouseItemDto>> GetWarehouseItems();
         Task<IEnumerable<WarehouseItemDto>> GetWarehouseItemsWithOneParameter(string placeholder);
+        Task<IEnumerable<WarehouseItemDto>> GetWarehouseItemsWithTwoParameters(string firstParameter, string secondParameter);
     }
 }

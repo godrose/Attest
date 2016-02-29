@@ -53,6 +53,28 @@ namespace Attest.Fake.Setup.Tests
             var actualItems = await provider.GetWarehouseItemsWithOneParameter("firstParameter");
 
             CollectionAssert.AreEqual(items, actualItems);
-        }        
+        }
+
+        [Test]
+        [Ignore("Not implemented yet")]
+        public async void AsyncProviderIsSetup_MethodCallWithResultAndTwoParametersReturnsCorrectValue()
+        {
+            var items = new[]
+            {
+                new WarehouseItemDto
+                {
+                    Kind = "Top",
+                    Price = 5,
+                    Quantity = 1
+                }
+            };
+            var builder = WarehouseProviderBuilder.CreateBuilder();
+            builder.WithWarehouseItems(items);
+
+            var provider = builder.GetService();
+            var actualItems = await provider.GetWarehouseItemsWithTwoParameters("firstParameter", "secondParameter");
+
+            CollectionAssert.AreEqual(items, actualItems);
+        }       
     }
 }
