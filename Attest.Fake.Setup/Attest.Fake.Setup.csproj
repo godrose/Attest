@@ -37,6 +37,10 @@
       <HintPath>..\packages\Solid.Patterns.Visitor.1.0.5\lib\portable-net45+wpa8+win8\Solid.Patterns.Visitor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Solid.Practices.Scheduling, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Solid.Practices.Scheduling.1.0.7\lib\portable-net45+wpa8+win8\Solid.Practices.Scheduling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -74,7 +78,10 @@
     <Compile Include="MethodCallbackWithResult.cs" />
     <Compile Include="MethodCallbackWithResultTemplate.cs" />
     <Compile Include="MethodCallbackWithResultVisitor.cs" />
+    <Compile Include="MethodCallbackWithResultVisitorAsync.cs" />
     <Compile Include="MethodCallbackWithResultVisitorHelper.cs" />
+    <Compile Include="MethodCallbackWithResultVisitorHelperAsync.cs" />
+    <Compile Include="MethodCallWithResultVisitorAsync.cs" />
     <Compile Include="OnCompleteCallbackVisitor.cs" />
     <Compile Include="ProgressMessages.cs" />
     <Compile Include="FakeOperation.cs" />

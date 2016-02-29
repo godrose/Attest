@@ -46,8 +46,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MethodCallbackWithResultVisitor.cs" />
-    <Compile Include="MethodCallbackWithResultVisitorHelper.cs" />
+    <Compile Include="MethodCallbackWithResultVisitorAsync.cs" />
+    <Compile Include="MethodCallbackWithResultVisitorHelperAsync.cs" />
+    <Compile Include="MethodCallWithResultVisitorAsync.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

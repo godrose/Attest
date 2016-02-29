@@ -18,7 +18,7 @@ namespace Attest.Fake.Setup.Extensions
         /// </returns>
         public Task<TResult> Visit(OnErrorCallbackWithResult<TResult> onErrorCallback)
         {
-            return MethodCallbackWithResultVisitorHelper.VisitErrorWithResult<TResult>(onErrorCallback);
+            return MethodCallbackWithResultVisitorHelperAsync.VisitErrorWithResult<TResult>(onErrorCallback);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Attest.Fake.Setup.Extensions
         /// <exception cref="CancelCallbackException"></exception>
         public Task<TResult> Visit(OnCancelCallbackWithResult<TResult> onCancelCallback)
         {
-            return MethodCallbackWithResultVisitorHelper.VisitCancelWithResult<TResult>();
+            return MethodCallbackWithResultVisitorHelperAsync.VisitCancelWithResult<TResult>();
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Attest.Fake.Setup.Extensions
         /// <exception cref="System.NotSupportedException">Value-returning calls with progress messages are not supported</exception>
         public Task<TResult> Visit(ProgressCallbackWithResult<TResult> progressCallback)
         {
-            return MethodCallbackWithResultVisitorHelper.VisitProgressWithResult(progressCallback, c => c.Accept(this));
+            return MethodCallbackWithResultVisitorHelperAsync.VisitProgressWithResult(progressCallback, c => c.Accept(this));
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Attest.Fake.Setup.Extensions
         /// <exception cref="WithoutCallbackException"></exception>
         public Task<TResult> Visit(OnWithoutCallbackWithResult<TResult> withoutCallback)
         {
-            return MethodCallbackWithResultVisitorHelper.VisitWithoutWithResult<TResult>();
+            return MethodCallbackWithResultVisitorHelperAsync.VisitWithoutWithResult<TResult>();
         }
     }
 }

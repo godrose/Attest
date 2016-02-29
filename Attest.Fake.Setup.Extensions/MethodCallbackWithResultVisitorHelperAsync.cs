@@ -9,7 +9,7 @@ namespace Attest.Fake.Setup.Extensions
     /// <summary>
     /// Helper class for method callback visitors
     /// </summary>
-    internal static class MethodCallbackVisitorHelper
+    static class MethodCallbackVisitorHelperAsync
     {
         internal static void VisitError(IThrowException onErrorCallback)
         {
@@ -40,11 +40,11 @@ namespace Attest.Fake.Setup.Extensions
         }
     }
 
-    static class MethodCallbackWithResultVisitorHelper
+    static class MethodCallbackWithResultVisitorHelperAsync
     {
         internal static Task<TResult> VisitErrorWithResult<TResult>(IThrowException onErrorCallback)
         {
-            return VisitWithResult<TResult>(() => MethodCallbackVisitorHelper.VisitError(onErrorCallback));
+            return VisitWithResult<TResult>(() => MethodCallbackVisitorHelperAsync.VisitError(onErrorCallback));
         }
 
         internal static Task<TResult> VisitProgressWithResult<TCallback, TResult>(
@@ -57,12 +57,12 @@ namespace Attest.Fake.Setup.Extensions
 
         internal static Task<TResult> VisitCancelWithResult<TResult>()
         {
-            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitCancel);
+            return VisitWithResult<TResult>(MethodCallbackVisitorHelperAsync.VisitCancel);
         }
 
         internal static Task<TResult> VisitWithoutWithResult<TResult>()
         {
-            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitWithout);
+            return VisitWithResult<TResult>(MethodCallbackVisitorHelperAsync.VisitWithout);
         }
 
         private static Task<TResult> VisitWithResult<TResult>(Action visitMethod)
