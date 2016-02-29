@@ -44,7 +44,7 @@ namespace Attest.Fake.Setup
         /// <param name="visitor">The visitor.</param>
         public abstract void Accept(IMethodCallWithResultVisitor<TService> visitor);
     }
-
+   
     /// <summary>
     /// Represents method call with return value.
     /// </summary>

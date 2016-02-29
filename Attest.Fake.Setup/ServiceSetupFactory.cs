@@ -15,18 +15,23 @@ namespace Attest.Fake.Setup
             var calls = methodCalls as IMethodCallMetaData[] ?? methodCalls.ToArray();
             VisitMethodCalls(new MethodCallVisitor<TService>(fake) as IMethodCallVisitor<TService>, calls);
             VisitMethodCalls(new MethodCallWithResultVisitor<TService>(fake) as IMethodCallWithResultVisitor<TService>, calls);
+            VisitMethodCalls(new MethodCallWithResultVisitorAsync<TService>(fake) as IMethodCallWithResultVisitorAsync<TService>, calls);
             return fake;
         }
 
         IFake<TService> IServiceSetupFactory<TService>.SetupFakeService(
             IFake<TService> fake, 
             IEnumerable<IMethodCall<TService>> methodCalls, 
-            IEnumerable<IMethodCallWithResult<TService>> methodCallsWithResult)
+            IEnumerable<IMethodCallWithResult<TService>> methodCallsWithResult,
+            IEnumerable<IMethodCallWithResultAsync<TService>> methodCallsWithResultAsync)
         {
             var methodCallVisitor = new MethodCallVisitor<TService>(fake) as IMethodCallVisitor<TService>;
-            var methodCallWithResultVisitor = new MethodCallWithResultVisitor<TService>(fake);
+            var methodCallWithResultVisitor = new MethodCallWithResultVisitor<TService>(fake) as IMethodCallWithResultVisitor<TService>;
+            var methodCallWithResultVisitorAsync =
+                new MethodCallWithResultVisitorAsync<TService>(fake) as IMethodCallWithResultVisitorAsync<TService>;
             AcceptMany(methodCalls, methodCallVisitor);            
             AcceptMany(methodCallsWithResult, methodCallWithResultVisitor);
+            AcceptMany(methodCallsWithResultAsync, methodCallWithResultVisitorAsync);
             return fake;
         }        
 

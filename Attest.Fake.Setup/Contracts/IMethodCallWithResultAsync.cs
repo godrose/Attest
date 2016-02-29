@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
@@ -8,10 +9,10 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents a service's method call with return value
     /// </summary>
     /// <typeparam name="TService"></typeparam>
-    public interface IMethodCallWithResult<TService>
-        : IAcceptor<IMethodCallWithResultVisitor<TService>> where TService : class
+    public interface IMethodCallWithResultAsync<TService>
+        : IAcceptor<IMethodCallWithResultVisitorAsync<TService>> where TService : class
     {
-        
+
     }
 
     /// <summary>
@@ -20,13 +21,13 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TService">Type of service</typeparam>
     /// <typeparam name="TCallback">Type of callback</typeparam>
     /// <typeparam name="TResult">Type of return value</typeparam>
-    public interface IMethodCallWithResult<TService, TCallback, TResult> : 
+    public interface IMethodCallWithResultAsync<TService, TCallback, TResult> :
         IMethodCallbacksContainer<TCallback>,
-        IMethodCallWithResult<TService> where TService : class
+        IMethodCallWithResultAsync<TService> where TService : class
     {
         /// <summary>
         /// Method to be called.
         /// </summary>
-        Expression<Func<TService, TResult>> RunMethod { get; }
-    }   
+        Expression<Func<TService, Task<TResult>>> RunMethod { get; }
+    }
 }

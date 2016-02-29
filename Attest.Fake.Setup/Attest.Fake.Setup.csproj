@@ -50,6 +50,8 @@
     <Compile Include="ActionWrapperVisitor.cs" />
     <Compile Include="CallbackBuilder.cs" />
     <Compile Include="Contracts\IMethodCallbackWithResultVisitorAsync.cs" />
+    <Compile Include="Contracts\IMethodCallWithResultAsync.cs" />
+    <Compile Include="Contracts\IMethodCallWithResultInitialTemplateAsync.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Contracts\IActionWrapper.cs" />
     <Compile Include="Contracts\IActionWrapperVisitor.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="MethodCallbackWithResultVisitorAsync.cs" />
     <Compile Include="MethodCallbackWithResultVisitorHelper.cs" />
     <Compile Include="MethodCallbackWithResultVisitorHelperAsync.cs" />
+    <Compile Include="MethodCallWithResultAsync.cs" />
     <Compile Include="MethodCallWithResultVisitorAsync.cs" />
     <Compile Include="OnCompleteCallbackVisitor.cs" />
     <Compile Include="ProgressMessages.cs" />

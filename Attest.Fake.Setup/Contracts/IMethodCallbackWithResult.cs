@@ -7,7 +7,9 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents callback with return value and no parameters
     /// </summary>
     /// <typeparam name="TResult">Type of return value</typeparam>
-    public interface IMethodCallbackWithResult<TResult> : IAcceptor<IMethodCallbackWithResultVisitor<TResult>, TResult>, IAcceptor<IMethodCallbackWithResultVisitorAsync<TResult>, Task<TResult>>
+    public interface IMethodCallbackWithResult<TResult> : 
+        IAcceptor<IMethodCallbackWithResultVisitor<TResult>, TResult>, 
+        IAcceptor<IMethodCallbackWithResultVisitorAsync<TResult>, Task<TResult>>
     {
     }
 
@@ -16,7 +18,9 @@ namespace Attest.Fake.Setup.Contracts
     /// </summary>
     /// <typeparam name="TResult">Type of return value</typeparam>
     /// <typeparam name="T">Type of parameter</typeparam>
-    public interface IMethodCallbackWithResult<T, TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T, TResult>, T, TResult>
+    public interface IMethodCallbackWithResult<T, TResult> : 
+        IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T, TResult>, T, TResult>,
+        IAcceptorWithParametersResult<IMethodCallbackWithResultVisitorAsync<T, TResult>, T, Task<TResult>>
     {
     }
 

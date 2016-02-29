@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fake", "Fake", "{A4686CE3-29EA-4BB0-BA45-9882BC3F675C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{70BEEE77-3E24-446C-97EC-27D6C5DA90C2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{70BEEE77-3E24-446C-97EC-27D6C5DA90C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Core", "Attest.Fake.Core\Attest.Fake.Core.csproj", "{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}"
 EndProject
@@ -42,6 +42,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Tests.Core", "Attest.Tests.Core\portable\Attest.Tests.Core.csproj", "{CA530825-0F66-41C4-9623-2B54985E1E46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Tests.Core.NET45", "Attest.Tests.Core\net45\Attest.Tests.Core.NET45.csproj", "{EF968162-F842-4302-9ADD-82694A3D6183}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{98617C29-1A62-41A2-B1EE-4223AA049546}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Setup.Tests", "Attest.Fake.Setup.Tests\Attest.Fake.Setup.Tests.csproj", "{E0E52C4A-0111-4CED-82BE-2BFBD720AB44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +113,10 @@ Global
 		{EF968162-F842-4302-9ADD-82694A3D6183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF968162-F842-4302-9ADD-82694A3D6183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF968162-F842-4302-9ADD-82694A3D6183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E52C4A-0111-4CED-82BE-2BFBD720AB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0E52C4A-0111-4CED-82BE-2BFBD720AB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0E52C4A-0111-4CED-82BE-2BFBD720AB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0E52C4A-0111-4CED-82BE-2BFBD720AB44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,5 +140,6 @@ Global
 		{629171C1-81E5-486F-A186-B0EC8274F1C5} = {AEC65BC1-D66D-4C5E-8E93-3A35C77FA3EB}
 		{CA530825-0F66-41C4-9623-2B54985E1E46} = {70BEEE77-3E24-446C-97EC-27D6C5DA90C2}
 		{EF968162-F842-4302-9ADD-82694A3D6183} = {70BEEE77-3E24-446C-97EC-27D6C5DA90C2}
+		{E0E52C4A-0111-4CED-82BE-2BFBD720AB44} = {98617C29-1A62-41A2-B1EE-4223AA049546}
 	EndGlobalSection
 EndGlobal

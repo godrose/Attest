@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Attest.Fake.Setup.Contracts
 {
@@ -156,6 +157,17 @@ namespace Attest.Fake.Setup.Contracts
 
         /// <summary>
         /// Adds a new method call with return value.
+        /// </summary>        
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>        
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResultAsync<TResult>(Expression<Func<TService, Task<TResult>>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, 
+                IHaveCallbacks<IMethodCallbackWithResult<TResult>>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new method call with return value.
         /// </summary>
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>
@@ -163,7 +175,18 @@ namespace Attest.Fake.Setup.Contracts
         IServiceCall<TService> AddMethodCallWithResult<T, TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>,
                 IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>>
-                callbacksProducer);        
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>        
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>        
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResultAsync<T, TResult>(Expression<Func<TService, Task<TResult>>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>>
+                callbacksProducer);
 
         /// <summary>
         /// Adds a new method call with return value.

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Attest.Fake.Setup.Contracts;
 using Solid.Practices.Scheduling;
 
-namespace Attest.Fake.Setup.Extensions
+namespace Attest.Fake.Setup
 {
     /// <summary>
     /// Helper class for method callback visitors

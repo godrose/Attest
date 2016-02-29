@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;
 using Solid.Patterns.Visitor;
@@ -207,12 +208,33 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCallWithResultAsync<TResult>(Expression<Func<TService, Task<TResult>>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IHaveCallbacks<IMethodCallbackWithResult<TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResultAsync<TService, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
         IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCallWithResult<T, TResult>(
             Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>,
                 IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>> callbacksProducer)
         {
             var methodCall = MethodCallWithResult<TService,T, TResult>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCallWithResultAsync<T, TResult>(
+            Expression<Func<TService, Task<TResult>>> runMethod, 
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T, TResult>, T, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>> callbacksProducer)
+        {
+            var methodCall = MethodCallWithResultAsync<TService, T, TResult>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
             AddMethodCallWithResultImpl(methodCall, methodCall);
@@ -333,6 +355,23 @@ namespace Attest.Fake.Setup
             }
         }
 
+        private void AddMethodCallWithResultImpl(IMethodCallMetaData methodCallMetaData,
+            IAcceptor<IMethodCallWithResultVisitorAsync<TService>> acceptor)
+        {
+            var existingMethodCallMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
+            if (existingMethodCallMetaData == null)
+            {
+                _methodCalls.Add(methodCallMetaData);
+            }
+            else
+            {
+                AssertCallbackType(methodCallMetaData, existingMethodCallMetaData);
+                AcceptExistingMethodCall(
+                        acceptor,
+                        new MethodCallWithResultAppendCallsVisitorAsync<TService>(methodCallMetaData));
+            }
+        }
+
         private static void AcceptExistingMethodCall<TAppendCallsVisitor,TMethodCallVisitor>(
             IAcceptor<TMethodCallVisitor> existingMethodInfoMetaData,
             TAppendCallsVisitor appendCallsVisitor
@@ -366,8 +405,10 @@ namespace Attest.Fake.Setup
         /// <returns></returns>
         IFake<TService> IServiceCall<TService>.Build()
         {
-            return _serviceSetupFactory.SetupFakeService(_fake, MethodCalls.OfType<IMethodCall<TService>>(), 
-                MethodCalls.OfType<IMethodCallWithResult<TService>>());          
+            return _serviceSetupFactory.SetupFakeService(_fake, 
+                MethodCalls.OfType<IMethodCall<TService>>(),
+                MethodCalls.OfType<IMethodCallWithResult<TService>>(),
+                MethodCalls.OfType<IMethodCallWithResultAsync<TService>>());
         }
 
         /// <summary>
