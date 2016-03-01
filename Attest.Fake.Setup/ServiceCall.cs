@@ -144,6 +144,24 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        IServiceCall<TService> ICanAddMethodsAsync<TService>.AddMethodCallAsync<T1, T2>(Expression<Func<TService, Task>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, IHaveCallbacks<IMethodCallback<T1, T2>>> callbacksProducer)
+        {
+            var methodCall = MethodCallAsync<TService, T1, T2>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethodsAsync<TService>.AddMethodCall<T1, T2>(Expression<Func<TService, Task>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, T1, T2, IHaveCallbacks<IMethodCallback<T1, T2>>> callbacksProducer)
+        {
+            var methodCall = MethodCallAsync<TService, T1, T2>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
+        }
+
         IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T>(
             Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T>, T>,
                 IHaveCallbacks<IMethodCallback<T>>> callbacksProducer)

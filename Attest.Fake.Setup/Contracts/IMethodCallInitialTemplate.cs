@@ -31,7 +31,7 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents initial template for method call with 1 parameter.
+    /// Represents initial template for method call with one parameter.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
@@ -50,7 +50,7 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents initial template for method call with 2 parameters.
+    /// Represents initial template for method call with one parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>

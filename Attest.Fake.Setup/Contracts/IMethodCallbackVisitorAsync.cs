@@ -79,4 +79,52 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg">Parameter.</param>
         Task Visit(OnWithoutCallback<T> withoutCallback, T arg);
     }
+
+    /// <summary>
+    /// Represents visitor for different async callbacks without return value and 2 parameters.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    public interface IMethodCallbackVisitorAsync<T1, T2>
+    {
+        /// <summary>
+        /// Visits exception throwing callback
+        /// </summary>
+        /// <param name="onErrorCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        Task Visit(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Visits successful completion callback
+        /// </summary>
+        /// <param name="onCompleteCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        Task Visit(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        Task Visit(ProgressCallback<T1, T2> progressCallback, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        Task Visit(OnCancelCallback<T1, T2> onCancelCallback, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        Task Visit(OnWithoutCallback<T1, T2> withoutCallback, T1 arg1, T2 arg2);
+    }
 }

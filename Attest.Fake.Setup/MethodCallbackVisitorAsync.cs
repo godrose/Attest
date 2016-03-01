@@ -111,4 +111,68 @@ namespace Attest.Fake.Setup
             return MethodCallbackVisitorHelperAsync.VisitWithout();
         }
     }
+
+    /// <summary>
+    /// Represents visitor for different async callbacks without return value and two parameters.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <seealso cref="MethodCallbackVisitorHelper" />    
+    public class MethodCallbackVisitorAsync<T1, T2> : IMethodCallbackVisitorAsync<T1, T2>
+    {
+        /// <summary>
+        /// Visits exception throwing callback
+        /// </summary>
+        /// <param name="onErrorCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        public Task Visit(OnErrorCallback<T1, T2> onErrorCallback, T1 arg1, T2 arg2)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitError(onErrorCallback);
+        }
+
+        /// <summary>
+        /// Visits successful completion callback
+        /// </summary>
+        /// <param name="onCompleteCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        public Task Visit(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2)
+        {
+            return TaskRunner.RunAsync(() => onCompleteCallback.Callback(arg1, arg2));
+        }
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        public Task Visit(ProgressCallback<T1, T2> progressCallback, T1 arg1, T2 arg2)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitProgress(progressCallback, c => c.Accept(this, arg1, arg2));
+        }
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        public Task Visit(OnCancelCallback<T1, T2> onCancelCallback, T1 arg1, T2 arg2)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitCancel();
+        }
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        public Task Visit(OnWithoutCallback<T1, T2> withoutCallback, T1 arg1, T2 arg2)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitWithout();
+        }
+    }
 }
