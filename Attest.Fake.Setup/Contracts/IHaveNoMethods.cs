@@ -4,7 +4,10 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents a service call which has no method calls yet.
     /// </summary>
     /// <typeparam name="TService"></typeparam>
-    public interface IHaveNoMethods<TService> : ICanAddMethods<TService>, ICanAddMethodsEx<TService> where TService : class
+    public interface IHaveNoMethods<TService> : 
+        ICanAddMethods<TService>, 
+        ICanAddMethodsEx<TService>, 
+        ICanAddMethodsAsync<TService> where TService : class
     {
     }
 }

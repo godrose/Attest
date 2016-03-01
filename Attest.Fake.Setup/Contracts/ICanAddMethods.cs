@@ -153,18 +153,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns>Service call</returns>
         IServiceCall<TService> AddMethodCallWithResult<TResult>(Expression<Func<TService, TResult>> runMethod,
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IHaveCallbacks<IMethodCallbackWithResult<TResult>>>
-                callbacksProducer);
-
-        /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>        
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>        
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResultAsync<TResult>(Expression<Func<TService, Task<TResult>>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, 
-                IHaveCallbacks<IMethodCallbackWithResult<TResult>>>
-                callbacksProducer);
+                callbacksProducer);        
 
         /// <summary>
         /// Adds a new method call with return value.
@@ -188,6 +177,114 @@ namespace Attest.Fake.Setup.Contracts
                 IHaveCallbacks<IMethodCallbackWithResult<T, TResult>>>
                 callbacksProducer);
 
+        
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
+                T1, T2,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>>
+                callbacksProducer);        
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>,
+                T1, T2, T3,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>>
+                callbacksProducer);       
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
+                T1, T2, T3, T4,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>>
+                callbacksProducer);        
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>,
+                T1, T2, T3, T4, T5,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>>
+                callbacksProducer);        
+    }
+
+    public interface ICanAddMethodsAsync<TService> where TService : class
+    {
+        /// <summary>
+        /// Adds a new method call with return value.
+        /// </summary>        
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>        
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResultAsync<TResult>(Expression<Func<TService, Task<TResult>>> runMethod,
+            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<TResult>>>
+                callbacksProducer);
+
         /// <summary>
         /// Adds a new async method call with return value.
         /// </summary>        
@@ -213,29 +310,6 @@ namespace Attest.Fake.Setup.Contracts
                 callbacksProducer);
 
         /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
-                T1, T2,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
         /// Adds a new async method call with return value.
         /// </summary>
         /// <param name="runMethod">The method to be set up.</param>
@@ -259,29 +333,6 @@ namespace Attest.Fake.Setup.Contracts
                 callbacksProducer);
 
         /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>,
-                T1, T2, T3,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
         /// Adds a new async method call with return value.
         /// </summary>
         /// <param name="runMethod">The method to be set up.</param>
@@ -302,29 +353,6 @@ namespace Attest.Fake.Setup.Contracts
             Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, TResult>, T1, T2, T3, TResult>,
                 T1, T2, T3,
                 IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
-                T1, T2, T3, T4,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>>
                 callbacksProducer);
 
         /// <summary>
@@ -352,29 +380,6 @@ namespace Attest.Fake.Setup.Contracts
                 <IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
                     T1, T2, T3, T4,
                     IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>>
-                callbacksProducer);
-
-        /// <summary>
-        /// Adds a new method call with return value.
-        /// </summary>
-        /// <param name="runMethod">The method to be set up.</param>
-        /// <param name="callbacksProducer">The callbacks producer function.</param>
-        /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCallWithResult<T1, T2, T3, T4, T5, TResult>(Expression<Func<TService, TResult>> runMethod,
-            Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, T1, T2, T3, T4, T5, TResult>,
-                T1, T2, T3, T4, T5,
-                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>>>
                 callbacksProducer);
 
         /// <summary>

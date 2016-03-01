@@ -6,7 +6,10 @@ namespace Attest.Fake.Setup.Contracts
     /// Represents a method calls container.
     /// </summary>
     /// <typeparam name="TService"></typeparam>
-    public interface IHaveMethods<TService> : ICanAddMethods<TService>, ICanAddMethodsEx<TService> where TService: class
+    public interface IHaveMethods<TService> : 
+        ICanAddMethods<TService>, 
+        ICanAddMethodsEx<TService>,
+        ICanAddMethodsAsync<TService> where TService: class
     {
         /// <summary>
         /// Collection of method calls.
