@@ -12,6 +12,6 @@ namespace Attest.Fake.Setup.Contracts
         /// Builds the fake object.
         /// </summary>
         /// <returns></returns>
-        IFake<TService> Build();
+        IFake<TService> Build();        
     }
 }

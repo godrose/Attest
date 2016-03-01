@@ -46,6 +46,10 @@ namespace Attest.Fake.Setup.Tests
                t => t.GetWarehouseItemsWithTwoParameters(It.IsAny<string>(), It.IsAny<string>()),
                r => r.Complete((c1, c2) => GetWarehouseItems()));
 
+            setup.AddMethodCallWithResultAsync<string, string, string, IEnumerable<WarehouseItemDto>>(
+               t => t.GetWarehouseItemsWithThreeParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+               r => r.Complete((c1, c2, c3) => GetWarehouseItems()));
+
             setup.Build();
         }
 

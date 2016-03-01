@@ -89,6 +89,8 @@ namespace Attest.Fake.Setup
         /// <param name="visitor">The visitor.</param><param name="arg1">The first argument.</param><param name="arg2">The second argument.</param><param name="arg3">The third argument.</param>
         /// <returns/>
         public abstract TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3);
+
+        public abstract Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3);
     }
 
     /// <summary>
@@ -321,6 +323,11 @@ namespace Attest.Fake.Setup
         /// <param name="arg3">The third argument.</param>
         /// <returns/>
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
+        }
+
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             return visitor.Visit(this, arg1, arg2, arg3);
         }
@@ -587,6 +594,11 @@ namespace Attest.Fake.Setup
         {
             return visitor.Visit(this, arg1, arg2, arg3);
         }
+
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
+        }
     }
 
     /// <summary>
@@ -771,6 +783,11 @@ namespace Attest.Fake.Setup
         {
             return visitor.Visit(this, arg1, arg2, arg3);
         }
+
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
+        }
     }
 
     /// <summary>
@@ -933,6 +950,11 @@ namespace Attest.Fake.Setup
         /// <param name="arg3">The third argument.</param>
         /// <returns/>
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
+        }
+
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             return visitor.Visit(this, arg1, arg2, arg3);
         }
@@ -1402,6 +1424,11 @@ namespace Attest.Fake.Setup
         /// <param name="arg3">The third argument.</param>
         /// <returns/>
         public TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
+        }
+
+        public Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, T3, TResult> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             return visitor.Visit(this, arg1, arg2, arg3);
         }

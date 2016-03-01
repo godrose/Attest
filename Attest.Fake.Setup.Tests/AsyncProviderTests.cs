@@ -74,6 +74,29 @@ namespace Attest.Fake.Setup.Tests
             var actualItems = await provider.GetWarehouseItemsWithTwoParameters("firstParameter", "secondParameter");
 
             CollectionAssert.AreEqual(items, actualItems);
-        }       
+        }
+
+        [Test]
+        public async void AsyncProviderIsSetup_MethodCallWithResultAndThreeParametersReturnsCorrectValue()
+        {
+            var items = new[]
+            {
+                new WarehouseItemDto
+                {
+                    Kind = "Top",
+                    Price = 5,
+                    Quantity = 1
+                }
+            };
+            var builder = WarehouseProviderBuilder.CreateBuilder();
+            builder.WithWarehouseItems(items);
+
+            var provider = builder.GetService();
+            var actualItems =
+                await
+                    provider.GetWarehouseItemsWithThreeParameters("firstParameter", "secondParameter", "thirdParameter");
+
+            CollectionAssert.AreEqual(items, actualItems);
+        }
     }
 }
