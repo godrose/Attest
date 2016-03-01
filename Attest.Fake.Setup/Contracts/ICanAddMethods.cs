@@ -320,7 +320,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>        
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<T1, T2>(Expression<Func<TService, Task>> runMethod,
+        IServiceCall<TService> AddMethodCallAsync<T1, T2>(Expression<Func<TService, Task>> runMethod,
             Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, T1, T2, IHaveCallbacks<IMethodCallback<T1, T2>>>
                 callbacksProducer);
 
