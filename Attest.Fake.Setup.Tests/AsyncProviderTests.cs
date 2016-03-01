@@ -147,13 +147,15 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]        
-        public void AsyncProviderIsSetup_MethodCallWithoutResultAndNoParametersCompletesSuccessfully()
+        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndNoParametersCompletesSuccessfully()
         {           
             var builder = LoginProviderBuilder.CreateBuilder();            
 
             var provider = builder.GetService();
+            await provider.Login();
 
-            Assert.DoesNotThrow(async () => await provider.Login());            
+            var isLoggedIn = provider.IsLoggedIn;
+            Assert.IsTrue(isLoggedIn);            
         }
     }
 }

@@ -69,6 +69,8 @@ namespace Attest.Fake.Setup.Tests
 
     public class LoginProviderBuilder : FakeBuilderBase<ILoginProvider>
     {
+        private bool _isLoggedIn;
+
         private LoginProviderBuilder()
         {
             
@@ -88,14 +90,16 @@ namespace Attest.Fake.Setup.Tests
         {
             var initialSetup = CreateInitialSetup();
 
-            var setup = initialSetup.AddMethodCallAsync(t => t.Login(), r => r.Complete(Login));
+            var setup = initialSetup.AddMethodCallAsync(t => t.Login(), r => r.Complete(Login));                        
 
             setup.Build();
+
+            FakeService.Setup(t => t.IsLoggedIn).Callback(() => _isLoggedIn);
         }
 
         private void Login()
         {
-            System.Diagnostics.Debug.WriteLine("Test");
+            _isLoggedIn = true;
         }
     }
 }
