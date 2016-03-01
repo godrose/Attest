@@ -121,5 +121,29 @@ namespace Attest.Fake.Setup.Tests
 
             CollectionAssert.AreEqual(items, actualItems);
         }
+
+        [Test]
+        public async void AsyncProviderIsSetup_MethodCallWithResultAndFiveParametersReturnsCorrectValue()
+        {
+            var items = new[]
+            {
+                new WarehouseItemDto
+                {
+                    Kind = "Top",
+                    Price = 5,
+                    Quantity = 1
+                }
+            };
+            var builder = WarehouseProviderBuilder.CreateBuilder();
+            builder.WithWarehouseItems(items);
+
+            var provider = builder.GetService();
+            var actualItems =
+                await
+                    provider.GetWarehouseItemsWithFiveParameters("firstParameter", "secondParameter", "thirdParameter",
+                        "fourthParameter", "fifthParameter");
+
+            CollectionAssert.AreEqual(items, actualItems);
+        }
     }
 }

@@ -60,6 +60,6 @@ namespace Attest.Fake.Setup.Contracts
         /// <typeparam name="T5">The type of the fifth parameter.</typeparam> 
         /// <typeparam name="TResult">The type of the return value.</typeparam>
         /// <param name="methodCall">The method call.</param>
-        void Visit<T1, T2, T3, T4, T5, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> methodCall);
+        void Visit<T1, T2, T3, T4, T5, TResult>(IMethodCallWithResultAsync<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> methodCall);
     }
 }

@@ -126,4 +126,30 @@ namespace Attest.Fake.Setup.Contracts
             Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, TResult>,
                 T1, T2, T3, T4, IHaveCallbacks<TCallback>> callbacksProducer);
     }
+
+    /// <summary>
+    /// Represents initial template for method call with return value and 5 parameters.
+    /// </summary>
+    /// <typeparam name="TService">The type of the service.</typeparam>
+    /// <typeparam name="TCallback">The type of the callback.</typeparam>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the fourth parameter.</typeparam>
+    /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
+    /// <typeparam name="T5">The type of the fifth parameter.</typeparam>
+    /// <typeparam name="TResult">The type of the return value.</typeparam>
+    public interface IMethodCallWithResultInitialTemplateAsync<TService, TCallback, T1, T2, T3, T4, T5, TResult> :
+        IMethodCallWithResultInitialTemplateBaseAsync<TService, TCallback, TResult, 
+            IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, T5, TResult>>
+        where TService : class
+    {
+        /// <summary>
+        /// Builds the method call with return value using specified callbacks producer.
+        /// </summary>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
+        /// <returns></returns>
+        IMethodCallWithResultAsync<TService, TCallback, TResult> BuildCallbacks(
+            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, T3, T4, T5, TResult>,
+                T1, T2, T3, T4, T5, IHaveCallbacks<TCallback>> callbacksProducer);
+    }
 }

@@ -74,9 +74,17 @@ namespace Attest.Fake.Setup
             });
         }
 
-        public void Visit<T1, T2, T3, T4, T5, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> methodCall)
+        public void Visit<T1, T2, T3, T4, T5, TResult>(IMethodCallWithResultAsync<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> methodCall)
         {
-            throw new System.NotImplementedException();
+            var methodCallbackWithResultVisitor = new MethodCallbackWithResultVisitorAsync<T1, T2, T3, T4, T5, TResult>();
+
+            _fake.Setup(methodCall.RunMethod).Callback((T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5) =>
+            {
+                MethodCallVisitorHelper.GenerateCallbacks<IGenerateMethodCallbackWithResult<T1, T2, T3, T4, T5>>(methodCall,
+                    r => r.GenerateCallback(arg1, arg2, arg3, arg4, arg5));
+                var methodCallback = methodCall.YieldCallback();
+                return methodCallback.Accept(methodCallbackWithResultVisitor, arg1, arg2, arg3, arg4, arg5);
+            });
         }
     }
 
@@ -114,7 +122,7 @@ namespace Attest.Fake.Setup
             VisitImpl(methodCall);
         }
 
-        public void Visit<T1, T2, T3, T4, T5, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> methodCall)
+        public void Visit<T1, T2, T3, T4, T5, TResult>(IMethodCallWithResultAsync<TService, IMethodCallbackWithResult<T1, T2, T3, T4, T5, TResult>, TResult> methodCall)
         {
             VisitImpl(methodCall);
         }
