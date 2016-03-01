@@ -52,6 +52,7 @@
     <Compile Include="Contracts\IMethodCallAsync.cs" />
     <Compile Include="Contracts\IMethodCallbackVisitorAsync.cs" />
     <Compile Include="Contracts\IMethodCallbackWithResultVisitorAsync.cs" />
+    <Compile Include="Contracts\IMethodCallInitialTemplateAsync.cs" />
     <Compile Include="Contracts\IMethodCallVisitorAsync.cs" />
     <Compile Include="Contracts\IMethodCallWithResultAsync.cs" />
     <Compile Include="Contracts\IMethodCallWithResultInitialTemplateAsync.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Contracts\IServiceSetupFactory.cs" />
     <Compile Include="Contracts\IMethodCallbackTemplateVisitor.cs" />
     <Compile Include="Contracts\IMethodCallbackTemplate.cs" />
+    <Compile Include="MethodCallAsync.cs" />
     <Compile Include="MethodCallback.cs" />
     <Compile Include="MethodCallbackTemplate.cs" />
     <Compile Include="MethodCallbackVisitor.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="MethodCallbackWithResultVisitorAsync.cs" />
     <Compile Include="MethodCallbackWithResultVisitorHelper.cs" />
     <Compile Include="MethodCallbackWithResultVisitorHelperAsync.cs" />
+    <Compile Include="MethodCallVisitorAsync.cs" />
     <Compile Include="MethodCallWithResultAsync.cs" />
     <Compile Include="MethodCallWithResultVisitorAsync.cs" />
     <Compile Include="OnCompleteCallbackVisitor.cs" />

@@ -146,8 +146,7 @@ namespace Attest.Fake.Setup.Tests
             CollectionAssert.AreEqual(items, actualItems);
         }
 
-        [Test]
-        [Ignore("Not implemented yet")]
+        [Test]        
         public void AsyncProviderIsSetup_MethodCallWithoutResultAndNoParametersCompletesSuccessfully()
         {           
             var builder = LoginProviderBuilder.CreateBuilder();            

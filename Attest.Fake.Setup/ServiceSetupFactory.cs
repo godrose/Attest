@@ -14,6 +14,7 @@ namespace Attest.Fake.Setup
         {            
             var calls = methodCalls as IMethodCallMetaData[] ?? methodCalls.ToArray();
             VisitMethodCalls(new MethodCallVisitor<TService>(fake) as IMethodCallVisitor<TService>, calls);
+            VisitMethodCalls(new MethodCallVisitorAsync<TService>(fake) as IMethodCallVisitorAsync<TService>, calls);
             VisitMethodCalls(new MethodCallWithResultVisitor<TService>(fake) as IMethodCallWithResultVisitor<TService>, calls);
             VisitMethodCalls(new MethodCallWithResultVisitorAsync<TService>(fake) as IMethodCallWithResultVisitorAsync<TService>, calls);
             return fake;
@@ -21,15 +22,18 @@ namespace Attest.Fake.Setup
 
         IFake<TService> IServiceSetupFactory<TService>.SetupFakeService(
             IFake<TService> fake, 
-            IEnumerable<IMethodCall<TService>> methodCalls, 
+            IEnumerable<IMethodCall<TService>> methodCalls,
+            IEnumerable<IMethodCallAsync<TService>> methodCallsAsync,
             IEnumerable<IMethodCallWithResult<TService>> methodCallsWithResult,
             IEnumerable<IMethodCallWithResultAsync<TService>> methodCallsWithResultAsync)
         {
             var methodCallVisitor = new MethodCallVisitor<TService>(fake) as IMethodCallVisitor<TService>;
+            var methodCallVisitorAsync = new MethodCallVisitorAsync<TService>(fake) as IMethodCallVisitorAsync<TService>;
             var methodCallWithResultVisitor = new MethodCallWithResultVisitor<TService>(fake) as IMethodCallWithResultVisitor<TService>;
             var methodCallWithResultVisitorAsync =
                 new MethodCallWithResultVisitorAsync<TService>(fake) as IMethodCallWithResultVisitorAsync<TService>;
-            AcceptMany(methodCalls, methodCallVisitor);            
+            AcceptMany(methodCalls, methodCallVisitor);
+            AcceptMany(methodCallsAsync, methodCallVisitorAsync);
             AcceptMany(methodCallsWithResult, methodCallWithResultVisitor);
             AcceptMany(methodCallsWithResultAsync, methodCallWithResultVisitorAsync);
             return fake;

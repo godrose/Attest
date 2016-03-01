@@ -116,7 +116,11 @@ namespace Attest.Fake.Setup
             Expression<Func<TService, Task>> runMethod,
             Func<IHaveNoCallbacks<IMethodCallback>, IHaveCallbacks<IMethodCallback>> callbacksProducer)
         {
-            throw new NotImplementedException();
+            var methodCall = MethodCallAsync<TService>
+                .CreateMethodCall(runMethod)
+                .BuildCallbacks(callbacksProducer);
+            AddMethodCallImpl(methodCall, methodCall);
+            return this;
         }
 
         IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T>(
@@ -441,6 +445,22 @@ namespace Attest.Fake.Setup
             }
         }
 
+        private void AddMethodCallImpl(IMethodCallMetaData methodCallMetaData, IAcceptor<IMethodCallVisitorAsync<TService>> acceptor)
+        {
+            var existingMethodCallMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
+            if (existingMethodCallMetaData == null)
+            {
+                _methodCalls.Add(methodCallMetaData);
+            }
+            else
+            {
+                AssertCallbackType(methodCallMetaData, existingMethodCallMetaData);
+                AcceptExistingMethodCall(
+                    acceptor,
+                    new MethodCallAppendCallsVisitorAsync<TService>(methodCallMetaData));
+            }
+        }
+
         private void AddMethodCallWithResultImpl(IMethodCallMetaData methodCallMetaData, 
             IAcceptor<IMethodCallWithResultVisitor<TService>> acceptor)
         {
@@ -509,7 +529,8 @@ namespace Attest.Fake.Setup
         IFake<TService> IServiceCall<TService>.Build()
         {
             return _serviceSetupFactory.SetupFakeService(_fake, 
-                MethodCalls.OfType<IMethodCall<TService>>(),
+                MethodCalls.OfType<IMethodCall<TService>>(), 
+                MethodCalls.OfType<IMethodCallAsync<TService>>(),
                 MethodCalls.OfType<IMethodCallWithResult<TService>>(),
                 MethodCalls.OfType<IMethodCallWithResultAsync<TService>>());
         }

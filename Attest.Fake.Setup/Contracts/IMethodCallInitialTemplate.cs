@@ -1,7 +1,7 @@
 using System;
 
 namespace Attest.Fake.Setup.Contracts
-{
+{    
     /// <summary>
     /// Represents an object that allows creating new method call using callbacks mapping function
     /// </summary>

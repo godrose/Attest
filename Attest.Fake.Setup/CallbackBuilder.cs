@@ -48,6 +48,20 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
+        /// Builds the callback.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="System.NullReferenceException">Action Wrapper can't be null</exception>
+        public TCallback Build()
+        {
+            if (_actionWrapper == null)
+            {
+                throw new NullReferenceException("Action Wrapper can't be null");
+            }
+            return BuildCallback();
+        }
+
+        /// <summary>
         /// Sets the type of callback to a successful completion
         /// </summary>
         /// <returns>Callback builder configured to return successful completion callback</returns>
