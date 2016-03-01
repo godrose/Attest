@@ -57,7 +57,9 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T2">Type of second parameter</typeparam>
     /// <typeparam name="T3">Type of third parameter</typeparam>
     /// <typeparam name="T4">Type of fourth parameter</typeparam>
-    public interface IMethodCallbackWithResult<T1, T2, T3, T4, TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>
+    public interface IMethodCallbackWithResult<T1, T2, T3, T4, TResult> : 
+        IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, TResult>,
+        IAcceptorWithParametersResult<IMethodCallbackWithResultVisitorAsync<T1, T2, T3, T4, TResult>, T1, T2, T3, T4, Task<TResult>>
     {
     }
 

@@ -48,7 +48,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
         /// <typeparam name="TResult">The type of the return value.</typeparam>
         /// <param name="methodCall">The method call.</param>
-        void Visit<T1, T2, T3, T4, TResult>(IMethodCallWithResult<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> methodCall);
+        void Visit<T1, T2, T3, T4, TResult>(IMethodCallWithResultAsync<TService, IMethodCallbackWithResult<T1, T2, T3, T4, TResult>, TResult> methodCall);
 
         /// <summary>
         /// Visits the specified method call.

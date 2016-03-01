@@ -10,5 +10,8 @@ namespace Attest.Fake.Setup.Tests
         Task<IEnumerable<WarehouseItemDto>> GetWarehouseItemsWithTwoParameters(string firstParameter, string secondParameter);
         Task<IEnumerable<WarehouseItemDto>> GetWarehouseItemsWithThreeParameters(
             string firstParameter, string secondParameter, string thirdParameter);
+
+        Task<IEnumerable<WarehouseItemDto>> GetWarehouseItemsWithFourParameters(
+            string firstParameter, string secondParameter, string thirdParameter, string fourthParameter);
     }
 }
