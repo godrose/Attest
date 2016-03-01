@@ -26,7 +26,13 @@ namespace Attest.Fake.Setup
 
         public void Visit<T>(IMethodCallAsync<TService, IMethodCallback<T>> methodCall)
         {
-            throw new NotImplementedException();
+            var visitor = new MethodCallbackVisitorAsync<T>();
+            CreateSetup(methodCall).Callback((T arg) =>
+            {
+                MethodCallVisitorHelper.GenerateCallbacks<IGenerateMethodCallback<T>>(methodCall, r => r.GenerateCallback(arg));
+                var methodCallback = methodCall.YieldCallback();
+                return methodCallback.Accept(visitor, arg);
+            });
         }
 
         public void Visit<T1, T2>(IMethodCallAsync<TService, IMethodCallback<T1, T2>> methodCall)

@@ -7,5 +7,6 @@ namespace Attest.Fake.Setup.Tests
         bool IsLoggedIn { get; }
 
         Task Login();
+        Task LoginWithOneParameter(string parameter);
     }
 }

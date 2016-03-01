@@ -275,13 +275,33 @@ namespace Attest.Fake.Setup.Contracts
     public interface ICanAddMethodsAsync<TService> where TService : class
     {
         /// <summary>
-        /// Adds a new method call without return value.
+        /// Adds a new async method call without return value.
         /// </summary>        
         /// <param name="runMethod">The method to be set up.</param>
         /// <param name="callbacksProducer">The callbacks producer function.</param>        
         /// <returns>Service call</returns>
         IServiceCall<TService> AddMethodCallAsync(Expression<Func<TService, Task>> runMethod,
             Func<IHaveNoCallbacks<IMethodCallback>, IHaveCallbacks<IMethodCallback>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new async method call without return value.
+        /// </summary>        
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>        
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallAsync<T>(Expression<Func<TService, Task>> runMethod,
+            Func<IHaveNoCallbacks<IMethodCallback<T>, T>, IHaveCallbacks<IMethodCallback<T>>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new async method call without return value and one parameter.
+        /// </summary>        
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>        
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallAsync<T>(Expression<Func<TService, Task>> runMethod,
+            Func<IHaveNoCallbacks<IMethodCallback<T>, T>, T, IHaveCallbacks<IMethodCallback<T>>>
                 callbacksProducer);
 
         /// <summary>

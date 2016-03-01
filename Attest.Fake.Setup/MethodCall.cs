@@ -148,7 +148,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call without return value and 1 parameter.
+    /// Represents method call without return value and one parameter.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T">The type of the parameter</typeparam>    

@@ -37,4 +37,46 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="withoutCallback">Callback</param>
         Task Visit(OnWithoutCallback withoutCallback);
     }
+
+    /// <summary>
+    /// Represents visitor for different async callbacks without return value and one parameter.
+    /// </summary>
+    /// <typeparam name="T">The type of the parameter.</typeparam>
+    public interface IMethodCallbackVisitorAsync<T>
+    {
+        /// <summary>
+        /// Visits exception throwing callback
+        /// </summary>
+        /// <param name="onErrorCallback">Callback</param>
+        /// <param name="arg">Parameter</param>
+        Task Visit(OnErrorCallback<T> onErrorCallback, T arg);
+
+        /// <summary>
+        /// Visits successful completion callback
+        /// </summary>
+        /// <param name="onCompleteCallback">Callback</param>
+        /// <param name="arg">Parameter</param>
+        Task Visit(OnCompleteCallback<T> onCompleteCallback, T arg);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg">Parameter.</param>
+        Task Visit(ProgressCallback<T> progressCallback, T arg);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg">Parameter.</param>
+        Task Visit(OnCancelCallback<T> onCancelCallback, T arg);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg">Parameter.</param>
+        Task Visit(OnWithoutCallback<T> withoutCallback, T arg);
+    }
 }

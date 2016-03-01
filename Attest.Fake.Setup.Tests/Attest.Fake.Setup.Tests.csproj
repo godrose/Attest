@@ -60,6 +60,7 @@
     <Compile Include="AsyncProviderTests.cs" />
     <Compile Include="ILoginProvider.cs" />
     <Compile Include="IWarehouseProvider.cs" />
+    <Compile Include="LoginProviderBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WarehouseItemDto.cs" />
     <Compile Include="WarehouseProviderBuilder.cs" />

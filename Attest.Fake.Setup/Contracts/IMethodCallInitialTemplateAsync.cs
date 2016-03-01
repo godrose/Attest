@@ -29,4 +29,23 @@ namespace Attest.Fake.Setup.Contracts
         where TService : class
     {
     }
+
+    /// <summary>
+    /// Represents initial template for async method call with one parameter.
+    /// </summary>
+    /// <typeparam name="TService">The type of the service.</typeparam>
+    /// <typeparam name="TCallback">The type of the callback.</typeparam>
+    /// <typeparam name="T">The type of the parameter.</typeparam>    
+    public interface IMethodCallInitialTemplateAsync<TService, TCallback, T> :
+        IMethodCallInitialTemplateBaseAsync<TService, TCallback, IHaveNoCallbacks<TCallback, T>>
+        where TService : class
+    {
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="callbacksProducer">The build callbacks.</param>        
+        /// <returns></returns>
+        IMethodCallAsync<TService, TCallback> BuildCallbacks(
+            Func<IHaveNoCallbacks<TCallback, T>, T, IHaveCallbacks<TCallback>> callbacksProducer);
+    }
 }

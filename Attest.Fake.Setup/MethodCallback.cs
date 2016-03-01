@@ -27,8 +27,17 @@ namespace Attest.Fake.Setup
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
-        /// <param name="visitor">The visitor.</param><param name="arg">The argument.</param>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg">The argument.</param>
         public abstract void Accept(IMethodCallbackVisitor<T> visitor, T arg);
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg">The argument.</param>
+        /// <returns/>
+        public abstract Task Accept(IMethodCallbackVisitorAsync<T> visitor, T arg);
     }
 
     /// <summary>
@@ -160,6 +169,11 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor<T> visitor, T arg)
         {
             visitor.Visit(this, arg);
+        }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T> visitor, T arg)
+        {
+            return visitor.Visit(this, arg);
         }
     }
 
@@ -372,6 +386,11 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this, arg);
         }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T> visitor, T arg)
+        {
+            return visitor.Visit(this, arg);
+        }
     }
 
     /// <summary>
@@ -545,6 +564,11 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this, arg);
         }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T> visitor, T arg)
+        {
+            return visitor.Visit(this, arg);
+        }
     }
 
     /// <summary>
@@ -677,6 +701,11 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor<T> visitor, T arg)
         {
             visitor.Visit(this, arg);
+        }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T> visitor, T arg)
+        {
+            return visitor.Visit(this, arg);
         }
     }
 
@@ -982,6 +1011,11 @@ namespace Attest.Fake.Setup
         public void Accept(IMethodCallbackVisitor<T> visitor, T arg)
         {
             visitor.Visit(this, arg);
+        }
+
+        public Task Accept(IMethodCallbackVisitorAsync<T> visitor, T arg)
+        {
+            return visitor.Visit(this, arg);
         }
     }
 
