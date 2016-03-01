@@ -208,7 +208,7 @@ namespace Attest.Fake.Setup
         public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<TResult> visitor)
         {
             return visitor.Visit(this);
-        }
+        }       
     }
 
     /// <summary>

@@ -6,45 +6,11 @@ using Solid.Practices.Scheduling;
 
 namespace Attest.Fake.Setup
 {
-    /// <summary>
-    /// Helper class for method callback visitors
-    /// </summary>
-    static class MethodCallbackVisitorHelperAsync
-    {
-        internal static void VisitError(IThrowException onErrorCallback)
-        {
-            throw onErrorCallback.Exception;
-        }
-
-        internal static void VisitProgress<TCallback>(IProgressableProcessFinished<TCallback> progressCallback,
-            Action<TCallback> callbackAcceptor)
-        {
-            throw new ProgressMessageException(progressCallback.ProgressMessages,
-                () =>
-                {
-                    if (progressCallback.FinishCallback != null)
-                    {
-                        callbackAcceptor(progressCallback.FinishCallback);
-                    }
-                });
-        }
-
-        internal static void VisitCancel()
-        {
-            throw new CancelCallbackException();
-        }
-
-        internal static void VisitWithout()
-        {
-            throw new WithoutCallbackException();
-        }
-    }
-
     static class MethodCallbackWithResultVisitorHelperAsync
     {
         internal static Task<TResult> VisitErrorWithResult<TResult>(IThrowException onErrorCallback)
         {
-            return VisitWithResult<TResult>(() => MethodCallbackVisitorHelperAsync.VisitError(onErrorCallback));
+            return VisitWithResult<TResult>(() => MethodCallbackVisitorHelper.VisitError(onErrorCallback));
         }
 
         internal static Task<TResult> VisitProgressWithResult<TCallback, TResult>(
@@ -57,12 +23,12 @@ namespace Attest.Fake.Setup
 
         internal static Task<TResult> VisitCancelWithResult<TResult>()
         {
-            return VisitWithResult<TResult>(MethodCallbackVisitorHelperAsync.VisitCancel);
+            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitCancel);
         }
 
         internal static Task<TResult> VisitWithoutWithResult<TResult>()
         {
-            return VisitWithResult<TResult>(MethodCallbackVisitorHelperAsync.VisitWithout);
+            return VisitWithResult<TResult>(MethodCallbackVisitorHelper.VisitWithout);
         }
 
         private static Task<TResult> VisitWithResult<TResult>(Action visitMethod)

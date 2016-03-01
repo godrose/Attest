@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncProviderTests.cs" />
+    <Compile Include="ILoginProvider.cs" />
     <Compile Include="IWarehouseProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WarehouseItemDto.cs" />

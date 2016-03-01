@@ -25,5 +25,5 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallbacksContainer<TCallback>, 
         IMethodCall<TService> where TService : class
     {        
-    }   
+    }    
 }

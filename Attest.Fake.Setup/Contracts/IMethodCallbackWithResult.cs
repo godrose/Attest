@@ -9,7 +9,7 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TResult">Type of return value</typeparam>
     public interface IMethodCallbackWithResult<TResult> : 
         IAcceptor<IMethodCallbackWithResultVisitor<TResult>, TResult>, 
-        IAcceptor<IMethodCallbackWithResultVisitorAsync<TResult>, Task<TResult>>
+        IAcceptor<IMethodCallbackWithResultVisitorAsync<TResult>, Task<TResult>>        
     {
     }
 

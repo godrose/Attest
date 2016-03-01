@@ -145,5 +145,16 @@ namespace Attest.Fake.Setup.Tests
 
             CollectionAssert.AreEqual(items, actualItems);
         }
+
+        [Test]
+        [Ignore("Not implemented yet")]
+        public void AsyncProviderIsSetup_MethodCallWithoutResultAndNoParametersCompletesSuccessfully()
+        {           
+            var builder = LoginProviderBuilder.CreateBuilder();            
+
+            var provider = builder.GetService();
+
+            Assert.DoesNotThrow(async () => await provider.Login());            
+        }
     }
 }

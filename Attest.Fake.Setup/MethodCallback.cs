@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Fake.Setup
@@ -13,6 +14,8 @@ namespace Attest.Fake.Setup
         /// </summary>
         /// <param name="visitor">The visitor.</param>
         public abstract void Accept(IMethodCallbackVisitor visitor);
+
+        public abstract Task Accept(IMethodCallbackVisitorAsync visitor);
     }
 
     /// <summary>
@@ -119,6 +122,11 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor visitor)
         {
             visitor.Visit(this);
+        }
+
+        public override Task Accept(IMethodCallbackVisitorAsync visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 
@@ -324,6 +332,16 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public override Task Accept(IMethodCallbackVisitorAsync visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 
     /// <summary>
@@ -499,6 +517,16 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this);
         }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public override Task Accept(IMethodCallbackVisitorAsync visitor)
+        {
+            return visitor.Visit(this);
+        }
     }
 
     /// <summary>
@@ -623,6 +651,16 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor visitor)
         {
             visitor.Visit(this);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public override Task Accept(IMethodCallbackVisitorAsync visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 
@@ -854,6 +892,16 @@ namespace Attest.Fake.Setup
         public void Accept(IMethodCallbackVisitor visitor)
         {
             visitor.Visit(this);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <returns/>
+        public Task Accept(IMethodCallbackVisitorAsync visitor)
+        {
+            return visitor.Visit(this);
         }
     }
 

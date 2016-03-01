@@ -112,6 +112,13 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        IServiceCall<TService> ICanAddMethodsAsync<TService>.AddMethodCallAsync(
+            Expression<Func<TService, Task>> runMethod,
+            Func<IHaveNoCallbacks<IMethodCallback>, IHaveCallbacks<IMethodCallback>> callbacksProducer)
+        {
+            throw new NotImplementedException();
+        }
+
         IServiceCall<TService> ICanAddMethodsEx<TService>.AddMethodCall<T>(
             Expression<Action<TService>> runMethod, Func<IHaveNoCallbacks<IMethodCallback<T>, T>,
                 IHaveCallbacks<IMethodCallback<T>>> callbacksProducer)
@@ -206,7 +213,7 @@ namespace Attest.Fake.Setup
                 .BuildCallbacks(callbacksProducer);
             AddMethodCallWithResultImpl(methodCall, methodCall);
             return this;
-        }
+        }        
 
         IServiceCall<TService> ICanAddMethodsAsync<TService>.AddMethodCallWithResultAsync<TResult>(Expression<Func<TService, Task<TResult>>> runMethod, Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<TResult>, TResult>, IHaveCallbacks<IMethodCallbackWithResult<TResult>>> callbacksProducer)
         {

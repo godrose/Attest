@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup.Contracts
@@ -5,7 +6,9 @@ namespace Attest.Fake.Setup.Contracts
     /// <summary>
     /// Represents callback without return value and no parameters
     /// </summary>    
-    public interface IMethodCallback : IAcceptor<IMethodCallbackVisitor>
+    public interface IMethodCallback : 
+        IAcceptor<IMethodCallbackVisitor>,
+        IAcceptor<IMethodCallbackVisitorAsync, Task>
     {
 
     }

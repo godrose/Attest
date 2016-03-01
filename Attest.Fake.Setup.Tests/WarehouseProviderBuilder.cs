@@ -66,4 +66,31 @@ namespace Attest.Fake.Setup.Tests
             return _warehouseItemsStorage;
         }
     }
+
+    public class LoginProviderBuilder : FakeBuilderBase<ILoginProvider>
+    {
+        private LoginProviderBuilder()
+        {
+            
+        }
+
+        public static LoginProviderBuilder CreateBuilder()
+        {
+            return new LoginProviderBuilder();
+        }
+
+        private IHaveNoMethods<ILoginProvider> CreateInitialSetup()
+        {
+            return ServiceCallFactory.CreateServiceCall(FakeService);
+        }
+
+        protected override void SetupFake()
+        {
+            var initialSetup = CreateInitialSetup();
+
+            var setup = initialSetup.AddMethodCallAsync(t => t.Login(), r => r.Complete());
+
+            setup.Build();
+        }
+    }
 }
