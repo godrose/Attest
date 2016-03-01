@@ -52,6 +52,7 @@
     <Compile Include="Contracts\IMethodCallbackWithResultVisitorAsync.cs" />
     <Compile Include="Contracts\IMethodCallWithResultAsync.cs" />
     <Compile Include="Contracts\IMethodCallWithResultInitialTemplateAsync.cs" />
+    <Compile Include="Contracts\IMethodCallWithResultVisitorAsync.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Contracts\IActionWrapper.cs" />
     <Compile Include="Contracts\IActionWrapperVisitor.cs" />

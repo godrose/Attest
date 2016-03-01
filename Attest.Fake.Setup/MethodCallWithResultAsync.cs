@@ -271,4 +271,131 @@ namespace Attest.Fake.Setup
         }
     }
 
+    /// <summary>
+    /// Represents async method call with return value and 2 parameters.
+    /// </summary>
+    /// <typeparam name="TService">The type of the service.</typeparam>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam> 
+    /// <typeparam name="T2">The type of the second parameter.</typeparam> 
+    /// <typeparam name="TResult">The type of the return value.</typeparam>
+    public class MethodCallWithResultAsync<TService, T1, T2, TResult> :
+        MethodCallWithResultBaseAsync<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult>,
+        IMethodCallWithResultInitialTemplateAsync<TService, IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
+        IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
+        IGenerateMethodCallbackWithResult<T1, T2> where TService : class
+    {
+        private Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, T1, T2, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>> _callbacksProducer;
+
+        private MethodCallWithResultAsync(Expression<Func<TService, Task<TResult>>> runMethod)
+            : base(runMethod)
+        {
+        }
+
+        /// <summary>
+        /// Creates the method call using the specified run method.
+        /// </summary>
+        /// <param name="runMethod">The specified run method.</param>
+        /// <returns></returns>
+        public static IMethodCallWithResultInitialTemplateAsync<TService, IMethodCallbackWithResult<T1, T2, TResult>, 
+            T1, T2, TResult> CreateMethodCall(Expression<Func<TService, Task<TResult>>> runMethod)
+        {
+            return new MethodCallWithResultAsync<TService, T1, T2, TResult>(runMethod);
+        }
+
+        /// <summary>
+        /// Adds custom callback to the callbacks container
+        /// </summary>
+        /// <param name="methodCallback">Custom callback</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> AddCallback(
+            IMethodCallbackWithResult<T1, T2, TResult> methodCallback)
+        {
+            AddCallbackInternal(methodCallback);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="result">Successful completion return value</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> Complete(TResult result)
+        {
+            Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, TResult>(result));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds successful completion callback to the callbacks container
+        /// </summary>
+        /// <param name="valueFunction">Successful completion return value's function</param>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> Complete(Func<T1, T2, TResult> valueFunction)
+        {
+            Callbacks.Add(new OnCompleteCallbackWithResult<T1, T2, TResult>(valueFunction));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds exception throwing callback to the callbacks container
+        /// </summary>
+        /// <param name="exception">Exception to be thrown</param>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> Throw(Exception exception)
+        {
+            Callbacks.Add(new OnErrorCallbackWithResult<T1, T2, TResult>(exception));
+            return this;
+        }
+
+        /// <summary>
+        /// Adds never-ending callback to the callbacks container
+        /// </summary>
+        /// <returns>Callbacks container</returns>
+        public IAddCallbackWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult> WithoutCallback()
+        {
+            Callbacks.Add(ProgressCallbackWithResult<T1, T2, TResult>.Create().WithoutCallback().AsMethodCallback());
+            return this;
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        public override void Accept(IMethodCallWithResultVisitorAsync<TService> visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        /// <summary>
+        /// Builds the method call with return value from the specified build callbacks.
+        /// </summary>
+        /// <param name="buildCallbacks">The build callbacks.</param>
+        /// <returns></returns>
+        public IMethodCallWithResultAsync<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult>
+            BuildCallbacks(Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>,
+                IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>> buildCallbacks)
+        {
+            buildCallbacks(this);
+            return this;
+        }
+
+        IMethodCallWithResultAsync<TService, IMethodCallbackWithResult<T1, T2, TResult>, TResult> 
+            IMethodCallWithResultInitialTemplateAsync<TService, IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>
+            .BuildCallbacks(Func<IHaveNoCallbacksWithResult<IMethodCallbackWithResult<T1, T2, TResult>, T1, T2, TResult>, 
+                T1, T2, IHaveCallbacks<IMethodCallbackWithResult<T1, T2, TResult>>> callbacksProducer)
+        {
+            _callbacksProducer = callbacksProducer;
+            return this;
+        }
+
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
+        {
+            get { return _callbacksProducer != null; }
+        }
+
+        void IGenerateMethodCallbackWithResult<T1, T2>.GenerateCallback(T1 arg1, T2 arg2)
+        {
+            _callbacksProducer(this, arg1, arg2);
+        }
+    }
+
 }

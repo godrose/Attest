@@ -30,7 +30,9 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="TResult">Type of return value</typeparam>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
-    public interface IMethodCallbackWithResult<T1, T2, TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T1, T2, TResult>, T1, T2, TResult>
+    public interface IMethodCallbackWithResult<T1, T2, TResult> : 
+        IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T1, T2, TResult>, T1, T2, TResult>,
+        IAcceptorWithParametersResult<IMethodCallbackWithResultVisitorAsync<T1, T2, TResult>, T1, T2, Task<TResult>>
     {
     }
 
@@ -41,7 +43,8 @@ namespace Attest.Fake.Setup.Contracts
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
     /// <typeparam name="T3">Type of third parameter</typeparam>
-    public interface IMethodCallbackWithResult<T1, T2, T3, TResult> : IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T1, T2, T3, TResult>, T1, T2, T3, TResult>
+    public interface IMethodCallbackWithResult<T1, T2, T3, TResult> : 
+        IAcceptorWithParametersResult<IMethodCallbackWithResultVisitor<T1, T2, T3, TResult>, T1, T2, T3, TResult>
     {
     }
 

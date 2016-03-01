@@ -3,7 +3,7 @@ using System;
 namespace Attest.Fake.Setup.Contracts
 {
     /// <summary>
-    /// Represents initial template for method call with return value.
+    /// Represents initial template for async method call with return value.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
@@ -13,7 +13,7 @@ namespace Attest.Fake.Setup.Contracts
         where TService : class
     {
         /// <summary>
-        /// Builds the method call with return value from the specified build callbacks.
+        /// Builds the async method call with return value from the specified build callbacks.
         /// </summary>
         /// <param name="buildCallbacks">The build callbacks.</param>
         /// <returns></returns>
@@ -22,7 +22,7 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents initial template for method call with return value and no parameters.
+    /// Represents initial template for async method call with return value and no parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
@@ -46,12 +46,35 @@ namespace Attest.Fake.Setup.Contracts
         where TService : class
     {
         /// <summary>
-        /// Builds the method call with return value using specified callbacks producer.
+        /// Builds the async method call with return value using specified callbacks producer.
         /// </summary>
         /// <param name="callbacksProducer">The callbacks producer.</param>                
         /// <returns></returns>
         IMethodCallWithResultAsync<TService, TCallback, TResult> BuildCallbacks(
             Func<IHaveNoCallbacksWithResult<TCallback, T, TResult>,
                 T, IHaveCallbacks<TCallback>> callbacksProducer);
+    }
+
+    /// <summary>
+    /// Represents initial template for async method call with return value and 2 parameters.
+    /// </summary>
+    /// <typeparam name="TService">The type of the service.</typeparam>
+    /// <typeparam name="TCallback">The type of the callback.</typeparam>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="TResult">The type of the return value.</typeparam>
+    public interface IMethodCallWithResultInitialTemplateAsync<TService, TCallback, T1, T2, TResult> :
+        IMethodCallWithResultInitialTemplateBaseAsync<TService, TCallback, TResult, 
+            IHaveNoCallbacksWithResult<TCallback, T1, T2, TResult>>
+        where TService : class
+    {
+        /// <summary>
+        /// Builds the async method call with return value using specified callbacks producer.
+        /// </summary>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
+        /// <returns></returns>
+        IMethodCallWithResultAsync<TService, TCallback, TResult> BuildCallbacks(
+            Func<IHaveNoCallbacksWithResult<TCallback, T1, T2, TResult>,
+                T1, T2, IHaveCallbacks<TCallback>> callbacksProducer);
     }
 }

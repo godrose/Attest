@@ -55,8 +55,7 @@ namespace Attest.Fake.Setup.Tests
             CollectionAssert.AreEqual(items, actualItems);
         }
 
-        [Test]
-        [Ignore("Not implemented yet")]
+        [Test]        
         public async void AsyncProviderIsSetup_MethodCallWithResultAndTwoParametersReturnsCorrectValue()
         {
             var items = new[]

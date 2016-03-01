@@ -58,9 +58,20 @@ namespace Attest.Fake.Setup
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
-        /// <param name="visitor">The visitor.</param><param name="arg1">The first argument.</param><param name="arg2">The second argument.</param>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
         /// <returns/>
         public abstract TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, TResult> visitor, T1 arg1, T2 arg2);
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <returns/>
+        public abstract Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, TResult> visitor, T1 arg1, T2 arg2);
     }
 
     /// <summary>
@@ -254,6 +265,18 @@ namespace Attest.Fake.Setup
         /// <param name="arg2">The second argument.</param>
         /// <returns/>
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
+        {
+            return visitor.Visit(this, arg1, arg2);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
         {
             return visitor.Visit(this, arg1, arg2);
         }
@@ -515,6 +538,18 @@ namespace Attest.Fake.Setup
         {
             return visitor.Visit(this, arg1, arg2);
         }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
+        {
+            return visitor.Visit(this, arg1, arg2);
+        }
     }
 
     /// <summary>
@@ -701,6 +736,18 @@ namespace Attest.Fake.Setup
         {
             return visitor.Visit(this, arg1, arg2);
         }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
+        {
+            return visitor.Visit(this, arg1, arg2);
+        }
     }
 
     /// <summary>
@@ -853,6 +900,18 @@ namespace Attest.Fake.Setup
         public override TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
         {
             return visitor.Visit(this, arg1, arg2);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <returns/>
+        public override Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -1251,6 +1310,11 @@ namespace Attest.Fake.Setup
         /// <param name="arg2">The second argument.</param>
         /// <returns/>
         public TResult Accept(IMethodCallbackWithResultVisitor<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
+        {
+            return visitor.Visit(this, arg1, arg2);
+        }
+
+        public Task<TResult> Accept(IMethodCallbackWithResultVisitorAsync<T1, T2, TResult> visitor, T1 arg1, T2 arg2)
         {
             return visitor.Visit(this, arg1, arg2);
         }
