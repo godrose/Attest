@@ -388,7 +388,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call without return value and 3 parameters.
+    /// Represents method call without return value and three parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
@@ -509,7 +509,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call without return value and 4 parameters.
+    /// Represents method call without return value and four parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
@@ -631,7 +631,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call without return value and 5 parameters.
+    /// Represents method call without return value and five parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter</typeparam>

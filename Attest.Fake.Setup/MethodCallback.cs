@@ -76,8 +76,21 @@ namespace Attest.Fake.Setup
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
-        /// <param name="visitor">The visitor.</param><param name="arg1">The first argument.</param><param name="arg2">The second argument.</param><param name="arg3">The third argument.</param>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
         public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <returns/>
+        public abstract Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3);
     }
 
     /// <summary>
@@ -259,6 +272,11 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             visitor.Visit(this, arg1, arg2, arg3);
+        }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
         }
     }
 
@@ -475,6 +493,11 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this, arg1, arg2, arg3);
         }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
+        }
     }
 
     /// <summary>
@@ -637,6 +660,11 @@ namespace Attest.Fake.Setup
         {
             visitor.Visit(this, arg1, arg2, arg3);
         }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
+        }
     }
 
     /// <summary>
@@ -777,6 +805,11 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             visitor.Visit(this, arg1, arg2, arg3);
+        }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
         }
     }
 
@@ -1219,6 +1252,11 @@ namespace Attest.Fake.Setup
         public void Accept(IMethodCallbackVisitor<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
         {
             visitor.Visit(this, arg1, arg2, arg3);
+        }
+
+        public Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3> visitor, T1 arg1, T2 arg2, T3 arg3)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3);
         }
     }   
 

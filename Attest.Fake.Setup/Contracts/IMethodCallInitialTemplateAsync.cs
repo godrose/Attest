@@ -68,4 +68,25 @@ namespace Attest.Fake.Setup.Contracts
         IMethodCallAsync<TService, TCallback> BuildCallbacks(
             Func<IHaveNoCallbacks<TCallback, T1, T2>, T1, T2, IHaveCallbacks<TCallback>> callbacksProducer);
     }
+
+    /// <summary>
+    /// Represents initial template for method call with 3 parameters.
+    /// </summary>
+    /// <typeparam name="TService">The type of the service.</typeparam>
+    /// <typeparam name="TCallback">The type of the callback.</typeparam>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third parameter.</typeparam>
+    public interface IMethodCallInitialTemplateAsync<TService, TCallback, T1, T2, T3> :
+        IMethodCallInitialTemplateBaseAsync<TService, TCallback, IHaveNoCallbacks<TCallback, T1, T2, T3>>
+        where TService : class
+    {
+        /// <summary>
+        /// Builds the method call with return value using specified callbacks producer.
+        /// </summary>
+        /// <param name="callbacksProducer">The callbacks producer.</param>                
+        /// <returns></returns>
+        IMethodCallAsync<TService, TCallback> BuildCallbacks(
+            Func<IHaveNoCallbacks<TCallback, T1, T2, T3>, T1, T2, T3, IHaveCallbacks<TCallback>> callbacksProducer);
+    }
 }

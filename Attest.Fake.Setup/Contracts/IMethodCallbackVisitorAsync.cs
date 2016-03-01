@@ -127,4 +127,58 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="arg2">Second parameter</param>
         Task Visit(OnWithoutCallback<T1, T2> withoutCallback, T1 arg1, T2 arg2);
     }
+
+    /// <summary>
+    /// Represents visitor for different callbacks without return value and 2 parameters.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third parameter.</typeparam>
+    public interface IMethodCallbackVisitorAsync<T1, T2, T3>
+    {
+        /// <summary>
+        /// Visits exception throwing callback
+        /// </summary>
+        /// <param name="onErrorCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        Task Visit(OnErrorCallback<T1, T2, T3> onErrorCallback, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Visits successful completion callback
+        /// </summary>
+        /// <param name="onCompleteCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        Task Visit(OnCompleteCallback<T1, T2, T3> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        Task Visit(ProgressCallback<T1, T2, T3> progressCallback, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        Task Visit(OnCancelCallback<T1, T2, T3> onCancelCallback, T1 arg1, T2 arg2, T3 arg3);
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        Task Visit(OnWithoutCallback<T1, T2, T3> withoutCallback, T1 arg1, T2 arg2, T3 arg3);
+    }
 }
