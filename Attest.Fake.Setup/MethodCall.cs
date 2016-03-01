@@ -140,8 +140,9 @@ namespace Attest.Fake.Setup
         IAddCallback<IMethodCallback> IAddCallback<IMethodCallback>.Complete(Action callback)
         {
             Callbacks.Add(
-                CallbackBuilder<ActionWrapper, IMethodCallbackTemplate<IActionWrapper>, IMethodCallback>.CreateCallbackBuilder()
-                    .WithDefaultAction());
+                CallbackBuilder<ActionWrapper, IMethodCallbackTemplate<IActionWrapper>, IMethodCallback>
+                    .CreateCallbackBuilder()
+                    .WithAction(new ActionWrapper(callback)).AsComplete().Build());
             return this;
         }
     }
