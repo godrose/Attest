@@ -42,6 +42,10 @@ namespace Attest.Fake.Setup.Tests
                 t => t.LoginWithFourParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
                 r => r.Complete(Login));
 
+            setup.AddMethodCallAsync<string, string, string, string, string>(
+                t => t.LoginWithFiveParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                r => r.Complete(Login));
+
             setup.Build();
 
             FakeService.Setup(t => t.IsLoggedIn).Callback(() => _isLoggedIn);
@@ -68,6 +72,11 @@ namespace Attest.Fake.Setup.Tests
         }
 
         private void Login(string firstParameter, string secondParameter, string thirdParameter, string fourthParameter)
+        {
+            _isLoggedIn = true;
+        }
+
+        private void Login(string firstParameter, string secondParameter, string thirdParameter, string fourthParameter, string fifthParameter)
         {
             _isLoggedIn = true;
         }

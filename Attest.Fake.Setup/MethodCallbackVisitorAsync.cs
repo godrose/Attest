@@ -321,4 +321,86 @@ namespace Attest.Fake.Setup
             return MethodCallbackVisitorHelperAsync.VisitWithout();
         }
     }
+
+    /// <summary>
+    /// Represents visitor for different async callbacks without return value and five parameters.
+    /// </summary>
+    /// <typeparam name="T1">The type of the first parameter.</typeparam>
+    /// <typeparam name="T2">The type of the second parameter.</typeparam>
+    /// <typeparam name="T3">The type of the third parameter.</typeparam>
+    /// <typeparam name="T4">The type of the fourth parameter.</typeparam>
+    /// <typeparam name="T5">The type of the fifth parameter.</typeparam>
+    /// <seealso cref="MethodCallbackVisitorHelper" />
+    public class MethodCallbackVisitorAsync<T1, T2, T3, T4, T5> : IMethodCallbackVisitorAsync<T1, T2, T3, T4, T5>
+    {
+        /// <summary>
+        /// Visits exception throwing callback
+        /// </summary>
+        /// <param name="onErrorCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        public Task Visit(OnErrorCallback<T1, T2, T3, T4, T5> onErrorCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitError(onErrorCallback);
+        }
+
+        /// <summary>
+        /// Visits successful completion callback
+        /// </summary>
+        /// <param name="onCompleteCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        public Task Visit(OnCompleteCallback<T1, T2, T3, T4, T5> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            return TaskRunner.RunAsync(() => onCompleteCallback.Callback(arg1, arg2, arg3, arg4, arg5));
+        }
+
+        /// <summary>
+        /// Visits progress callback
+        /// </summary>
+        /// <param name="progressCallback">Callback.</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        public Task Visit(ProgressCallback<T1, T2, T3, T4, T5> progressCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitProgress(progressCallback, c => c.Accept(this, arg1, arg2, arg3, arg4, arg5));
+        }
+
+        /// <summary>
+        /// Visits cancellation callback
+        /// </summary>
+        /// <param name="onCancelCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        public Task Visit(OnCancelCallback<T1, T2, T3, T4, T5> onCancelCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitCancel();
+        }
+
+        /// <summary>
+        /// Visits never-ending callback
+        /// </summary>
+        /// <param name="withoutCallback">Callback</param>
+        /// <param name="arg1">First parameter</param>
+        /// <param name="arg2">Second parameter</param>
+        /// <param name="arg3">Third parameter</param>
+        /// <param name="arg4">Fourth parameter</param>
+        /// <param name="arg5">Fifth parameter</param>
+        public Task Visit(OnWithoutCallback<T1, T2, T3, T4, T5> withoutCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
+        {
+            return MethodCallbackVisitorHelperAsync.VisitWithout();
+        }
+    }
 }
