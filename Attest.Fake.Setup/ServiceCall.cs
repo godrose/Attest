@@ -78,6 +78,13 @@ namespace Attest.Fake.Setup
             return this;
         }
 
+        IServiceCall<TService> ICanAddMethods<TService>.AddMethodCallAsync<TCallback>(
+            IMethodCallAsync<TService, TCallback> methodCall)
+        {
+            AddMethodCallImplAsync(methodCall, methodCall);
+            return this;
+        }
+
         /// <summary>
         /// Adds a new method call with return value.
         /// </summary>
@@ -85,7 +92,15 @@ namespace Attest.Fake.Setup
         /// <typeparam name="TResult">Type of return value.</typeparam>
         /// <param name="methodCall">Method call.</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> ICanAddMethods<TService>.AddMethodCall<TCallback, TResult>(IMethodCallWithResult<TService, TCallback, TResult> methodCall)
+        IServiceCall<TService> ICanAddMethods<TService>.AddMethodCallWithResult<TCallback, TResult>(
+            IMethodCallWithResult<TService, TCallback, TResult> methodCall)
+        {
+            AddMethodCallWithResultImpl(methodCall, methodCall);
+            return this;
+        }
+
+        IServiceCall<TService> ICanAddMethods<TService>.AddMethodCallWithResultAsync<TCallback, TResult>(
+            IMethodCallWithResult<TService, TCallback, TResult> methodCall)
         {
             AddMethodCallWithResultImpl(methodCall, methodCall);
             return this;
@@ -119,7 +134,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -131,7 +146,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -140,7 +155,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -149,7 +164,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -158,7 +173,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -167,7 +182,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2, T3>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -176,7 +191,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2, T3>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -185,7 +200,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2, T3, T4>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -194,7 +209,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2, T3, T4>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -203,7 +218,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2, T3, T4, T5>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -212,7 +227,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallAsync<TService, T1, T2, T3, T4, T5>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallImpl(methodCall, methodCall);
+            AddMethodCallImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -317,7 +332,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, TResult>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -353,7 +368,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T, TResult>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -365,7 +380,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T, TResult>
                .CreateMethodCall(runMethod)
                .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -392,7 +407,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, TResult>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -401,7 +416,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, TResult>
                 .CreateMethodCall(runMethod)
                 .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -428,7 +443,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, T3, TResult>
                .CreateMethodCall(runMethod)
                .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -437,7 +452,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, T3, TResult>
                .CreateMethodCall(runMethod)
                .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -468,7 +483,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, T3, T4, TResult>
               .CreateMethodCall(runMethod)
               .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -482,7 +497,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, T3, T4, TResult>
               .CreateMethodCall(runMethod)
               .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -509,7 +524,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, T3, T4, T5, TResult>
               .CreateMethodCall(runMethod)
               .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -518,7 +533,7 @@ namespace Attest.Fake.Setup
             var methodCall = MethodCallWithResultAsync<TService, T1, T2, T3, T4, T5, TResult>
               .CreateMethodCall(runMethod)
               .BuildCallbacks(callbacksProducer);
-            AddMethodCallWithResultImpl(methodCall, methodCall);
+            AddMethodCallWithResultImplAsync(methodCall, methodCall);
             return this;
         }
 
@@ -538,7 +553,8 @@ namespace Attest.Fake.Setup
             }
         }
 
-        private void AddMethodCallImpl(IMethodCallMetaData methodCallMetaData, IAcceptor<IMethodCallVisitorAsync<TService>> acceptor)
+        private void AddMethodCallImplAsync(IMethodCallMetaData methodCallMetaData, 
+            IAcceptor<IMethodCallVisitorAsync<TService>> acceptor)
         {
             var existingMethodCallMetaData = FindExistingMethodCallMetaData(methodCallMetaData);
             if (existingMethodCallMetaData == null)
@@ -571,7 +587,7 @@ namespace Attest.Fake.Setup
             }
         }
 
-        private void AddMethodCallWithResultImpl(IMethodCallMetaData methodCallMetaData,
+        private void AddMethodCallWithResultImplAsync(IMethodCallMetaData methodCallMetaData,
             IAcceptor<IMethodCallWithResultVisitorAsync<TService>> acceptor)
         {
             var existingMethodCallMetaData = FindExistingMethodCallMetaData(methodCallMetaData);

@@ -19,14 +19,32 @@ namespace Attest.Fake.Setup.Contracts
         IServiceCall<TService> AddMethodCall<TCallback>(IMethodCall<TService, TCallback> methodCall);
 
         /// <summary>
+        /// Adds a new async method call without return value.
+        /// </summary>
+        /// <typeparam name="TCallback">Type of callback</typeparam>
+        /// <param name="methodCall">Method call</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallAsync<TCallback>(IMethodCallAsync<TService, TCallback> methodCall);
+
+        /// <summary>
         /// Adds a new method call with return value.
         /// </summary>
         /// <typeparam name="TCallback">Type of callback</typeparam>
         /// <typeparam name="TResult">Type of return value</typeparam>
         /// <param name="methodCall">Method call</param>
         /// <returns>Service call</returns>
-        IServiceCall<TService> AddMethodCall<TCallback, TResult>(
-            IMethodCallWithResult<TService, TCallback, TResult> methodCall);        
+        IServiceCall<TService> AddMethodCallWithResult<TCallback, TResult>(
+            IMethodCallWithResult<TService, TCallback, TResult> methodCall);
+
+        /// <summary>
+        /// Adds a new async method call with return value.
+        /// </summary>
+        /// <typeparam name="TCallback">Type of callback</typeparam>
+        /// <typeparam name="TResult">Type of return value</typeparam>
+        /// <param name="methodCall">Method call</param>
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallWithResultAsync<TCallback, TResult>(
+            IMethodCallWithResult<TService, TCallback, TResult> methodCall);
     }
 
     /// <summary>
