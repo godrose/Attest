@@ -6,7 +6,7 @@ using Attest.Fake.Setup.Contracts;
 namespace Attest.Fake.Setup
 {
     /// <summary>
-    /// Base class for method calls with return value.
+    /// Base class for async method calls with return value.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
@@ -47,7 +47,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call with return value.
+    /// Represents async method call with return value.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>   
@@ -147,7 +147,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call with return value and 1 parameter.
+    /// Represents async method call with return value and one parameter.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T">The type of the parameter.</typeparam> 
@@ -272,7 +272,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents async method call with return value and 2 parameters.
+    /// Represents async method call with return value and two parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter.</typeparam> 
@@ -399,7 +399,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents async method call with return value and 3 parameters.
+    /// Represents async method call with return value and three parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter.</typeparam> 
@@ -526,7 +526,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents async method call with return value and 4 parameters.
+    /// Represents async method call with return value and four parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter.</typeparam> 
@@ -660,7 +660,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents async method call with return value and 5 parameters.
+    /// Represents async method call with return value and five parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter.</typeparam> 

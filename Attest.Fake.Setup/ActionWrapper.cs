@@ -46,7 +46,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Wraps an action that has 1 parameter.
+    /// Wraps an action that has one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <seealso cref="Contracts.IActionWrapper{TParameter1}" />
@@ -89,7 +89,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Wraps an action that has 2 parameters.
+    /// Wraps an action that has two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -134,7 +134,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Wraps an action that has 3 parameters.
+    /// Wraps an action that has three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -180,7 +180,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Wraps an action that has 4 parameters.
+    /// Wraps an action that has four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -227,7 +227,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Wraps an action that has 5 parameters.
+    /// Wraps an action that has five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>

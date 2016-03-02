@@ -26,7 +26,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Base class for callback with return value and 1 parameter
+    /// Base class for callback with return value and one parameter
     /// </summary>
     /// <typeparam name="T">The type of the parameter</typeparam>
     /// <typeparam name="TResult">The type of the return value</typeparam>
@@ -48,7 +48,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Base class for callback with return value and 2 parameters
+    /// Base class for callback with return value and two parameters
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -75,7 +75,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Base class for callback with return value and 3 parameters
+    /// Base class for callback with return value and three parameters
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -94,7 +94,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Base class for callback with return value and 4 parameters
+    /// Base class for callback with return value and four parameters
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -127,7 +127,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Base class for callback with return value and 5 parameters
+    /// Base class for callback with return value and five parameters
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -212,7 +212,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents successful completion callback with return value and 1 parameter.
+    /// Represents successful completion callback with return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
@@ -262,7 +262,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents successful completion callback with return value and 2 parameters.
+    /// Represents successful completion callback with return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -317,7 +317,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents successful completion callback with return value and 3 parameters.
+    /// Represents successful completion callback with return value and three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -366,7 +366,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents successful completion callback with return value and 4 parameters.
+    /// Represents successful completion callback with return value and four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -417,7 +417,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents successful completion callback with return value and 5 parameters.
+    /// Represents successful completion callback with return value and five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
     /// <typeparam name="T2">The type of the second parameter</typeparam>
@@ -522,7 +522,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents error-throwing callback with return value and 1 parameter.
+    /// Represents error-throwing callback with return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
@@ -565,7 +565,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents error-throwing callback with return value and 2 parameters.
+    /// Represents error-throwing callback with return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -612,7 +612,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents error-throwing callback with return value and 3 parameters.
+    /// Represents error-throwing callback with return value and three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -654,7 +654,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents error-throwing callback with return value and 4 parameters.
+    /// Represents error-throwing callback with return value and four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -698,7 +698,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents error-throwing callback with return value and 5 parameters.
+    /// Represents error-throwing callback with return value and five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -776,7 +776,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 1 parameter.
+    /// Represents cancellation callback with return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
@@ -804,7 +804,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 2 parameters.
+    /// Represents cancellation callback with return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -835,7 +835,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 3 parameters.
+    /// Represents cancellation callback with return value and three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -863,7 +863,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 4 parameters.
+    /// Represents cancellation callback with return value and four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -893,7 +893,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 5 parameters.
+    /// Represents cancellation callback with return value and five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -963,7 +963,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback with return value and 1 parameter.
+    /// Represents never-ending callback with return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
@@ -992,7 +992,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback with return value and 2 parameters.
+    /// Represents never-ending callback with return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -1025,7 +1025,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback with return value and 3 parameters.
+    /// Represents never-ending callback with return value and three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -1053,7 +1053,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback with return value and 4 parameters.
+    /// Represents never-ending callback with return value and four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -1083,7 +1083,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback with return value and 5 parameters.
+    /// Represents never-ending callback with return value and five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -1270,7 +1270,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represent progress message callback with return value and 1 parameter.
+    /// Represent progress message callback with return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
@@ -1365,7 +1365,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represent progress message callback with return value and 2 parameters.
+    /// Represent progress message callback with return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -1455,7 +1455,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represent progress message callback with return value and 3 parameters.
+    /// Represent progress message callback with return value and three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -1547,7 +1547,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represent progress message callback with return value and 4 parameters.
+    /// Represent progress message callback with return value and four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -1637,7 +1637,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represent progress message callback with return value and 5 parameters.
+    /// Represent progress message callback with return value and five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>

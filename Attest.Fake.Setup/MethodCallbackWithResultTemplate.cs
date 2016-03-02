@@ -55,7 +55,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents a template for method callback with return value and 1 parameter.
+    /// Represents a template for method callback with return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>
     /// <typeparam name="TResult">The type of the return value.</typeparam>
@@ -87,7 +87,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents a template for method callback with return value and 2 parameters.
+    /// Represents a template for method callback with return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -133,7 +133,7 @@ namespace Attest.Fake.Setup
         IMethodCallbackWithResult<TResult> Visit<TResult>(MethodCallbackWithResultTemplate<TResult> methodCallbackTemplate);
 
         /// <summary>
-        /// Visits the specified method callback template with return value and 1 parameter.
+        /// Visits the specified method callback template with return value and one parameter.
         /// </summary>
         /// <typeparam name="T">The ype of the parameter.</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
@@ -142,7 +142,7 @@ namespace Attest.Fake.Setup
         IMethodCallbackWithResult<T, TResult> Visit<T, TResult>(MethodCallbackWithResultTemplate<T, TResult> methodCallbackTemplate);
 
         /// <summary>
-        /// Visits the specified method callback template with return value and 2 parameters.
+        /// Visits the specified method callback template with return value and two parameters.
         /// </summary>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -170,7 +170,7 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
-        /// Visits the specified method callback template with return value and 1 parameter.
+        /// Visits the specified method callback template with return value and one parameter.
         /// </summary>
         /// <typeparam name="T">The type of the parameter</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
@@ -182,7 +182,7 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
-        /// Visits the specified method callback template with return value and 2 parameters.
+        /// Visits the specified method callback template with return value and two parameters.
         /// </summary>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>

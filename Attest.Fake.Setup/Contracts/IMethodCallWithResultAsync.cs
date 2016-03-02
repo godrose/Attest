@@ -6,7 +6,7 @@ using Solid.Patterns.Visitor;
 namespace Attest.Fake.Setup.Contracts
 {
     /// <summary>
-    /// Represents a service's method call with return value
+    /// Represents async method call with return value
     /// </summary>
     /// <typeparam name="TService"></typeparam>
     public interface IMethodCallWithResultAsync<TService>
@@ -16,7 +16,7 @@ namespace Attest.Fake.Setup.Contracts
     }
 
     /// <summary>
-    /// Represents a service's method call with return value
+    /// Represents async method call with return value and specific callback.
     /// </summary>
     /// <typeparam name="TService">Type of service</typeparam>
     /// <typeparam name="TCallback">Type of callback</typeparam>

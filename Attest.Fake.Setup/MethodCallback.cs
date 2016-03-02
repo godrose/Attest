@@ -448,7 +448,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents exception throwing callback with 1 parameter.
+    /// Represents exception throwing callback with one parameter.
     /// </summary>
     /// <typeparam name="T">Type of parameter</typeparam>
     public class OnErrorCallback<T> : MethodCallbackBase<T>, IThrowException
@@ -519,7 +519,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents exception throwing callback with 3 parameters.
+    /// Represents exception throwing callback with three parameters.
     /// </summary>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
@@ -598,7 +598,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents exception throwing callback with 5 parameters
+    /// Represents exception throwing callback with five parameters
     /// </summary>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
@@ -662,7 +662,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 1 parameter.
+    /// Represents cancellation callback with return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>    
     public class OnCancelCallback<T> : MethodCallbackBase<T>
@@ -685,7 +685,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 2 parameters.
+    /// Represents cancellation callback with return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -710,7 +710,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 3 parameters.
+    /// Represents cancellation callback with return value and three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -775,7 +775,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 5 parameters.
+    /// Represents cancellation callback with return value and five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -831,7 +831,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback without return value and 1 parameter.
+    /// Represents never-ending callback without return value and one parameter.
     /// </summary>
     /// <typeparam name="T">The type of the parameter.</typeparam>    
     public class OnWithoutCallback<T> : MethodCallbackBase<T>
@@ -852,7 +852,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback without return value and 2 parameters.
+    /// Represents never-ending callback without return value and two parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>    
     /// <typeparam name="T2">The type of the second parameter.</typeparam>    
@@ -876,7 +876,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback without return value and 3 parameters.
+    /// Represents never-ending callback without return value and three parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>    
     /// <typeparam name="T2">The type of the second parameter.</typeparam>    
@@ -939,7 +939,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback without return value and 5 parameters.
+    /// Represents never-ending callback without return value and five parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>    
     /// <typeparam name="T2">The type of the second parameter.</typeparam>    
@@ -1106,7 +1106,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents progress callback with 1 parameter.
+    /// Represents progress callback with one parameter.
     /// </summary>
     public class ProgressCallback<T> : ProgressCallbackBase<IMethodCallback<T>>, IMethodCallback<T>
     {
@@ -1116,7 +1116,7 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
-        /// Creates new instance of progress message callback with 1 parameter.
+        /// Creates new instance of progress message callback with one parameter.
         /// </summary>
         /// <returns></returns>
         public static IProgressableProcessRunning<IMethodCallback<T>> Create()
@@ -1191,7 +1191,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents progress callback with 2 parameters.
+    /// Represents progress callback with two parameters.
     /// </summary>
     public class ProgressCallback<T1, T2> : ProgressCallbackBase<IMethodCallback<T1, T2>>, IMethodCallback<T1, T2>
     {
@@ -1201,7 +1201,7 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
-        /// Creates new instance of progress message callback with 2 parameters.
+        /// Creates new instance of progress message callback with two parameters.
         /// </summary>
         /// <returns></returns>
         public static IProgressableProcessRunning<IMethodCallback<T1, T2>> Create()
@@ -1278,7 +1278,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents progress callback with 3 parameters.
+    /// Represents progress callback with three parameters.
     /// </summary>
     public class ProgressCallback<T1, T2, T3> : ProgressCallbackBase<IMethodCallback<T1, T2, T3>>, IMethodCallback<T1, T2, T3>
     {
@@ -1288,7 +1288,7 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
-        /// Creates new instance of progress message callback with 3 parameters.
+        /// Creates new instance of progress message callback with three parameters.
         /// </summary>
         /// <returns></returns>
         public static IProgressableProcessRunning<IMethodCallback<T1, T2, T3>> Create()
@@ -1465,7 +1465,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents progress callback with 5 parameters.
+    /// Represents progress callback with five parameters.
     /// </summary>
     public class ProgressCallback<T1, T2, T3, T4, T5> : ProgressCallbackBase<IMethodCallback<T1, T2, T3, T4, T5>>, IMethodCallback<T1, T2, T3, T4, T5>
     {
@@ -1475,7 +1475,7 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
-        /// Creates new instance of progress message callback with 5 parameters.
+        /// Creates new instance of progress message callback with five parameters.
         /// </summary>
         /// <returns></returns>
         public static IProgressableProcessRunning<IMethodCallback<T1, T2, T3, T4, T5>> Create()
