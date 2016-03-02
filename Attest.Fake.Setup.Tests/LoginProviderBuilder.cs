@@ -39,11 +39,15 @@ namespace Attest.Fake.Setup.Tests
                 r => r.Complete(Login));
 
             setup.AddMethodCallAsync<string, string, string, string>(
-                t => t.LoginWithFourParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                t =>
+                    t.LoginWithFourParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+                        It.IsAny<string>()),
                 r => r.Complete(Login));
 
             setup.AddMethodCallAsync<string, string, string, string, string>(
-                t => t.LoginWithFiveParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                t =>
+                    t.LoginWithFiveParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
+                        It.IsAny<string>(), It.IsAny<string>()),
                 r => r.Complete(Login));
 
             setup.Build();

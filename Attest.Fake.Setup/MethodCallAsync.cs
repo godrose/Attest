@@ -6,7 +6,7 @@ using Attest.Fake.Setup.Contracts;
 namespace Attest.Fake.Setup
 {
     /// <summary>
-    /// Base class for method calls.
+    /// Base class for async method calls.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="TCallback">The type of the callback.</typeparam>
@@ -151,7 +151,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call without return value and one parameter.
+    /// Represents async method call without return value and one parameter.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T">The type of the parameter</typeparam>    
@@ -273,7 +273,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents method call without return value and two parameters.
+    /// Represents async method call without return value and two parameters.
     /// </summary>
     /// <typeparam name="TService">The type of the service.</typeparam>
     /// <typeparam name="T1">The type of the first parameter</typeparam>
@@ -286,7 +286,7 @@ namespace Attest.Fake.Setup
     {
         private Func<IHaveNoCallbacks<IMethodCallback<T1, T2>, T1, T2>, T1, T2, IHaveCallbacks<IMethodCallback<T1, T2>>> _callbacksProducer;
 
-        internal MethodCallAsync(Expression<Func<TService, Task>> runMethod)
+        private MethodCallAsync(Expression<Func<TService, Task>> runMethod)
             : base(runMethod)
         {
         }

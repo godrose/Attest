@@ -1,4 +1,3 @@
-using System;
 using System.Threading.Tasks;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;

@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using Attest.Fake.Setup.Contracts;
-using Solid.Practices.Scheduling;
 
 namespace Attest.Fake.Setup
 {
@@ -24,7 +23,7 @@ namespace Attest.Fake.Setup
         /// <param name="onCompleteCallback">Callback</param>
         public Task Visit(OnCompleteCallback onCompleteCallback)
         {
-            return TaskRunner.RunAsync(() => onCompleteCallback.Callback());
+            return MethodCallbackVisitorHelperAsync.VisitComplete(() => onCompleteCallback.Callback());
         }
 
         /// <summary>
@@ -78,7 +77,7 @@ namespace Attest.Fake.Setup
         /// <param name="arg">Parameter</param>
         public Task Visit(OnCompleteCallback<T> onCompleteCallback, T arg)
         {
-            return TaskRunner.RunAsync(() => onCompleteCallback.Callback(arg));
+            return MethodCallbackVisitorHelperAsync.VisitComplete(() => onCompleteCallback.Callback(arg));
         }
 
         /// <summary>
@@ -139,7 +138,7 @@ namespace Attest.Fake.Setup
         /// <param name="arg2">Second parameter</param>
         public Task Visit(OnCompleteCallback<T1, T2> onCompleteCallback, T1 arg1, T2 arg2)
         {
-            return TaskRunner.RunAsync(() => onCompleteCallback.Callback(arg1, arg2));
+            return MethodCallbackVisitorHelperAsync.VisitComplete(() => onCompleteCallback.Callback(arg1, arg2));
         }
 
         /// <summary>
@@ -206,7 +205,7 @@ namespace Attest.Fake.Setup
         /// <param name="arg3">Third parameter</param>
         public Task Visit(OnCompleteCallback<T1, T2, T3> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3)
         {
-            return TaskRunner.RunAsync(() => onCompleteCallback.Callback(arg1, arg2, arg3));
+            return MethodCallbackVisitorHelperAsync.VisitComplete(() => onCompleteCallback.Callback(arg1, arg2, arg3));
         }
 
         /// <summary>
@@ -279,7 +278,7 @@ namespace Attest.Fake.Setup
         /// <param name="arg4">Fourth parameter</param>
         public Task Visit(OnCompleteCallback<T1, T2, T3, T4> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
-            return TaskRunner.RunAsync(() => onCompleteCallback.Callback(arg1, arg2, arg3, arg4));
+            return MethodCallbackVisitorHelperAsync.VisitComplete(() => onCompleteCallback.Callback(arg1, arg2, arg3, arg4));
         }
 
         /// <summary>
@@ -358,7 +357,7 @@ namespace Attest.Fake.Setup
         /// <param name="arg5">Fifth parameter</param>
         public Task Visit(OnCompleteCallback<T1, T2, T3, T4, T5> onCompleteCallback, T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {
-            return TaskRunner.RunAsync(() => onCompleteCallback.Callback(arg1, arg2, arg3, arg4, arg5));
+            return MethodCallbackVisitorHelperAsync.VisitComplete(() => onCompleteCallback.Callback(arg1, arg2, arg3, arg4, arg5));
         }
 
         /// <summary>

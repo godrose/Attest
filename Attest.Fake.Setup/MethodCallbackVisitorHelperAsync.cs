@@ -10,9 +10,14 @@ namespace Attest.Fake.Setup
     /// </summary>
     static class MethodCallbackVisitorHelperAsync
     {
+        internal static Task VisitComplete(Action completeCallback)
+        {
+            return VisitInternal(completeCallback);
+        }
+
         internal static Task VisitError(IThrowException onErrorCallback)
         {
-            return Visit(() =>
+            return VisitInternal(() =>
             {
                 MethodCallbackVisitorHelper.VisitError(onErrorCallback);
             });
@@ -21,7 +26,7 @@ namespace Attest.Fake.Setup
         internal static Task VisitProgress<TCallback>(IProgressableProcessFinished<TCallback> progressCallback,
             Action<TCallback> callbackAcceptor)
         {
-            return Visit(() =>
+            return VisitInternal(() =>
             {
                 MethodCallbackVisitorHelper.VisitProgress(progressCallback, callbackAcceptor);
             });            
@@ -29,18 +34,17 @@ namespace Attest.Fake.Setup
 
         internal static Task VisitCancel()
         {
-            return Visit(MethodCallbackVisitorHelper.VisitCancel);
+            return VisitInternal(MethodCallbackVisitorHelper.VisitCancel);
         }
 
         internal static Task VisitWithout()
         {
-            return Visit(MethodCallbackVisitorHelper.VisitWithout);
+            return VisitInternal(MethodCallbackVisitorHelper.VisitWithout);
         }
 
-        private static Task Visit(Action visitMethod)
-        {
-            visitMethod();
-            return TaskRunner.RunAsync(() => { });
+        private static Task VisitInternal(Action visitMethod)
+        {            
+            return TaskRunner.RunAsync(visitMethod);
         }
     }
 }

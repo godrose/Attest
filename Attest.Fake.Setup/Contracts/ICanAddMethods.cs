@@ -272,6 +272,10 @@ namespace Attest.Fake.Setup.Contracts
                 callbacksProducer);        
     }
 
+    /// <summary>
+    /// Used to add new async method calls to the existing service call
+    /// </summary>
+    /// <typeparam name="TService">Type of service</typeparam>
     public interface ICanAddMethodsAsync<TService> where TService : class
     {
         /// <summary>
