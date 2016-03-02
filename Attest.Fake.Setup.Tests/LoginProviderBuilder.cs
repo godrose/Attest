@@ -31,9 +31,16 @@ namespace Attest.Fake.Setup.Tests
 
             setup.AddMethodCallAsync<string>(t => t.LoginWithOneParameter(It.IsAny<string>()), r => r.Complete(Login));
 
-            setup.AddMethodCallAsync<string, string>(t => t.LoginWithTwoParameters(It.IsAny<string>(), It.IsAny<string>()), r => r.Complete(Login));
+            setup.AddMethodCallAsync<string, string>(
+                t => t.LoginWithTwoParameters(It.IsAny<string>(), It.IsAny<string>()), r => r.Complete(Login));
 
-            setup.AddMethodCallAsync<string, string, string>(t => t.LoginWithThreeParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()), r => r.Complete(Login));
+            setup.AddMethodCallAsync<string, string, string>(
+                t => t.LoginWithThreeParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                r => r.Complete(Login));
+
+            setup.AddMethodCallAsync<string, string, string, string>(
+                t => t.LoginWithFourParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                r => r.Complete(Login));
 
             setup.Build();
 
@@ -56,6 +63,11 @@ namespace Attest.Fake.Setup.Tests
         }
 
         private void Login(string firstParameter, string secondParameter, string thirdParameter)
+        {
+            _isLoggedIn = true;
+        }
+
+        private void Login(string firstParameter, string secondParameter, string thirdParameter, string fourthParameter)
         {
             _isLoggedIn = true;
         }

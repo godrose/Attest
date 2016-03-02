@@ -345,6 +345,30 @@ namespace Attest.Fake.Setup.Contracts
                 callbacksProducer);
 
         /// <summary>
+        /// Adds a new method call without return value.
+        /// </summary>        
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>        
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallAsync<T1, T2, T3, T4>(Expression<Func<TService, Task>> runMethod,
+            Func
+                <IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4>,
+                    IHaveCallbacks<IMethodCallback<T1, T2, T3, T4>>>
+                callbacksProducer);
+
+        /// <summary>
+        /// Adds a new method call without return value.
+        /// </summary>        
+        /// <param name="runMethod">The method to be set up.</param>
+        /// <param name="callbacksProducer">The callbacks producer function.</param>        
+        /// <returns>Service call</returns>
+        IServiceCall<TService> AddMethodCallAsync<T1, T2, T3, T4>(Expression<Func<TService, Task>> runMethod,
+            Func
+                <IHaveNoCallbacks<IMethodCallback<T1, T2, T3, T4>, T1, T2, T3, T4>, T1, T2, T3, T4,
+                    IHaveCallbacks<IMethodCallback<T1, T2, T3, T4>>>
+                callbacksProducer);
+
+        /// <summary>
         /// Adds a new method call with return value.
         /// </summary>        
         /// <param name="runMethod">The method to be set up.</param>

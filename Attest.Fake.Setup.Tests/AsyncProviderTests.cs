@@ -193,5 +193,17 @@ namespace Attest.Fake.Setup.Tests
             var isLoggedIn = provider.IsLoggedIn;
             Assert.IsTrue(isLoggedIn);
         }
+
+        [Test]
+        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndFourParametersCompletesSuccessfully()
+        {
+            var builder = LoginProviderBuilder.CreateBuilder();
+
+            var provider = builder.GetService();
+            await provider.LoginWithFourParameters("firstParameter", "secondParameter", "thirdParameter", "fourthParameter");
+
+            var isLoggedIn = provider.IsLoggedIn;
+            Assert.IsTrue(isLoggedIn);
+        }
     }
 }

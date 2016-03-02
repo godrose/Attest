@@ -105,8 +105,23 @@ namespace Attest.Fake.Setup
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
-        /// <param name="visitor">The visitor.</param><param name="arg1">The first argument.</param><param name="arg2">The second argument.</param><param name="arg3">The third argument.</param><param name="arg4">The fourth argument.</param>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
         public abstract void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
+        /// <returns/>
+        public abstract Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4);
     }
 
     /// <summary>
@@ -309,10 +324,28 @@ namespace Attest.Fake.Setup
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
-        /// <param name="visitor">The visitor.</param><param name="arg1">The first argument.</param><param name="arg2">The second argument.</param><param name="arg3">The third argument.</param><param name="arg4">The fourth argument.</param>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
         public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
+        /// <returns/>
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3, arg4);
         }
     }
 
@@ -501,7 +534,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents exception throwing callback with 4 parameters
+    /// Represents exception throwing callback with four parameters
     /// </summary>
     /// <typeparam name="T1">Type of first parameter</typeparam>
     /// <typeparam name="T2">Type of second parameter</typeparam>
@@ -526,10 +559,19 @@ namespace Attest.Fake.Setup
         /// <summary>
         /// Accepts the specified visitor.
         /// </summary>
-        /// <param name="visitor">The visitor.</param><param name="arg1">The first argument.</param><param name="arg2">The second argument.</param><param name="arg3">The third argument.</param><param name="arg4">The fourth argument.</param>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
         public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4);
+        }
+
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3, arg4);
         }
     }
 
@@ -668,7 +710,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents cancellation callback with return value and 4 parameters.
+    /// Represents cancellation callback with return value and four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>
     /// <typeparam name="T2">The type of the second parameter.</typeparam>
@@ -688,6 +730,20 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
+        /// <returns/>
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3, arg4);
         }
     }
 
@@ -814,7 +870,7 @@ namespace Attest.Fake.Setup
     }
 
     /// <summary>
-    /// Represents never-ending callback without return value and 4 parameters.
+    /// Represents never-ending callback without return value and four parameters.
     /// </summary>
     /// <typeparam name="T1">The type of the first parameter.</typeparam>    
     /// <typeparam name="T2">The type of the second parameter.</typeparam>    
@@ -833,6 +889,20 @@ namespace Attest.Fake.Setup
         public override void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param>
+        /// <param name="arg1">The first argument.</param>
+        /// <param name="arg2">The second argument.</param>
+        /// <param name="arg3">The third argument.</param>
+        /// <param name="arg4">The fourth argument.</param>
+        /// <returns/>
+        public override Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3, arg4);
         }
     }
 
@@ -1261,7 +1331,7 @@ namespace Attest.Fake.Setup
     }   
 
     /// <summary>
-    /// Represents progress callback with 4 parameters.
+    /// Represents progress callback with four parameters.
     /// </summary>
     public class ProgressCallback<T1, T2, T3, T4> : ProgressCallbackBase<IMethodCallback<T1, T2, T3, T4>>, IMethodCallback<T1, T2, T3, T4>
     {
@@ -1271,7 +1341,7 @@ namespace Attest.Fake.Setup
         }
 
         /// <summary>
-        /// Creates new instance of progress message callback with 4 parameters.
+        /// Creates new instance of progress message callback with four parameters.
         /// </summary>
         /// <returns></returns>
         public static IProgressableProcessRunning<IMethodCallback<T1, T2, T3, T4>> Create()
@@ -1344,6 +1414,16 @@ namespace Attest.Fake.Setup
         public void Accept(IMethodCallbackVisitor<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
             visitor.Visit(this, arg1, arg2, arg3, arg4);
+        }
+
+        /// <summary>
+        /// Accepts the specified visitor.
+        /// </summary>
+        /// <param name="visitor">The visitor.</param><param name="arg1">The first argument.</param><param name="arg2">The second argument.</param><param name="arg3">The third argument.</param><param name="arg4">The fourth argument.</param>
+        /// <returns/>
+        public Task Accept(IMethodCallbackVisitorAsync<T1, T2, T3, T4> visitor, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+        {
+            return visitor.Visit(this, arg1, arg2, arg3, arg4);
         }
     }
 
