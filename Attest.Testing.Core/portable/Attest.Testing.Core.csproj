@@ -26,27 +26,17 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\portable\Release\Tests\</OutputPath>
+    <OutputPath>..\..\bin\portable\Release\Testing\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\portable\Release\Tests\Attest.Testing.Core.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\portable\Release\Testing\Attest.Testing.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Solid.Practices.IoC, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Solid.Practices.IoC.1.0.8\lib\portable-net45+wpa8+win8\Solid.Practices.IoC.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Solid.Practices.Middleware, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Middleware.1.0.7\lib\portable-net45+wpa8+win8\Solid.Practices.Middleware.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Solid.Practices.Modularity, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Modularity.1.0.7\lib\portable-net45+wpa8+win8\Solid.Practices.Modularity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\src\EndToEndTestsBase.cs">
@@ -81,9 +71,6 @@
     </Compile>
     <Compile Include="..\src\IScenario.cs">
       <Link>IScenario.cs</Link>
-    </Compile>
-    <Compile Include="..\src\IStepsModule.cs">
-      <Link>IStepsModule.cs</Link>
     </Compile>
     <Compile Include="..\src\IStepsProvider.cs">
       <Link>IStepsProvider.cs</Link>

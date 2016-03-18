@@ -26,11 +26,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\Tests\</OutputPath>
+    <OutputPath>..\bin\Release\Testing\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\Tests\Attest.Testing.SpecFlow.xml</DocumentationFile>
+    <DocumentationFile>..\bin\Release\Testing\Attest.Testing.SpecFlow.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Solid.Practices.IoC, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
