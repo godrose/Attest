@@ -1,9 +1,7 @@
-﻿using Solid.Practices.IoC;
-
-namespace Attest.Testing.Core
+﻿namespace Attest.Testing.Core
 {
     class InitializationParametersPredefinedResolutionStrategy<TContainer>
-        : IInitializationParametersResolutionStrategy<TContainer> where TContainer : IIocContainer, new()
+        : IInitializationParametersResolutionStrategy<TContainer> where TContainer : new()
     {
         private readonly TContainer _container;
 

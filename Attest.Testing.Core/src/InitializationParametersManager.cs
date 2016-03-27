@@ -1,5 +1,4 @@
 ﻿using System;
-using Solid.Practices.IoC;
 
 namespace Attest.Testing.Core
 {
@@ -24,7 +23,7 @@ namespace Attest.Testing.Core
     /// <seealso cref="Core.IInitializationParametersManager{TContainer}" />
     public class InitializationParametersManager<TBootstrapper, TContainer> : 
         IInitializationParametersManager<TContainer>        
-        where TContainer : IIocContainer, new()
+        where TContainer : new()
     {
         private readonly IInitializationParametersResolutionStrategy<TContainer> _initializationParametersResolutionStrategy;
 
@@ -32,12 +31,16 @@ namespace Attest.Testing.Core
         /// Initializes a new instance of the <see cref="InitializationParametersManager{TBootstrapper, TContainer}"/> class.
         /// </summary>
         /// <param name="initializationParametersResolutionStyle">The initialization parameters resolution style.</param>
-        public InitializationParametersManager(InitializationParametersResolutionStyle initializationParametersResolutionStyle)
+        /// <param name="bootstrapperInit"></param>
+        public InitializationParametersManager(
+            InitializationParametersResolutionStyle initializationParametersResolutionStyle,
+            Action<TBootstrapper> bootstrapperInit)
         {
             switch (initializationParametersResolutionStyle)
             {
                     case InitializationParametersResolutionStyle.PerRequest:
-                    _initializationParametersResolutionStrategy = new InitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainer>();
+                    _initializationParametersResolutionStrategy = new 
+                        InitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainer>(bootstrapperInit);
                     break;
 #if NET45
                     case InitializationParametersResolutionStyle.PerFolder:
@@ -73,7 +76,7 @@ namespace Attest.Testing.Core
     /// <typeparam name="TContainer">The type of the container.</typeparam>
     /// <seealso cref="Core.IInitializationParametersManager{TContainer}" />
     public class InitializationParametersManager<TContainer> : IInitializationParametersManager<TContainer> 
-        where TContainer : IIocContainer, new()
+        where TContainer :  new()
     {
         private readonly IInitializationParametersResolutionStrategy<TContainer> _initializationParametersResolutionStrategy;
 

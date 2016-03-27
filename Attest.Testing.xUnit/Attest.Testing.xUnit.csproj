@@ -33,12 +33,6 @@
     <DocumentationFile>..\bin\Release\Testing\Attest.Testing.xUnit.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Solid.Practices.IoC, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.IoC.1.0.8\lib\portable-net45+wpa8+win8\Solid.Practices.IoC.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="EndToEndTestsBase.cs" />
     <Compile Include="IntegrationTestsBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +56,12 @@
       <Project>{ca530825-0f66-41c4-9623-2b54985e1e46}</Project>
       <Name>Attest.Testing.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Solid.Practices.IoC, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Solid.Practices.IoC.1.1.1\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch+uap10.0\Solid.Practices.IoC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

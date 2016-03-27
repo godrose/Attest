@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Solid.Practices.IoC;
 
 namespace Attest.Testing.Core
 {
@@ -11,12 +10,11 @@ namespace Attest.Testing.Core
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <typeparam name="TContainer">The type of the container.</typeparam>
     public static class InitializationParametersManagerStore<TBootstrapper, TContainer>         
-        where TContainer : IIocContainer, new()
+        where TContainer : new()
     {
-        private static readonly Dictionary
-                <InitializationParametersResolutionStyle, IInitializationParametersManager<TContainer>>
-            InternalStorage =
-                InitializeDictionary();
+        private static Dictionary
+            <InitializationParametersResolutionStyle, IInitializationParametersManager<TContainer>>
+            _internalStorage;
 
         private static Dictionary<InitializationParametersResolutionStyle, IInitializationParametersManager<TContainer>> InitializeDictionary()
         {            
@@ -27,7 +25,7 @@ namespace Attest.Testing.Core
             return enums.ToDictionary(t => t,
                 t =>
                     (IInitializationParametersManager<TContainer>)
-                        new InitializationParametersManager<TBootstrapper, TContainer>(t));
+                        new InitializationParametersManager<TBootstrapper, TContainer>(t, BootstrapperInit ?? (c => { })));
         }
 
         /// <summary>
@@ -39,9 +37,21 @@ namespace Attest.Testing.Core
             GetInitializationParametersManager(
             InitializationParametersResolutionStyle resolutionStyle)
         {
+            if (_internalStorage == null)
+            {
+                _internalStorage = InitializeDictionary();
+            }
             IInitializationParametersManager<TContainer> value;
-            InternalStorage.TryGetValue(resolutionStyle, out value);
+            _internalStorage.TryGetValue(resolutionStyle, out value);
             return value;
         }
+
+        /// <summary>
+        /// Gets or sets the bootstrapper initialize logic.
+        /// </summary>
+        /// <value>
+        /// The bootstrapper initialize logic.
+        /// </value>
+        public static Action<TBootstrapper> BootstrapperInit { get; set; }
     }
 }

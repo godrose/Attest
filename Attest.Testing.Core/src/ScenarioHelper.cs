@@ -11,7 +11,7 @@ namespace Attest.Testing.Core
     {
         private const string RootObjectFactoryKey = "rootObjectFactory";
         private const string RootObjectKey = "rootObject";
-        private const string ContainerKey = "container";
+        private const string ContainerKey = "container";        
 
         /// <summary>
         /// Initializes the <see cref="ScenarioContext"/>. with the provided container and root object factory.
