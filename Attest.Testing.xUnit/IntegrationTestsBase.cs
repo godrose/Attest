@@ -6,14 +6,14 @@ using Solid.Practices.IoC;
 namespace Attest.Testing.xUnit
 {
     /// <summary>
-    /// Base class for all integration-tests fixtures that involve real IoC container and test bootstrapper
-    /// and use xUnit.net as test framework provider
+    /// Base class for all integration-tests fixtures that use ioc container adapter and test bootstrapper
+    /// and use xUnit.net as test framework provider.
     /// </summary>
-    /// <typeparam name="TContainerAdapter">Type of IoC container</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts</typeparam>
-    /// <typeparam name="TBootstrapper">Type of bootstrapper</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
+    /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
+    /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>
     public abstract class IntegrationTestsBase<TContainerAdapter, TRootObject, TBootstrapper> :
-        Core.IntegrationTestsBase<TContainerAdapter, TRootObject>,
+        IntegrationTestsBase<TContainerAdapter, TRootObject>,
         IRootObjectFactory,
         IDisposable
         where TContainerAdapter : IIocContainer
@@ -40,7 +40,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test setup logic
+        /// Override this method to implement custom test setup logic.
         /// </summary>        
         protected override void Setup()
         {
@@ -49,7 +49,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test teardown logic
+        /// Override this method to implement custom test teardown logic.
         /// </summary>        
         protected override void TearDown()
         {
@@ -66,7 +66,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test setup logic
+        /// Provides additional opportunity to modify the test setup logic.
         /// </summary>
         protected virtual void SetupOverride()
         {
@@ -80,7 +80,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Called when the teardown starts
+        /// Override to inject custom logic before the teardown starts.
         /// </summary>
         protected virtual void OnBeforeTeardown()
         {
@@ -88,7 +88,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Called when the teardown finishes
+        /// Override to inject custom logic after the teardown finishes.
         /// </summary>
         protected virtual void OnAfterTeardown()
         {
@@ -112,13 +112,13 @@ namespace Attest.Testing.xUnit
     }
 
     /// <summary>
-    /// Base class for all integration-tests fixtures that involve real IoC container, its adapter, and test bootstrapper
+    /// Base class for all integration-tests fixtures that involve ioc container, its adapter, and test bootstrapper
     /// and use SpecFlow as test framework provider.
     /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container.</typeparam>
-    /// <typeparam name="TContainerAdapter">Type of IoC container adapter.</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>
-    /// <typeparam name="TBootstrapper">Type of bootstrapper.</typeparam>    
+    /// <typeparam name="TContainer">The type of ioc container.</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
+    /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
+    /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>    
     public abstract class IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject, TBootstrapper> :
         Core.IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject>,
         IRootObjectFactory,
@@ -147,7 +147,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test setup logic
+        /// Override this method to implement custom test setup logic.
         /// </summary>        
         protected override void Setup()
         {
@@ -156,7 +156,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test teardown logic
+        /// Override this method to implement custom test teardown logic.
         /// </summary>        
         protected override void TearDown()
         {
@@ -173,7 +173,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test setup logic
+        /// Provides additional opportunity to modify the test setup logic.
         /// </summary>
         protected virtual void SetupOverride()
         {
@@ -181,9 +181,9 @@ namespace Attest.Testing.xUnit
         }
         
         /// <summary>
-        /// Override to provide adapter creation logic.
+        /// Override to provide ioc container adapter creation logic.
         /// </summary>
-        /// <param name="container">The container.</param>
+        /// <param name="container">The ioc container adapter.</param>
         /// <returns></returns>
         protected abstract TContainerAdapter CreateAdapter(TContainer container);
 
@@ -194,7 +194,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Called when the teardown starts
+        /// Override to inject custom logic before the teardown starts.
         /// </summary>
         protected virtual void OnBeforeTeardown()
         {
@@ -202,7 +202,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Called when the teardown finishes
+        /// Override to inject custom logic after the teardown finishes.
         /// </summary>
         protected virtual void OnAfterTeardown()
         {

@@ -4,7 +4,7 @@ using Attest.Testing.Core;
 namespace Attest.Testing.xUnit
 {
     /// <summary>
-    /// Base class for all End-To-End tests that use xUnit.net as test framework provider
+    /// Base class for all End-To-End tests that use xUnit.net as test framework provider.
     /// </summary>    
     public abstract class EndToEndTestsBase : Core.EndToEndTestsBase, IDisposable
     {
@@ -21,7 +21,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test setup logic
+        /// Override this method to implement custom test setup logic.
         /// </summary>        
         protected override void Setup()
         {
@@ -30,7 +30,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test teardown logic
+        /// Override this method to implement custom test teardown logic.
         /// </summary>        
         protected override void TearDown()
         {
@@ -45,7 +45,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test setup logic
+        /// Provides additional opportunity to modify the test setup logic.
         /// </summary>
         protected virtual void SetupOverride()
         {
@@ -58,7 +58,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Called when the teardown starts
+        /// Override to inject custom logic before the teardown starts.
         /// </summary>
         protected virtual void OnBeforeTeardown()
         {
@@ -66,7 +66,7 @@ namespace Attest.Testing.xUnit
         }
 
         /// <summary>
-        /// Called when the teardown finishes
+        /// Override to inject custom logic after the teardown finishes.
         /// </summary>
         protected virtual void OnAfterTeardown()
         {
