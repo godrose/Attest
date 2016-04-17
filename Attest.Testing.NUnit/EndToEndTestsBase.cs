@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Attest.Testing.NUnit
 {
     /// <summary>
-    /// Base class for all End-To-End tests that use NUnit as test framework provider
+    /// Base class for all End-To-End tests that use NUnit as test framework provider.
     /// </summary>    
     public abstract class EndToEndTestsBase : Core.EndToEndTestsBase        
     {        
@@ -17,7 +17,7 @@ namespace Attest.Testing.NUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test setup logic
+        /// Override this method to implement custom test setup logic.
         /// </summary>
         [SetUp]
         protected override void Setup()
@@ -27,7 +27,7 @@ namespace Attest.Testing.NUnit
         }
 
         /// <summary>
-        /// Override this method to implement custom test teardown logic
+        /// Override this method to implement custom test teardown logic.
         /// </summary>
         [TearDown]
         protected override void TearDown()
@@ -43,7 +43,7 @@ namespace Attest.Testing.NUnit
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test setup logic
+        /// Provides additional opportunity to modify the test setup logic.
         /// </summary>
         protected virtual void SetupOverride()
         {
@@ -56,7 +56,7 @@ namespace Attest.Testing.NUnit
         }
 
         /// <summary>
-        /// Called when the teardown starts
+        /// Override to inject custom logic before the teardown starts.
         /// </summary>
         protected virtual void OnBeforeTeardown()
         {
@@ -64,7 +64,7 @@ namespace Attest.Testing.NUnit
         }
 
         /// <summary>
-        /// Called when the teardown finishes
+        /// Override to inject custom logic after the teardown finishes.
         /// </summary>
         protected virtual void OnAfterTeardown()
         {
