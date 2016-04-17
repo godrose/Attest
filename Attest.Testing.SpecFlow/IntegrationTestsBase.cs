@@ -6,12 +6,12 @@ using TechTalk.SpecFlow;
 namespace Attest.Testing.SpecFlow
 {
     /// <summary>
-    /// Base class for all integration-tests fixtures that involve real IoC container and test bootstrapper
-    /// and use SpecFlow as test framework provider
+    /// Base class for all integration-tests fixtures that involve ioc container adapter and test bootstrapper
+    /// and use SpecFlow as test framework provider.
     /// </summary>
-    /// <typeparam name="TContainerAdapter">Type of ioc container adapter</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts</typeparam>
-    /// <typeparam name="TBootstrapper">Type of bootstrapper</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
+    /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
+    /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>
     public abstract class IntegrationTestsBase<TContainerAdapter, TRootObject, TBootstrapper> :
         IntegrationTestsBase<TContainerAdapter, TRootObject>,
         IRootObjectFactory
@@ -34,7 +34,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Override this method to implement custom test setup logic
+        /// Override this method to implement custom test setup logic.
         /// </summary>
         [BeforeScenario]
         protected override void Setup()
@@ -44,7 +44,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Override this method to implement custom test teardown logic
+        /// Override this method to implement custom test teardown logic.
         /// </summary>
         [AfterScenario]
         protected override void TearDown()
@@ -62,7 +62,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test setup logic
+        /// Provides additional opportunity to modify the test setup logic.
         /// </summary>
         protected virtual void SetupOverride()
         {
@@ -76,7 +76,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Called when the teardown starts
+        /// Override to inject custom logic before the teardown starts.
         /// </summary>
         protected virtual void OnBeforeTeardown()
         {
@@ -84,7 +84,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Called when the teardown finishes
+        /// Override to inject custom logic after the teardown finishes.
         /// </summary>
         protected virtual void OnAfterTeardown()
         {
@@ -103,13 +103,13 @@ namespace Attest.Testing.SpecFlow
     }
 
     /// <summary>
-    /// Base class for all integration-tests fixtures that involve real IoC container, its adapter, and test bootstrapper
+    /// Base class for all integration-tests fixtures that involve ioc container, its adapter, and test bootstrapper
     /// and use SpecFlow as test framework provider.
     /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container.</typeparam>
-    /// <typeparam name="TContainerAdapter">Type of IoC container adapter.</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>
-    /// <typeparam name="TBootstrapper">Type of bootstrapper.</typeparam>    
+    /// <typeparam name="TContainer">The type of ioc container.</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
+    /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
+    /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>    
     public abstract class IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject, TBootstrapper> :
         Core.IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject>,
         IRootObjectFactory        
@@ -133,7 +133,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Override this method to implement custom test setup logic
+        /// Override this method to implement custom test setup logic.
         /// </summary>
         [BeforeScenario]
         protected override void Setup()
@@ -143,7 +143,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Override this method to implement custom test teardown logic
+        /// Override this method to implement custom test teardown logic.
         /// </summary>
         [AfterScenario]
         protected override void TearDown()
@@ -161,7 +161,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the test setup logic
+        /// Provides additional opportunity to modify the test setup logic.
         /// </summary>
         protected virtual void SetupOverride()
         {
@@ -169,9 +169,9 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Override to provide adapter creation logic.
+        /// Override to provide ioc container adapter creation logic.
         /// </summary>
-        /// <param name="container">The container.</param>
+        /// <param name="container">The ioc container.</param>
         /// <returns></returns>
         protected abstract TContainerAdapter CreateAdapter(TContainer container);
 
@@ -183,7 +183,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Called when the teardown starts
+        /// Override to inject custom logic before the teardown starts.
         /// </summary>
         protected virtual void OnBeforeTeardown()
         {
@@ -191,7 +191,7 @@ namespace Attest.Testing.SpecFlow
         }
 
         /// <summary>
-        /// Called when the teardown finishes
+        /// Override to inject custom logic after the teardown finishes.
         /// </summary>
         protected virtual void OnAfterTeardown()
         {
