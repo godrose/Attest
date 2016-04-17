@@ -10,7 +10,7 @@ namespace Attest.Testing.Core
     /// Allows returning <see cref="IInitializationParametersManager{TContainer}"/> according to the resolution style.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
-    /// <typeparam name="TContainer">The type of the container.</typeparam>
+    /// <typeparam name="TContainer">The type of the ioc container.</typeparam>
     public static class ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>                 
         where TBootstrapper : IInitializable, IHaveContainer<TContainer>, new()
     {
@@ -53,7 +53,7 @@ namespace Attest.Testing.Core
     /// Allows returning <see cref="IInitializationParametersManager{TContainer}"/> according to the resolution style.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
-    /// <typeparam name="TContainerAdapter">The type of the container.</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of the container adapter.</typeparam>
     public static class ContainerAdapterInitializationParametersManagerStore<TBootstrapper, TContainerAdapter>
         where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new() 
         where TContainerAdapter : IIocContainer

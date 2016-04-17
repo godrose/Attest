@@ -3,10 +3,10 @@
 namespace Attest.Testing.Core
 {
     /// <summary>
-    /// Base class for all integration-tests fixtures that involve real IoC container.
+    /// Base class for all integration-tests fixtures that use ioc container adapter.
     /// </summary>
-    /// <typeparam name="TContainerAdapter">Type of ioc container adapter.</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>    
+    /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
+    /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>    
     public abstract class IntegrationTestsBase<TContainerAdapter, TRootObject> : 
         TestsBase<TContainerAdapter>
         where TContainerAdapter : IIocContainer
@@ -28,7 +28,7 @@ namespace Attest.Testing.Core
         }
 
         /// <summary>
-        /// Provides additional opportunity to modify the root object immediately after is has been created
+        /// Override to modify the root object immediately after it has been created.
         /// </summary>
         /// <param name="rootObject">Newly created root object</param>
         /// <returns>Modified root object</returns>
@@ -39,11 +39,11 @@ namespace Attest.Testing.Core
     }
 
     /// <summary>
-    /// Base class for all integration-tests fixtures that involve real IoC container.
+    /// Base class for all integration-tests fixtures that use ioc container.
     /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container.</typeparam>
-    /// <typeparam name="TContainerAdapter">Type of IoC container adapter.</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>
+    /// <typeparam name="TContainer">The type of ioc container.</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
+    /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
     public abstract class IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject> : 
         IntegrationTestsBase<TContainerAdapter, TRootObject>
         where TContainerAdapter : IIocContainer, IIocContainerAdapter<TContainer>

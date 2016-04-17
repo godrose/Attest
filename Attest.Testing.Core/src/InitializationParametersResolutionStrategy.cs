@@ -27,7 +27,7 @@ namespace Attest.Testing.Core
 
     abstract class ContainerInitializationParametersResolutionStrategyBase<TBootstrapper, TContainer>
         : InitializationParametersResolutionStrategyBase<TBootstrapper, TContainer> 
-        where TBootstrapper : IInitializable, IHaveContainer<TContainer>,  new()                
+        where TBootstrapper : IInitializable, IHaveContainer<TContainer>, new()                
     {        
         protected override TContainer RetrieveContainer(TBootstrapper bootstrapper)
         {

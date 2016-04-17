@@ -7,7 +7,7 @@ namespace Attest.Testing.Core
     /// <summary>
     /// Represents means of retrieving <see cref="IInitializationParameters{TContainer}" />
     /// </summary>
-    /// <typeparam name="TContainer">The type of the container.</typeparam>
+    /// <typeparam name="TContainer">The type of the ioc container.</typeparam>
     public interface IInitializationParametersManager<TContainer>
     {
         /// <summary>

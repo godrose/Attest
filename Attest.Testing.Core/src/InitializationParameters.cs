@@ -1,16 +1,16 @@
 ﻿namespace Attest.Testing.Core
 {
     /// <summary>
-    /// Represents test/scenario initialization parameters
+    /// Represents test/scenario initialization parameters.
     /// </summary>
-    /// <typeparam name="TContainer">The type of the container.</typeparam>
+    /// <typeparam name="TContainer">The type of the ioc container.</typeparam>
     public interface IInitializationParameters<TContainer>
     {
         /// <summary>
-        /// Gets the IoC container.
+        /// Gets the ioc container.
         /// </summary>
         /// <value>
-        /// The IoC container.
+        /// The ioc container.
         /// </value>
         TContainer IocContainer { get; }
     }
