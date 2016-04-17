@@ -1,5 +1,6 @@
 ﻿using System;
 using Attest.Testing.Core;
+using Solid.Bootstrapping;
 using Solid.Practices.IoC;
 
 namespace Attest.Testing.xUnit
@@ -8,30 +9,27 @@ namespace Attest.Testing.xUnit
     /// Base class for all integration-tests fixtures that involve real IoC container and test bootstrapper
     /// and use xUnit.net as test framework provider
     /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container</typeparam>
+    /// <typeparam name="TContainerAdapter">Type of IoC container</typeparam>
     /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts</typeparam>
     /// <typeparam name="TBootstrapper">Type of bootstrapper</typeparam>
-    public abstract class IntegrationTestsBase<TContainer, TRootObject, TBootstrapper> :
-        IntegrationTestsBase<TContainer, TRootObject>,
+    public abstract class IntegrationTestsBase<TContainerAdapter, TRootObject, TBootstrapper> :
+        Core.IntegrationTestsBase<TContainerAdapter, TRootObject>,
         IRootObjectFactory,
         IDisposable
-        where TContainer : IIocContainer, new() where TRootObject : class
+        where TContainerAdapter : IIocContainer
+        where TRootObject : class 
+        where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new()
     {
-        private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
+        private readonly IInitializationParametersManager<TContainerAdapter> _initializationParametersManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TContainer, TRootObject, TBootstrapper}"/> class.
         /// </summary>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
-        {
-            if (InitializationParametersManagerStore<TBootstrapper, TContainer>.BootstrapperInit == null)
-            {
-                InitializationParametersManagerStore<TBootstrapper, TContainer>.BootstrapperInit =
-                    OnCreateBootstrapperOverride;
-            }
+        {            
             _initializationParametersManager =
-                InitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
+                ContainerAdapterInitializationParametersManagerStore<TBootstrapper, TContainerAdapter>.GetInitializationParametersManager(
                     resolutionStyle);
             ScenarioContext.Current = new Scenario();
 
@@ -63,8 +61,7 @@ namespace Attest.Testing.xUnit
         private void SetupCore()
         {
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();
-            IocContainer = initializationParameters.IocContainer;
-            //Then the scenario helper is initialized with the new instance of the IoC container and the root object factory
+            IocContainer = initializationParameters.IocContainer;            
             ScenarioHelper.Initialize(IocContainer, this);
         }
 
@@ -74,15 +71,7 @@ namespace Attest.Testing.xUnit
         protected virtual void SetupOverride()
         {
 
-        }
-
-        /// <summary>
-        /// Override this method to inject custom logic upon bootstrapper creation.
-        /// </summary>
-        protected virtual void OnCreateBootstrapperOverride(TBootstrapper bootstrapper)
-        {
-
-        }
+        }        
 
         private void TearDownCore()
         {
@@ -131,12 +120,12 @@ namespace Attest.Testing.xUnit
     /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>
     /// <typeparam name="TBootstrapper">Type of bootstrapper.</typeparam>    
     public abstract class IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject, TBootstrapper> :
-        Attest.Testing.Core.IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject>,
+        Core.IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject>,
         IRootObjectFactory,
-        IDisposable
-        where TContainer : new()
-        where TContainerAdapter : class, IIocContainer, IIocContainerAdapter<TContainer>, new()
-        where TRootObject : class
+        IDisposable        
+        where TContainerAdapter : class, IIocContainer, IIocContainerAdapter<TContainer>
+        where TRootObject : class 
+        where TBootstrapper : IInitializable, IHaveContainer<TContainer>, new()
     {
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
 
@@ -145,14 +134,9 @@ namespace Attest.Testing.xUnit
         /// </summary>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
-        {
-            if (InitializationParametersManagerStore<TBootstrapper, TContainer>.BootstrapperInit == null)
-            {
-                InitializationParametersManagerStore<TBootstrapper, TContainer>.BootstrapperInit =
-                    OnCreateBootstrapperOverride;
-            }
+        {            
             _initializationParametersManager =
-                InitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
+                ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
             ScenarioContext.Current = new Scenario();
 
@@ -184,8 +168,7 @@ namespace Attest.Testing.xUnit
         private void SetupCore()
         {
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();
-            IocContainer = CreateAdapter(initializationParameters.IocContainer);
-            //Then the scenario helper is initialized with the new instance of the IoC container and the root object factory
+            IocContainer = CreateAdapter(initializationParameters.IocContainer);            
             ScenarioHelper.Initialize(IocContainer, this);
         }
 
@@ -196,15 +179,7 @@ namespace Attest.Testing.xUnit
         {
 
         }
-
-        /// <summary>
-        /// Override this method to inject custom logic upon bootstrapper creation.
-        /// </summary>
-        protected virtual void OnCreateBootstrapperOverride(TBootstrapper bootstrapper)
-        {
-
-        }
-
+        
         /// <summary>
         /// Override to provide adapter creation logic.
         /// </summary>

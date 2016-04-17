@@ -5,19 +5,13 @@ namespace Attest.Testing.Core
     /// <summary>
     /// Base class for all integration-tests fixtures that involve real IoC container.
     /// </summary>
-    /// <typeparam name="TContainer">Type of IoC container.</typeparam>
-    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>
-    public abstract class IntegrationTestsBase<TContainer, TRootObject> : TestsBase<TContainer>
-        where TContainer : IIocContainer, new() where TRootObject : class
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IntegrationTestsBase{TContainer, TRootObject}"/> class.
-        /// </summary>
-        protected IntegrationTestsBase()
-        {
-            IocContainer = new TContainer();
-        }
-
+    /// <typeparam name="TContainerAdapter">Type of ioc container adapter.</typeparam>
+    /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>    
+    public abstract class IntegrationTestsBase<TContainerAdapter, TRootObject> : 
+        TestsBase<TContainerAdapter>
+        where TContainerAdapter : IIocContainer
+        where TRootObject : class
+    {                        
         /// <summary>
         /// This method creates the root object by resolving it from the IoC container
         /// </summary>
@@ -30,7 +24,7 @@ namespace Attest.Testing.Core
 
         private TRootObject CreateRootObjectCore()
         {
-            return Resolve<TRootObject>();
+            return IocContainer.Resolve<TRootObject>();
         }
 
         /// <summary>
@@ -52,7 +46,7 @@ namespace Attest.Testing.Core
     /// <typeparam name="TRootObject">Type of root object, from whom the test's flow starts.</typeparam>
     public abstract class IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject> : 
         IntegrationTestsBase<TContainerAdapter, TRootObject>
-        where TContainerAdapter : IIocContainer, IIocContainerAdapter<TContainer>, new() 
+        where TContainerAdapter : IIocContainer, IIocContainerAdapter<TContainer>
         where TRootObject : class
     {        
     }

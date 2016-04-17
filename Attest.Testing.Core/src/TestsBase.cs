@@ -26,12 +26,12 @@ namespace Attest.Testing.Core
     /// </summary>
     /// <typeparam name="TContainer">Type of IoC container</typeparam>
     public abstract class TestsBase<TContainer> : TestsBase
-        where TContainer : IIocContainer, new()
-    {       
+        where TContainer : IIocContainer
+    {
         /// <summary>
         /// IoC container
         /// </summary>
-        protected TContainer IocContainer;       
+        protected TContainer IocContainer;   
 
         /// <summary>
         /// Registers service instance into the IoC container

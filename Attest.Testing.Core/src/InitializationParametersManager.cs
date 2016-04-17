@@ -1,4 +1,6 @@
 ﻿using System;
+using Solid.Bootstrapping;
+using Solid.Practices.IoC;
 
 namespace Attest.Testing.Core
 {
@@ -16,31 +18,29 @@ namespace Attest.Testing.Core
     }
 
     /// <summary>
-    /// Represents means of retrieving <see cref="IInitializationParameters{TContainer}" /> for given bootstrapper and IoC container
+    /// Represents means of retrieving <see cref="IInitializationParameters{TContainer}" /> for given bootstrapper and ioc container.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
-    /// <typeparam name="TContainer">The type of the container.</typeparam>
+    /// <typeparam name="TContainer">The type of the ioc container.</typeparam>
     /// <seealso cref="Core.IInitializationParametersManager{TContainer}" />
-    public class InitializationParametersManager<TBootstrapper, TContainer> : 
-        IInitializationParametersManager<TContainer>        
-        where TContainer : new()
+    class ContainerInitializationParametersManager<TBootstrapper, TContainer> : 
+        IInitializationParametersManager<TContainer>                
+        where TBootstrapper : IInitializable, IHaveContainer<TContainer>,  new()
     {
         private readonly IInitializationParametersResolutionStrategy<TContainer> _initializationParametersResolutionStrategy;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InitializationParametersManager{TBootstrapper, TContainer}"/> class.
+        /// Initializes a new instance of the <see cref="ContainerInitializationParametersManager{TBootstrapper,TContainer}"/> class.
         /// </summary>
         /// <param name="initializationParametersResolutionStyle">The initialization parameters resolution style.</param>
-        /// <param name="bootstrapperInit"></param>
-        public InitializationParametersManager(
-            InitializationParametersResolutionStyle initializationParametersResolutionStyle,
-            Action<TBootstrapper> bootstrapperInit)
+        public ContainerInitializationParametersManager(
+            InitializationParametersResolutionStyle initializationParametersResolutionStyle)
         {
             switch (initializationParametersResolutionStyle)
             {
                     case InitializationParametersResolutionStyle.PerRequest:
                     _initializationParametersResolutionStrategy = new 
-                        InitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainer>(bootstrapperInit);
+                        ContainerInitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainer>();
                     break;
 #if NET45
                     case InitializationParametersResolutionStyle.PerFolder:
@@ -71,30 +71,55 @@ namespace Attest.Testing.Core
     }
 
     /// <summary>
-    /// Represents means of retrieving <see cref="IInitializationParameters{TContainer}" /> for given IoC container
-    /// </summary>    
-    /// <typeparam name="TContainer">The type of the container.</typeparam>
+    /// Represents means of retrieving <see cref="IInitializationParameters{TContainer}" /> for given bootstrapper and ioc container adapter.
+    /// </summary>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+    /// <typeparam name="TContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <seealso cref="Core.IInitializationParametersManager{TContainer}" />
-    public class InitializationParametersManager<TContainer> : IInitializationParametersManager<TContainer> 
-        where TContainer :  new()
+    class ContainerAdapterInitializationParametersManager<TBootstrapper, TContainerAdapter> :
+        IInitializationParametersManager<TContainerAdapter>
+        where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new() 
+        where TContainerAdapter : IIocContainer
     {
-        private readonly IInitializationParametersResolutionStrategy<TContainer> _initializationParametersResolutionStrategy;
+        private readonly IInitializationParametersResolutionStrategy<TContainerAdapter> _initializationParametersResolutionStrategy;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InitializationParametersManager{TContainer}"/> class.
+        /// Initializes a new instance of the <see cref="Attest.Testing.Core.ContainerInitializationParametersManager{TBootstrapper,TContainer}"/> class.
         /// </summary>
-        /// <param name="container">The container.</param>
-        public InitializationParametersManager(TContainer container)
+        /// <param name="initializationParametersResolutionStyle">The initialization parameters resolution style.</param>
+        public ContainerAdapterInitializationParametersManager(
+            InitializationParametersResolutionStyle initializationParametersResolutionStyle)
         {
-            _initializationParametersResolutionStrategy = new InitializationParametersPredefinedResolutionStrategy<TContainer>(container);
+            switch (initializationParametersResolutionStyle)
+            {
+                case InitializationParametersResolutionStyle.PerRequest:
+                    _initializationParametersResolutionStrategy = new
+                        ContainerAdapterInitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainerAdapter>();
+                    break;
+#if NET45
+                    case InitializationParametersResolutionStyle.PerFolder:
+                    _initializationParametersResolutionStrategy = new InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer>();
+                    break;
+#endif
+                case InitializationParametersResolutionStyle.PerFixture:
+                    break;
+                case InitializationParametersResolutionStyle.Singleton:
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
         /// Gets the initialization parameters.
         /// </summary>
         /// <returns></returns>
-        public IInitializationParameters<TContainer> GetInitializationParameters()
+        public IInitializationParameters<TContainerAdapter> GetInitializationParameters()
         {
+            if (_initializationParametersResolutionStrategy == null)
+            {
+                throw new NotSupportedException("Only per request and per folder styles are supported");
+            }
             return _initializationParametersResolutionStrategy.GetInitializationParameters();
         }
     }
