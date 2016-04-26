@@ -131,6 +131,10 @@
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\LightMock\LightMock.csproj">
+      <Project>{0a43e6a5-9f69-4691-b275-e72642565099}</Project>
+      <Name>LightMock</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

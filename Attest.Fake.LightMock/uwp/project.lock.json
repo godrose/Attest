@@ -3,16 +3,6 @@
   "version": 1,
   "targets": {
     "UAP,Version=v10.0": {
-      "LightMock/1.0.0.6": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -1800,16 +1790,6 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
-      "LightMock/1.0.0.6": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -3450,16 +3430,6 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
-      "LightMock/1.0.0.6": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -5064,16 +5034,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
-      "LightMock/1.0.0.6": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -6720,16 +6680,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
-      "LightMock/1.0.0.6": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -8334,16 +8284,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
-      "LightMock/1.0.0.6": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -9990,16 +9930,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
-      "LightMock/1.0.0.6": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll": {},
-          "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll": {}
-        }
-      },
       "Microsoft.CSharp/4.0.0": {
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -11605,20 +11535,6 @@
     }
   },
   "libraries": {
-    "LightMock/1.0.0.6": {
-      "sha512": "x1hn3vcRn3MbNI2HXe+DutD84bDvJQK/anFeef/Mg5SwuOBH8617n4gXyRkU9Al1J7Dm11IUX5L+McIhf1bqgQ==",
-      "type": "Package",
-      "files": [
-        "LightMock.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.XML",
-        "lib/portable-net4+sl5+netcore45+wp8+MonoAndroid1+MonoTouch1/LightMock.dll",
-        "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.XML",
-        "lib/portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10/LightMock.dll",
-        "package/services/metadata/core-properties/b9245273fbe64fe7965bfdd740eb55f6.psmdcp"
-      ]
-    },
     "Microsoft.CSharp/4.0.0": {
       "sha512": "oWqeKUxHXdK6dL2CFjgMcaBISbkk+AqEg+yvJHE4DElNzS4QaTsCflgkkqZwVlWby1Dg9zo9n+iCAMFefFdJ/A==",
       "type": "Package",
@@ -14970,7 +14886,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "LightMock >= 1.0.0.6",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0"
     ],
     "UAP,Version=v10.0": []

@@ -120,18 +120,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="LightMock, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LightMock.1.0.0.6\lib\portable-net40+sl50+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10\LightMock.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Attest.Fake.Core\Attest.Fake.Core.csproj">
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LightMock\LightMock.csproj">
+      <Project>{0a43e6a5-9f69-4691-b275-e72642565099}</Project>
+      <Name>LightMock</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
