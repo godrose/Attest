@@ -21,11 +21,23 @@ namespace Attest.Fake.Registration
         }
 
         /// <summary>
+        /// Registers the service in the singleton mode.
+        /// </summary>
+        /// <typeparam name="TService">The type of the service.</typeparam>
+        /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
+        public static void RegisterSingleton<TService, TImplementation>(IIocContainerRegistrator containerRegistrator)
+            where TImplementation : class, TService
+        {
+            containerRegistrator.RegisterSingleton<TService, TImplementation>();
+        }
+
+        /// <summary>
         /// Registers the service in the transient mode.
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
-        /// <param name="containerRegistrator">The container registrator.</param>
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
         public static void RegisterTransient<TService, TImplementation>(IIocContainerRegistrator containerRegistrator)
             where TImplementation : class, TService
         {
