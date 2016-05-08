@@ -5,19 +5,19 @@ using Solid.Practices.IoC;
 namespace Attest.Fake.Registration
 {
     /// <summary>
-    /// Provides utilities for registering different types of fake objects into IoC container
+    /// Provides utilities for registering different types of fake objects into IoC containerRegistrator
     /// </summary>
     public static class RegistrationHelper
     {
         /// <summary>
-        /// Registers service instance into the IoC container
+        /// Registers service instance into the ioc container.
         /// </summary>
-        /// <typeparam name="TService">Type of service</typeparam>
-        /// <param name="container">IoC container</param>
-        /// <param name="instance">Instance to be registered</param>        
-        public static void RegisterInstance<TService>(IIocContainer container, TService instance) where TService : class
+        /// <typeparam name="TService">The type of service.</typeparam>
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
+        /// <param name="instance">The instance to be registered.</param>        
+        public static void RegisterInstance<TService>(IIocContainerRegistrator containerRegistrator, TService instance) where TService : class
         {
-            container.RegisterInstance(instance);
+            containerRegistrator.RegisterInstance(instance);
         }
 
         /// <summary>
@@ -25,60 +25,60 @@ namespace Attest.Fake.Registration
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
-        /// <param name="container">The container.</param>
-        public static void RegisterTransient<TService, TImplementation>(IIocContainer container)
+        /// <param name="containerRegistrator">The container registrator.</param>
+        public static void RegisterTransient<TService, TImplementation>(IIocContainerRegistrator containerRegistrator)
             where TImplementation : class, TService
         {
-            container.RegisterTransient<TService, TImplementation>();
+            containerRegistrator.RegisterTransient<TService, TImplementation>();
         }
 
         /// <summary>
-        /// Builds service from its builder and registers it into the IoC container
+        /// Builds service from its builder and registers it into the ioc container.
         /// </summary>
-        /// <typeparam name="TService">Type of service</typeparam>
-        /// <param name="container">IoC container</param>
-        /// <param name="builder">Service builder</param>
-        public static void RegisterBuilder<TService>(IIocContainer container, FakeBuilderBase<TService> builder) where TService : class
+        /// <typeparam name="TService">The type of the service.</typeparam>
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
+        /// <param name="builder">The service builder.</param>
+        public static void RegisterBuilder<TService>(IIocContainerRegistrator containerRegistrator, FakeBuilderBase<TService> builder) where TService : class
         {
-            container.RegisterHandler(builder.GetService);            
+            containerRegistrator.RegisterHandler(builder.GetService);            
         }        
 
         /// <summary>
-        /// Registers service fake into the IoC container
+        /// Registers service fake into the ioc container registrator.
         /// </summary>
-        /// <typeparam name="TService">Type of service</typeparam>
-        /// <param name="container">IoC container</param>
-        /// <param name="fake">Fake to be registered</param>
-        public static void RegisterFake<TService>(IIocContainer container, IFake<TService> fake) where TService : class
+        /// <typeparam name="TService">The type of service.</typeparam>
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
+        /// <param name="fake">The fake to be registered.</param>
+        public static void RegisterFake<TService>(IIocContainerRegistrator containerRegistrator, IFake<TService> fake) where TService : class
         {
-            RegisterHaveFake(container, fake);
+            RegisterHaveFake(containerRegistrator, fake);
         }
 
         /// <summary>
-        /// Registers service mock into the IoC container
+        /// Registers service mock into the ioc container registrator.
         /// </summary>
-        /// <typeparam name="TService">Type of service</typeparam>
-        /// <param name="container">IoC container</param>
-        /// <param name="mock">Mock to be registered</param>
-        public static void RegisterMock<TService>(IIocContainer container, IMock<TService> mock) where TService : class
+        /// <typeparam name="TService">The type of the service.</typeparam>
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
+        /// <param name="mock">The mock to be registered.</param>
+        public static void RegisterMock<TService>(IIocContainer containerRegistrator, IMock<TService> mock) where TService : class
         {
-            RegisterHaveFake(container, mock);
+            RegisterHaveFake(containerRegistrator, mock);
         }
 
-        private static void RegisterHaveFake<TService>(IIocContainer container, IHaveFake<TService> fake) where TService : class
+        private static void RegisterHaveFake<TService>(IIocContainerRegistrator containerRegistrator, IHaveFake<TService> fake) where TService : class
         {
-            RegisterInstance(container, fake.Object);
+            RegisterInstance(containerRegistrator, fake.Object);
         }
 
         /// <summary>
-        /// Resolves service from the IoC container
+        /// Resolves service from the ioc container.
         /// </summary>
-        /// <typeparam name="TService">Type of service</typeparam>
-        /// <param name="container">IoC container</param>
-        /// <returns>Resolved service</returns>
-        public static TService Resolve<TService>(IIocContainer container) where TService : class
+        /// <typeparam name="TService">The type of the service.</typeparam>
+        /// <param name="containerResolver">The ioc container resolver.</param>
+        /// <returns>The resolved service.</returns>
+        public static TService Resolve<TService>(IIocContainerResolver containerResolver) where TService : class
         {
-            return container.Resolve<TService>();
+            return containerResolver.Resolve<TService>();
         }
     }
 }
