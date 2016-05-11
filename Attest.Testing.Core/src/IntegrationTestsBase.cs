@@ -24,7 +24,7 @@ namespace Attest.Testing.Core
 
         private TRootObject CreateRootObjectCore()
         {
-            return IocContainer.Resolve<TRootObject>();
+            return Resolver.Resolve<TRootObject>();
         }
 
         /// <summary>

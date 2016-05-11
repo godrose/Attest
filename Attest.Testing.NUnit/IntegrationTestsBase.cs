@@ -58,8 +58,9 @@ namespace Attest.Testing.NUnit
         private void SetupCore()
         {
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();
-            IocContainer = initializationParameters.IocContainer;            
-            ScenarioHelper.Initialize(IocContainer, this);
+            Registrator = initializationParameters.IocContainer;
+            Resolver = initializationParameters.IocContainer;
+            ScenarioHelper.Initialize(initializationParameters.IocContainer, this);
         }
 
         /// <summary>
@@ -72,8 +73,7 @@ namespace Attest.Testing.NUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();
-            IocContainer.Dispose();
+            ScenarioHelper.Clear();            
             //Dispose();
         }
 
@@ -158,8 +158,10 @@ namespace Attest.Testing.NUnit
         private void SetupCore()
         {
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();
-            IocContainer = CreateAdapter(initializationParameters.IocContainer);            
-            ScenarioHelper.Initialize(IocContainer, this);
+            var containerAdapter = CreateAdapter(initializationParameters.IocContainer);
+            Registrator = containerAdapter;
+            Resolver = containerAdapter;
+            ScenarioHelper.Initialize(containerAdapter, this);
         }
 
         /// <summary>
@@ -179,8 +181,7 @@ namespace Attest.Testing.NUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();
-            IocContainer.Dispose();
+            ScenarioHelper.Clear();           
             //Dispose();
         }
 

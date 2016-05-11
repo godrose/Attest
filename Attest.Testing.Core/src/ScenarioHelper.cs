@@ -10,8 +10,9 @@ namespace Attest.Testing.Core
     public static class ScenarioHelper
     {
         private const string RootObjectFactoryKey = "rootObjectFactory";
-        private const string RootObjectKey = "rootObject";
-        private const string ContainerKey = "container";        
+        private const string RootObjectKey = "rootObject";        
+        private const string RegistratorKey = "registrator";
+        private const string ResolverKey = "resolver";
 
         /// <summary>
         /// Initializes the <see cref="ScenarioContext"/>. with the provided container and root object factory.
@@ -21,8 +22,9 @@ namespace Attest.Testing.Core
         public static void Initialize(
             IIocContainer iocContainer,
             IRootObjectFactory rootObjectFactory)
-        {
-            ScenarioContext.Current.Add(ContainerKey, iocContainer);
+        {            
+            ScenarioContext.Current.Add(RegistratorKey, iocContainer);
+            ScenarioContext.Current.Add(ResolverKey, iocContainer);
             ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);                        
         }
 
@@ -147,17 +149,17 @@ namespace Attest.Testing.Core
         public static void Clear()
         {
             ScenarioContext.Current.Clear();
-        }
+        }        
 
         /// <summary>
-        /// Gets the ioc container adapter.
+        /// Gets the ioc container registrator.
         /// </summary>
         /// <value>
         /// The ioc container adapter.
         /// </value>
-        public static IIocContainer Container
+        public static IIocContainerRegistrator Registrator
         {
-            get { return (IIocContainer)ScenarioContext.Current[ContainerKey]; }
+            get { return (IIocContainerRegistrator)ScenarioContext.Current[RegistratorKey]; }
         }
 
         /// <summary>

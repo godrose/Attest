@@ -27,11 +27,16 @@ namespace Attest.Testing.Core
     /// <typeparam name="TContainer">The type of ioc container adapter.</typeparam>
     public abstract class TestsBase<TContainer> : TestsBase
         where TContainer : IIocContainer
-    {
+    {        
         /// <summary>
-        /// The ioc container adapter.
+        /// The ioc container registrator.
         /// </summary>
-        protected TContainer IocContainer;   
+        protected IIocContainerRegistrator Registrator;
+
+        /// <summary>
+        /// The ioc container resolver.
+        /// </summary>
+        protected IIocContainerResolver Resolver;
 
         /// <summary>
         /// Registers service instance into the ioc container adapter.
@@ -40,7 +45,7 @@ namespace Attest.Testing.Core
         /// <param name="instance">Instance to be registered.</param>
         protected void RegisterInstance<TService>(TService instance) where TService : class
         {
-            RegistrationHelper.RegisterInstance(IocContainer, instance);
+            RegistrationHelper.RegisterInstance(Registrator, instance);
         }
 
         /// <summary>
@@ -50,7 +55,7 @@ namespace Attest.Testing.Core
         /// <param name="builder">Builder to be registered.</param>
         protected void RegisterBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
         {
-            RegistrationHelper.RegisterBuilder(IocContainer, builder);
+            RegistrationHelper.RegisterBuilder(Registrator, builder);
         }
 
         /// <summary>
@@ -60,7 +65,7 @@ namespace Attest.Testing.Core
         /// <param name="fake">Fake to be registered.</param>
         protected void RegisterFake<TService>(IFake<TService> fake) where TService : class
         {
-            RegistrationHelper.RegisterFake(IocContainer, fake);
+            RegistrationHelper.RegisterFake(Registrator, fake);
         }
 
         /// <summary>
@@ -70,7 +75,9 @@ namespace Attest.Testing.Core
         /// <param name="fake">Mock to be registered.</param>
         protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
         {
-            RegistrationHelper.RegisterMock(IocContainer, fake);
+            //TODO: fix in the registration and release its package later.
+            RegistrationHelper.RegisterInstance(Registrator, fake.Object);
+            //RegistrationHelper.RegisterMock(Registrator, fake);
         }
 
         /// <summary>
@@ -80,7 +87,7 @@ namespace Attest.Testing.Core
         /// <returns>Resolved service.</returns>
         protected TService Resolve<TService>() where TService : class
         {
-            return RegistrationHelper.Resolve<TService>(IocContainer);
+            return RegistrationHelper.Resolve<TService>(Resolver);
         }
     }
 }
