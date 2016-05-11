@@ -13,7 +13,7 @@ namespace Attest.Testing.SpecFlow
     /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
     /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>
     public abstract class IntegrationTestsBase<TContainerAdapter, TRootObject, TBootstrapper> :
-        IntegrationTestsBase<TContainerAdapter, TRootObject>,
+        IntegrationTestsBase<TRootObject>,
         IRootObjectFactory
         where TContainerAdapter : IIocContainer
         where TRootObject : class 
@@ -111,7 +111,7 @@ namespace Attest.Testing.SpecFlow
     /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
     /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>    
     public abstract class IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject, TBootstrapper> :
-        Core.IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject>,
+        IntegrationTestsBase<TRootObject>,
         IRootObjectFactory        
         where TContainerAdapter : class, IIocContainer, IIocContainerAdapter<TContainer>
         where TRootObject : class 
