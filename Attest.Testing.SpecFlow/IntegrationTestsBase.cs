@@ -9,20 +9,18 @@ namespace Attest.Testing.SpecFlow
     /// Base class for all integration-tests fixtures that involve ioc container adapter and test bootstrapper
     /// and use SpecFlow as test framework provider.
     /// </summary>
-    /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
     /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
     /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>
-    public abstract class IntegrationTestsBase<TContainerAdapter, TRootObject, TBootstrapper> :
+    public abstract class IntegrationTestsBase<TRootObject, TBootstrapper> :
         IntegrationTestsBase<TRootObject>,
         IRootObjectFactory
-        where TContainerAdapter : IIocContainer
         where TRootObject : class 
         where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
     {
         private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IntegrationTestsBase{TContainer, TRootObject, TBootstrapper}"/> class.
+        /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
@@ -120,7 +118,7 @@ namespace Attest.Testing.SpecFlow
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IntegrationTestsBase{TContainer, TRootObject, TBootstrapper}"/> class.
+        /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(

@@ -14,7 +14,7 @@ namespace Attest.Testing.NUnit
         /// <summary>
         /// Registers service instance into the scenario context.
         /// </summary>
-        /// <typeparam name="TService">he type of service.</typeparam>
+        /// <typeparam name="TService">The type of service.</typeparam>
         /// <param name="instance">The instance to be registered.</param>
         protected void RegisterInstance<TService>(TService instance) where TService : class
         {
