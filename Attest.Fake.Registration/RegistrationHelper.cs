@@ -72,7 +72,7 @@ namespace Attest.Fake.Registration
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <param name="containerRegistrator">The ioc container registrator.</param>
         /// <param name="mock">The mock to be registered.</param>
-        public static void RegisterMock<TService>(IIocContainer containerRegistrator, IMock<TService> mock) where TService : class
+        public static void RegisterMock<TService>(IIocContainerRegistrator containerRegistrator, IMock<TService> mock) where TService : class
         {
             RegisterHaveFake(containerRegistrator, mock);
         }
