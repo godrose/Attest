@@ -1,5 +1,4 @@
 ﻿using Solid.Bootstrapping;
-using Solid.Practices.IoC;
 
 namespace Attest.Testing.Core
 {
@@ -16,7 +15,7 @@ namespace Attest.Testing.Core
         {
             var bootstrapper = new TBootstrapper();
             bootstrapper.Initialize();
-            TContainer container = RetrieveContainer(bootstrapper);
+            var container = RetrieveContainer(bootstrapper);
             return new InitializationParameters<TContainer>(container);
         }
 
@@ -35,14 +34,13 @@ namespace Attest.Testing.Core
         }        
     }
 
-    abstract class ContainerAdapterInitializationParametersResolutionStrategyBase<TBootstrapper, TContainerAdapter>
-        : InitializationParametersResolutionStrategyBase<TBootstrapper, TContainerAdapter>
-        where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new() 
-        where TContainerAdapter : IIocContainer
+    abstract class ContainerAdapterInitializationParametersResolutionStrategyBase<TBootstrapper>
+        : InitializationParametersResolutionStrategyBase<TBootstrapper, IocContainerProxy>
+        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
     {
-        protected override TContainerAdapter RetrieveContainer(TBootstrapper bootstrapper)
+        protected override IocContainerProxy RetrieveContainer(TBootstrapper bootstrapper)
         {
-            return bootstrapper.ContainerAdapter;
+            return new IocContainerProxy(bootstrapper.Registrator, bootstrapper.Resolver);
         }
     }
 }

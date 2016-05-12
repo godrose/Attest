@@ -1,5 +1,4 @@
 ﻿using Solid.Bootstrapping;
-using Solid.Practices.IoC;
 
 namespace Attest.Testing.Core
 {
@@ -13,12 +12,11 @@ namespace Attest.Testing.Core
         }        
     }
 
-    class ContainerAdapterInitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainerAdapter> :
-        ContainerAdapterInitializationParametersResolutionStrategyBase<TBootstrapper, TContainerAdapter>
-        where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new() 
-        where TContainerAdapter : IIocContainer
+    class ContainerAdapterInitializationParametersPerRequestResolutionStrategy<TBootstrapper> :
+        ContainerAdapterInitializationParametersResolutionStrategyBase<TBootstrapper>
+        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
     {
-        public override IInitializationParameters<TContainerAdapter> GetInitializationParameters()
+        public override IInitializationParameters<IocContainerProxy> GetInitializationParameters()
         {
             return CreateInitializationParameters();
         }

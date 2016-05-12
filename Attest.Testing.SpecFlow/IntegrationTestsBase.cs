@@ -17,9 +17,9 @@ namespace Attest.Testing.SpecFlow
         IRootObjectFactory
         where TContainerAdapter : IIocContainer
         where TRootObject : class 
-        where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new()
+        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
     {
-        private readonly IInitializationParametersManager<TContainerAdapter> _initializationParametersManager;
+        private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TContainer, TRootObject, TBootstrapper}"/> class.
@@ -28,7 +28,7 @@ namespace Attest.Testing.SpecFlow
         protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
             _initializationParametersManager =
-                ContainerAdapterInitializationParametersManagerStore<TBootstrapper, TContainerAdapter>.GetInitializationParametersManager(
+                ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
             Core.ScenarioContext.Current = new Scenario();
         }

@@ -60,6 +60,9 @@
     <Compile Include="..\src\IntegrationTestsBase.cs">
       <Link>IntegrationTestsBase.cs</Link>
     </Compile>
+    <Compile Include="..\src\IocContainerProxy.cs">
+      <Link>IocContainerProxy.cs</Link>
+    </Compile>
     <Compile Include="..\src\IRootObjectFactory.cs">
       <Link>IRootObjectFactory.cs</Link>
     </Compile>
@@ -95,8 +98,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Solid.Bootstrapping, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Bootstrapping.1.1.0\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch+uap10.0\Solid.Bootstrapping.dll</HintPath>
+    <Reference Include="Solid.Bootstrapping, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Bootstrapping.1.1.1\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch+uap10.0\Solid.Bootstrapping.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Solid.Practices.IoC, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">

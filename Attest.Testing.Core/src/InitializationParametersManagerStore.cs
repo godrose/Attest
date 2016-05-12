@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Solid.Bootstrapping;
-using Solid.Practices.IoC;
 
 namespace Attest.Testing.Core
 {
@@ -53,16 +52,14 @@ namespace Attest.Testing.Core
     /// Allows returning <see cref="IInitializationParametersManager{TContainer}"/> according to the resolution style.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
-    /// <typeparam name="TContainerAdapter">The type of the container adapter.</typeparam>
-    public static class ContainerAdapterInitializationParametersManagerStore<TBootstrapper, TContainerAdapter>
-        where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new() 
-        where TContainerAdapter : IIocContainer
+    public static class ContainerAdapterInitializationParametersManagerStore<TBootstrapper>
+        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
     {
         private static Dictionary
-            <InitializationParametersResolutionStyle, IInitializationParametersManager<TContainerAdapter>>
+            <InitializationParametersResolutionStyle, IInitializationParametersManager<IocContainerProxy>>
             _internalStorage;
 
-        private static Dictionary<InitializationParametersResolutionStyle, IInitializationParametersManager<TContainerAdapter>> InitializeDictionary()
+        private static Dictionary<InitializationParametersResolutionStyle, IInitializationParametersManager<IocContainerProxy>> InitializeDictionary()
         {
             var enums =
                 Enum.GetValues(typeof(InitializationParametersResolutionStyle))
@@ -70,8 +67,8 @@ namespace Attest.Testing.Core
                     .ToArray();
             return enums.ToDictionary(t => t,
                 t =>
-                    (IInitializationParametersManager<TContainerAdapter>)
-                        new ContainerAdapterInitializationParametersManager<TBootstrapper, TContainerAdapter>(t));
+                    (IInitializationParametersManager<IocContainerProxy>)
+                        new ContainerAdapterInitializationParametersManager<TBootstrapper>(t));
         }
 
         /// <summary>
@@ -79,7 +76,7 @@ namespace Attest.Testing.Core
         /// </summary>
         /// <param name="resolutionStyle">The resolution style.</param>
         /// <returns></returns>
-        public static IInitializationParametersManager<TContainerAdapter>
+        public static IInitializationParametersManager<IocContainerProxy>
             GetInitializationParametersManager(
             InitializationParametersResolutionStyle resolutionStyle)
         {
@@ -87,7 +84,7 @@ namespace Attest.Testing.Core
             {
                 _internalStorage = InitializeDictionary();
             }
-            IInitializationParametersManager<TContainerAdapter> value;
+            IInitializationParametersManager<IocContainerProxy> value;
             _internalStorage.TryGetValue(resolutionStyle, out value);
             return value;
         }

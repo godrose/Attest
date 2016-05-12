@@ -1,6 +1,5 @@
 ﻿using System;
 using Solid.Bootstrapping;
-using Solid.Practices.IoC;
 
 namespace Attest.Testing.Core
 {
@@ -74,14 +73,12 @@ namespace Attest.Testing.Core
     /// Represents means of retrieving <see cref="IInitializationParameters{TContainer}" /> for given bootstrapper and ioc container adapter.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
-    /// <typeparam name="TContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <seealso cref="Core.IInitializationParametersManager{TContainer}" />
-    class ContainerAdapterInitializationParametersManager<TBootstrapper, TContainerAdapter> :
-        IInitializationParametersManager<TContainerAdapter>
-        where TBootstrapper : IInitializable, IHaveContainerAdapter<TContainerAdapter>, new() 
-        where TContainerAdapter : IIocContainer
+    class ContainerAdapterInitializationParametersManager<TBootstrapper> :
+        IInitializationParametersManager<IocContainerProxy>
+        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
     {
-        private readonly IInitializationParametersResolutionStrategy<TContainerAdapter> _initializationParametersResolutionStrategy;
+        private readonly IInitializationParametersResolutionStrategy<IocContainerProxy> _initializationParametersResolutionStrategy;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Attest.Testing.Core.ContainerInitializationParametersManager{TBootstrapper,TContainer}"/> class.
@@ -93,8 +90,8 @@ namespace Attest.Testing.Core
             switch (initializationParametersResolutionStyle)
             {
                 case InitializationParametersResolutionStyle.PerRequest:
-                    _initializationParametersResolutionStrategy = new
-                        ContainerAdapterInitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainerAdapter>();
+                    _initializationParametersResolutionStrategy =
+                        new ContainerAdapterInitializationParametersPerRequestResolutionStrategy<TBootstrapper>();
                     break;
 #if NET45
                     case InitializationParametersResolutionStyle.PerFolder:
@@ -114,7 +111,7 @@ namespace Attest.Testing.Core
         /// Gets the initialization parameters.
         /// </summary>
         /// <returns></returns>
-        public IInitializationParameters<TContainerAdapter> GetInitializationParameters()
+        public IInitializationParameters<IocContainerProxy> GetInitializationParameters()
         {
             if (_initializationParametersResolutionStrategy == null)
             {

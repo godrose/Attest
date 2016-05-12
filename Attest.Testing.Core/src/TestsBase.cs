@@ -61,10 +61,8 @@ namespace Attest.Testing.Core
             /// <typeparam name="TService">Type of service.</typeparam>
             /// <param name="fake">Mock to be registered.</param>
             protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
-            {
-                //TODO: fix in the registration and release its package later.
-                RegistrationHelper.RegisterInstance(Registrator, fake.Object);
-                //RegistrationHelper.RegisterMock(Registrator, fake);
+            {                
+                RegistrationHelper.RegisterMock(Registrator, fake);
             }
 
             /// <summary>

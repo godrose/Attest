@@ -58,10 +58,8 @@ namespace Attest.Testing.SpecFlow
         /// <typeparam name="TService">The type of service.</typeparam>
         /// <param name="fake">The mock to be registered.</param>
         protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
-        {
-            //TODO: fix in the registration and release its package later.
-            RegistrationHelper.RegisterInstance(GetRegistrator(), fake.Object);
-            //RegistrationHelper.RegisterMock(GetRegistrator(), fake);
+        {            
+            RegistrationHelper.RegisterMock(GetRegistrator(), fake);
         }
 
         /// <summary>
