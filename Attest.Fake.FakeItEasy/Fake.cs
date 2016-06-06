@@ -15,7 +15,7 @@ namespace Attest.Fake.FakeItEasy
 
         public void VerifyCall(Expression<Action<TFaked>> expression)
         {
-            A.CallTo(expression).MustHaveHappened();
+            A.CallTo(() => expression).MustHaveHappened();            
         }
 
         public void VerifyNoCall(Expression<Action<TFaked>> expression)
@@ -31,10 +31,10 @@ namespace Attest.Fake.FakeItEasy
         public IFakeCallback Setup(Expression<Action<TFaked>> expression)
         {
             return new EasyFakeCallback<TFaked>(A.CallTo(expression));
-        }
+        }        
 
         public IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression)
-        {            
+        {
             throw new NotImplementedException();
         }
 
