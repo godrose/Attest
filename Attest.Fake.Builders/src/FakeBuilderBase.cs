@@ -9,7 +9,7 @@ namespace Attest.Fake.Builders
     /// </summary>
     /// <typeparam name="TService"></typeparam>
     [Serializable]
-    public abstract class FakeBuilderBase<TService> : IMock<TService> where TService : class
+    public abstract class FakeBuilderBase<TService> : ConstraintFactoryWrapper, IMock<TService> where TService : class
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FakeBuilderBase{TService}"/> class.
@@ -30,6 +30,7 @@ namespace Attest.Fake.Builders
         }
 
         private IFake<TService> _fakeService;
+
         /// <summary>
         /// Fake service.
         /// </summary>                    
@@ -91,6 +92,6 @@ namespace Attest.Fake.Builders
         public TService Object
         {
             get { return FakeService.Object; }
-        }
+        }        
     }
 }

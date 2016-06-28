@@ -51,9 +51,7 @@
     <Compile Include="..\src\FakeFactory.cs">
       <Link>FakeFactory.cs</Link>
     </Compile>
-    <Compile Include="..\src\It.cs">
-      <Link>It.cs</Link>
-    </Compile>
+    <Compile Include="ConstraintFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

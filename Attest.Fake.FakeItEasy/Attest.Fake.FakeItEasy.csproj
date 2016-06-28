@@ -30,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Release\Fake\Attest.Fake.FakeItEasy.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FakeItEasy">
@@ -39,10 +40,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstraintFactory.cs" />
     <Compile Include="FakeCallback.cs" />
     <Compile Include="Fake.cs" />
     <Compile Include="FakeFactory.cs" />
-    <Compile Include="It.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

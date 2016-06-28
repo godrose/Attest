@@ -1,12 +1,11 @@
 using Attest.Fake.Builders;
-using Attest.Fake.Moq;
 using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Fake.Setup.Tests
 {
     public class LoginProviderBuilder : FakeBuilderBase<ILoginProvider>
     {
-        private bool _isLoggedIn;
+        private bool _isLoggedIn;        
 
         private LoginProviderBuilder()
         {
@@ -28,26 +27,24 @@ namespace Attest.Fake.Setup.Tests
             var initialSetup = CreateInitialSetup();
 
             var setup = initialSetup.AddMethodCallAsync(t => t.Login(), r => r.Complete(Login));
-
-            setup.AddMethodCallAsync<string>(t => t.LoginWithOneParameter(It.IsAny<string>()), r => r.Complete(Login));
+            
+            setup.AddMethodCallAsync<string>(t => t.LoginWithOneParameter(ConstraintFactoryWrapper.It.IsAny<string>()), r => r.Complete(Login));
 
             setup.AddMethodCallAsync<string, string>(
-                t => t.LoginWithTwoParameters(It.IsAny<string>(), It.IsAny<string>()), r => r.Complete(Login));
+                t => t.LoginWithTwoParameters(ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>()), r => r.Complete(Login));
 
             setup.AddMethodCallAsync<string, string, string>(
-                t => t.LoginWithThreeParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                t => t.LoginWithThreeParameters(ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>()),
                 r => r.Complete(Login));
 
             setup.AddMethodCallAsync<string, string, string, string>(
                 t =>
-                    t.LoginWithFourParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
-                        It.IsAny<string>()),
+                    t.LoginWithFourParameters(ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>()),
                 r => r.Complete(Login));
 
             setup.AddMethodCallAsync<string, string, string, string, string>(
                 t =>
-                    t.LoginWithFiveParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(),
-                        It.IsAny<string>(), It.IsAny<string>()),
+                    t.LoginWithFiveParameters(ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>(), ConstraintFactoryWrapper.It.IsAny<string>()),
                 r => r.Complete(Login));
 
             setup.Build();

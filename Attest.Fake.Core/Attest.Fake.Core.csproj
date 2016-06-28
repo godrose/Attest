@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IConstraintFactory.cs" />
     <Compile Include="IFake.cs" />
     <Compile Include="IFakeCallback.cs" />
     <Compile Include="IFakeCallbackWithResult.cs" />

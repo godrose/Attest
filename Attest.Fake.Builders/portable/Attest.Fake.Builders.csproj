@@ -50,6 +50,8 @@
     <Compile Include="..\src\FakeProviderBase.cs">
       <Link>FakeProviderBase.cs</Link>
     </Compile>
+    <Compile Include="ConstraintFactoryContext.cs" />
+    <Compile Include="ConstraintFactoryWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

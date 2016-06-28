@@ -11,6 +11,7 @@ namespace Attest.Fake.Setup.Tests
         public void TestFixtureSetup()
         {
             FakeFactoryContext.Current = new FakeFactory();
+            ConstraintFactoryContext.Current = new ConstraintFactory();
         }
 
         [Test]
