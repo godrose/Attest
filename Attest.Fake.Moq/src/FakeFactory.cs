@@ -1,13 +1,11 @@
-﻿using System;
-using Attest.Fake.Core;
+﻿using Attest.Fake.Core;
 using Moq;
 
 namespace Attest.Fake.Moq
 {
     /// <summary>
     /// Implementation of fake factory using Moq framework
-    /// </summary>
-    [Serializable]
+    /// </summary>    
     public class FakeFactory : IFakeFactory
     {
         /// <summary>

@@ -7,8 +7,7 @@ namespace Attest.Fake.Builders
     /// <summary>
     /// Base class for service builders, supporting mock and fake capabilties
     /// </summary>
-    /// <typeparam name="TService"></typeparam>
-    [Serializable]
+    /// <typeparam name="TService"></typeparam>    
     public abstract class FakeBuilderBase<TService> : ConstraintFactoryWrapper, IMock<TService> where TService : class
     {
         /// <summary>
@@ -34,15 +33,9 @@ namespace Attest.Fake.Builders
         /// <summary>
         /// Fake service.
         /// </summary>                    
-        protected IFake<TService> FakeService
-        {
-            get
-            {
-                return _fakeService ??
-                       (_fakeService =
-                           FakeFactoryContext.Current.CreateFake<TService>());
-            }
-        }
+        protected IFake<TService> FakeService => _fakeService ??
+                                                 (_fakeService =
+                                                     FakeFactoryContext.Current.CreateFake<TService>());
 
         /// <summary>
         /// Override this method to substitute method calls in the faked service.
@@ -89,9 +82,6 @@ namespace Attest.Fake.Builders
         /// <summary>
         /// Faked service.
         /// </summary>
-        public TService Object
-        {
-            get { return FakeService.Object; }
-        }        
+        public TService Object => FakeService.Object;
     }
 }
