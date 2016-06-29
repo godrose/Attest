@@ -33,11 +33,6 @@
     <DocumentationFile>..\..\bin\portable\Release\Fake\Attest.Fake.Moq.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq">
-      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="..\src\Fake.cs">
       <Link>Fake.cs</Link>
     </Compile>
@@ -47,7 +42,6 @@
     <Compile Include="..\src\FakeFactory.cs">
       <Link>FakeFactory.cs</Link>
     </Compile>
-    <Compile Include="ConstraintFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,9 +49,6 @@
       <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

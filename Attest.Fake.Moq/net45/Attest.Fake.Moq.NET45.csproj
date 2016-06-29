@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Attest.Fake.Moq</RootNamespace>
     <AssemblyName>Attest.Fake.Moq</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\src\ConstraintFactory.cs">
+      <Link>ConstraintFactory.cs</Link>
+    </Compile>
     <Compile Include="..\src\Fake.cs">
       <Link>Fake.cs</Link>
     </Compile>
@@ -52,9 +56,6 @@
     </Compile>
     <Compile Include="..\src\FakeFactory.cs">
       <Link>FakeFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\src\It.cs">
-      <Link>It.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
