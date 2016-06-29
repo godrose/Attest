@@ -1,11 +1,9 @@
-﻿using Attest.Fake.Core;
-
-namespace Attest.Fake.Builders
+﻿namespace Attest.Fake.Core
 {
     /// <summary>
     /// Ambient context for <see cref="IConstraintFactory"/>
     /// </summary>
-    public class ConstraintFactoryContext
+    public static class ConstraintFactoryContext
     {
         private static IConstraintFactory _constraintFactory;
 

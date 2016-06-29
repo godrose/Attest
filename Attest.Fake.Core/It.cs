@@ -1,19 +1,22 @@
-using System;
+﻿using System;
 using System.Linq.Expressions;
 
 namespace Attest.Fake.Core
 {
     /// <summary>
-    /// Represents a factory for creating argument constraints.
+    /// Used for static access to the argument constraints.
     /// </summary>
-    public interface IConstraintFactory
+    public static class It
     {
         /// <summary>
         /// Creates a constraint that accepts any argument value.
         /// </summary>
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <returns></returns>
-        TValue IsAny<TValue>();
+        public static TValue IsAny<TValue>()
+        {
+            return ConstraintFactoryContext.Current.IsAny<TValue>();
+        }
 
         /// <summary>
         /// Creates a constraint that accepts only an argument that matches the specified predicate.
@@ -21,6 +24,9 @@ namespace Attest.Fake.Core
         /// <typeparam name="TValue">The type of the value.</typeparam>
         /// <param name="predicate">The predicate.</param>
         /// <returns></returns>
-        TValue Matches<TValue>(Expression<Func<TValue, bool>> predicate);
+        public static TValue Matches<TValue>(Expression<Func<TValue, bool>> predicate)
+        {
+            return ConstraintFactoryContext.Current.Matches(predicate);
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using Attest.Fake.Core;
-using Moq;
+using It = Moq.It;
 
 namespace Attest.Fake.Moq
 {

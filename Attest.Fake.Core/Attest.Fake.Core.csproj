@@ -37,6 +37,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConstraintFactoryContext.cs" />
+    <Compile Include="FakeFactoryContext.cs" />
     <Compile Include="IConstraintFactory.cs" />
     <Compile Include="IFake.cs" />
     <Compile Include="IFakeCallback.cs" />
@@ -44,6 +46,7 @@
     <Compile Include="IFakeFactory.cs" />
     <Compile Include="IHaveFake.cs" />
     <Compile Include="IMock.cs" />
+    <Compile Include="It.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

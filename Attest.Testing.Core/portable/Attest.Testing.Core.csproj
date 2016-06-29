@@ -84,8 +84,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Builders\portable\Attest.Fake.Builders.csproj">
-      <Project>{66fb1045-8d8a-4f9c-a75c-2ed2d8a61d6c}</Project>
+    <ProjectReference Include="..\..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
+      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
       <Name>Attest.Fake.Builders</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Attest.Fake.Core\Attest.Fake.Core.csproj">

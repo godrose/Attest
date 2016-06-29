@@ -1,4 +1,4 @@
-﻿using Attest.Fake.Builders;
+﻿using Attest.Fake.Core;
 using Attest.Fake.Moq;
 using NUnit.Framework;
 
