@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using Attest.Testing.Core;
+﻿using Attest.Testing.Core;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 
 namespace Attest.Testing.NUnit
 {
@@ -13,21 +13,21 @@ namespace Attest.Testing.NUnit
 
         public bool ContainsKey(string key)
         {
-            return Properties.Contains(key);
+            return Properties.ContainsKey(key);
         }
 
         public void Clear()
         {
-            Properties.Clear();
+            Properties.Keys.Clear();
         }
 
         public object this[string key]
         {
-            get { return Properties[key]; }
-            set { Properties[key] = value; }
+            get { return Properties.Get(key); }
+            set { Properties.Set(key, value); }
         }
 
-        private IDictionary Properties
+        private IPropertyBag Properties
         {
             get { return TestContext.CurrentContext.Test.Properties; }
         }
