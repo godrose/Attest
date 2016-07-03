@@ -1,4 +1,5 @@
-﻿using Attest.Fake.Core;
+﻿using System.Threading.Tasks;
+using Attest.Fake.Core;
 using Attest.Fake.Moq;
 using NUnit.Framework;
 
@@ -7,7 +8,7 @@ namespace Attest.Fake.Setup.Tests
     [TestFixture]    
     class AsyncProviderTests
     {
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void TestFixtureSetup()
         {
             FakeFactoryContext.Current = new FakeFactory();
@@ -15,7 +16,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithResultAndNoParametersReturnsCorrectValue()
+        public async Task AsyncProviderIsSetup_MethodCallWithResultAndNoParametersReturnsCorrectValue()
         {
             var items = new[]
             {
@@ -36,7 +37,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithResultAndOneParameterReturnsCorrectValue()
+        public async Task AsyncProviderIsSetup_MethodCallWithResultAndOneParameterReturnsCorrectValue()
         {
             var items = new[]
             {
@@ -57,7 +58,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]        
-        public async void AsyncProviderIsSetup_MethodCallWithResultAndTwoParametersReturnsCorrectValue()
+        public async Task AsyncProviderIsSetup_MethodCallWithResultAndTwoParametersReturnsCorrectValue()
         {
             var items = new[]
             {
@@ -78,7 +79,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithResultAndThreeParametersReturnsCorrectValue()
+        public async Task AsyncProviderIsSetup_MethodCallWithResultAndThreeParametersReturnsCorrectValue()
         {
             var items = new[]
             {
@@ -101,7 +102,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithResultAndFourParametersReturnsCorrectValue()
+        public async Task AsyncProviderIsSetup_MethodCallWithResultAndFourParametersReturnsCorrectValue()
         {
             var items = new[]
             {
@@ -124,7 +125,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithResultAndFiveParametersReturnsCorrectValue()
+        public async Task AsyncProviderIsSetup_MethodCallWithResultAndFiveParametersReturnsCorrectValue()
         {
             var items = new[]
             {
@@ -148,7 +149,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]        
-        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndNoParametersCompletesSuccessfully()
+        public async Task AsyncProviderIsSetup_MethodCallWithoutResultAndNoParametersCompletesSuccessfully()
         {           
             var builder = LoginProviderBuilder.CreateBuilder();            
 
@@ -160,7 +161,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndOneParameterCompletesSuccessfully()
+        public async Task AsyncProviderIsSetup_MethodCallWithoutResultAndOneParameterCompletesSuccessfully()
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
@@ -172,7 +173,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndTwoParametersCompletesSuccessfully()
+        public async Task AsyncProviderIsSetup_MethodCallWithoutResultAndTwoParametersCompletesSuccessfully()
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
@@ -184,7 +185,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndThreeParametersCompletesSuccessfully()
+        public async Task AsyncProviderIsSetup_MethodCallWithoutResultAndThreeParametersCompletesSuccessfully()
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
@@ -196,7 +197,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndFourParametersCompletesSuccessfully()
+        public async Task AsyncProviderIsSetup_MethodCallWithoutResultAndFourParametersCompletesSuccessfully()
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
@@ -208,7 +209,7 @@ namespace Attest.Fake.Setup.Tests
         }
 
         [Test]
-        public async void AsyncProviderIsSetup_MethodCallWithoutResultAndFiveParametersCompletesSuccessfully()
+        public async Task AsyncProviderIsSetup_MethodCallWithoutResultAndFiveParametersCompletesSuccessfully()
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
