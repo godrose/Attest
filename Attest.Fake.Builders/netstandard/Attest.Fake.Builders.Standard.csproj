@@ -10,9 +10,11 @@
     <RootNamespace>Attest.Fake.Builders</RootNamespace>
     <AssemblyName>Attest.Fake.Builders</AssemblyName>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,20 +28,31 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\portable\Release\Fake\</OutputPath>
+    <OutputPath>..\..\bin\netstandard\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\portable\Release\Fake\Attest.Fake.Builders.XML</DocumentationFile>
+    <DocumentationFile>..\..\bin\netstandard\Release\Attest.Fake.Builders.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakeBuilderBase.cs" />
-    <Compile Include="FakeProviderBase.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\..\Attest.Fake.Core\netstandard\Attest.Fake.Core.Standard.csproj">
+      <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
+      <Name>Attest.Fake.Core.Standard</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\FakeBuilderBase.cs">
+      <Link>FakeBuilderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\FakeProviderBase.cs">
+      <Link>FakeProviderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

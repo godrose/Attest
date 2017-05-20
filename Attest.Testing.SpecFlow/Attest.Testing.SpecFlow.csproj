@@ -56,10 +56,6 @@
     <Compile Include="StepsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
-      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
-      <Name>Attest.Fake.Builders</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj">
       <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
       <Name>Attest.Fake.Registration</Name>

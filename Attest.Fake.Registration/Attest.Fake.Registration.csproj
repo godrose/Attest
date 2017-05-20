@@ -47,12 +47,6 @@
     <Compile Include="RegistrationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
-      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
-      <Name>Attest.Fake.Builders</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
