@@ -34,6 +34,11 @@ namespace Attest.Testing.Core
             _registrator.RegisterTransient<TService, TImplementation>();
         }
 
+        public void RegisterTransient<TService, TImplementation>(Func<TImplementation> dependencyCreator) where TImplementation : class, TService
+        {
+            _registrator.RegisterTransient<TService, TImplementation>(dependencyCreator);
+        }
+
         /// <summary>
         /// Registers dependency in a transient lifetime style.
         /// </summary>
@@ -46,10 +51,50 @@ namespace Attest.Testing.Core
         /// <summary>
         /// Registers dependency in a transient lifetime style.
         /// </summary>
+        /// <typeparam name="TService">Type of dependency.</typeparam>
+        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        public void RegisterTransient<TService>(Func<TService> dependencyCreator) where TService : class
+        {
+            _registrator.RegisterTransient(dependencyCreator);
+        }
+
+        /// <summary>
+        /// Registers dependency in a transient lifetime style.
+        /// </summary>
         /// <param name="serviceType">Type of dependency declaration.</param><param name="implementationType">Type of dependency implementation.</param>
         public void RegisterTransient(Type serviceType, Type implementationType)
         {
             _registrator.RegisterTransient(serviceType, implementationType);
+        }
+
+        /// <summary>
+        /// Registers dependency in a transient lifetime style.
+        /// </summary>
+        /// <param name="serviceType">Type of dependency declaration.</param>
+        /// <param name="implementationType">Type of dependency implementation.</param>
+        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        public void RegisterTransient(Type serviceType, Type implementationType, Func<object> dependencyCreator)
+        {
+            _registrator.RegisterTransient(serviceType, implementationType, dependencyCreator);
+        }
+
+        /// <summary>
+        /// Registers dependency as a singleton.
+        /// </summary>
+        /// <typeparam name="TService">Type of dependency.</typeparam>
+        public void RegisterSingleton<TService>() where TService : class
+        {
+            _registrator.RegisterSingleton<TService>();
+        }
+
+        /// <summary>
+        /// Registers dependency as a singleton.
+        /// </summary>
+        /// <typeparam name="TService">Type of dependency.</typeparam>
+        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        public void RegisterSingleton<TService>(Func<TService> dependencyCreator) where TService : class
+        {
+            _registrator.RegisterSingleton(dependencyCreator);
         }
 
         /// <summary>
@@ -64,10 +109,32 @@ namespace Attest.Testing.Core
         /// <summary>
         /// Registers dependency as a singleton.
         /// </summary>
+        /// <typeparam name="TService">Type of dependency declaration.</typeparam>
+        /// <typeparam name="TImplementation">Type of dependency implementation.</typeparam>
+        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        public void RegisterSingleton<TService, TImplementation>(Func<TImplementation> dependencyCreator) where TImplementation : class, TService
+        {
+            _registrator.RegisterSingleton<TService, TImplementation>(dependencyCreator);
+        }
+
+        /// <summary>
+        /// Registers dependency as a singleton.
+        /// </summary>
         /// <param name="serviceType">Type of dependency declaration.</param><param name="implementationType">Type of dependency implementation.</param>
         public void RegisterSingleton(Type serviceType, Type implementationType)
         {
             _registrator.RegisterSingleton(serviceType, implementationType);
+        }
+
+        /// <summary>
+        /// Registers dependency as a singleton.
+        /// </summary>
+        /// <param name="serviceType">Type of dependency declaration.</param>
+        /// <param name="implementationType">Type of dependency implementation.</param>
+        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        public void RegisterSingleton(Type serviceType, Type implementationType, Func<object> dependencyCreator)
+        {
+            _registrator.RegisterSingleton(serviceType, implementationType, dependencyCreator);
         }
 
         /// <summary>
@@ -86,25 +153,7 @@ namespace Attest.Testing.Core
         public void RegisterInstance(Type dependencyType, object instance)
         {
             _registrator.RegisterInstance(dependencyType, instance);
-        }
-
-        /// <summary>
-        /// Registers the dependency via the handler.
-        /// </summary>
-        /// <param name="dependencyType">Type of the dependency.</param><param name="handler">The handler.</param>
-        public void RegisterHandler(Type dependencyType, Func<object> handler)
-        {
-            _registrator.RegisterHandler(dependencyType, handler);
-        }
-
-        /// <summary>
-        /// Registers the dependency via the handler.
-        /// </summary>
-        /// <param name="handler">The handler.</param>
-        public void RegisterHandler<TService>(Func<TService> handler) where TService : class
-        {
-            _registrator.RegisterHandler(handler);
-        }
+        }       
 
         /// <summary>
         /// Registers the collection of the dependencies.

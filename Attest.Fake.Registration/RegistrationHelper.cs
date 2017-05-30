@@ -52,7 +52,7 @@ namespace Attest.Fake.Registration
         /// <param name="builder">The service builder.</param>
         public static void RegisterBuilder<TService>(IIocContainerRegistrator containerRegistrator, FakeBuilderBase<TService> builder) where TService : class
         {
-            containerRegistrator.RegisterHandler(builder.GetService);            
+            containerRegistrator.RegisterTransient(builder.GetService);            
         }        
 
         /// <summary>
