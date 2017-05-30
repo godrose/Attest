@@ -112,6 +112,10 @@
     <Compile Include="ServiceSetupFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
+      <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
+      <Name>Attest.Fake.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj">
       <Project>{FB22E8C7-0F5F-4344-A2F6-EE824389568E}</Project>
       <Name>Attest.Fake.Setup.Contracts</Name>

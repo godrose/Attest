@@ -56,6 +56,14 @@
     <Compile Include="WarehouseProviderBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
+      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
+      <Name>Attest.Fake.Builders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
+      <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
+      <Name>Attest.Fake.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Moq\net45\Attest.Fake.Moq.NET45.csproj">
       <Project>{15C80FA7-3B9E-4CA7-9E46-6F0636535D9F}</Project>
       <Name>Attest.Fake.Moq.NET45</Name>

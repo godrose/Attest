@@ -48,6 +48,10 @@
     <Compile Include="SetupTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
+      <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
+      <Name>Attest.Fake.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.FakeItEasy\Attest.Fake.FakeItEasy.csproj">
       <Project>{ECDD22D2-021E-415E-9995-CA32A9032832}</Project>
       <Name>Attest.Fake.FakeItEasy</Name>
