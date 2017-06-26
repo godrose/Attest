@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="FakeBuilderBase.cs" />
     <Compile Include="FakeProviderBase.cs" />
+    <Compile Include="IBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

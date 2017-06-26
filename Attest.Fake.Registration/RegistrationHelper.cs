@@ -1,4 +1,5 @@
-﻿using Attest.Fake.Builders;
+﻿using System;
+using Attest.Fake.Builders;
 using Attest.Fake.Core;
 using Solid.Practices.IoC;
 
@@ -50,10 +51,21 @@ namespace Attest.Fake.Registration
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <param name="containerRegistrator">The ioc container registrator.</param>
         /// <param name="builder">The service builder.</param>
-        public static void RegisterBuilder<TService>(IIocContainerRegistrator containerRegistrator, FakeBuilderBase<TService> builder) where TService : class
+        public static void RegisterBuilder<TService>(IIocContainerRegistrator containerRegistrator, IBuilder<TService> builder) where TService : class
         {
-            containerRegistrator.RegisterTransient(builder.GetService);            
-        }        
+            containerRegistrator.RegisterTransient(builder.Build);            
+        }
+
+        /// <summary>
+        /// Builds service from its builder and registers it into the ioc container.
+        /// </summary>        
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
+        /// <param name="serviceType">The type of the service.</param>
+        /// <param name="builder">The service builder.</param>
+        public static void RegisterBuilder(IIocContainerRegistrator containerRegistrator,Type serviceType, IBuilder builder)
+        {
+            containerRegistrator.RegisterTransient(serviceType, serviceType, builder.Build);
+        }
 
         /// <summary>
         /// Registers service fake into the ioc container registrator.

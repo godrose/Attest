@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Attest.Fake.Builders;
 using Attest.Fake.Core;
 using Attest.Fake.Moq;
 using NUnit.Framework;
@@ -30,7 +31,7 @@ namespace Attest.Fake.Setup.Tests
             var builder = WarehouseProviderBuilder.CreateBuilder();
             builder.WithWarehouseItems(items);
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<IWarehouseProvider>)builder).Build();
             var actualItems = await provider.GetWarehouseItems();
 
             CollectionAssert.AreEqual(items, actualItems);
@@ -51,7 +52,7 @@ namespace Attest.Fake.Setup.Tests
             var builder = WarehouseProviderBuilder.CreateBuilder();
             builder.WithWarehouseItems(items);
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<IWarehouseProvider>)builder).Build();
             var actualItems = await provider.GetWarehouseItemsWithOneParameter("firstParameter");
 
             CollectionAssert.AreEqual(items, actualItems);
@@ -72,7 +73,7 @@ namespace Attest.Fake.Setup.Tests
             var builder = WarehouseProviderBuilder.CreateBuilder();
             builder.WithWarehouseItems(items);
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<IWarehouseProvider>)builder).Build();
             var actualItems = await provider.GetWarehouseItemsWithTwoParameters("firstParameter", "secondParameter");
 
             CollectionAssert.AreEqual(items, actualItems);
@@ -93,7 +94,7 @@ namespace Attest.Fake.Setup.Tests
             var builder = WarehouseProviderBuilder.CreateBuilder();
             builder.WithWarehouseItems(items);
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<IWarehouseProvider>)builder).Build();
             var actualItems =
                 await
                     provider.GetWarehouseItemsWithThreeParameters("firstParameter", "secondParameter", "thirdParameter");
@@ -116,7 +117,7 @@ namespace Attest.Fake.Setup.Tests
             var builder = WarehouseProviderBuilder.CreateBuilder();
             builder.WithWarehouseItems(items);
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<IWarehouseProvider>)builder).Build();
             var actualItems =
                 await
                     provider.GetWarehouseItemsWithFourParameters("firstParameter", "secondParameter", "thirdParameter", "fourthParameter");
@@ -139,7 +140,7 @@ namespace Attest.Fake.Setup.Tests
             var builder = WarehouseProviderBuilder.CreateBuilder();
             builder.WithWarehouseItems(items);
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<IWarehouseProvider>)builder).Build();
             var actualItems =
                 await
                     provider.GetWarehouseItemsWithFiveParameters("firstParameter", "secondParameter", "thirdParameter",
@@ -150,10 +151,10 @@ namespace Attest.Fake.Setup.Tests
 
         [Test]        
         public async Task AsyncProviderIsSetup_MethodCallWithoutResultAndNoParametersCompletesSuccessfully()
-        {           
+        {
             var builder = LoginProviderBuilder.CreateBuilder();            
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.Login();
 
             var isLoggedIn = provider.IsLoggedIn;
@@ -165,7 +166,7 @@ namespace Attest.Fake.Setup.Tests
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithOneParameter("parameter");
 
             var isLoggedIn = provider.IsLoggedIn;
@@ -177,7 +178,7 @@ namespace Attest.Fake.Setup.Tests
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithTwoParameters("firstParameter", "secondParameter");
 
             var isLoggedIn = provider.IsLoggedIn;
@@ -189,7 +190,7 @@ namespace Attest.Fake.Setup.Tests
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithThreeParameters("firstParameter", "secondParameter", "thirdParameter");
 
             var isLoggedIn = provider.IsLoggedIn;
@@ -201,7 +202,7 @@ namespace Attest.Fake.Setup.Tests
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithFourParameters("firstParameter", "secondParameter", "thirdParameter", "fourthParameter");
 
             var isLoggedIn = provider.IsLoggedIn;
@@ -213,7 +214,7 @@ namespace Attest.Fake.Setup.Tests
         {
             var builder = LoginProviderBuilder.CreateBuilder();
 
-            var provider = builder.GetService();
+            var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await
                 provider.LoginWithFiveParameters("firstParameter", "secondParameter", "thirdParameter",
                     "fourthParameter", "fifthParameter");

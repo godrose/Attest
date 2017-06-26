@@ -9,7 +9,7 @@ namespace Attest.Fake.Builders
     /// <typeparam name="TService">Type of service</typeparam>
     public abstract class FakeProviderBase<TBuilder, TService>
         where TService : class
-        where TBuilder : FakeBuilderBase<TService>
+        where TBuilder : IBuilder<TService>
     {
         /// <summary>
         /// Gets an instance of the faked service, after the builder setup is applied
@@ -21,7 +21,7 @@ namespace Attest.Fake.Builders
         {
             var builder = createBuilder();
             builder = setupBuilder(builder);
-            return builder.GetService();
+            return builder.Build();
         }
     }
 }

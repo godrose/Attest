@@ -8,7 +8,7 @@ namespace Attest.Fake.Builders
     /// Base class for service builders, supporting mock and fake capabilties
     /// </summary>
     /// <typeparam name="TService"></typeparam>    
-    public abstract class FakeBuilderBase<TService> : IMock<TService> where TService : class
+    public abstract class FakeBuilderBase<TService> : IMock<TService>, IBuilder, IBuilder<TService> where TService : class
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FakeBuilderBase{TService}"/> class.
@@ -46,7 +46,13 @@ namespace Attest.Fake.Builders
         /// Sets up the fake and gets the faked service.
         /// </summary>
         /// <returns></returns>
+        [Obsolete]
         public TService GetService()
+        {
+            return BuildImpl();
+        }
+
+        private TService BuildImpl()
         {
             SetupFake();
             return FakeService.Object;
@@ -83,5 +89,15 @@ namespace Attest.Fake.Builders
         /// Faked service.
         /// </summary>
         public TService Object => FakeService.Object;
+
+        object IBuilder.Build()
+        {
+            return BuildImpl();
+        }
+
+        TService IBuilder<TService>.Build()
+        {
+            return BuildImpl();
+        }
     }
 }
