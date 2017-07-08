@@ -7,8 +7,8 @@
     <ProjectGuid>{EF968162-F842-4302-9ADD-82694A3D6183}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Tests.Core</RootNamespace>
-    <AssemblyName>Attest.Tests.Core</AssemblyName>
+    <RootNamespace>Attest.Testing.Core</RootNamespace>
+    <AssemblyName>Attest.Testing.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -25,11 +25,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\net45\Release\Tests\</OutputPath>
+    <OutputPath>..\..\Bin\net45\Release\</OutputPath>
     <DefineConstants>TRACE;NET45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>0</WarningLevel>
-    <DocumentationFile>..\..\bin\net45\Release\Tests\Attest.Tests.Core.XML</DocumentationFile>
+    <DocumentationFile>..\..\Bin\net45\Release\Attest.Testing.Core.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Solid.Bootstrapping, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">

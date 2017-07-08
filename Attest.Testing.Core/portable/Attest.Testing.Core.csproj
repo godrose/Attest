@@ -26,11 +26,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\portable\Release\Testing\</OutputPath>
+    <OutputPath>..\..\Bin\portable\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\portable\Release\Testing\Attest.Testing.Core.XML</DocumentationFile>
+    <DocumentationFile>..\..\Bin\portable\Release\Attest.Testing.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\src\EndToEndTestsBase.cs">

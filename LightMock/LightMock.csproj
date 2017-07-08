@@ -28,11 +28,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\Fake\</OutputPath>
+    <OutputPath>..\Bin\portable\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\Fake\LightMock.XML</DocumentationFile>
+    <DocumentationFile>..\Bin\portable\Release\LightMock.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Arrangement.cs" />

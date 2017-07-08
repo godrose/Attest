@@ -24,11 +24,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\net45\Release\</OutputPath>
+    <OutputPath>..\Bin\net45\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\net45\Release\Attest.Fake.FakeItEasy.xml</DocumentationFile>
+    <DocumentationFile>..\Bin\net45\Release\Attest.Fake.FakeItEasy.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FakeItEasy, Version=3.4.2.0, Culture=neutral, PublicKeyToken=eff28e2146d5fd2c, processorArchitecture=MSIL">

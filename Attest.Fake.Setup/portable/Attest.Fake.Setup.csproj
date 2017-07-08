@@ -26,11 +26,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\Release\Fake\</OutputPath>
+    <OutputPath>..\..\Bin\portable\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\Fake\Attest.Fake.Setup.XML</DocumentationFile>
+    <DocumentationFile>..\..\Bin\portable\Release\Attest.Fake.Setup.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Solid.Patterns.Visitor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
