@@ -53,7 +53,7 @@
       <Name>Attest.Fake.Registration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Attest.Testing.Core\portable\Attest.Testing.Core.csproj">
-      <Project>{ca530825-0f66-41c4-9623-2b54985e1e46}</Project>
+      <Project>{CA530825-0F66-41C4-9623-2B54985E1E46}</Project>
       <Name>Attest.Testing.Core</Name>
     </ProjectReference>
   </ItemGroup>

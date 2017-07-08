@@ -41,11 +41,11 @@ namespace Attest.Testing.Core
                     _initializationParametersResolutionStrategy = new 
                         ContainerInitializationParametersPerRequestResolutionStrategy<TBootstrapper, TContainer>();
                     break;
-#if NET45
-                    case InitializationParametersResolutionStyle.PerFolder:
-                    _initializationParametersResolutionStrategy = new InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer>();
-                    break;
-#endif
+//#if NET45
+//                    case InitializationParametersResolutionStyle.PerFolder:
+//                    _initializationParametersResolutionStrategy = new InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer>();
+//                    break;
+//#endif
                     case InitializationParametersResolutionStyle.PerFixture:
                     break;
                     case InitializationParametersResolutionStyle.Singleton:
@@ -93,11 +93,11 @@ namespace Attest.Testing.Core
                     _initializationParametersResolutionStrategy =
                         new ContainerAdapterInitializationParametersPerRequestResolutionStrategy<TBootstrapper>();
                     break;
-#if NET45
-                    case InitializationParametersResolutionStyle.PerFolder:
-                    _initializationParametersResolutionStrategy = new InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer>();
-                    break;
-#endif
+//#if NET45
+//                    case InitializationParametersResolutionStyle.PerFolder:
+//                    _initializationParametersResolutionStrategy = new InitializationParametersPerFolderResolutionStrategy<TBootstrapper, TContainer>();
+//                    break;
+//#endif
                 case InitializationParametersResolutionStyle.PerFixture:
                     break;
                 case InitializationParametersResolutionStyle.Singleton:
