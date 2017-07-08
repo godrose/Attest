@@ -37,7 +37,7 @@ namespace Attest.Testing.NUnit
         /// </summary>
         /// <typeparam name="TService">The type of service.</typeparam>
         /// <param name="builder">The builder to be registered.</param>
-        protected void RegisterBuilder<TService>(FakeBuilderBase<TService> builder) where TService : class
+        protected void RegisterBuilder<TService>(IBuilder<TService> builder) where TService : class
         {
             RegistrationHelper.RegisterBuilder(GetRegistrator(), builder);
         }        

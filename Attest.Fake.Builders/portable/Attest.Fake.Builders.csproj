@@ -26,24 +26,30 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\portable\Release\Fake\</OutputPath>
+    <OutputPath>..\..\Bin\portable\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\portable\Release\Fake\Attest.Fake.Builders.XML</DocumentationFile>
+    <DocumentationFile>..\..\Bin\portable\Release\Attest.Fake.Builders.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakeBuilderBase.cs" />
-    <Compile Include="FakeProviderBase.cs" />
-    <Compile Include="IBuilder.cs" />
+    <Compile Include="..\src\FakeBuilderBase.cs">
+      <Link>FakeBuilderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\FakeProviderBase.cs">
+      <Link>FakeProviderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IBuilder.cs">
+      <Link>IBuilder.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
+    <ProjectReference Include="..\..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
       <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
