@@ -25,11 +25,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\net45\Release\Fake\</OutputPath>
+    <OutputPath>..\..\bin\net45\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\net45\Release\Fake\Attest.Fake.Moq.XML</DocumentationFile>
+    <DocumentationFile>..\..\bin\net45\Release\Attest.Fake.Moq.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core, Version=4.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
@@ -62,13 +62,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
-      <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
-      <Name>Attest.Fake.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
+      <Project>{32641df2-bb3b-4a3f-8777-251939f90c9a}</Project>
+      <Name>Attest.Fake.Core.NET45</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
