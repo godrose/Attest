@@ -63,7 +63,7 @@
       <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj">
+    <ProjectReference Include="..\Attest.Fake.Registration\portable\Attest.Fake.Registration.csproj">
       <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
       <Name>Attest.Fake.Registration</Name>
     </ProjectReference>
