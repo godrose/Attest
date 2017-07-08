@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB22E8C7-0F5F-4344-A2F6-EE824389568E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Attest.Fake.Setup.Contracts</RootNamespace>
+    <AssemblyName>Attest.Fake.Setup.Contracts</AssemblyName>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Fake\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\portable\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\bin\portable\Release\Attest.Fake.Setup.Contracts.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\IAddCallback.cs">
+      <Link>IAddCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IAddCallbackWithResult.cs">
+      <Link>IAddCallbackWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IAppendCallbacks.cs">
+      <Link>IAppendCallbacks.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ICallbackYielder.cs">
+      <Link>ICallbackYielder.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IGenerateMethodCallback.cs">
+      <Link>IGenerateMethodCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IGenerateMethodCallbackWithResult.cs">
+      <Link>IGenerateMethodCallbackWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveCallbacks.cs">
+      <Link>IHaveCallbacks.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveNoCallbacks.cs">
+      <Link>IHaveNoCallbacks.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveNoCallbacksWithResult.cs">
+      <Link>IHaveNoCallbacksWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveProgressMessages.cs">
+      <Link>IHaveProgressMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IMethodCallbacksContainer.cs">
+      <Link>IMethodCallbacksContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IMethodCallMetaData.cs">
+      <Link>IMethodCallMetaData.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IOperation.cs">
+      <Link>IOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IReturnResult.cs">
+      <Link>IReturnResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IThrowException.cs">
+      <Link>IThrowException.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
+      <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
+      <Name>Attest.Fake.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

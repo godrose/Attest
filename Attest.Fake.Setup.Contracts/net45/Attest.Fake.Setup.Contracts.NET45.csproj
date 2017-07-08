@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AE5A327F-2DB4-4FDC-A7F7-F5100A091A6F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Attest.Fake.Setup.Contracts</RootNamespace>
+    <AssemblyName>Attest.Fake.Setup.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\net45\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Bin\net45\Release\Attest.Fake.Setup.Contracts.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\IAddCallback.cs">
+      <Link>IAddCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IAddCallbackWithResult.cs">
+      <Link>IAddCallbackWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IAppendCallbacks.cs">
+      <Link>IAppendCallbacks.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ICallbackYielder.cs">
+      <Link>ICallbackYielder.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IGenerateMethodCallback.cs">
+      <Link>IGenerateMethodCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IGenerateMethodCallbackWithResult.cs">
+      <Link>IGenerateMethodCallbackWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveCallbacks.cs">
+      <Link>IHaveCallbacks.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveNoCallbacks.cs">
+      <Link>IHaveNoCallbacks.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveNoCallbacksWithResult.cs">
+      <Link>IHaveNoCallbacksWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveProgressMessages.cs">
+      <Link>IHaveProgressMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IMethodCallbacksContainer.cs">
+      <Link>IMethodCallbacksContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IMethodCallMetaData.cs">
+      <Link>IMethodCallMetaData.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IOperation.cs">
+      <Link>IOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IReturnResult.cs">
+      <Link>IReturnResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IThrowException.cs">
+      <Link>IThrowException.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

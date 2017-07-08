@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{451FA9C6-0A3A-4B70-A6A3-4216848A95F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Attest.Fake.Setup</RootNamespace>
+    <AssemblyName>Attest.Fake.Setup</AssemblyName>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Fake\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\Fake\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Release\Fake\Attest.Fake.Setup.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Solid.Patterns.Visitor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Patterns.Visitor.1.0.5\lib\portable-net45+wpa8+win8\Solid.Patterns.Visitor.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Practices.Scheduling, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Practices.Scheduling.1.0.7\lib\portable-net45+wpa8+win8\Solid.Practices.Scheduling.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\src\ActionWrapper.cs">
+      <Link>ActionWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ActionWrapperVisitor.cs">
+      <Link>ActionWrapperVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\AppendCallsVisitorHelper.cs">
+      <Link>AppendCallsVisitorHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\CallbackBuilder.cs">
+      <Link>CallbackBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IActionWrapper.cs">
+      <Link>Contracts\IActionWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IActionWrapperVisitor.cs">
+      <Link>Contracts\IActionWrapperVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IAppendMethods.cs">
+      <Link>Contracts\IAppendMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\ICanAddMethods.cs">
+      <Link>Contracts\ICanAddMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IHaveMethods.cs">
+      <Link>Contracts\IHaveMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IHaveNoMethods.cs">
+      <Link>Contracts\IHaveNoMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCall.cs">
+      <Link>Contracts\IMethodCall.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallAsync.cs">
+      <Link>Contracts\IMethodCallAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallback.cs">
+      <Link>Contracts\IMethodCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallbackTemplate.cs">
+      <Link>Contracts\IMethodCallbackTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallbackTemplateVisitor.cs">
+      <Link>Contracts\IMethodCallbackTemplateVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallbackVisitor.cs">
+      <Link>Contracts\IMethodCallbackVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallbackVisitorAsync.cs">
+      <Link>Contracts\IMethodCallbackVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallbackWithResult.cs">
+      <Link>Contracts\IMethodCallbackWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallbackWithResultVisitor.cs">
+      <Link>Contracts\IMethodCallbackWithResultVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallbackWithResultVisitorAsync.cs">
+      <Link>Contracts\IMethodCallbackWithResultVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallInitialTemplate.cs">
+      <Link>Contracts\IMethodCallInitialTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallInitialTemplateAsync.cs">
+      <Link>Contracts\IMethodCallInitialTemplateAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallVisitor.cs">
+      <Link>Contracts\IMethodCallVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallVisitorAsync.cs">
+      <Link>Contracts\IMethodCallVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallWithResult.cs">
+      <Link>Contracts\IMethodCallWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallWithResultAsync.cs">
+      <Link>Contracts\IMethodCallWithResultAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallWithResultInitialTemplate.cs">
+      <Link>Contracts\IMethodCallWithResultInitialTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallWithResultInitialTemplateAsync.cs">
+      <Link>Contracts\IMethodCallWithResultInitialTemplateAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallWithResultVisitor.cs">
+      <Link>Contracts\IMethodCallWithResultVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IMethodCallWithResultVisitorAsync.cs">
+      <Link>Contracts\IMethodCallWithResultVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IResultWrapper.cs">
+      <Link>Contracts\IResultWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IResultWrapperVisitor.cs">
+      <Link>Contracts\IResultWrapperVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IServiceCall.cs">
+      <Link>Contracts\IServiceCall.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Contracts\IServiceSetupFactory.cs">
+      <Link>Contracts\IServiceSetupFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\src\Exceptions.cs">
+      <Link>Exceptions.cs</Link>
+    </Compile>
+    <Compile Include="..\src\FakeOperation.cs">
+      <Link>FakeOperation.cs</Link>
+    </Compile>
+    <Compile Include="..\src\HaveCallbacksBase.cs">
+      <Link>HaveCallbacksBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\HaveDelegateWrapperBase.cs">
+      <Link>HaveDelegateWrapperBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCall.cs">
+      <Link>MethodCall.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallAsync.cs">
+      <Link>MethodCallAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallback.cs">
+      <Link>MethodCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbacksContainerBase.cs">
+      <Link>MethodCallbacksContainerBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackTemplate.cs">
+      <Link>MethodCallbackTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackVisitor.cs">
+      <Link>MethodCallbackVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackVisitorAsync.cs">
+      <Link>MethodCallbackVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackVisitorHelper.cs">
+      <Link>MethodCallbackVisitorHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackVisitorHelperAsync.cs">
+      <Link>MethodCallbackVisitorHelperAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackWithResult.cs">
+      <Link>MethodCallbackWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackWithResultTemplate.cs">
+      <Link>MethodCallbackWithResultTemplate.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackWithResultVisitor.cs">
+      <Link>MethodCallbackWithResultVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackWithResultVisitorAsync.cs">
+      <Link>MethodCallbackWithResultVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackWithResultVisitorHelper.cs">
+      <Link>MethodCallbackWithResultVisitorHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallbackWithResultVisitorHelperAsync.cs">
+      <Link>MethodCallbackWithResultVisitorHelperAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallVisitor.cs">
+      <Link>MethodCallVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallVisitorAsync.cs">
+      <Link>MethodCallVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallVisitorHelper.cs">
+      <Link>MethodCallVisitorHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallWithResult.cs">
+      <Link>MethodCallWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallWithResultAsync.cs">
+      <Link>MethodCallWithResultAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallWithResultVisitor.cs">
+      <Link>MethodCallWithResultVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\MethodCallWithResultVisitorAsync.cs">
+      <Link>MethodCallWithResultVisitorAsync.cs</Link>
+    </Compile>
+    <Compile Include="..\src\OnCompleteCallbackVisitor.cs">
+      <Link>OnCompleteCallbackVisitor.cs</Link>
+    </Compile>
+    <Compile Include="..\src\OperationInvoker.cs">
+      <Link>OperationInvoker.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ProgressMessages.cs">
+      <Link>ProgressMessages.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ResultWrapper.cs">
+      <Link>ResultWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ServiceCall.cs">
+      <Link>ServiceCall.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ServiceCallFactory.cs">
+      <Link>ServiceCallFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\src\ServiceSetupFactory.cs">
+      <Link>ServiceSetupFactory.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
+      <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
+      <Name>Attest.Fake.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Attest.Fake.Setup.Contracts\portable\Attest.Fake.Setup.Contracts.csproj">
+      <Project>{FB22E8C7-0F5F-4344-A2F6-EE824389568E}</Project>
+      <Name>Attest.Fake.Setup.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

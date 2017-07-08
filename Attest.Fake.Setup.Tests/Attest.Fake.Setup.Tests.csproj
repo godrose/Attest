@@ -68,13 +68,13 @@
       <Project>{15C80FA7-3B9E-4CA7-9E46-6F0636535D9F}</Project>
       <Name>Attest.Fake.Moq.NET45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj">
-      <Project>{fb22e8c7-0f5f-4344-a2f6-ee824389568e}</Project>
-      <Name>Attest.Fake.Setup.Contracts</Name>
+    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\net45\Attest.Fake.Setup.Contracts.NET45.csproj">
+      <Project>{AE5A327F-2DB4-4FDC-A7F7-F5100A091A6F}</Project>
+      <Name>Attest.Fake.Setup.Contracts.NET45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup\Attest.Fake.Setup.csproj">
-      <Project>{451FA9C6-0A3A-4B70-A6A3-4216848A95F4}</Project>
-      <Name>Attest.Fake.Setup</Name>
+    <ProjectReference Include="..\Attest.Fake.Setup\net45\Attest.Fake.Setup.NET45.csproj">
+      <Project>{27E2F492-CAE0-438E-BA10-ACD18E407519}</Project>
+      <Name>Attest.Fake.Setup.NET45</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
