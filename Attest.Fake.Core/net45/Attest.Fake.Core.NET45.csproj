@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1B4C2A6-D5AC-47ED-B0B8-9EBB3CC859EC}</ProjectGuid>
+    <ProjectGuid>{32641DF2-BB3B-4A3F-8777-251939F90C9A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Fake.FakeItEasy.Tests</RootNamespace>
-    <AssemblyName>Attest.Fake.FakeItEasy.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>Attest.Fake.Core</RootNamespace>
+    <AssemblyName>Attest.Fake.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -24,16 +24,13 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Bin\net45\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Bin\net45\Release\Attest.Fake.Core.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.4.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,29 +40,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILoginProvider.cs" />
+    <Compile Include="..\src\ConstraintFactoryContext.cs">
+      <Link>ConstraintFactoryContext.cs</Link>
+    </Compile>
+    <Compile Include="..\src\FakeFactoryContext.cs">
+      <Link>FakeFactoryContext.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IConstraintFactory.cs">
+      <Link>IConstraintFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IFake.cs">
+      <Link>IFake.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IFakeCallback.cs">
+      <Link>IFakeCallback.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IFakeCallbackWithResult.cs">
+      <Link>IFakeCallbackWithResult.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IFakeFactory.cs">
+      <Link>IFakeFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IHaveFake.cs">
+      <Link>IHaveFake.cs</Link>
+    </Compile>
+    <Compile Include="..\src\IMock.cs">
+      <Link>IMock.cs</Link>
+    </Compile>
+    <Compile Include="..\src\It.cs">
+      <Link>It.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetupTests.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
-      <Project>{32641df2-bb3b-4a3f-8777-251939f90c9a}</Project>
-      <Name>Attest.Fake.Core.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.FakeItEasy\Attest.Fake.FakeItEasy.csproj">
-      <Project>{ECDD22D2-021E-415E-9995-CA32A9032832}</Project>
-      <Name>Attest.Fake.FakeItEasy</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

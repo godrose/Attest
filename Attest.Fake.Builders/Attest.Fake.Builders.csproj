@@ -43,8 +43,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
-      <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
+    <ProjectReference Include="..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
+      <Project>{fbbea4d0-392a-4ab2-910d-65f18bf8c4dd}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
   </ItemGroup>
