@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\nestandard1.3\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\nestandard1.3\Release\netstandard1.3\Attest.Fake.Setup.xml</DocumentationFile>
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\Attest.Fake.Setup.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
