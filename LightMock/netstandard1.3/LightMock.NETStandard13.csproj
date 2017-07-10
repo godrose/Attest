@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>LightMock</AssemblyName>
+    <RootNamespace>LightMock</RootNamespace>
+    <Version>1.2.0</Version>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\nestandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\nestandard1.3\Release\netstandard1.3\LightMock.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Arrangement.cs" Link="Arrangement.cs" />
+    <Compile Include="..\ArrangementOfT.cs" Link="ArrangementOfT.cs" />
+    <Compile Include="..\ExpressionExtensions.cs" Link="ExpressionExtensions.cs" />
+    <Compile Include="..\ExpressionReflect\Evaluator.cs" Link="ExpressionReflect\Evaluator.cs" />
+    <Compile Include="..\ExpressionReflect\ExpressionExecutionException.cs" Link="ExpressionReflect\ExpressionExecutionException.cs" />
+    <Compile Include="..\ExpressionReflect\ExpressionExtensions.cs" Link="ExpressionReflect\ExpressionExtensions.cs" />
+    <Compile Include="..\ExpressionReflect\ExpressionReflectorExecutor.cs" Link="ExpressionReflect\ExpressionReflectorExecutor.cs" />
+    <Compile Include="..\ExpressionReflect\TypeExtensions.cs" Link="ExpressionReflect\TypeExtensions.cs" />
+    <Compile Include="..\IInvocationContext.cs" Link="IInvocationContext.cs" />
+    <Compile Include="..\IInvocationInfoBuilder.cs" Link="IInvocationInfoBuilder.cs" />
+    <Compile Include="..\IMatchInfoBuilder.cs" Link="IMatchInfoBuilder.cs" />
+    <Compile Include="..\IMockContext.cs" Link="IMockContext.cs" />
+    <Compile Include="..\InvocationInfo.cs" Link="InvocationInfo.cs" />
+    <Compile Include="..\InvocationInfoBuilder.cs" Link="InvocationInfoBuilder.cs" />
+    <Compile Include="..\Invoked.cs" Link="Invoked.cs" />
+    <Compile Include="..\MatchExpressionRewriter.cs" Link="MatchExpressionRewriter.cs" />
+    <Compile Include="..\MatchInfo.cs" Link="MatchInfo.cs" />
+    <Compile Include="..\MatchInfoBuilder.cs" Link="MatchInfoBuilder.cs" />
+    <Compile Include="..\MockContext.cs" Link="MockContext.cs" />
+    <Compile Include="..\PropertyArrangement.cs" Link="PropertyArrangement.cs" />
+    <Compile Include="..\The.cs" Link="The.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ExpressionReflect\" />
+  </ItemGroup>
+
+</Project>
