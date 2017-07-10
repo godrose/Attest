@@ -40,18 +40,6 @@
     <Compile Include="StepsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\portable\Attest.Fake.Builders.csproj">
-      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
-      <Name>Attest.Fake.Builders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
-      <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
-      <Name>Attest.Fake.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Registration\portable\Attest.Fake.Registration.csproj">
-      <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
-      <Name>Attest.Fake.Registration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Attest.Testing.Core\portable\Attest.Testing.Core.csproj">
       <Project>{CA530825-0F66-41C4-9623-2B54985E1E46}</Project>
       <Name>Attest.Testing.Core</Name>

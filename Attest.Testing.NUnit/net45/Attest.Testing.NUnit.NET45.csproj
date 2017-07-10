@@ -46,24 +46,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Builders\portable\Attest.Fake.Builders.csproj">
-      <Project>{66FB1045-8D8A-4F9C-A75C-2ED2D8A61D6C}</Project>
-      <Name>Attest.Fake.Builders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Attest.Fake.Core\portable\Attest.Fake.Core.csproj">
-      <Project>{FBBEA4D0-392A-4AB2-910D-65F18BF8C4DD}</Project>
-      <Name>Attest.Fake.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Attest.Fake.Registration\portable\Attest.Fake.Registration.csproj">
-      <Project>{50D72423-A8A7-48A6-B257-0B3370929F5F}</Project>
-      <Name>Attest.Fake.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Attest.Testing.Core\portable\Attest.Testing.Core.csproj">
-      <Project>{CA530825-0F66-41C4-9623-2B54985E1E46}</Project>
-      <Name>Attest.Testing.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
@@ -76,6 +58,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Builders\net45\Attest.Fake.Builders.NET45.csproj">
+      <Project>{0CCD8640-12AB-41BC-8210-33A60E88FB3F}</Project>
+      <Name>Attest.Fake.Builders.NET45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
+      <Project>{32641DF2-BB3B-4A3F-8777-251939F90C9A}</Project>
+      <Name>Attest.Fake.Core.NET45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Attest.Fake.Registration\net45\Attest.Fake.Registration.NET45.csproj">
+      <Project>{7A87299F-487F-4E9E-A754-0B4F721C18BD}</Project>
+      <Name>Attest.Fake.Registration.NET45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Attest.Testing.Core\net45\Attest.Testing.Core.NET45.csproj">
+      <Project>{EF968162-F842-4302-9ADD-82694A3D6183}</Project>
+      <Name>Attest.Testing.Core.NET45</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
