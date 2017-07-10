@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <Version>1.2.0</Version>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
+    <AssemblyName>Attest.Fake.Core</AssemblyName>
+    <RootNamespace>Attest.Fake.Core</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\nestandard1.3\Release\</OutputPath>
+    <DocumentationFile>..\..\Bin\nestandard1.3\Release\netstandard1.3\Attest.Fake.Core.NETStandard13.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\ConstraintFactoryContext.cs" Link="ConstraintFactoryContext.cs" />
+    <Compile Include="..\src\FakeFactoryContext.cs" Link="FakeFactoryContext.cs" />
+    <Compile Include="..\src\IConstraintFactory.cs" Link="IConstraintFactory.cs" />
+    <Compile Include="..\src\IFake.cs" Link="IFake.cs" />
+    <Compile Include="..\src\IFakeCallback.cs" Link="IFakeCallback.cs" />
+    <Compile Include="..\src\IFakeCallbackWithResult.cs" Link="IFakeCallbackWithResult.cs" />
+    <Compile Include="..\src\IFakeFactory.cs" Link="IFakeFactory.cs" />
+    <Compile Include="..\src\IHaveFake.cs" Link="IHaveFake.cs" />
+    <Compile Include="..\src\IMock.cs" Link="IMock.cs" />
+    <Compile Include="..\src\It.cs" Link="It.cs" />
+  </ItemGroup>
+
+</Project>
