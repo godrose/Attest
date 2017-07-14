@@ -11,7 +11,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\.xml</DocumentationFile>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\Attest.Fake.Registration.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
