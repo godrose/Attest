@@ -1,7 +1,7 @@
-﻿using Attest.Fake.Builders;
-using Attest.Fake.Core;
+﻿using Attest.Fake.Core;
 using Attest.Fake.Registration;
 using Attest.Testing.Core;
+using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 
 namespace Attest.Testing.NUnit

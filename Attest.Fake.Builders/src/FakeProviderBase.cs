@@ -1,4 +1,5 @@
 ﻿using System;
+using Solid.Patterns.Builder;
 
 namespace Attest.Fake.Builders
 {

@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc2" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="1.2.0-rc2" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
-using Attest.Fake.Builders;
 using Attest.Fake.Core;
+using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 
 namespace Attest.Fake.Registration
