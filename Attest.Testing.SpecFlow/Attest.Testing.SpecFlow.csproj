@@ -35,7 +35,7 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Bootstrapping, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Bootstrapping.1.2.0-rc2\lib\net45\Solid.Bootstrapping.dll</HintPath>
+      <HintPath>..\packages\Solid.Bootstrapping.1.2.0-rc3\lib\net45\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Patterns.Builder, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Solid.Patterns.Builder.1.2.0-rc2\lib\net45\Solid.Patterns.Builder.dll</HintPath>

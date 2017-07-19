@@ -16,7 +16,7 @@ namespace Attest.Testing.xUnit
         IRootObjectFactory,
         IDisposable 
         where TRootObject : class 
-        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
+        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
         private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
 

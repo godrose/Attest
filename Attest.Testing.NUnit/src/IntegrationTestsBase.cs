@@ -14,7 +14,7 @@ namespace Attest.Testing.NUnit
     public abstract class IntegrationTestsBase<TRootObject, TBootstrapper> : 
         IntegrationTestsBase<TRootObject>, IRootObjectFactory 
         where TRootObject : class 
-        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
+        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
         private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
 

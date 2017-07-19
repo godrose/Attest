@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.7.1" />
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc2" />
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc3" />
     <PackageReference Include="Solid.Patterns.Builder" Version="1.2.0-rc2" />
   </ItemGroup>
 

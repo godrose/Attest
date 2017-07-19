@@ -53,7 +53,7 @@ namespace Attest.Testing.Core
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     public static class ContainerAdapterInitializationParametersManagerStore<TBootstrapper>
-        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
+        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
         private static Dictionary
             <InitializationParametersResolutionStyle, IInitializationParametersManager<IocContainerProxy>>
