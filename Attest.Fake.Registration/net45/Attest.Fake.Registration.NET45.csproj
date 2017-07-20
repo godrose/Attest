@@ -52,10 +52,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Builders\net45\Attest.Fake.Builders.NET45.csproj">
-      <Project>{0ccd8640-12ab-41bc-8210-33a60e88fb3f}</Project>
-      <Name>Attest.Fake.Builders.NET45</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
       <Project>{32641df2-bb3b-4a3f-8777-251939f90c9a}</Project>
       <Name>Attest.Fake.Core.NET45</Name>
