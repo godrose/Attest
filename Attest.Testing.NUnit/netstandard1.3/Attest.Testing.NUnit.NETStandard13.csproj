@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Builders\netstandard1.3\Attest.Fake.Builders.NETStandard13.csproj" />
     <ProjectReference Include="..\..\Attest.Fake.Core\netstandard1.3\Attest.Fake.Core.NETStandard13.csproj" />
     <ProjectReference Include="..\..\Attest.Testing.Core\netstandard1.3\Attest.Testing.Core.NETStandard13.csproj" />
   </ItemGroup>
