@@ -16,63 +16,63 @@ namespace Attest.Testing.Core
         public abstract class WithContainer : TestsBase
         {
             /// <summary>
-            /// The ioc container registrator.
+            /// The dependency registrator.
             /// </summary>
-            protected IIocContainerRegistrator Registrator;
+            protected IDependencyRegistrator Registrator;
 
             /// <summary>
-            /// The ioc container resolver.
+            /// The dependency resolver.
             /// </summary>
-            protected IIocContainerResolver Resolver;
+            protected IDependencyResolver Resolver;
 
             /// <summary>
-            /// Registers service instance into the ioc container adapter.
+            /// Registers dependency instance.
             /// </summary>
-            /// <typeparam name="TService">Type of service.</typeparam>
+            /// <typeparam name="TDependency">Type of service.</typeparam>
             /// <param name="instance">Instance to be registered.</param>
-            protected void RegisterInstance<TService>(TService instance) where TService : class
+            protected void RegisterInstance<TDependency>(TDependency instance) where TDependency : class
             {
                 RegistrationHelper.RegisterInstance(Registrator, instance);
             }
 
             /// <summary>
-            /// Builds service from its builder and registers it into the ioc container adapter.
+            /// Constructs the dependency using the suppiled builder and registers it in transient mode.
             /// </summary>
-            /// <typeparam name="TService">Type of service.</typeparam>
+            /// <typeparam name="TDependency">The type of the dependency.</typeparam>
             /// <param name="builder">Builder to be registered.</param>
-            protected void RegisterBuilder<TService>(IBuilder<TService> builder) where TService : class
+            protected void RegisterBuilder<TDependency>(IBuilder<TDependency> builder) where TDependency : class
             {
                 RegistrationHelper.RegisterBuilder(Registrator, builder);
             }
 
             /// <summary>
-            /// Registers service fake into the ioc container adapter.
+            /// Registers dependency using fake wrapper.
             /// </summary>
-            /// <typeparam name="TService">Type of service.</typeparam>
-            /// <param name="fake">Fake to be registered.</param>
-            protected void RegisterFake<TService>(IFake<TService> fake) where TService : class
+            /// <typeparam name="TDependency">The type of the dependency.</typeparam>
+            /// <param name="fake">Fake wrapper.</param>
+            protected void RegisterFake<TDependency>(IFake<TDependency> fake) where TDependency : class
             {
                 RegistrationHelper.RegisterFake(Registrator, fake);
             }
 
             /// <summary>
-            /// Registers service mock into the ioc container adapter.
+            /// Registers dependency using mock wrapper.
             /// </summary>
-            /// <typeparam name="TService">Type of service.</typeparam>
-            /// <param name="fake">Mock to be registered.</param>
-            protected void RegisterMock<TService>(IMock<TService> fake) where TService : class
+            /// <typeparam name="TDependency">The type of the dependency.</typeparam>
+            /// <param name="mock">Mock wrapper.</param>
+            protected void RegisterMock<TDependency>(IMock<TDependency> mock) where TDependency : class
             {                
-                RegistrationHelper.RegisterMock(Registrator, fake);
+                RegistrationHelper.RegisterMock(Registrator, mock);
             }
 
             /// <summary>
-            /// Resolves service from the ioc container adapter.
+            /// Resolves dependency.
             /// </summary>
-            /// <typeparam name="TService">Type of service.</typeparam>
-            /// <returns>Resolved service.</returns>
-            protected TService Resolve<TService>() where TService : class
+            /// <typeparam name="TDepedency">The type of the dependency.</typeparam>
+            /// <returns>The resolved dependency.</returns>
+            protected TDepedency Resolve<TDepedency>() where TDepedency : class
             {
-                return RegistrationHelper.Resolve<TService>(Resolver);
+                return RegistrationHelper.Resolve<TDepedency>(Resolver);
             }
         }
 

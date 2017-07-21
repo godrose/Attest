@@ -72,7 +72,7 @@ namespace Attest.Testing.NUnit
             return ScenarioHelper.Get<TStepsProvider>();
         }
 
-        private static IIocContainerRegistrator GetRegistrator()
+        private static IDependencyRegistrator GetRegistrator()
         {
             return ScenarioHelper.Registrator;
         }
