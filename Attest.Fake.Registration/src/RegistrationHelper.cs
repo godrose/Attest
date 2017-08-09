@@ -1,108 +1,110 @@
 ﻿using System;
-using Attest.Fake.Builders;
 using Attest.Fake.Core;
+using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 
 namespace Attest.Fake.Registration
 {
     /// <summary>
-    /// Provides utilities for registering different types of fake objects into IoC containerRegistrator
+    /// Provides utilities for registering different types of fake objects into an IoC container.
     /// </summary>
     public static class RegistrationHelper
     {
         /// <summary>
-        /// Registers service instance into the ioc container.
+        /// Registers the dependency instance.
         /// </summary>
-        /// <typeparam name="TService">The type of service.</typeparam>
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        /// <param name="instance">The instance to be registered.</param>        
-        public static void RegisterInstance<TService>(IIocContainerRegistrator containerRegistrator, TService instance) where TService : class
+        /// <typeparam name="TDependency">The type of the dependency.</typeparam>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        /// <param name="instance">The dependency instance.</param>        
+        public static void RegisterInstance<TDependency>(IDependencyRegistrator dependencyRegistrator, TDependency instance) where TDependency : class
         {
-            containerRegistrator.RegisterInstance(instance);
+            dependencyRegistrator.RegisterInstance(instance);
         }
 
         /// <summary>
-        /// Registers the service in the singleton mode.
+        /// Registers the dependency as singleton.
         /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
+        /// <typeparam name="TDependency">The type of the dependency.</typeparam>
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        public static void RegisterSingleton<TService, TImplementation>(IIocContainerRegistrator containerRegistrator)
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        public static void RegisterSingleton<TDependency, TImplementation>(IDependencyRegistrator dependencyRegistrator)
+            where TImplementation : class, TDependency
+        {
+            dependencyRegistrator.RegisterSingleton<TDependency, TImplementation>();
+        }
+
+        /// <summary>
+        /// Registers the dependency in the transient mode.
+        /// </summary>
+        /// <typeparam name="TService">The type of the dependency.</typeparam>
+        /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        public static void RegisterTransient<TService, TImplementation>(IDependencyRegistrator dependencyRegistrator)
             where TImplementation : class, TService
         {
-            containerRegistrator.RegisterSingleton<TService, TImplementation>();
+            dependencyRegistrator.RegisterTransient<TService, TImplementation>();
         }
 
         /// <summary>
-        /// Registers the service in the transient mode.
+        /// Constructs the dependency using the suppiled builder and registers it in transient mode.
         /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        public static void RegisterTransient<TService, TImplementation>(IIocContainerRegistrator containerRegistrator)
-            where TImplementation : class, TService
+        /// <typeparam name="TDependency">The type of the service.</typeparam>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        /// <param name="builder">The dependency builder.</param>
+        public static void RegisterBuilder<TDependency>(IDependencyRegistrator dependencyRegistrator, IBuilder<TDependency> builder) 
+            where TDependency : class
         {
-            containerRegistrator.RegisterTransient<TService, TImplementation>();
+            dependencyRegistrator.RegisterTransient(builder.Build);            
         }
 
         /// <summary>
-        /// Builds service from its builder and registers it into the ioc container.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        /// <param name="builder">The service builder.</param>
-        public static void RegisterBuilder<TService>(IIocContainerRegistrator containerRegistrator, IBuilder<TService> builder) where TService : class
-        {
-            containerRegistrator.RegisterTransient(builder.Build);            
-        }
-
-        /// <summary>
-        /// Builds service from its builder and registers it into the ioc container.
+        /// Constructs the dependency using the suppiled builder and registers it in transient mode.
         /// </summary>        
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        /// <param name="serviceType">The type of the service.</param>
-        /// <param name="builder">The service builder.</param>
-        public static void RegisterBuilder(IIocContainerRegistrator containerRegistrator,Type serviceType, IBuilder builder)
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        /// <param name="dependencyType">The type of the dependency.</param>
+        /// <param name="builder">The dependency builder.</param>
+        public static void RegisterBuilder(IDependencyRegistrator dependencyRegistrator,Type dependencyType, IBuilder builder)
         {
-            containerRegistrator.RegisterTransient(serviceType, serviceType, builder.Build);
+            dependencyRegistrator.RegisterTransient(dependencyType, dependencyType, builder.Build);
         }
 
         /// <summary>
-        /// Registers service fake into the ioc container registrator.
+        /// Registers the dependency as instance.
         /// </summary>
-        /// <typeparam name="TService">The type of service.</typeparam>
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        /// <param name="fake">The fake to be registered.</param>
-        public static void RegisterFake<TService>(IIocContainerRegistrator containerRegistrator, IFake<TService> fake) where TService : class
+        /// <typeparam name="TDependency">The type of dependency.</typeparam>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        /// <param name="fake">The fake wrapper of the dependency.</param>
+        public static void RegisterFake<TDependency>(IDependencyRegistrator dependencyRegistrator, IFake<TDependency> fake) 
+            where TDependency : class
         {
-            RegisterHaveFake(containerRegistrator, fake);
+            RegisterHaveFake(dependencyRegistrator, fake);
         }
 
         /// <summary>
-        /// Registers service mock into the ioc container registrator.
+        /// Registers dependency as instance.
         /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        /// <param name="mock">The mock to be registered.</param>
-        public static void RegisterMock<TService>(IIocContainerRegistrator containerRegistrator, IMock<TService> mock) where TService : class
+        /// <typeparam name="TDependency">The type of the dependency.</typeparam>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        /// <param name="mock">The mock wrapper of the dependency.</param>
+        public static void RegisterMock<TDependency>(IDependencyRegistrator dependencyRegistrator, IMock<TDependency> mock) where TDependency : class
         {
-            RegisterHaveFake(containerRegistrator, mock);
+            RegisterHaveFake(dependencyRegistrator, mock);
         }
 
-        private static void RegisterHaveFake<TService>(IIocContainerRegistrator containerRegistrator, IHaveFake<TService> fake) where TService : class
+        private static void RegisterHaveFake<TDependency>(IDependencyRegistrator dependencyRegistrator, IHaveFake<TDependency> fake) where TDependency : class
         {
-            RegisterInstance(containerRegistrator, fake.Object);
+            RegisterInstance(dependencyRegistrator, fake.Object);
         }
 
         /// <summary>
-        /// Resolves service from the ioc container.
+        /// Resolves dependency.
         /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <param name="containerResolver">The ioc container resolver.</param>
-        /// <returns>The resolved service.</returns>
-        public static TService Resolve<TService>(IIocContainerResolver containerResolver) where TService : class
+        /// <typeparam name="TDependency">The type of the dependency.</typeparam>
+        /// <param name="dependencyResolver">The dependency resolver.</param>
+        /// <returns>The resolved dependency.</returns>
+        public static TDependency Resolve<TDependency>(IDependencyResolver dependencyResolver) where TDependency : class
         {
-            return containerResolver.Resolve<TService>();
+            return dependencyResolver.Resolve<TDependency>();
         }
     }
 }

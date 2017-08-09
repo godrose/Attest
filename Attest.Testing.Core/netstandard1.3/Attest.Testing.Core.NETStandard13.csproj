@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>Attest.Testing.Core</AssemblyName>
+    <RootNamespace>Attest.Testing.Core</RootNamespace>
+    <Version>1.4.0</Version>
+    <AssemblyVersion>1.4.0</AssemblyVersion>
+    <FileVersion>1.4.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\Attest.Testing.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\EndToEndTestsBase.cs" Link="EndToEndTestsBase.cs" />
+    <Compile Include="..\src\InitializationParameters.cs" Link="InitializationParameters.cs" />
+    <Compile Include="..\src\InitializationParametersManager.cs" Link="InitializationParametersManager.cs" />
+    <Compile Include="..\src\InitializationParametersManagerStore.cs" Link="InitializationParametersManagerStore.cs" />
+    <Compile Include="..\src\InitializationParametersPerRequestResolutionStrategy.cs" Link="InitializationParametersPerRequestResolutionStrategy.cs" />
+    <Compile Include="..\src\InitializationParametersPredefinedResolutionStrategy.cs" Link="InitializationParametersPredefinedResolutionStrategy.cs" />
+    <Compile Include="..\src\InitializationParametersResolutionStrategy.cs" Link="InitializationParametersResolutionStrategy.cs" />
+    <Compile Include="..\src\InitializationParametersResolutionStyle.cs" Link="InitializationParametersResolutionStyle.cs" />
+    <Compile Include="..\src\IntegrationTestsBase.cs" Link="IntegrationTestsBase.cs" />
+    <Compile Include="..\src\IocContainerProxy.cs" Link="IocContainerProxy.cs" />
+    <Compile Include="..\src\IRootObjectFactory.cs" Link="IRootObjectFactory.cs" />
+    <Compile Include="..\src\IScenario.cs" Link="IScenario.cs" />
+    <Compile Include="..\src\IStepsProvider.cs" Link="IStepsProvider.cs" />
+    <Compile Include="..\src\ScenarioContext.cs" Link="ScenarioContext.cs" />
+    <Compile Include="..\src\ScenarioHelper.cs" Link="ScenarioHelper.cs" />
+    <Compile Include="..\src\TestsBase.cs" Link="TestsBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc4" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="1.2.0-rc2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Registration\netstandard1.3\Attest.Fake.Registration.NETStandard13.csproj" />
+  </ItemGroup>
+
+</Project>

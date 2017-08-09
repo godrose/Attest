@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;
+using Solid.Patterns.Builder;
 using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup
@@ -635,7 +636,7 @@ namespace Attest.Fake.Setup
         /// Sets the service calls and returns the fake object as its proxy.
         /// </summary>
         /// <returns></returns>
-        IFake<TService> IServiceCall<TService>.Build()
+        IFake<TService> IBuilder<IFake<TService>>.Build()
         {
             return _serviceSetupFactory.SetupFakeService(_fake, 
                 MethodCalls.OfType<IMethodCall<TService>>(), 

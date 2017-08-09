@@ -14,7 +14,7 @@ namespace Attest.Testing.Core
 
     class ContainerAdapterInitializationParametersPerRequestResolutionStrategy<TBootstrapper> :
         ContainerAdapterInitializationParametersResolutionStrategyBase<TBootstrapper>
-        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
+        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
         public override IInitializationParameters<IocContainerProxy> GetInitializationParameters()
         {

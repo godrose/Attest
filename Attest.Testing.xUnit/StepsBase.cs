@@ -1,7 +1,7 @@
-﻿using Attest.Fake.Builders;
-using Attest.Fake.Core;
+﻿using Attest.Fake.Core;
 using Attest.Fake.Registration;
 using Attest.Testing.Core;
+using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 
 namespace Attest.Testing.xUnit
@@ -72,7 +72,7 @@ namespace Attest.Testing.xUnit
             return ScenarioHelper.Get<TStepsProvider>();
         }
 
-        private static IIocContainerRegistrator GetRegistrator()
+        private static IDependencyRegistrator GetRegistrator()
         {
             return ScenarioHelper.Registrator;
         }

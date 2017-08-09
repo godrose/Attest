@@ -76,7 +76,7 @@ namespace Attest.Testing.Core
     /// <seealso cref="Core.IInitializationParametersManager{TContainer}" />
     class ContainerAdapterInitializationParametersManager<TBootstrapper> :
         IInitializationParametersManager<IocContainerProxy>
-        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
+        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
         private readonly IInitializationParametersResolutionStrategy<IocContainerProxy> _initializationParametersResolutionStrategy;
 

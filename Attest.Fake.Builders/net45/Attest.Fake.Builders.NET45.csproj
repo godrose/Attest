@@ -31,6 +31,9 @@
     <DocumentationFile>..\..\Bin\net45\Release\Attest.Fake.Builders.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Solid.Patterns.Builder, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Patterns.Builder.1.2.0-rc2\lib\net45\Solid.Patterns.Builder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,9 +49,6 @@
     <Compile Include="..\src\FakeProviderBase.cs">
       <Link>FakeProviderBase.cs</Link>
     </Compile>
-    <Compile Include="..\src\IBuilder.cs">
-      <Link>IBuilder.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +56,9 @@
       <Project>{32641DF2-BB3B-4A3F-8777-251939F90C9A}</Project>
       <Name>Attest.Fake.Core.NET45</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

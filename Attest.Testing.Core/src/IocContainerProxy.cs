@@ -11,15 +11,15 @@ namespace Attest.Testing.Core
     /// </summary>   
     public class IocContainerProxy : IIocContainer
     {
-        private readonly IIocContainerRegistrator _registrator;
-        private readonly IIocContainerResolver _resolver;
+        private readonly IDependencyRegistrator _registrator;
+        private readonly IDependencyResolver _resolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IocContainerProxy"/> class.
         /// </summary>
         /// <param name="registrator">The registrator.</param>
         /// <param name="resolver">The resolver.</param>
-        public IocContainerProxy(IIocContainerRegistrator registrator, IIocContainerResolver resolver)
+        public IocContainerProxy(IDependencyRegistrator registrator, IDependencyResolver resolver)
         {
             _registrator = registrator;
             _resolver = resolver;

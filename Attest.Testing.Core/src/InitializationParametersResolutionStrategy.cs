@@ -36,7 +36,7 @@ namespace Attest.Testing.Core
 
     abstract class ContainerAdapterInitializationParametersResolutionStrategyBase<TBootstrapper>
         : InitializationParametersResolutionStrategyBase<TBootstrapper, IocContainerProxy>
-        where TBootstrapper : IInitializable, IHaveContainerRegistrator, IHaveContainerResolver, new()
+        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
         protected override IocContainerProxy RetrieveContainer(TBootstrapper bootstrapper)
         {

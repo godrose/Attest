@@ -152,14 +152,14 @@ namespace Attest.Testing.Core
         }        
 
         /// <summary>
-        /// Gets the ioc container registrator.
+        /// Gets the dependency registrator.
         /// </summary>
         /// <value>
         /// The ioc container adapter.
         /// </value>
-        public static IIocContainerRegistrator Registrator
+        public static IDependencyRegistrator Registrator
         {
-            get { return (IIocContainerRegistrator)ScenarioContext.Current[RegistratorKey]; }
+            get { return (IDependencyRegistrator)ScenarioContext.Current[RegistratorKey]; }
         }
 
         /// <summary>

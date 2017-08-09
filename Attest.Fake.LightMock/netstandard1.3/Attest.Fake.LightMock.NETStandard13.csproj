@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>Attest.Fake.LightMock</AssemblyName>
+    <RootNamespace>Attest.Fake.LightMock</RootNamespace>
+    <Version>1.2.0</Version>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <FileVersion>1.2.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\Attest.Fake.LightMock.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\ConstraintFactory.cs" Link="ConstraintFactory.cs" />
+    <Compile Include="..\src\Fake.cs" Link="Fake.cs" />
+    <Compile Include="..\src\FakeCallback.cs" Link="FakeCallback.cs" />
+    <Compile Include="..\src\FakeFactoryHelper.cs" Link="FakeFactoryHelper.cs" />
+    <Compile Include="..\src\It.cs" Link="It.cs" />
+    <Compile Include="..\src\ProviderProxyBase.cs" Link="ProviderProxyBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Core\netstandard1.3\Attest.Fake.Core.NETStandard13.csproj" />
+    <ProjectReference Include="..\..\LightMock\netstandard1.3\LightMock.NETStandard13.csproj" />
+  </ItemGroup>
+
+</Project>

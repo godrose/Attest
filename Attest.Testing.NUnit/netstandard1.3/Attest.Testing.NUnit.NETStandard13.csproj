@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>Attest.Testing.NUnit</AssemblyName>
+    <RootNamespace>Attest.Testing.NUnit</RootNamespace>
+    <Version>1.4.0</Version>
+    <AssemblyVersion>1.4.0</AssemblyVersion>
+    <FileVersion>1.4.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\Attest.Testing.NUnit.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\EndToEndTestsBase.cs" Link="EndToEndTestsBase.cs" />
+    <Compile Include="..\src\IntegrationTestsBase.cs" Link="IntegrationTestsBase.cs" />
+    <Compile Include="..\src\Scenario.cs" Link="Scenario.cs" />
+    <Compile Include="..\src\StepsBase.cs" Link="StepsBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.7.1" />
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc4" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="1.2.0-rc2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Core\netstandard1.3\Attest.Fake.Core.NETStandard13.csproj" />
+    <ProjectReference Include="..\..\Attest.Testing.Core\netstandard1.3\Attest.Testing.Core.NETStandard13.csproj" />
+  </ItemGroup>
+
+</Project>

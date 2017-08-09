@@ -1,5 +1,6 @@
 using System;
 using Attest.Fake.Setup.Contracts;
+using Solid.Patterns.Builder;
 using Solid.Patterns.Visitor;
 
 namespace Attest.Fake.Setup
@@ -10,7 +11,7 @@ namespace Attest.Fake.Setup
     /// <typeparam name="TActionWrapper">Type of action wrapper</typeparam>
     /// <typeparam name="TCallbackTemplate">Type of callback template</typeparam>
     /// <typeparam name="TCallback">Type of callback</typeparam>
-    public class CallbackBuilder<TActionWrapper, TCallbackTemplate, TCallback>
+    public class CallbackBuilder<TActionWrapper, TCallbackTemplate, TCallback> : IBuilder<TCallback>
         where TActionWrapper : IAcceptor<IActionWrapperVisitor, TCallbackTemplate>, new()
         where TCallbackTemplate : IAcceptor<IMethodCallbackTemplateVisitor, TCallback>
     {

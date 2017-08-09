@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using Attest.Fake.Core;
+using Solid.Patterns.Builder;
 
 namespace Attest.Fake.Builders
 {
@@ -40,17 +41,7 @@ namespace Attest.Fake.Builders
         /// <summary>
         /// Override this method to substitute method calls in the faked service.
         /// </summary>
-        protected abstract void SetupFake();
-
-        /// <summary>
-        /// Sets up the fake and gets the faked service.
-        /// </summary>
-        /// <returns></returns>
-        [Obsolete]
-        public TService GetService()
-        {
-            return BuildImpl();
-        }
+        protected abstract void SetupFake();        
 
         private TService BuildImpl()
         {

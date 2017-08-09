@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using Attest.Fake.Builders;
 using Attest.Fake.Core;
 using Attest.Fake.Moq;
 using NUnit.Framework;
+using Solid.Patterns.Builder;
 
 namespace Attest.Fake.Setup.Tests
 {
