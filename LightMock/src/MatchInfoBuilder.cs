@@ -38,7 +38,7 @@ namespace LightMock
     /// A class that is capable of building a set of 
     /// lambda expressions used to match argument values.    
     /// </summary>
-    internal class MatchInfoBuilder : ExpressionVisitor, IMatchInfoBuilder
+    public class MatchInfoBuilder : ExpressionVisitor, IMatchInfoBuilder
     {
         private readonly Collection<LambdaExpression> lambdaExpressions = new Collection<LambdaExpression>();
 

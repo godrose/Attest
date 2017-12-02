@@ -63,9 +63,9 @@
     <Compile Include="TheTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LightMock\LightMock.csproj">
-      <Project>{0a43e6a5-9f69-4691-b275-e72642565099}</Project>
-      <Name>LightMock</Name>
+    <ProjectReference Include="..\LightMock\netstandard1.3\LightMock.NETStandard13.csproj">
+      <Project>{14ae1cfe-3133-47ef-9d98-8cab09af3f73}</Project>
+      <Name>LightMock.NETStandard13</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

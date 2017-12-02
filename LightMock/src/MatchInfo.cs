@@ -34,7 +34,7 @@ namespace LightMock
     /// <summary>
     /// A class that is used to match a method invocation.
     /// </summary>
-    internal class MatchInfo
+    public class MatchInfo
     {
         private readonly MemberInfo member;
 

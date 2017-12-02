@@ -1,18 +1,13 @@
-﻿namespace LightMock.Tests
-{
-    using System;
-    using System.Linq.Expressions;
+﻿using System;
+using System.Linq.Expressions;
+using FluentAssertions;
+using Xunit;
 
-   
-
-    using LightMock;
-
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    [TestClass]
+namespace LightMock.Tests
+{         
     public class MatchInfoTests
     {
-        [TestMethod]
+        [Fact]
         public void Matches_SameValue_ReturnsTrue()
         {
             var predicateBuilder = new MatchInfoBuilder();
@@ -22,12 +17,12 @@
 
             var invocationInfo = new InvocationInfo(
                 typeof(IFoo).GetMethod("Execute", new Type[] { typeof(string) }),
-                new[] { "SomeValue" });            
+                new[] { "SomeValue" });
 
-            Assert.IsTrue(matchInfo.Matches(invocationInfo));
+            matchInfo.Matches(invocationInfo).Should().BeTrue();            
         }
 
-        [TestMethod]
+        [Fact]
         public void Matches_DifferentValue_ReturnsFalse()
         {
             var predicateBuilder = new MatchInfoBuilder();
@@ -39,10 +34,10 @@
                 typeof(IFoo).GetMethod("Execute", new Type[] { typeof(string) }),
                 new[] { "AnotherValue" });
 
-            Assert.IsFalse(matchInfo.Matches(invocationInfo));
+            matchInfo.Matches(invocationInfo).Should().BeFalse();
         }
 
-        [TestMethod]
+        [Fact]
         public void Matches_SameValueDifferentMethod_ReturnsFalse()
         {
             var predicateBuilder = new MatchInfoBuilder();
@@ -54,10 +49,10 @@
                 typeof(IBar).GetMethod("Execute", new Type[] { typeof(string) }),
                 new[] { "SomeValue" });
 
-            Assert.IsFalse(matchInfo.Matches(invocationInfo));
+            matchInfo.Matches(invocationInfo).Should().BeTrue();
         }
 
-        [TestMethod]
+        [Fact]
         public void Matches_ArgumentCountMismatch_ReturnsFalse()
         {
             var predicateBuilder = new MatchInfoBuilder();
@@ -69,7 +64,7 @@
                 typeof(IFoo).GetMethod("Execute", new Type[] { typeof(string) }),
                 new[] { "SomeValue", "AnotherValue" });
 
-            Assert.IsFalse(matchInfo.Matches(invocationInfo));
+            matchInfo.Matches(invocationInfo).Should().BeTrue();
         }
     }
 }

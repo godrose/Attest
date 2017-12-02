@@ -1,11 +1,11 @@
-﻿namespace LightMock.Tests
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Xunit;
 
-    [TestClass]
+namespace LightMock.Tests
+{       
     public class ArrangementTests
     {
-        [TestMethod]
+        [Fact]
         public void Arrange_CallBackNoArguments_InvokesCallback()
         {
             var mockContext = new MockContext<IFoo>();
@@ -13,10 +13,10 @@
             bool isCalled = false;
             mockContext.Arrange(f => f.Execute()).Callback(() => isCalled = true);
             fooMock.Execute();
-            Assert.IsTrue(isCalled);
+            isCalled.Should().BeTrue();            
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_CallBackOneArgument_InvokesCallback()
         {
             var mockContext = new MockContext<IFoo>();
@@ -24,10 +24,10 @@
             int callBackResult = 0;
             mockContext.Arrange(f => f.Execute(The<int>.IsAnyValue)).Callback<int>(s => callBackResult = s);
             fooMock.Execute(1);
-            Assert.AreEqual(1, callBackResult);
+            callBackResult.Should().Be(1);            
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_CallBackTwoArguments_InvokesCallback()
         {
             var mockContext = new MockContext<IFoo>();
@@ -41,11 +41,11 @@
                     secondResult = i1;
                 });
             fooMock.Execute(1, 2);
-            Assert.AreEqual(1, firstResult);
-            Assert.AreEqual(2, secondResult);
+            firstResult.Should().Be(1);
+            secondResult.Should().Be(2);            
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_CallBackThreeArguments_InvokesCallback()
         {
             var mockContext = new MockContext<IFoo>();
@@ -64,12 +64,12 @@
 
             fooMock.Execute(1, 2, 3);
 
-            Assert.AreEqual(1, firstResult);
-            Assert.AreEqual(2, secondResult);
-            Assert.AreEqual(3, thirdResult);
+            firstResult.Should().Be(1);
+            secondResult.Should().Be(2);
+            thirdResult.Should().Be(3);
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_CallBackFourArguments_InvokesCallback()
         {
             var mockContext = new MockContext<IFoo>();
@@ -91,13 +91,13 @@
 
             fooMock.Execute(1, 2, 3, 4);
 
-            Assert.AreEqual(1, firstResult);
-            Assert.AreEqual(2, secondResult);
-            Assert.AreEqual(3, thirdResult);
-            Assert.AreEqual(4, fourthResult);
+            firstResult.Should().Be(1);
+            secondResult.Should().Be(2);
+            thirdResult.Should().Be(3);
+            fourthResult.Should().Be(4);
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_CallBackFiveArguments_InvokesCallback()
         {
             var mockContext = new MockContext<IFoo>();
@@ -121,14 +121,14 @@
 
             fooMock.Execute(1, 2, 3, 4, 5);
 
-            Assert.AreEqual(1, firstResult);
-            Assert.AreEqual(2, secondResult);
-            Assert.AreEqual(3, thirdResult);
-            Assert.AreEqual(4, fourthResult);
-            Assert.AreEqual(5, fifthResult);
+            firstResult.Should().Be(1);
+            secondResult.Should().Be(2);
+            thirdResult.Should().Be(3);
+            fourthResult.Should().Be(4);
+            fifthResult.Should().Be(5);
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_CallBackSixArguments_InvokesCallback()
         {
             var mockContext = new MockContext<IFoo>();
@@ -154,15 +154,15 @@
 
             fooMock.Execute(1, 2, 3, 4, 5, 6);
 
-            Assert.AreEqual(1, firstResult);
-            Assert.AreEqual(2, secondResult);
-            Assert.AreEqual(3, thirdResult);
-            Assert.AreEqual(4, fourthResult);
-            Assert.AreEqual(5, fifthResult);
-            Assert.AreEqual(6, sixthResult);
+            firstResult.Should().Be(1);
+            secondResult.Should().Be(2);
+            thirdResult.Should().Be(3);
+            fourthResult.Should().Be(4);
+            fifthResult.Should().Be(5);
+            sixthResult.Should().Be(6);
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_ReturnsWithNoArguments_InvokesGetResult()
         {
             var mockContext = new MockContext<IFoo>();
@@ -170,20 +170,20 @@
 
             mockContext.Arrange(f => f.Execute()).Returns(() => "This");
             var result = fooMock.Execute();
-            Assert.AreEqual("This", result);
+            result.Should().Be("This");            
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_ReturnsWithOneArgument_InvokesGetResult()
         {
             var mockContext = new MockContext<IFoo>();
             var fooMock = new FooMock(mockContext);
             mockContext.Arrange(f => f.Execute(The<string>.IsAnyValue)).Returns<string>(a => "This" + a);
             var result = fooMock.Execute(" is");
-            Assert.AreEqual("This is", result);
+            result.Should().Be("This is");            
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_ReturnsWithTwoArguments_InvokesGetResult()
         {
             var mockContext = new MockContext<IFoo>();
@@ -191,10 +191,10 @@
             mockContext.Arrange(f => f.Execute(The<string>.IsAnyValue, The<string>.IsAnyValue))
                 .Returns<string, string>((a, b) => "This" + a + b);
             var result = fooMock.Execute(" is", " really");
-            Assert.AreEqual("This is really", result);
+            result.Should().Be("This is really");            
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_ReturnsWithThreeArguments_InvokesGetResult()
         {
             var mockContext = new MockContext<IFoo>();
@@ -203,10 +203,10 @@
                 .Returns<string, string, string>((a, b, c) => "This" + a + b + c);
 
             var result = fooMock.Execute(" is", " really", " cool");
-            Assert.AreEqual("This is really cool", result);
+            result.Should().Be("This is really cool");            
         }
 
-        [TestMethod]
+        [Fact]
         public void Arrange_ReturnsWithFourArguments_InvokesGetResult()
         {
             var mockContext = new MockContext<IFoo>();
@@ -222,7 +222,7 @@
             fooMock.Execute(1, 2, 3, 4);
 
             var result = fooMock.Execute(" is", " really", " cool", "!");
-            Assert.AreEqual("This is really cool!", result);
+            result.Should().Be("This is really cool!");
         }
     }
 }
