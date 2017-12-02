@@ -87,6 +87,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightMock.NETStandard20", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.LightMock.NETStandard20", "Attest.Fake.LightMock\netstandard2.0\Attest.Fake.LightMock.NETStandard20.csproj", "{0FAFF374-DE27-4DED-BF1B-9E6D5CEE260C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.Moq.NETStandard20", "Attest.Fake.Moq\netstandard2.0\Attest.Fake.Moq.NETStandard20.csproj", "{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -595,6 +597,22 @@ Global
 		{0FAFF374-DE27-4DED-BF1B-9E6D5CEE260C}.Release|x64.Build.0 = Release|Any CPU
 		{0FAFF374-DE27-4DED-BF1B-9E6D5CEE260C}.Release|x86.ActiveCfg = Release|Any CPU
 		{0FAFF374-DE27-4DED-BF1B-9E6D5CEE260C}.Release|x86.Build.0 = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|ARM.Build.0 = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|x64.Build.0 = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Debug|x86.Build.0 = Debug|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|ARM.ActiveCfg = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|ARM.Build.0 = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|x64.ActiveCfg = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|x64.Build.0 = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|x86.ActiveCfg = Release|Any CPU
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -639,6 +657,7 @@ Global
 		{60783FF1-6BCE-492E-BC52-89E788BCA8A1} = {1BC046E4-9C1A-4B20-9B59-4549188C4C0B}
 		{074C9B28-EE3F-477C-AC97-982CCA483740} = {70132CC2-D91B-4BE7-95F0-F0B2FE832BC8}
 		{0FAFF374-DE27-4DED-BF1B-9E6D5CEE260C} = {70132CC2-D91B-4BE7-95F0-F0B2FE832BC8}
+		{45AA67AE-3FB2-431C-B5C7-C3742FD54FAF} = {EDB89ECD-9F33-4E30-9AD0-EE7028833026}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBDF03CC-C1B9-4613-BA06-AC9D5A65618A}
