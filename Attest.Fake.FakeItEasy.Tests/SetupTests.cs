@@ -1,11 +1,10 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 
 namespace Attest.Fake.FakeItEasy.Tests
 {
     public class SetupTests
     {
-        [Test]
-        [Ignore("Fails")]
+        [Fact(Skip = "Isn't implemented")]        
         public void WhenFakedObjectIsCalledOnce_ThenFakeSingleCallVerificationSucceeds()
         {
             var fakeFactory = new FakeFactory();
