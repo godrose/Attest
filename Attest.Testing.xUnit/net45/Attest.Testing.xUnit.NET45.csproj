@@ -31,14 +31,14 @@
     <DocumentationFile>..\..\Bin\net45\Release\Attest.Testing.xUnit.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Solid.Bootstrapping, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.0\lib\net45\Solid.Bootstrapping.dll</HintPath>
+    <Reference Include="Solid.Bootstrapping, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.1-rc2\lib\net45\Solid.Bootstrapping.dll</HintPath>
     </Reference>
-    <Reference Include="Solid.Patterns.Builder, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Patterns.Builder.1.2.0\lib\net45\Solid.Patterns.Builder.dll</HintPath>
+    <Reference Include="Solid.Patterns.Builder, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Patterns.Builder.1.2.1-rc1\lib\net45\Solid.Patterns.Builder.dll</HintPath>
     </Reference>
-    <Reference Include="Solid.Practices.IoC, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.IoC.1.2.0\lib\net45\Solid.Practices.IoC.dll</HintPath>
+    <Reference Include="Solid.Practices.IoC, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Practices.IoC.1.2.1-rc1\lib\net45\Solid.Practices.IoC.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,9 +64,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
       <Project>{32641DF2-BB3B-4A3F-8777-251939F90C9A}</Project>
       <Name>Attest.Fake.Core.NET45</Name>
@@ -79,6 +76,9 @@
       <Project>{EF968162-F842-4302-9ADD-82694A3D6183}</Project>
       <Name>Attest.Testing.Core.NET45</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
