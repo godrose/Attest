@@ -31,8 +31,8 @@
     <DocumentationFile>..\..\Bin\net45\Release\Attest.Fake.Builders.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Solid.Patterns.Builder, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Patterns.Builder.1.2.0\lib\net45\Solid.Patterns.Builder.dll</HintPath>
+    <Reference Include="Solid.Patterns.Builder, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Patterns.Builder.1.2.1-rc1\lib\net45\Solid.Patterns.Builder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

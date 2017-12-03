@@ -1,17 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Attest.Testing.xUnit</AssemblyName>
     <RootNamespace>Attest.Testing.xUnit</RootNamespace>
-    <Version>1.4.0</Version>
-    <AssemblyVersion>1.4.0</AssemblyVersion>
-    <FileVersion>1.4.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\Attest.Testing.xUnit.xml</DocumentationFile>
+    <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard2.0\Release\netstandard2.0\Attest.Testing.xUnit.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,11 +20,10 @@
 
   <ItemGroup>
     <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc2" />
-    <PackageReference Include="Solid.Patterns.Builder" Version="1.2.1-rc1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Testing.Core\netstandard1.3\Attest.Testing.Core.NETStandard13.csproj" />
+    <ProjectReference Include="..\..\Attest.Testing.Core\netstandard2.0\Attest.Testing.Core.NETStandard20.csproj" />
   </ItemGroup>
 
 </Project>
