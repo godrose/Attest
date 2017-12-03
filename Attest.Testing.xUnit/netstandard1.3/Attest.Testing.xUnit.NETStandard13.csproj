@@ -4,9 +4,9 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>Attest.Testing.xUnit</AssemblyName>
     <RootNamespace>Attest.Testing.xUnit</RootNamespace>
-    <Version>1.4.0</Version>
-    <AssemblyVersion>1.4.0</AssemblyVersion>
-    <FileVersion>1.4.0</FileVersion>
+    <Version>1.4.1</Version>
+    <AssemblyVersion>1.4.1</AssemblyVersion>
+    <FileVersion>1.4.1</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

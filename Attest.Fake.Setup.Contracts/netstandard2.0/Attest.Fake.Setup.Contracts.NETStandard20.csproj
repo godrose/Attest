@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Attest.Fake.Setup.Contracts</AssemblyName>
     <RootNamespace>Attest.Fake.Setup.Contracts</RootNamespace>
+    <Version>1.2.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
