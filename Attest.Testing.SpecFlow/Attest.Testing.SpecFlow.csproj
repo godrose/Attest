@@ -43,8 +43,8 @@
     <Reference Include="Solid.Practices.IoC, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Solid.Practices.IoC.1.2.1-rc1\lib\net45\Solid.Practices.IoC.dll</HintPath>
     </Reference>
-    <Reference Include="Solid.Practices.Scheduling, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Scheduling.1.2.0\lib\net45\Solid.Practices.Scheduling.dll</HintPath>
+    <Reference Include="Solid.Practices.Scheduling, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Solid.Practices.Scheduling.1.2.1-rc1\lib\net45\Solid.Practices.Scheduling.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
