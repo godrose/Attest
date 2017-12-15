@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Attest.Fake.FakeItEasy.Tests</RootNamespace>
     <AssemblyName>Attest.Fake.FakeItEasy.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,17 +57,17 @@
     <Compile Include="SetupTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
-      <Project>{32641df2-bb3b-4a3f-8777-251939f90c9a}</Project>
-      <Name>Attest.Fake.Core.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.FakeItEasy\Attest.Fake.FakeItEasy.NET45.csproj">
-      <Project>{ECDD22D2-021E-415E-9995-CA32A9032832}</Project>
-      <Name>Attest.Fake.FakeItEasy.NET45</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj">
+      <Project>{dd9ec332-7b5a-4ab7-89a0-79ffef9ea501}</Project>
+      <Name>Attest.Fake.Core.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.FakeItEasy\netstandard2.0\Attest.Fake.FakeItEasy.NETStandard20.csproj">
+      <Project>{5d9b8258-4afd-40d5-895f-679926e297e4}</Project>
+      <Name>Attest.Fake.FakeItEasy.NETStandard20</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Attest.Testing.SpecFlow</RootNamespace>
     <AssemblyName>Attest.Testing.SpecFlow</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,11 +25,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Bin\net45\Release\</OutputPath>
+    <OutputPath>..\Bin\net461\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Bin\net45\Release\Attest.Testing.SpecFlow.xml</DocumentationFile>
+    <DocumentationFile>..\Bin\net461\Release\Attest.Testing.SpecFlow.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -60,22 +61,24 @@
     <Compile Include="StepsBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
-      <Project>{32641DF2-BB3B-4A3F-8777-251939F90C9A}</Project>
-      <Name>Attest.Fake.Core.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Registration\net45\Attest.Fake.Registration.NET45.csproj">
-      <Project>{7A87299F-487F-4E9E-A754-0B4F721C18BD}</Project>
-      <Name>Attest.Fake.Registration.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Testing.Core\net45\Attest.Testing.Core.NET45.csproj">
-      <Project>{ef968162-f842-4302-9add-82694a3d6183}</Project>
-      <Name>Attest.Testing.Core.NET45</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj">
+      <Project>{dd9ec332-7b5a-4ab7-89a0-79ffef9ea501}</Project>
+      <Name>Attest.Fake.Core.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Registration\netstandard2.0\Attest.Fake.Registration.NETStandard20.csproj">
+      <Project>{7f2f561f-2461-47e0-85a9-7d1502fdb686}</Project>
+      <Name>Attest.Fake.Registration.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Testing.Core\netstandard2.0\Attest.Testing.Core.NETStandard20.csproj">
+      <Project>{cf70abe4-fc39-487e-a6fd-d2502b92158e}</Project>
+      <Name>Attest.Testing.Core.NETStandard20</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

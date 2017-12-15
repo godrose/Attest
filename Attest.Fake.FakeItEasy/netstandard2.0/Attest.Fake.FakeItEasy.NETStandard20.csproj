@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Attest.Fake.FakeItEasy</AssemblyName>
+    <RootNamespace>Attest.Fake.FakeItEasy</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\ConstraintFactory.cs" Link="ConstraintFactory.cs" />
+    <Compile Include="..\Fake.cs" Link="Fake.cs" />
+    <Compile Include="..\FakeCallback.cs" Link="FakeCallback.cs" />
+    <Compile Include="..\FakeFactory.cs" Link="FakeFactory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FakeItEasy" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj" />
+  </ItemGroup>
+
+</Project>

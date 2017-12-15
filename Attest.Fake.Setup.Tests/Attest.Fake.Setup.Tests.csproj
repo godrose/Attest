@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Attest.Fake.Setup.Tests</RootNamespace>
     <AssemblyName>Attest.Fake.Setup.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,29 +60,29 @@
     <Compile Include="WarehouseProviderBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\net45\Attest.Fake.Builders.NET45.csproj">
-      <Project>{0CCD8640-12AB-41BC-8210-33A60E88FB3F}</Project>
-      <Name>Attest.Fake.Builders.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Core\net45\Attest.Fake.Core.NET45.csproj">
-      <Project>{32641DF2-BB3B-4A3F-8777-251939F90C9A}</Project>
-      <Name>Attest.Fake.Core.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Moq\net45\Attest.Fake.Moq.NET45.csproj">
-      <Project>{15C80FA7-3B9E-4CA7-9E46-6F0636535D9F}</Project>
-      <Name>Attest.Fake.Moq.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\net45\Attest.Fake.Setup.Contracts.NET45.csproj">
-      <Project>{AE5A327F-2DB4-4FDC-A7F7-F5100A091A6F}</Project>
-      <Name>Attest.Fake.Setup.Contracts.NET45</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup\net45\Attest.Fake.Setup.NET45.csproj">
-      <Project>{27E2F492-CAE0-438E-BA10-ACD18E407519}</Project>
-      <Name>Attest.Fake.Setup.NET45</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Attest.Fake.Builders\netstandard2.0\Attest.Fake.Builders.NETStandard20.csproj">
+      <Project>{6882b111-458a-48bd-a9db-e29855058741}</Project>
+      <Name>Attest.Fake.Builders.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj">
+      <Project>{dd9ec332-7b5a-4ab7-89a0-79ffef9ea501}</Project>
+      <Name>Attest.Fake.Core.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Moq\netstandard2.0\Attest.Fake.Moq.NETStandard20.csproj">
+      <Project>{45aa67ae-3fb2-431c-b5c7-c3742fd54faf}</Project>
+      <Name>Attest.Fake.Moq.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\netstandard2.0\Attest.Fake.Setup.Contracts.NETStandard20.csproj">
+      <Project>{54216b1d-fe05-40bd-be33-817d183be109}</Project>
+      <Name>Attest.Fake.Setup.Contracts.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Setup\netstandard2.0\Attest.Fake.Setup.NETStandard20.csproj">
+      <Project>{4f2ed1c2-3525-403d-9134-f7868bead15e}</Project>
+      <Name>Attest.Fake.Setup.NETStandard20</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
