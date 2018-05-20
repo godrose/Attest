@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc3" />
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc4" />
   </ItemGroup>
 
   <ItemGroup>
