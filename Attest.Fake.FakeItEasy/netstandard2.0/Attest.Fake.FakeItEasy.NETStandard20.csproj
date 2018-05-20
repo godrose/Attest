@@ -1,9 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Attest.Fake.FakeItEasy</AssemblyName>
     <RootNamespace>Attest.Fake.FakeItEasy</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard2.0\Release\Attest.Fake.FakeItEasy.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
