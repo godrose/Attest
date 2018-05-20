@@ -29,7 +29,7 @@ namespace Attest.Testing.NUnit
 
         private IPropertyBag Properties
         {
-            get { return TestContext.CurrentContext.Test.Properties; }
+            get { return TestContext.CurrentContext.Test.Properties as IPropertyBag; }
         }
     }
 }

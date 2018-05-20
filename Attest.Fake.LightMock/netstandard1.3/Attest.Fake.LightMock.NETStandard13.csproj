@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Attest.Fake.Core\netstandard1.3\Attest.Fake.Core.NETStandard13.csproj" />
-    <ProjectReference Include="..\..\LightMock\netstandard1.3\LightMock.NETStandard13.csproj" />
   </ItemGroup>
 
 </Project>
