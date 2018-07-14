@@ -15,7 +15,7 @@ namespace Attest.Testing.SpecFlow
         IntegrationTestsBase<TRootObject>,
         IRootObjectFactory
         where TRootObject : class 
-        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
+        where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()   
     {
         private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
 
@@ -97,6 +97,27 @@ namespace Attest.Testing.SpecFlow
         object IRootObjectFactory.CreateRootObject()
         {
             return CreateRootObjectTyped();
+        }
+
+        /// <summary>
+        /// Represents integration tests base with explicit root object creation (usually after [Arrange] step)
+        /// </summary>
+        public class WithExplicitRootObjectCreation : IntegrationTestsBase<TRootObject, TBootstrapper>
+        {
+            /// <inheritdoc />            
+            [BeforeScenario]            
+            protected override void Setup()
+            {
+                SetupOverride();
+            }
+
+            /// <summary>
+            /// Initializes Root object and IoC-related objects.
+            /// </summary>
+            public void InitializeRootObject()
+            {
+                SetupCore();
+            }
         }
     }
 
