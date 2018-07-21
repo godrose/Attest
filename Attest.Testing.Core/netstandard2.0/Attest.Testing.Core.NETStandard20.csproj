@@ -18,6 +18,11 @@
 
   <ItemGroup>
     <Compile Include="..\src\EndToEndTestsBase.cs" Link="EndToEndTestsBase.cs" />
+    <Compile Include="..\src\FakeData\BuilderRegistrationService.cs" Link="FakeData\BuilderRegistrationService.cs" />
+    <Compile Include="..\src\FakeData\Modularity\ProvidersModuleBase.cs" Link="FakeData\Modularity\ProvidersModuleBase.cs" />
+    <Compile Include="..\src\FakeData\Shared\BuildersCollection.cs" Link="FakeData\Shared\BuildersCollection.cs" />
+    <Compile Include="..\src\FakeData\Shared\BuildersCollectionContext.cs" Link="FakeData\Shared\BuildersCollectionContext.cs" />
+    <Compile Include="..\src\FakeData\Shared\BuildersCollectionStorage.cs" Link="FakeData\Shared\BuildersCollectionStorage.cs" />
     <Compile Include="..\src\InitializationParameters.cs" Link="InitializationParameters.cs" />
     <Compile Include="..\src\InitializationParametersManager.cs" Link="InitializationParametersManager.cs" />
     <Compile Include="..\src\InitializationParametersManagerStore.cs" Link="InitializationParametersManagerStore.cs" />
@@ -37,14 +42,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc4" />
     <PackageReference Include="Solid.Patterns.Builder" Version="1.2.1-rc3" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc8" />
     <PackageReference Include="Solid.Practices.Modularity" Version="1.2.1-rc3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj" />
     <ProjectReference Include="..\..\Attest.Fake.Registration\netstandard2.0\Attest.Fake.Registration.NETStandard20.csproj" />
+    <ProjectReference Include="..\..\Attest.Testing.Contracts\netstandard2.0\Attest.Testing.Contracts.NETStandard20.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FakeData\Modularity\" />
+    <Folder Include="FakeData\Shared\" />
   </ItemGroup>
 
 </Project>
