@@ -11,7 +11,7 @@ namespace Attest.Testing.Core.Tests
         IEnumerable<string> GetUsers();
     }
 
-    class AnotherProviderBuilder : FakeBuilderBase<IAnotherProvider>
+    class AnotherProviderBuilder : Fake.Builders.FakeBuilderBase<IAnotherProvider>.WithInitialSetup
     {
         private readonly Dictionary<string, string> _users = new Dictionary<string, string>();
 

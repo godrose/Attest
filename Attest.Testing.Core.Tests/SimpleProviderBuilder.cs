@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Attest.Fake.Builders;
 using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Testing.Core.Tests
@@ -15,7 +16,7 @@ namespace Attest.Testing.Core.Tests
         IEnumerable<SimpleItemDto> GetSimpleItems();
     }
 
-    class SimpleProviderBuilder : FakeBuilderBase<ISimpleProvider>
+    class SimpleProviderBuilder : FakeBuilderBase<ISimpleProvider>.WithInitialSetup
     {
         private readonly List<SimpleItemDto> _warehouseItemsStorage = new List<SimpleItemDto>();
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
 using Attest.Fake.Core;
+using Attest.Fake.Setup;
+using Attest.Fake.Setup.Contracts;
 using Solid.Patterns.Builder;
 
 namespace Attest.Fake.Builders
@@ -89,6 +91,37 @@ namespace Attest.Fake.Builders
         TService IBuilder<TService>.Build()
         {
             return BuildImpl();
+        }
+
+        /// <summary>
+        /// Base class for service builders, supporting mock and fake capabilties.
+        /// This class supports basic initial setup.
+        /// </summary>
+        public abstract class WithInitialSetup : FakeBuilderBase<TService>
+        {
+            /// <summary>
+            /// Creates initial template for the fake setup.
+            /// </summary>
+            /// <returns></returns>
+            private IHaveNoMethods<TService> CreateInitialSetup()
+            {
+                return ServiceCallFactory.CreateServiceCall(FakeService);
+            }
+
+            /// <inheritdoc />           
+            protected sealed override void SetupFake()
+            {
+                var initialSetup = CreateInitialSetup();
+                var setup = CreateServiceCall(initialSetup);
+                setup.Build();
+            }
+
+            /// <summary>
+            /// Override this method to create service call from the provided template.
+            /// </summary>
+            /// <param name="serviceCallTemplate">The service call template.</param>
+            /// <returns></returns>
+            protected abstract IServiceCall<TService> CreateServiceCall(IHaveNoMethods<TService> serviceCallTemplate);
         }
     }
 }

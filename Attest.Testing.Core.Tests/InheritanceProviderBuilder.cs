@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Attest.Fake.Builders;
 using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Testing.Core.Tests
@@ -20,7 +21,7 @@ namespace Attest.Testing.Core.Tests
         InheritanceDto[] GetObjects();
     }
 
-    class InheritanceProviderBuilder : FakeBuilderBase<IInheritanceProvider>
+    class InheritanceProviderBuilder : FakeBuilderBase<IInheritanceProvider>.WithInitialSetup
     {
         private readonly List<InheritanceDto> _objects = new List<InheritanceDto>();
 
