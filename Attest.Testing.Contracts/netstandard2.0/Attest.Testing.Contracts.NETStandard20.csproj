@@ -18,10 +18,14 @@
 
   <ItemGroup>
     <Compile Remove="IBuilderRegistrationService.cs" />
+    <Compile Remove="ISetupService.cs" />
+    <Compile Remove="ITeardownService.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="..\src\IBuilderRegistrationService.cs" Link="IBuilderRegistrationService.cs" />
+    <Compile Include="..\src\ISetupService.cs" Link="ISetupService.cs" />
+    <Compile Include="..\src\ITeardownService.cs" Link="ITeardownService.cs" />
   </ItemGroup>
 
   <ItemGroup>
