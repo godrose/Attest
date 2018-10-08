@@ -40,9 +40,9 @@ namespace Attest.Testing.Core
             /// </summary>
             /// <typeparam name="TDependency">The type of the dependency.</typeparam>
             /// <param name="builder">Builder to be registered.</param>
-            protected void RegisterBuilder<TDependency>(IBuilder<TDependency> builder) where TDependency : class
+            protected void RegisterBuilderProduct<TDependency>(IBuilder<TDependency> builder) where TDependency : class
             {
-                RegistrationHelper.RegisterBuilder(Registrator, builder);
+                RegistrationHelper.RegisterBuilderProduct(Registrator, builder);
             }
 
             /// <summary>

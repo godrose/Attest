@@ -13,14 +13,14 @@ namespace Attest.Testing.Core.FakeData.Shared
     public static class BuilderRegistrationExtensions
     {
         /// <summary>
-        /// Registers builders of the provided types
+        /// Registers builders products for the provided types
         /// from the <see cref="BuildersCollectionContext"/> 
         /// into the provided registrator.
         /// </summary>
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="contractToBuildersMap">The mapping between contracts and their builders.</param>
         /// <param name="builderInstanceFunc">The builder factory method.</param>
-        public static void RegisterBuilders(
+        public static void RegisterBuildersProducts(
             this IDependencyRegistrator dependencyRegistrator,
             Dictionary<Type, Type> contractToBuildersMap,
             Func<Type, object> builderInstanceFunc)
@@ -33,13 +33,13 @@ namespace Attest.Testing.Core.FakeData.Shared
                 var builders = BuildersCollectionContext.GetBuilders(builderType).OfType<IBuilder>().ToArray();
                 if (builders.Length == 0)
                 {
-                    RegistrationHelper.RegisterBuilder(dependencyRegistrator, contractType, builderInstance);
+                    RegistrationHelper.RegisterBuilderProduct(dependencyRegistrator, contractType, builderInstance);
                 }
                 else
                 {
                     foreach (var builder in builders)
                     {
-                        RegistrationHelper.RegisterBuilder(dependencyRegistrator, contractType, builder);
+                        RegistrationHelper.RegisterBuilderProduct(dependencyRegistrator, contractType, builder);
                     }
                 }
             }

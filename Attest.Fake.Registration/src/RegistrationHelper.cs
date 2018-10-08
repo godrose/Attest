@@ -51,7 +51,7 @@ namespace Attest.Fake.Registration
         /// <typeparam name="TDependency">The type of the service.</typeparam>
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="builder">The dependency builder.</param>
-        public static void RegisterBuilder<TDependency>(IDependencyRegistrator dependencyRegistrator, IBuilder<TDependency> builder) 
+        public static void RegisterBuilderProduct<TDependency>(IDependencyRegistrator dependencyRegistrator, IBuilder<TDependency> builder) 
             where TDependency : class
         {
             dependencyRegistrator.RegisterTransient(builder.Build);            
@@ -63,7 +63,7 @@ namespace Attest.Fake.Registration
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="dependencyType">The type of the dependency.</param>
         /// <param name="builder">The dependency builder.</param>
-        public static void RegisterBuilder(IDependencyRegistrator dependencyRegistrator,Type dependencyType, IBuilder builder)
+        public static void RegisterBuilderProduct(IDependencyRegistrator dependencyRegistrator,Type dependencyType, IBuilder builder)
         {
             dependencyRegistrator.RegisterTransient(dependencyType, dependencyType, builder.Build);
         }

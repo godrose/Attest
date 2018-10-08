@@ -37,9 +37,9 @@ namespace Attest.Testing.SpecFlow
         /// </summary>
         /// <typeparam name="TService">The type of service.</typeparam>
         /// <param name="builder">The builder to be registered.</param>
-        protected void RegisterBuilder<TService>(IBuilder<TService> builder) where TService : class
+        protected void RegisterBuilderProduct<TService>(IBuilder<TService> builder) where TService : class
         {
-            RegistrationHelper.RegisterBuilder(GetRegistrator(), builder);
+            RegistrationHelper.RegisterBuilderProduct(GetRegistrator(), builder);
         }        
 
         /// <summary>

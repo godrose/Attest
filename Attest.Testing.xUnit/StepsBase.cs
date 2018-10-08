@@ -37,9 +37,9 @@ namespace Attest.Testing.xUnit
         /// </summary>
         /// <typeparam name="TService">Type of service</typeparam>
         /// <param name="builder">Builder to be registered</param>
-        protected void RegisterBuilder<TService>(IBuilder<TService> builder) where TService : class
+        protected void RegisterBuilderProduct<TService>(IBuilder<TService> builder) where TService : class
         {
-            RegistrationHelper.RegisterBuilder(GetRegistrator(), builder);
+            RegistrationHelper.RegisterBuilderProduct(GetRegistrator(), builder);
         }        
 
         /// <summary>
