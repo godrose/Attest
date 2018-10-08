@@ -68,11 +68,11 @@ namespace Attest.Testing.Core
             /// <summary>
             /// Resolves dependency.
             /// </summary>
-            /// <typeparam name="TDepedency">The type of the dependency.</typeparam>
+            /// <typeparam name="TDependency">The type of the dependency.</typeparam>
             /// <returns>The resolved dependency.</returns>
-            protected TDepedency Resolve<TDepedency>() where TDepedency : class
+            protected TDependency Resolve<TDependency>() where TDependency : class
             {
-                return RegistrationHelper.Resolve<TDepedency>(Resolver);
+                return RegistrationHelper.Resolve<TDependency>(Resolver);
             }
         }
 
