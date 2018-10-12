@@ -13,37 +13,56 @@ namespace Attest.Testing.Core.FakeData.Shared
     public static class BuilderRegistrationExtensions
     {
         /// <summary>
-        /// Registers builders products for the provided types
+        /// Registers builders products for the provided types and <see cref="IDependencyRegistrator"/> dependency registrator
         /// from the <see cref="BuildersCollectionContext"/> 
         /// into the provided registrator.
         /// </summary>
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="contractToBuildersMap">The mapping between contracts and their builders.</param>
-        /// <param name="builderInstanceFunc">The builder factory method.</param>
+        /// <param name="builderFactory">The builder factory method.</param>
         public static void RegisterBuildersProducts(
             this IDependencyRegistrator dependencyRegistrator,
             Dictionary<Type, Type> contractToBuildersMap,
-            Func<Type, object> builderInstanceFunc)
+            Func<Type, object> builderFactory)
+        {
+            RegisterBuildersProducts(dependencyRegistrator,
+                RegistrationHelper.RegisterBuilderProduct
+                , contractToBuildersMap,
+                builderFactory);
+        }
+
+        /// <summary>
+        /// Registers builders products for the provided types and custom dependency registrator
+        /// </summary>
+        /// <typeparam name="TDependencyRegistrator">The type of the dependency registrator.</typeparam>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        /// <param name="registrationMethod">The builder registration method.</param>
+        /// <param name="contractToBuildersMap">The mapping between contracts and their builders.</param>
+        /// <param name="builderFactory">The builder factory method.</param>
+        public static void RegisterBuildersProducts<TDependencyRegistrator>(
+            this TDependencyRegistrator dependencyRegistrator,
+            Action<TDependencyRegistrator, Type, IBuilder> registrationMethod,
+            Dictionary<Type, Type> contractToBuildersMap,
+            Func<Type, object> builderFactory)
         {
             foreach (var match in contractToBuildersMap)
             {
                 var contractType = match.Key;
                 var builderType = match.Value;
-                var builderInstance = (IBuilder)builderInstanceFunc(builderType);
                 var builders = BuildersCollectionContext.GetBuilders(builderType).OfType<IBuilder>().ToArray();
                 if (builders.Length == 0)
                 {
-                    RegistrationHelper.RegisterBuilderProduct(dependencyRegistrator, contractType, builderInstance);
+                    var builderInstance = (IBuilder)builderFactory(builderType);
+                    registrationMethod(dependencyRegistrator, contractType, builderInstance);
                 }
                 else
                 {
                     foreach (var builder in builders)
                     {
-                        RegistrationHelper.RegisterBuilderProduct(dependencyRegistrator, contractType, builder);
+                        registrationMethod(dependencyRegistrator, contractType, builder);
                     }
                 }
             }
-
         }
     }
 }
