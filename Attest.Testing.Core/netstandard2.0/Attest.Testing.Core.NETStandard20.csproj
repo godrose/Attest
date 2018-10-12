@@ -35,6 +35,7 @@
     <Compile Include="..\src\InitializationParametersResolutionStyle.cs" Link="InitializationParametersResolutionStyle.cs" />
     <Compile Include="..\src\IntegrationTestsBase.cs" Link="IntegrationTestsBase.cs" />
     <Compile Include="..\src\Integration\StartApplicationServiceBase.cs" Link="Integration\StartApplicationServiceBase.cs" />
+    <Compile Include="..\src\Integration\StartLocalApplicationService.cs" Link="Integration\StartLocalApplicationService.cs" />
     <Compile Include="..\src\IocContainerProxy.cs" Link="IocContainerProxy.cs" />
     <Compile Include="..\src\IRootObjectFactory.cs" Link="IRootObjectFactory.cs" />
     <Compile Include="..\src\IScenario.cs" Link="IScenario.cs" />
