@@ -26,12 +26,7 @@ namespace Attest.Testing.EndToEnd
         public void StartApplication()
         {
             var currentDirectory = Directory.GetCurrentDirectory();
-            var appDir = Path.Combine(currentDirectory, _applicationPathInfo.RelativePath);
-            if (Directory.Exists(appDir) == false)
-            {
-                Directory.CreateDirectory(appDir);
-            }
-            Directory.SetCurrentDirectory(appDir);
+            PathHelper.EnsurePath(currentDirectory, _applicationPathInfo.RelativePath);
             _startApplicationService.StartApplication(_applicationPathInfo.Executable);
             Directory.SetCurrentDirectory(currentDirectory);
         }

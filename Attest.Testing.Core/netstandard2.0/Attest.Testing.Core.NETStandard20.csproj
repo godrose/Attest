@@ -14,10 +14,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\netstandard2.0\Release\</OutputPath>
     <DocumentationFile>..\..\Bin\netstandard2.0\Release\Attest.Testing.Core.xml</DocumentationFile>
-  </PropertyGroup> 
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EndToEnd\PathHelper.cs" />
+  </ItemGroup> 
 
   <ItemGroup>
     <Compile Include="..\src\EndToEndTestsBase.cs" Link="EndToEndTestsBase.cs" />
+    <Compile Include="..\src\EndToEnd\PathHelper.cs" Link="EndToEnd\PathHelper.cs" />
+    <Compile Include="..\src\EndToEnd\StartApplicationModuleService.cs" Link="EndToEnd\StartApplicationModuleService.cs" />
     <Compile Include="..\src\EndToEnd\StartApplicationService.cs" Link="EndToEnd\StartApplicationService.cs" />
     <Compile Include="..\src\EndToEnd\StartLocalApplicationService.cs" Link="EndToEnd\StartLocalApplicationService.cs" />
     <Compile Include="..\src\FakeData\BuilderRegistrationService.cs" Link="FakeData\BuilderRegistrationService.cs" />
@@ -64,7 +70,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EndToEnd\" />
     <Folder Include="Integration\" />
   </ItemGroup>
 
