@@ -102,6 +102,9 @@
     <PackageReference Include="Solid.Practices.Composition.Core">
       <Version>1.2.1-rc8</Version>
     </PackageReference>
+    <PackageReference Include="Solid.Practices.IoC">
+      <Version>1.2.1-rc7</Version>
+    </PackageReference>
     <PackageReference Include="Solid.Practices.Modularity">
       <Version>1.2.1-rc4</Version>
     </PackageReference>

@@ -25,196 +25,139 @@ namespace Attest.Testing.Core
             _resolver = resolver;
         }
 
-        /// <summary>
-        /// Registers dependency in a transient lifetime style.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency declaration.</typeparam><typeparam name="TImplementation">Type of dependency implementation.</typeparam>
+        /// <inheritdoc />
         public void RegisterTransient<TService, TImplementation>() where TImplementation : class, TService
         {
             _registrator.RegisterTransient<TService, TImplementation>();
         }
 
+        /// <inheritdoc />
         public void RegisterTransient<TService, TImplementation>(Func<TImplementation> dependencyCreator) where TImplementation : class, TService
         {
             _registrator.RegisterTransient<TService, TImplementation>(dependencyCreator);
         }
 
-        /// <summary>
-        /// Registers dependency in a transient lifetime style.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency.</typeparam>
+        /// <inheritdoc />
         public void RegisterTransient<TService>() where TService : class
         {
             _registrator.RegisterTransient<TService>();
         }
 
-        /// <summary>
-        /// Registers dependency in a transient lifetime style.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency.</typeparam>
-        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        /// <inheritdoc />
         public void RegisterTransient<TService>(Func<TService> dependencyCreator) where TService : class
         {
             _registrator.RegisterTransient(dependencyCreator);
         }
 
-        /// <summary>
-        /// Registers dependency in a transient lifetime style.
-        /// </summary>
-        /// <param name="serviceType">Type of dependency declaration.</param><param name="implementationType">Type of dependency implementation.</param>
+        /// <inheritdoc />
         public void RegisterTransient(Type serviceType, Type implementationType)
         {
             _registrator.RegisterTransient(serviceType, implementationType);
         }
 
-        /// <summary>
-        /// Registers dependency in a transient lifetime style.
-        /// </summary>
-        /// <param name="serviceType">Type of dependency declaration.</param>
-        /// <param name="implementationType">Type of dependency implementation.</param>
-        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        /// <inheritdoc />
         public void RegisterTransient(Type serviceType, Type implementationType, Func<object> dependencyCreator)
         {
             _registrator.RegisterTransient(serviceType, implementationType, dependencyCreator);
         }
 
-        /// <summary>
-        /// Registers dependency as a singleton.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency.</typeparam>
+        /// <inheritdoc />
         public void RegisterSingleton<TService>() where TService : class
         {
             _registrator.RegisterSingleton<TService>();
         }
 
-        /// <summary>
-        /// Registers dependency as a singleton.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency.</typeparam>
-        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        /// <inheritdoc />
         public void RegisterSingleton<TService>(Func<TService> dependencyCreator) where TService : class
         {
             _registrator.RegisterSingleton(dependencyCreator);
         }
 
-        /// <summary>
-        /// Registers dependency as a singleton.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency declaration.</typeparam><typeparam name="TImplementation">Type of dependency implementation.</typeparam>
+        /// <inheritdoc />
         public void RegisterSingleton<TService, TImplementation>() where TImplementation : class, TService
         {
             _registrator.RegisterSingleton<TService, TImplementation>();
         }
 
-        /// <summary>
-        /// Registers dependency as a singleton.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency declaration.</typeparam>
-        /// <typeparam name="TImplementation">Type of dependency implementation.</typeparam>
-        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        /// <inheritdoc />
         public void RegisterSingleton<TService, TImplementation>(Func<TImplementation> dependencyCreator) where TImplementation : class, TService
         {
             _registrator.RegisterSingleton<TService, TImplementation>(dependencyCreator);
         }
 
-        /// <summary>
-        /// Registers dependency as a singleton.
-        /// </summary>
-        /// <param name="serviceType">Type of dependency declaration.</param><param name="implementationType">Type of dependency implementation.</param>
+        /// <inheritdoc />
         public void RegisterSingleton(Type serviceType, Type implementationType)
         {
             _registrator.RegisterSingleton(serviceType, implementationType);
         }
 
-        /// <summary>
-        /// Registers dependency as a singleton.
-        /// </summary>
-        /// <param name="serviceType">Type of dependency declaration.</param>
-        /// <param name="implementationType">Type of dependency implementation.</param>
-        /// <param name="dependencyCreator">Dependency creator delegate.</param>
+        /// <inheritdoc />
         public void RegisterSingleton(Type serviceType, Type implementationType, Func<object> dependencyCreator)
         {
             _registrator.RegisterSingleton(serviceType, implementationType, dependencyCreator);
         }
 
-        /// <summary>
-        /// Registers an instance of dependency.
-        /// </summary>
-        /// <typeparam name="TService">Type of dependency.</typeparam><param name="instance">Instance of dependency.</param>
+        /// <inheritdoc />
         public void RegisterInstance<TService>(TService instance) where TService : class
         {
             _registrator.RegisterInstance(instance);
         }
 
-        /// <summary>
-        /// Registers an instance of dependency.
-        /// </summary>
-        /// <param name="dependencyType">Type of dependency.</param><param name="instance">Instance of dependency.</param>
+        /// <inheritdoc />
         public void RegisterInstance(Type dependencyType, object instance)
         {
             _registrator.RegisterInstance(dependencyType, instance);
         }       
 
-        /// <summary>
-        /// Registers the collection of the dependencies.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam><param name="dependencyTypes">The dependency types.</param>
+        /// <inheritdoc />
         public void RegisterCollection<TService>(IEnumerable<Type> dependencyTypes) where TService : class
         {
             _registrator.RegisterCollection<TService>(dependencyTypes);
         }
 
-        /// <summary>
-        /// Registers the collection of the dependencies.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam><param name="dependencies">The dependencies.</param>
+        /// <inheritdoc />
         public void RegisterCollection<TService>(IEnumerable<TService> dependencies) where TService : class
         {
             _registrator.RegisterCollection(dependencies);
         }
 
-        /// <summary>
-        /// Registers the collection of the dependencies.
-        /// </summary>
-        /// <param name="dependencyType">The dependency type.</param><param name="dependencyTypes">The dependency types.</param>
+        /// <inheritdoc />
         public void RegisterCollection(Type dependencyType, IEnumerable<Type> dependencyTypes)
         {
             _registrator.RegisterCollection(dependencyType, dependencyTypes);
         }
 
-        /// <summary>
-        /// Registers the collection of the dependencies.
-        /// </summary>
-        /// <param name="dependencyType">The dependency type.</param><param name="dependencies">The dependencies.</param>
+        /// <inheritdoc />
         public void RegisterCollection(Type dependencyType, IEnumerable<object> dependencies)
         {
             _registrator.RegisterCollection(dependencyType, dependencies);
         }
 
-        /// <summary>
-        /// Resolves an instance of service.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <returns/>
+        /// <inheritdoc />
         public TService Resolve<TService>() where TService : class
         {
             return _resolver.Resolve<TService>();
         }
 
-        /// <summary>
-        /// Resolves an instance of service according to the service type.
-        /// </summary>
-        /// <param name="serviceType">The type of the service.</param>
-        /// <returns/>
+        /// <inheritdoc />
         public object Resolve(Type serviceType)
         {
             return _resolver.Resolve(serviceType);
         }
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        /// <filterpriority>2</filterpriority>
+        /// <inheritdoc />
+        public IEnumerable<TDependency> ResolveAll<TDependency>() where TDependency : class
+        {
+            return _resolver.ResolveAll<TDependency>();
+        }
+
+        /// <inheritdoc />
+        public IEnumerable<object> ResolveAll(Type dependencyType)
+        {
+            return _resolver.ResolveAll(dependencyType);
+        }
+
+        /// <inheritdoc />
         public void Dispose()
         {
             

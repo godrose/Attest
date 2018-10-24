@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Solid.Patterns.Builder" Version="1.2.1-rc3" />
-    <PackageReference Include="Solid.Practices.IoC" Version="1.2.1-rc6" />
+    <PackageReference Include="Solid.Practices.IoC" Version="1.2.1-rc7" />
   </ItemGroup>
 
   <ItemGroup>
