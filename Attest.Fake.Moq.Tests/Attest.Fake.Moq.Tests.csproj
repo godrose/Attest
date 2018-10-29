@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B3539CAD-E68B-434B-9315-153EBA1022F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Attest.Fake.Moq.Tests</RootNamespace>
+    <AssemblyName>Attest.Fake.Moq.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EventInvocationTests.cs" />
+    <Compile Include="IEventProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions">
+      <Version>5.4.2</Version>
+    </PackageReference>
+    <PackageReference Include="xunit">
+      <Version>2.4.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Builders\netstandard2.0\Attest.Fake.Builders.NETStandard20.csproj">
+      <Project>{6882b111-458a-48bd-a9db-e29855058741}</Project>
+      <Name>Attest.Fake.Builders.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj">
+      <Project>{dd9ec332-7b5a-4ab7-89a0-79ffef9ea501}</Project>
+      <Name>Attest.Fake.Core.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Moq\netstandard2.0\Attest.Fake.Moq.NETStandard20.csproj">
+      <Project>{45aa67ae-3fb2-431c-b5c7-c3742fd54faf}</Project>
+      <Name>Attest.Fake.Moq.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\netstandard2.0\Attest.Fake.Setup.Contracts.NETStandard20.csproj">
+      <Project>{54216b1d-fe05-40bd-be33-817d183be109}</Project>
+      <Name>Attest.Fake.Setup.Contracts.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Setup\netstandard2.0\Attest.Fake.Setup.NETStandard20.csproj">
+      <Project>{4F2ED1C2-3525-403D-9134-F7868BEAD15E}</Project>
+      <Name>Attest.Fake.Setup.NETStandard20</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -6,7 +6,7 @@ using LightMock;
 namespace Attest.Fake.LightMock
 {
     /// <summary>
-    /// Implementation of fake using LightMock framework
+    /// Implementation of fake using <see cref="LightMock"/>
     /// </summary>
     /// <typeparam name="TFaked">Type of faked service</typeparam>
     public class Fake<TFaked> : IFake<TFaked> where TFaked : class
@@ -25,60 +25,43 @@ namespace Attest.Fake.LightMock
             _context = context;
         }
 
-        /// <summary>
-        /// Sets up the fake according to the provided setup expression of fake call
-        /// </summary>
-        /// <param name="expression">Setup expression</param>
-        /// <returns>Fake callback after the setup</returns>
+        /// <inheritdoc />       
         public IFakeCallback Setup(Expression<Action<TFaked>> expression)
         {
             return new LightFakeCallback<TFaked>(_context.Arrange(expression));
         }
 
-        /// <summary>
-        /// Sets up the fake according to the provided setup expression of fake call with return value
-        /// </summary>
-        /// <typeparam name="TResult">Type of return value</typeparam>
-        /// <param name="expression">Setup expression</param>
-        /// <returns>Fake callback after the setup</returns>
+        /// <inheritdoc />        
         public IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression)
         {
             return new LightFakeCallbackWithResult<TFaked, TResult>(_context.Arrange(expression));
         }
 
-        /// <summary>
-        /// Faked service
-        /// </summary>
-        public TFaked Object
-        {
-            get { return _fake; }
-        }
+        /// <inheritdoc />      
+        public TFaked Object => _fake;
 
-        /// <summary>
-        /// Verifies that a specific method was called on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />       
         public void VerifyCall(Expression<Action<TFaked>> expression)
         {
             _context.Assert(expression);
         }
 
-        /// <summary>
-        /// Verifies that a specific method was not called on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />       
         public void VerifyNoCall(Expression<Action<TFaked>> expression)
         {
             _context.Assert(expression, Invoked.Never);
         }
 
-        /// <summary>
-        /// Verifies that a specific method was called exactly once on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />       
         public void VerifySingleCall(Expression<Action<TFaked>> expression)
         {
             _context.Assert(expression, Invoked.Once);
+        }
+
+        /// <inheritdoc />
+        public void Raise(Action<TFaked> eventExpression, EventArgs eventArgs)
+        {            
+            throw new NotImplementedException("Raising events is not supported with LightMock");
         }
     }
 }

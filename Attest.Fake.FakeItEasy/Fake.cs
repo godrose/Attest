@@ -6,67 +6,50 @@ using FakeItEasy;
 namespace Attest.Fake.FakeItEasy
 {
     /// <summary>
-    /// Implementation of fake using FakeItEasy framework
+    /// Implementation of fake using <see cref="FakeItEasy"/>
     /// </summary>
     /// <typeparam name="TFaked">Type of faked service</typeparam>
     public class Fake<TFaked> : IFake<TFaked> where TFaked : class
     {
         private readonly TFaked _fake = A.Fake<TFaked>();
 
-        /// <summary>
-        /// Verifies that a specific method was called on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />       
         public void VerifyCall(Expression<Action<TFaked>> expression)
         {
             A.CallTo(() => expression).MustHaveHappened();            
         }
 
-        /// <summary>
-        /// Verifies that a specific method was not called on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />      
         public void VerifyNoCall(Expression<Action<TFaked>> expression)
         {
             A.CallTo(expression).MustNotHaveHappened();
         }
 
-        /// <summary>
-        /// Verifies that a specific method was called exactly once on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />       
         public void VerifySingleCall(Expression<Action<TFaked>> expression)
         {
             A.CallTo(expression).MustHaveHappened(Repeated.Exactly.Once);
         }
 
-        /// <summary>
-        /// Sets up the fake according to the provided setup expression of fake call
-        /// </summary>
-        /// <param name="expression">Setup expression</param>
-        /// <returns>Fake callback after the setup</returns>
+        /// <inheritdoc />       
         public IFakeCallback Setup(Expression<Action<TFaked>> expression)
         {
             return new EasyFakeCallback<TFaked>(A.CallTo(expression));
         }
 
-        /// <summary>
-        /// Sets up the fake according to the provided setup expression of fake call with return value
-        /// </summary>
-        /// <typeparam name="TResult">Type of return value</typeparam>
-        /// <param name="expression">Setup expression</param>
-        /// <returns>Fake callback after the setup</returns>
+        /// <inheritdoc />       
         public IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Faked service
-        /// </summary>
-        public TFaked Object
+        /// <inheritdoc />       
+        public TFaked Object => _fake;
+
+        /// <inheritdoc />
+        public void Raise(Action<TFaked> eventExpression, EventArgs eventArgs)
         {
-            get { return _fake; }
+            throw new NotImplementedException("Raising events is not supported with FakeItEasy");
         }
     }
 }

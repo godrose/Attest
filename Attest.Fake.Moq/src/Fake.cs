@@ -6,7 +6,7 @@ using Moq;
 namespace Attest.Fake.Moq
 {
     /// <summary>
-    /// Implementation of fake using Moq framework
+    /// Implementation of fake using <see cref="Moq"/> framework
     /// </summary>
     /// <typeparam name="TFaked">Type of faked service</typeparam>
     public class Fake<TFaked> : IFake<TFaked> where TFaked: class
@@ -18,60 +18,43 @@ namespace Attest.Fake.Moq
             _fake = fake;
         }
 
-        /// <summary>
-        /// Sets up the fake according to the provided setup expression of fake call
-        /// </summary>
-        /// <param name="expression">Setup expression</param>
-        /// <returns>Fake callback after the setup</returns>
+        /// <inheritdoc />       
         public IFakeCallback Setup(Expression<Action<TFaked>> expression)
         {
             return new MoqFakeCallback<TFaked>(_fake.Setup(expression));
         }
 
-        /// <summary>
-        /// Sets up the fake according to the provided setup expression of fake call with return value
-        /// </summary>
-        /// <typeparam name="TResult">Type of return value</typeparam>
-        /// <param name="expression">Setup expression</param>
-        /// <returns>Fake callback after the setup</returns>
+        /// <inheritdoc />       
         public IFakeCallbackWithResult<TResult> Setup<TResult>(Expression<Func<TFaked, TResult>> expression)
         {
             return new MoqFakeCallbackWithResult<TFaked, TResult>(_fake.Setup(expression));
         }
 
-        /// <summary>
-        /// Faked service
-        /// </summary>
-        public TFaked Object
-        {
-            get { return _fake.Object; }
-        }
+        /// <inheritdoc />        
+        public TFaked Object => _fake.Object;
 
-        /// <summary>
-        /// Verifies that a specific method was called on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />       
         public void VerifyCall(Expression<Action<TFaked>> expression)
         {
             _fake.Verify(expression);
         }
 
-        /// <summary>
-        /// Verifies that a specific method was not called on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />       
         public void VerifyNoCall(Expression<Action<TFaked>> expression)
         {
             _fake.Verify(expression, Times.Never);
         }
 
-        /// <summary>
-        /// Verifies that a specific method was called exactly once on the fake
-        /// </summary>
-        /// <param name="expression">Verified method's call definition</param>
+        /// <inheritdoc />     
         public void VerifySingleCall(Expression<Action<TFaked>> expression)
         {
             _fake.Verify(expression, Times.Once);
+        }
+
+        /// <inheritdoc />
+        public void Raise(Action<TFaked> eventExpression, EventArgs eventArgs)
+        {
+            _fake.Raise(eventExpression, eventArgs);
         }
     }
 }
