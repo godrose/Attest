@@ -23,11 +23,11 @@ namespace Attest.Testing.EndToEnd
         }
 
         /// <inheritdoc />
-        public void StartApplication()
+        public void Start()
         {
             var currentDirectory = Directory.GetCurrentDirectory();
             PathHelper.EnsurePath(currentDirectory, _applicationPathInfo.RelativePath);
-            _startApplicationService.StartApplication(_applicationPathInfo.Executable);
+            _startApplicationService.Start(_applicationPathInfo.Executable);
             Directory.SetCurrentDirectory(currentDirectory);
         }
     }

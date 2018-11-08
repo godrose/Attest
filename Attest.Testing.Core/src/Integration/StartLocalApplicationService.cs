@@ -14,9 +14,9 @@ namespace Attest.Testing.Integration
         }
 
         /// <inheritdoc />
-        public void StartApplication()
+        public void Start()
         {
-            _startApplicationService.StartApplication(string.Empty);
+            _startApplicationService.Start(string.Empty);
         }
     }
 }

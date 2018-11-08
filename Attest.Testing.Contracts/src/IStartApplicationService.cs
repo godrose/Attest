@@ -9,6 +9,6 @@
         /// Starts the application.
         /// </summary>
         /// <param name="startupPath">The startup path. In the integration tests case, it may be left empty.</param>
-        void StartApplication(string startupPath);
+        void Start(string startupPath);
     }
 }

@@ -8,6 +8,6 @@
         /// <summary>
         /// Stops the running application.
         /// </summary>
-        void StopApplication();
+        void Stop();
     }
 }

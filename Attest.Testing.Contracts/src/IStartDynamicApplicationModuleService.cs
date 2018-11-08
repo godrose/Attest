@@ -4,12 +4,12 @@ namespace Attest.Testing.Contracts
     /// Represents means of starting an application
     /// that is started and stopped during the test.
     /// </summary>
-    public interface IStartApplicationModuleService
+    public interface IStartDynamicApplicationModuleService
     {
         /// <summary>
         /// Starts the application.
         /// </summary>
         /// <param name="applicationModule">The application.</param>
-        void StartApplication(IApplicationModule applicationModule);
+        void Start(IDynamicApplicationModule applicationModule);
     }
 }

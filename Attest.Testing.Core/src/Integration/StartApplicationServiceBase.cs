@@ -10,7 +10,7 @@ namespace Attest.Testing.Integration
     public class StartApplicationServiceBase : IStartApplicationService
     {
         /// <inheritdoc />        
-        public void StartApplication(string startupPath)
+        public void Start(string startupPath)
         {
             Setup();
             OnStartCore();

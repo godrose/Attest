@@ -1,8 +1,8 @@
 namespace Attest.Testing.Contracts
 {
     /// <summary>
-    /// This interface represents an application that
-    /// is started and stopped during test
+    /// This interface represents a local application that
+    /// can be uniquely identified and executed
     /// </summary>
     public interface IApplicationModule
     {
@@ -14,16 +14,6 @@ namespace Attest.Testing.Contracts
         /// <summary>
         /// Application's relative path.
         /// </summary>
-        string RelativePath { get; }
-
-        /// <summary>
-        /// Starts the application.
-        /// </summary>
-        void StartApplication();
-
-        /// <summary>
-        /// Stops the application.
-        /// </summary>
-        void StopApplication();
+        string RelativePath { get; }       
     }
 }

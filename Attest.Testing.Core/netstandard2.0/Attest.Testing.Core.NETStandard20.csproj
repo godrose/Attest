@@ -23,9 +23,12 @@
   <ItemGroup>
     <Compile Include="..\src\EndToEndTestsBase.cs" Link="EndToEndTestsBase.cs" />
     <Compile Include="..\src\EndToEnd\PathHelper.cs" Link="EndToEnd\PathHelper.cs" />
-    <Compile Include="..\src\EndToEnd\StartApplicationModuleService.cs" Link="EndToEnd\StartApplicationModuleService.cs" />
     <Compile Include="..\src\EndToEnd\StartApplicationService.cs" Link="EndToEnd\StartApplicationService.cs" />
+    <Compile Include="..\src\EndToEnd\StartDynamicApplicationModuleService.cs" Link="EndToEnd\StartDynamicApplicationModuleService.cs" />
     <Compile Include="..\src\EndToEnd\StartLocalApplicationService.cs" Link="EndToEnd\StartLocalApplicationService.cs" />
+    <Compile Include="..\src\EndToEnd\StartStaticApplicationModuleService.cs" Link="EndToEnd\StartStaticApplicationModuleService.cs" />
+    <Compile Include="..\src\EndToEnd\StaticLifecycleService.cs" Link="EndToEnd\StaticLifecycleService.cs" />
+    <Compile Include="..\src\EndToEnd\StaticSetupService.cs" Link="EndToEnd\StaticSetupService.cs" />
     <Compile Include="..\src\FakeData\BuilderRegistrationService.cs" Link="FakeData\BuilderRegistrationService.cs" />
     <Compile Include="..\src\FakeData\Modularity\ProvidersModuleBase.cs" Link="FakeData\Modularity\ProvidersModuleBase.cs" />
     <Compile Include="..\src\FakeData\Shared\BuilderRegistrationExtensions.cs" Link="FakeData\Shared\BuilderRegistrationExtensions.cs" />

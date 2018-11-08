@@ -8,6 +8,6 @@
         /// <summary>
         /// Starts the application.
         /// </summary>
-        void StartApplication();
+        void Start();
     }
 }

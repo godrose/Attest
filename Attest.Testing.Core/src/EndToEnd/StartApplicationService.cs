@@ -29,7 +29,7 @@ namespace Attest.Testing.EndToEnd
             /// Starts the application.
             /// </summary>
             /// <param name="startupPath">The startup path.</param>
-            public override void StartApplication(string startupPath)
+            public override void Start(string startupPath)
             {
                 BuildersCollectionContext.SerializeBuilders();
                 _applicationFacade.Start(startupPath);
@@ -56,7 +56,7 @@ namespace Attest.Testing.EndToEnd
             /// Starts the application.
             /// </summary>
             /// <param name="startupPath">The startup path.</param>
-            public override void StartApplication(string startupPath)
+            public override void Start(string startupPath)
             {
                 _applicationFacade.Start(startupPath);
             }
@@ -66,6 +66,6 @@ namespace Attest.Testing.EndToEnd
         /// Starts the application.
         /// </summary>
         /// <param name="startupPath">The startup path.</param>
-        public abstract void StartApplication(string startupPath);
+        public abstract void Start(string startupPath);
     }
 }
