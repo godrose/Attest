@@ -58,9 +58,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\netstandard2.0\Attest.Fake.Builders.NETStandard20.csproj">
-      <Project>{6882b111-458a-48bd-a9db-e29855058741}</Project>
-      <Name>Attest.Fake.Builders.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
+      <Project>{2c31f4fe-a7f6-4e0d-9c22-3a7e493a5556}</Project>
+      <Name>Attest.Fake.Builders</Name>
     </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj">
       <Project>{dd9ec332-7b5a-4ab7-89a0-79ffef9ea501}</Project>
