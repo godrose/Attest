@@ -11,23 +11,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard2.0\Release\</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\Attest.Fake.FakeItEasy.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\ConstraintFactory.cs" Link="ConstraintFactory.cs" />
-    <Compile Include="..\Fake.cs" Link="Fake.cs" />
-    <Compile Include="..\FakeCallback.cs" Link="FakeCallback.cs" />
-    <Compile Include="..\FakeFactory.cs" Link="FakeFactory.cs" />
-  </ItemGroup>
+    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.FakeItEasy.xml</DocumentationFile>
+  </PropertyGroup>  
 
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="4.9.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
   </ItemGroup>
 
 </Project>

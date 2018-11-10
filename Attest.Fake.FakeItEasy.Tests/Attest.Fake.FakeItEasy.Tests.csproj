@@ -51,9 +51,9 @@
       <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.FakeItEasy\netstandard2.0\Attest.Fake.FakeItEasy.NETStandard20.csproj">
-      <Project>{5d9b8258-4afd-40d5-895f-679926e297e4}</Project>
-      <Name>Attest.Fake.FakeItEasy.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Fake.FakeItEasy\Attest.Fake.FakeItEasy.csproj">
+      <Project>{c0350ff8-5680-41ec-8fd4-5babc6fc34bd}</Project>
+      <Name>Attest.Fake.FakeItEasy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
