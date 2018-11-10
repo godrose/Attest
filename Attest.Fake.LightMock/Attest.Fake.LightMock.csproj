@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Attest.Fake.LightMock</AssemblyName>
+    <RootNamespace>Attest.Fake.LightMock</RootNamespace>
+    <Version>1.2.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.LightMock.xml</DocumentationFile>
+  </PropertyGroup>  
+
+  <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
+    <ProjectReference Include="..\LightMock\LightMock.csproj" />
+  </ItemGroup>
+
+</Project>

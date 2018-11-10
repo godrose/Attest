@@ -66,9 +66,9 @@
       <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.LightMock\netstandard2.0\Attest.Fake.LightMock.NETStandard20.csproj">
-      <Project>{0FAFF374-DE27-4DED-BF1B-9E6D5CEE260C}</Project>
-      <Name>Attest.Fake.LightMock.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Fake.LightMock\Attest.Fake.LightMock.csproj">
+      <Project>{91d1cb6b-2d09-46d2-999f-a275a119d4ff}</Project>
+      <Name>Attest.Fake.LightMock</Name>
     </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Moq\netstandard2.0\Attest.Fake.Moq.NETStandard20.csproj">
       <Project>{45aa67ae-3fb2-431c-b5c7-c3742fd54faf}</Project>
