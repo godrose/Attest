@@ -74,9 +74,9 @@
       <Project>{62e41202-991e-47fd-86bb-fe0fce7e8323}</Project>
       <Name>Attest.Fake.Setup</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Testing.Contracts\netstandard2.0\Attest.Testing.Contracts.NETStandard20.csproj">
-      <Project>{d1e971d9-b18e-44b8-85a6-80c505457c1e}</Project>
-      <Name>Attest.Testing.Contracts.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Testing.Contracts\Attest.Testing.Contracts.csproj">
+      <Project>{31bcfebc-47b0-4d7a-b0dc-343a034962f3}</Project>
+      <Name>Attest.Testing.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Attest.Testing.Core\netstandard2.0\Attest.Testing.Core.NETStandard20.csproj">
       <Project>{cf70abe4-fc39-487e-a6fd-d2502b92158e}</Project>
