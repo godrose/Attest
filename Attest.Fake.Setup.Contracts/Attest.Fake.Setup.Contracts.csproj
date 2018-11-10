@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Attest.Fake.Setup.Contracts</AssemblyName>
+    <RootNamespace>Attest.Fake.Setup.Contracts</RootNamespace>
+    <Version>1.2.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.Setup.Contracts.xml</DocumentationFile>
+  </PropertyGroup>
+  
+</Project>
