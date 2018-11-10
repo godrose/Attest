@@ -12,13 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard2.0\Release\</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\Attest.Fake.Registration.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\src\RegistrationHelper.cs" Link="RegistrationHelper.cs" />
-  </ItemGroup>
+    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.Registration.xml</DocumentationFile>
+  </PropertyGroup>  
 
   <ItemGroup>
     <PackageReference Include="Solid.Patterns.Builder" Version="1.2.1-rc3" />
@@ -26,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
   </ItemGroup>
 
 </Project>
