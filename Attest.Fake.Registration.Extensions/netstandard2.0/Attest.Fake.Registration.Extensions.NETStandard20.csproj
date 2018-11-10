@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj" />
+    <ProjectReference Include="..\..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
   </ItemGroup>
 
 </Project>

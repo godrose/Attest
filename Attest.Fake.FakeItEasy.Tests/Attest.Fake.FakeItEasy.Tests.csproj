@@ -47,9 +47,9 @@
     <Compile Include="SetupTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\netstandard2.0\Attest.Fake.Core.NETStandard20.csproj">
-      <Project>{dd9ec332-7b5a-4ab7-89a0-79ffef9ea501}</Project>
-      <Name>Attest.Fake.Core.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
+      <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
+      <Name>Attest.Fake.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.FakeItEasy\netstandard2.0\Attest.Fake.FakeItEasy.NETStandard20.csproj">
       <Project>{5d9b8258-4afd-40d5-895f-679926e297e4}</Project>
