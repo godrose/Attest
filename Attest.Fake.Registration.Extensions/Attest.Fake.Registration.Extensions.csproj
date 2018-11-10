@@ -12,20 +12,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard2.0\Release\</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\Attest.Fake.Registration.Extensions.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\src\RegistrationHelperEx.cs" Link="RegistrationHelperEx.cs" />
-  </ItemGroup>
+    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.Registration.Extensions.xml</DocumentationFile>
+  </PropertyGroup> 
 
   <ItemGroup>
     <PackageReference Include="Solid.Practices.IoC" Version="1.2.1-rc7" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
   </ItemGroup>
 
 </Project>
