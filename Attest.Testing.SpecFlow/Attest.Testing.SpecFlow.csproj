@@ -56,9 +56,9 @@
       <Project>{3ca7ca5f-7bea-4a80-a784-9ec889be10d7}</Project>
       <Name>Attest.Fake.Registration</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Testing.Core\netstandard2.0\Attest.Testing.Core.NETStandard20.csproj">
-      <Project>{cf70abe4-fc39-487e-a6fd-d2502b92158e}</Project>
-      <Name>Attest.Testing.Core.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj">
+      <Project>{5f64e00b-71fc-439f-a9ab-c06f28017a1d}</Project>
+      <Name>Attest.Testing.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
