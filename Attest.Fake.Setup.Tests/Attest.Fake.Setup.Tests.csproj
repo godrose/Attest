@@ -82,9 +82,9 @@
       <Project>{4f2ed1c2-3525-403d-9134-f7868bead15e}</Project>
       <Name>Attest.Fake.Setup.NETStandard20</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LightMock\netstandard2.0\LightMock.NETStandard20.csproj">
-      <Project>{074C9B28-EE3F-477C-AC97-982CCA483740}</Project>
-      <Name>LightMock.NETStandard20</Name>
+    <ProjectReference Include="..\LightMock\LightMock.csproj">
+      <Project>{be62e698-7646-41c3-a036-67f3a9cb4124}</Project>
+      <Name>LightMock</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
