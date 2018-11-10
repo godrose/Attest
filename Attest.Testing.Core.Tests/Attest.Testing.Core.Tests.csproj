@@ -62,9 +62,9 @@
       <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Moq\netstandard2.0\Attest.Fake.Moq.NETStandard20.csproj">
-      <Project>{45aa67ae-3fb2-431c-b5c7-c3742fd54faf}</Project>
-      <Name>Attest.Fake.Moq.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj">
+      <Project>{631e0123-dfe0-42eb-9b52-22e24c7ebf91}</Project>
+      <Name>Attest.Fake.Moq</Name>
     </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Setup.Contracts\netstandard2.0\Attest.Fake.Setup.Contracts.NETStandard20.csproj">
       <Project>{54216b1d-fe05-40bd-be33-817d183be109}</Project>
