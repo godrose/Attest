@@ -66,9 +66,9 @@
       <Project>{631e0123-dfe0-42eb-9b52-22e24c7ebf91}</Project>
       <Name>Attest.Fake.Moq</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup\netstandard2.0\Attest.Fake.Setup.NETStandard20.csproj">
-      <Project>{4F2ED1C2-3525-403D-9134-F7868BEAD15E}</Project>
-      <Name>Attest.Fake.Setup.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Fake.Setup\Attest.Fake.Setup.csproj">
+      <Project>{62e41202-991e-47fd-86bb-fe0fce7e8323}</Project>
+      <Name>Attest.Fake.Setup</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

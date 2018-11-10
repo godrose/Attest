@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Attest.Fake.Builders</AssemblyName>
-    <RootNamespace>Attest.Fake.Builders</RootNamespace>
+    <AssemblyName>Attest.Fake.Setup</AssemblyName>
+    <RootNamespace>Attest.Fake.Setup</RootNamespace>
     <Version>1.2.1</Version>
   </PropertyGroup>
 
@@ -12,17 +12,19 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.Builders.xml</DocumentationFile>
-  </PropertyGroup> 
+    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.Setup.xml</DocumentationFile>
+  </PropertyGroup>  
 
   <ItemGroup>
     <PackageReference Include="Solid.Patterns.Builder" Version="1.2.1-rc3" />
-  </ItemGroup> 
+    <PackageReference Include="Solid.Patterns.Visitor" Version="1.2.1-rc3" />
+    <PackageReference Include="Solid.Practices.Scheduling" Version="1.2.1-rc3" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
-    <ProjectReference Include="..\Attest.Fake.Setup\Attest.Fake.Setup.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

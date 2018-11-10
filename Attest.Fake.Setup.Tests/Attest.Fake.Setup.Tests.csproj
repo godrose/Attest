@@ -78,9 +78,9 @@
       <Project>{8ad6083c-054b-4d64-bf03-e276a81d3412}</Project>
       <Name>Attest.Fake.Setup.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup\netstandard2.0\Attest.Fake.Setup.NETStandard20.csproj">
-      <Project>{4f2ed1c2-3525-403d-9134-f7868bead15e}</Project>
-      <Name>Attest.Fake.Setup.NETStandard20</Name>
+    <ProjectReference Include="..\Attest.Fake.Setup\Attest.Fake.Setup.csproj">
+      <Project>{62e41202-991e-47fd-86bb-fe0fce7e8323}</Project>
+      <Name>Attest.Fake.Setup</Name>
     </ProjectReference>
     <ProjectReference Include="..\LightMock\LightMock.csproj">
       <Project>{be62e698-7646-41c3-a036-67f3a9cb4124}</Project>
