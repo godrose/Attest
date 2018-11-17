@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
-using Solid.Practices.Composition;
+using Solid.Common;
 
 namespace Attest.Testing.Core
 {

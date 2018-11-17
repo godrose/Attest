@@ -14,10 +14,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
     <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Testing.xUnit.xml</DocumentationFile>
-  </PropertyGroup>  
+  </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc5" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.0.0-rc1" />
   </ItemGroup>
 
   <ItemGroup>

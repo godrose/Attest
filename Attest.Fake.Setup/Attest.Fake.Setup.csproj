@@ -14,12 +14,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
     <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.Setup.xml</DocumentationFile>
-  </PropertyGroup>  
+  </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Patterns.Builder" Version="1.2.1-rc3" />
-    <PackageReference Include="Solid.Patterns.Visitor" Version="1.2.1-rc3" />
-    <PackageReference Include="Solid.Practices.Scheduling" Version="1.2.1-rc3" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Patterns.Visitor" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Practices.Scheduling" Version="2.0.0-rc1" />
   </ItemGroup>
 
   <ItemGroup>
