@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
     <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj" />
     <ProjectReference Include="..\Attest.Testing.Contracts\Attest.Testing.Contracts.csproj" />
   </ItemGroup>
