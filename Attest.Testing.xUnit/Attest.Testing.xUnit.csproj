@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Attest.Testing.xUnit</AssemblyName>
     <RootNamespace>Attest.Testing.xUnit</RootNamespace>
-    <Version>1.4.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>

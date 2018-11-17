@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Attest.Fake.Builders</AssemblyName>
     <RootNamespace>Attest.Fake.Builders</RootNamespace>
-    <Version>1.2.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
