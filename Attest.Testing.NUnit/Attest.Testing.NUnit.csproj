@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Attest.Testing.NUnit</AssemblyName>
     <RootNamespace>Attest.Testing.NUnit</RootNamespace>
-    <Version>1.4.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,10 +18,13 @@
 
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.11.0" />
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc5" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.0.0-rc1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
     <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj" />
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
   </ItemGroup>

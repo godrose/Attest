@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Solid.Practices.Composition;
+using Solid.Common;
 
 namespace Attest.Testing.Core.FakeData.Shared
 {

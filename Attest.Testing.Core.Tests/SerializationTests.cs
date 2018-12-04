@@ -6,8 +6,8 @@ using Attest.Testing.Contracts;
 using Attest.Testing.Core.FakeData;
 using Attest.Testing.Core.FakeData.Shared;
 using FluentAssertions;
+using Solid.Common;
 using Solid.Patterns.Builder;
-using Solid.Practices.Composition;
 using Xunit;
 
 namespace Attest.Testing.Core.Tests

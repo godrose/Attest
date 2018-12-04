@@ -8,16 +8,16 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyName>Attest.Testing.Contracts</AssemblyName>
     <RootNamespace>Attest.Testing.Contracts</RootNamespace>
-    <Version>1.4.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
     <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Testing.Contracts.xml</DocumentationFile>
-  </PropertyGroup> 
-  
+  </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="Solid.Patterns.Builder" Version="1.2.1-rc3" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.0.0-rc1" />
   </ItemGroup>
 
 </Project>
