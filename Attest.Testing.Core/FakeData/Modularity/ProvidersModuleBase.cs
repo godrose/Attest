@@ -18,7 +18,7 @@ namespace Attest.Testing.Core.FakeData.Modularity
         }
 
         /// <summary>
-        /// Override this method to inject additonal functionality into providers' registration flow.
+        /// Override this method to inject additional functionality into providers' registration flow.
         /// </summary>
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
         protected virtual void OnRegisterProviders(IDependencyRegistrator dependencyRegistrator)
