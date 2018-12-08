@@ -16,7 +16,8 @@ namespace Attest.Testing.Core.FakeData.Shared
         private static readonly BuildersCollection _buildersCollection = new BuildersCollection();
 
         private static readonly IDataStorage<BuildersCollection> _buildersCollectionStorage =
-            new BuildersCollectionStorage(new JsonConverter(), new LocalFileSystemDataStorage());
+            new BuildersCollectionStorage(BuildersCollectionConverterContext.Current,
+                BuildersCollectionStorageContext.Current);
 
         /// <summary>
         /// Gets the builders of the specified service type.
