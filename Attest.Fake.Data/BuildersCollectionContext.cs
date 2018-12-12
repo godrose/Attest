@@ -40,6 +40,15 @@ namespace Attest.Fake.Data
         }
 
         /// <summary>
+        /// Gets all builders.
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<IBuilder> GetAllBuilders()
+        {
+            return _buildersCollection.GetAllBuilders().OfType<IBuilder>();
+        }
+
+        /// <summary>
         /// Adds the builder of the specified service type.
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
@@ -52,17 +61,17 @@ namespace Attest.Fake.Data
         /// <summary>
         /// Serializes the builders.
         /// </summary>
-        public static void SerializeBuilders()
+        public static void SerializeBuilders(string id = null)
         {
-            _buildersCollectionStorage.Store(SerializedBuildersId, _buildersCollection);
+            _buildersCollectionStorage.Store(id ?? SerializedBuildersId, _buildersCollection);
         }        
 
         /// <summary>
         /// Deserializes the builders.
         /// </summary>
-        public static void DeserializeBuilders()
+        public static void DeserializeBuilders(string id = null)
         {
-            var data = _buildersCollectionStorage.Load(SerializedBuildersId);
+            var data = _buildersCollectionStorage.Load(id ?? SerializedBuildersId);
             _buildersCollection.ResetBuilders(data.GetAllBuilders());            
         }
 
