@@ -62,6 +62,10 @@
       <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
       <Name>Attest.Fake.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Data\Attest.Fake.Data.csproj">
+      <Project>{AFF62048-65BF-4BBB-97F1-E72369E83637}</Project>
+      <Name>Attest.Fake.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj">
       <Project>{631e0123-dfe0-42eb-9b52-22e24c7ebf91}</Project>
       <Name>Attest.Fake.Moq</Name>

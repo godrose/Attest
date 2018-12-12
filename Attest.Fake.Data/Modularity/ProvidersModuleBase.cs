@@ -1,8 +1,8 @@
-using Attest.Testing.Core.FakeData.Shared;
+using Attest.Fake.Data.Shared;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 
-namespace Attest.Testing.Core.FakeData.Modularity
+namespace Attest.Fake.Data.Modularity
 {
     /// <summary>
     /// Base module for fake context-based providers.

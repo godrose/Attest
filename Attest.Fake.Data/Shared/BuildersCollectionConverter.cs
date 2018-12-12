@@ -5,7 +5,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Attest.Testing.Core.FakeData.Shared
+namespace Attest.Fake.Data.Shared
 {
     /// <summary>
     /// Converts builders collection to and from text. 

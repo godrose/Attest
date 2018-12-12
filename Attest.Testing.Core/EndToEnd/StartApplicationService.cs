@@ -1,5 +1,5 @@
+using Attest.Fake.Data.Shared;
 using Attest.Testing.Contracts;
-using Attest.Testing.Core.FakeData.Shared;
 
 namespace Attest.Testing.EndToEnd
 {

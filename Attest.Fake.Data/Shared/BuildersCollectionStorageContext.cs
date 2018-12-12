@@ -1,4 +1,4 @@
-﻿namespace Attest.Testing.Core.FakeData.Shared
+﻿namespace Attest.Fake.Data.Shared
 {
     /// <summary>
     /// Ambient context for <see cref="IDataStorage{T}"/>

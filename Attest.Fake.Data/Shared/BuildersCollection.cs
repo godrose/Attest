@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Solid.Patterns.Builder;
 
-namespace Attest.Testing.Core.FakeData.Shared
+namespace Attest.Fake.Data.Shared
 {
     /// <summary>
     /// Represents builders collection.

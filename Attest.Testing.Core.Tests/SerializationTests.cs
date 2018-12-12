@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Attest.Fake.Core;
+using Attest.Fake.Data.Shared;
 using Attest.Fake.Moq;
 using Attest.Testing.Contracts;
 using Attest.Testing.Core.FakeData;
-using Attest.Testing.Core.FakeData.Shared;
 using FluentAssertions;
 using Solid.Common;
 using Solid.Patterns.Builder;
