@@ -1,5 +1,5 @@
-﻿using Attest.Testing.Contracts;
-using Attest.Testing.Core.FakeData.Shared;
+﻿using Attest.Fake.Data;
+using Attest.Testing.Contracts;
 using Solid.Patterns.Builder;
 
 namespace Attest.Testing.Core.FakeData

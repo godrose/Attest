@@ -2,9 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Attest.Testing.Core</AssemblyName>
-    <RootNamespace>Attest.Testing.Core</RootNamespace>
-    <Version>2.0.0</Version>
+    <Version>2.0.0</Version>    
   </PropertyGroup>
 
   <PropertyGroup>
@@ -12,26 +10,20 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
-    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Testing.Core.xml</DocumentationFile>
-  </PropertyGroup>  
+    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.Data.xml</DocumentationFile>
+  </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="2.0.0-rc1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />    
+    <PackageReference Include="Solid.Common.Core" Version="2.0.0-rc1" />
     <PackageReference Include="Solid.Patterns.Builder" Version="2.0.0-rc1" />
     <PackageReference Include="Solid.Practices.IoC" Version="2.0.0-rc1" />
     <PackageReference Include="Solid.Practices.Modularity" Version="2.0.0-rc1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
-    <ProjectReference Include="..\Attest.Fake.Data\Attest.Fake.Data.csproj" />
     <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj" />
-    <ProjectReference Include="..\Attest.Testing.Contracts\Attest.Testing.Contracts.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Integration\" />
   </ItemGroup>
 
 </Project>

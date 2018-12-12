@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj" />
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
   </ItemGroup>
 
