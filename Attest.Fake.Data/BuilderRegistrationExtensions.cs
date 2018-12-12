@@ -5,7 +5,7 @@ using Attest.Fake.Registration;
 using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 
-namespace Attest.Fake.Data.Shared
+namespace Attest.Fake.Data
 {
     /// <summary>
     /// Builder registration extension methods.

@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Solid.Common;
 
-namespace Attest.Testing.Core
+namespace Attest.Fake.Data
 {
     /// <summary>
     /// Allows extracting data source by key.

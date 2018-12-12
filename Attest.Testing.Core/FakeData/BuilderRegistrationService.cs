@@ -1,4 +1,4 @@
-﻿using Attest.Fake.Data.Shared;
+﻿using Attest.Fake.Data;
 using Attest.Testing.Contracts;
 using Solid.Patterns.Builder;
 

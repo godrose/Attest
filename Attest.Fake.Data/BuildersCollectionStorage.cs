@@ -1,4 +1,4 @@
-﻿namespace Attest.Fake.Data.Shared
+﻿namespace Attest.Fake.Data
 {    
     /// <summary>
     /// Enables storing and loading builders collection.

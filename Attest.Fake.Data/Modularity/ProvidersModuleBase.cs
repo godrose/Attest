@@ -1,4 +1,3 @@
-using Attest.Fake.Data.Shared;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 

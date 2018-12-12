@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Solid.Common;
 
-namespace Attest.Fake.Data.Shared
+namespace Attest.Fake.Data
 {
     /// <summary>
     /// Enables storing and loading data of the specified type.
