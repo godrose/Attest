@@ -13,7 +13,7 @@ namespace Attest.Testing.Core.FakeData.Shared
         //TODO: The file name should be scenario-specific in case of parallel tests. Should use some kind of session id here.        
         private const string SerializedBuildersId = "SerializedBuildersCollection.Data";
 
-        private static readonly BuildersCollection _buildersCollection = new BuildersCollection();
+        private static BuildersCollection _buildersCollection = new BuildersCollection();
 
         private static readonly IDataStorage<BuildersCollection> _buildersCollectionStorage =
             new BuildersCollectionStorage(BuildersCollectionConverterContext.Current,
@@ -64,6 +64,15 @@ namespace Attest.Testing.Core.FakeData.Shared
         {
             var data = _buildersCollectionStorage.Load(SerializedBuildersId);
             _buildersCollection.ResetBuilders(data.GetAllBuilders());            
+        }
+
+        /// <summary>
+        /// Resets the builders collection with the provided value.
+        /// </summary>
+        /// <param name="buildersCollection"></param>
+        public static void Reset(BuildersCollection buildersCollection)
+        {
+            _buildersCollection = buildersCollection;
         }
     }
 }
