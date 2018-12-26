@@ -1,6 +1,7 @@
 ﻿using System;
 using Attest.Testing.Core;
 using Solid.Bootstrapping;
+using Solid.Core;
 using Solid.Practices.IoC;
 
 namespace Attest.Testing.xUnit
