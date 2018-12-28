@@ -1,6 +1,7 @@
 ﻿using Attest.Testing.Core;
 using NUnit.Framework;
 using Solid.Bootstrapping;
+using Solid.Core;
 using Solid.Practices.IoC;
 
 namespace Attest.Testing.NUnit

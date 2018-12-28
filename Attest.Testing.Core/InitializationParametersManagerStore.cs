@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Solid.Bootstrapping;
+using Solid.Core;
 
 namespace Attest.Testing.Core
 {

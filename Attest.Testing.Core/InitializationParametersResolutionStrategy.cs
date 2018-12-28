@@ -1,4 +1,5 @@
 ﻿using Solid.Bootstrapping;
+using Solid.Core;
 
 namespace Attest.Testing.Core
 {

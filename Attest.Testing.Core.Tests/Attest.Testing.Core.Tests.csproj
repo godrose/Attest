@@ -98,7 +98,7 @@
       <Version>11.0.2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common.Core">
-      <Version>2.0.0-rc1</Version>
+      <Version>2.0.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Patterns.Builder">
       <Version>2.0.0-rc1</Version>
