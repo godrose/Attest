@@ -17,8 +17,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Patterns.Builder" Version="2.0.0-rc1" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.0.0-rc1" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.0.0" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
