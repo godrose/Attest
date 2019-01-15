@@ -28,7 +28,7 @@ namespace Attest.Fake.FakeItEasy
         /// <inheritdoc />       
         public void VerifySingleCall(Expression<Action<TFaked>> expression)
         {
-            A.CallTo(expression).MustHaveHappened(Repeated.Exactly.Once);
+            A.CallTo(expression).MustHaveHappenedOnceExactly();
         }
 
         /// <inheritdoc />       
