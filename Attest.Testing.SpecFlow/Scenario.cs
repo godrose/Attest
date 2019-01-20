@@ -21,8 +21,8 @@ namespace Attest.Testing.SpecFlow
 
         public object this[string key]
         {
-            get { return TechTalk.SpecFlow.ScenarioContext.Current[key]; }
-            set { TechTalk.SpecFlow.ScenarioContext.Current[key] = value; }
+            get => TechTalk.SpecFlow.ScenarioContext.Current[key];
+            set => TechTalk.SpecFlow.ScenarioContext.Current[key] = value;
         }
     }
 }

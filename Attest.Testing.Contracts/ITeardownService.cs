@@ -6,7 +6,7 @@
     public interface ITeardownService
     {
         /// <summary>
-        /// Teardowns this instance.
+        /// Tears this instance down.
         /// </summary>
         void Teardown();
     }

@@ -10,7 +10,7 @@ namespace Attest.Testing.Core
     public static class ScenarioHelper
     {
         private const string RootObjectFactoryKey = "rootObjectFactory";
-        private const string RootObjectKey = "rootObject";        
+        private const string RootObjectKey = "rootObject";
         private const string RegistratorKey = "registrator";
         private const string ResolverKey = "resolver";
 
@@ -22,10 +22,10 @@ namespace Attest.Testing.Core
         public static void Initialize(
             IIocContainer iocContainer,
             IRootObjectFactory rootObjectFactory)
-        {            
+        {
             ScenarioContext.Current.Add(RegistratorKey, iocContainer);
             ScenarioContext.Current.Add(ResolverKey, iocContainer);
-            ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);                        
+            ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Attest.Testing.Core
         /// </summary>
         public static void CreateRootObject()
         {
-            var rootObjectFactory = (IRootObjectFactory)ScenarioContext.Current[RootObjectFactoryKey];
+            var rootObjectFactory = (IRootObjectFactory) ScenarioContext.Current[RootObjectFactoryKey];
             ScenarioContext.Current.Add(RootObjectKey, rootObjectFactory.CreateRootObject());
         }
 
@@ -84,6 +84,7 @@ namespace Attest.Testing.Core
             {
                 return ScenarioContext.Current[typeName] as TItem;
             }
+
             return null;
         }
 
@@ -133,6 +134,7 @@ namespace Attest.Testing.Core
             {
                 item = Get<TItem>();
             }
+
             return item;
         }
 
@@ -149,7 +151,7 @@ namespace Attest.Testing.Core
         public static void Clear()
         {
             ScenarioContext.Current.Clear();
-        }        
+        }
 
         /// <summary>
         /// Gets the dependency registrator.
@@ -157,17 +159,12 @@ namespace Attest.Testing.Core
         /// <value>
         /// The ioc container adapter.
         /// </value>
-        public static IDependencyRegistrator Registrator
-        {
-            get { return (IDependencyRegistrator)ScenarioContext.Current[RegistratorKey]; }
-        }
+        public static IDependencyRegistrator Registrator =>
+            (IDependencyRegistrator) ScenarioContext.Current[RegistratorKey];
 
         /// <summary>
         /// Root object instance.
         /// </summary>
-        public static object RootObject
-        {
-            get { return ScenarioContext.Current[RootObjectKey]; }
-        }
+        public static object RootObject => ScenarioContext.Current[RootObjectKey];
     }
 }

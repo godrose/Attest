@@ -2,7 +2,7 @@ namespace Attest.Testing.Contracts
 {
     /// <summary>
     /// This interface represents an application that
-    /// is started and stopped during test
+    /// is started and stopped for each test.
     /// </summary>
     public interface IDynamicApplicationModule : IApplicationModule
     {        

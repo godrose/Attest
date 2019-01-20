@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Attest.Testing.Contracts;
 
+// ReSharper disable once CheckNamespace
 namespace Attest.Testing.EndToEnd
 {
     /// <inheritdoc />

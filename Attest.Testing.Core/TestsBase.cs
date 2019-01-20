@@ -36,7 +36,7 @@ namespace Attest.Testing.Core
             }
 
             /// <summary>
-            /// Constructs the dependency using the suppiled builder and registers it in transient mode.
+            /// Constructs the dependency using the supplied builder and registers it in transient mode.
             /// </summary>
             /// <typeparam name="TDependency">The type of the dependency.</typeparam>
             /// <param name="builder">Builder to be registered.</param>

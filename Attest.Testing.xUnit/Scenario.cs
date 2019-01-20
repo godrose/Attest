@@ -23,8 +23,8 @@ namespace Attest.Testing.xUnit
 
         public object this[string key]
         {
-            get { return Properties[key]; }
-            set { Properties[key] = value; }
+            get => Properties[key];
+            set => Properties[key] = value;
         }
 
         private IDictionary Properties { get; } = new Dictionary<string, object>();

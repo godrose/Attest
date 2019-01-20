@@ -1,6 +1,7 @@
 using Attest.Testing.Contracts;
 using Attest.Testing.Core;
 
+// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Integration
 {
     /// <summary>

@@ -2,7 +2,7 @@ namespace Attest.Testing.Contracts
 {
     /// <summary>
     /// Represents means of starting an application
-    /// that is started and stopped once during the test session.
+    /// that is started and stopped once during the whole test session.
     /// </summary>
     public interface IStartStaticApplicationModuleService
     {

@@ -43,8 +43,7 @@ namespace Attest.Testing.Core
             {
                 _internalStorage = InitializeDictionary();
             }
-            IInitializationParametersManager<TContainer> value;
-            _internalStorage.TryGetValue(resolutionStyle, out value);
+            _internalStorage.TryGetValue(resolutionStyle, out var value);
             return value;
         }        
     }
@@ -85,8 +84,8 @@ namespace Attest.Testing.Core
             {
                 _internalStorage = InitializeDictionary();
             }
-            IInitializationParametersManager<IocContainerProxy> value;
-            _internalStorage.TryGetValue(resolutionStyle, out value);
+
+            _internalStorage.TryGetValue(resolutionStyle, out var value);
             return value;
         }
     }

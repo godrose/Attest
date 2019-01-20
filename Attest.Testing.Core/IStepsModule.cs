@@ -4,13 +4,13 @@ using Solid.Practices.Modularity;
 namespace Attest.Testing.Core
 {
     /// <summary>
-    /// This interface represents a composable module
+    /// This interface represents a composition module
     /// that contains steps providers
     /// </summary>
     public interface IStepsModule : ICompositionModule
     {
         /// <summary>
-        /// returns collection of steps providers associated with the steps module
+        /// Returns collection of steps providers associated with the steps module
         /// </summary>
         /// <returns></returns>
         IEnumerable<IStepsProvider> GetStepsProviders();

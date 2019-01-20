@@ -3,6 +3,7 @@ using System.Linq;
 using Attest.Testing.Contracts;
 using Solid.Practices.IoC;
 
+// ReSharper disable once CheckNamespace
 namespace Attest.Testing.EndToEnd
 {
     /// <inheritdoc />

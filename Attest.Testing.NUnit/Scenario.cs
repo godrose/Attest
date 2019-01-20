@@ -23,13 +23,10 @@ namespace Attest.Testing.NUnit
 
         public object this[string key]
         {
-            get { return Properties.Get(key); }
-            set { Properties.Set(key, value); }
+            get => Properties.Get(key);
+            set => Properties.Set(key, value);
         }
 
-        private IPropertyBag Properties
-        {
-            get { return TestContext.CurrentContext.Test.Properties as IPropertyBag; }
-        }
+        private IPropertyBag Properties => TestContext.CurrentContext.Test.Properties as IPropertyBag;
     }
 }
