@@ -49,7 +49,7 @@ namespace Attest.Fake.Setup
         }        
 
         /// <summary>
-        /// Sets the delegatet wrapper.
+        /// Sets the delegate wrapper.
         /// </summary>
         /// <param name="delegateWrapper">The delegate wrapper.</param>
         /// <returns></returns>

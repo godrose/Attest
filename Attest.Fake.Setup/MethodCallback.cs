@@ -9,17 +9,10 @@ namespace Attest.Fake.Setup
     /// </summary>
     public abstract class MethodCallbackBase : IMethodCallback
     {
-        /// <summary>
-        /// Accepts the specified visitor.
-        /// </summary>
-        /// <param name="visitor">The visitor.</param>
+        /// <inheritdoc />
         public abstract void Accept(IMethodCallbackVisitor visitor);
 
-        /// <summary>
-        /// Accepts the specified visitor.
-        /// </summary>
-        /// <param name="visitor">The visitor.</param>
-        /// <returns/>
+        /// <inheritdoc />
         public abstract Task Accept(IMethodCallbackVisitorAsync visitor);
     }
 

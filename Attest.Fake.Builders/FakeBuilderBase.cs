@@ -8,17 +8,18 @@ using Solid.Patterns.Builder;
 namespace Attest.Fake.Builders
 {
     /// <summary>
-    /// Base class for service builders, supporting mock and fake capabilties
+    /// Base class for service builders, supporting mock and fake capabilities
     /// </summary>
     /// <typeparam name="TService"></typeparam>    
-    public abstract class FakeBuilderBase<TService> : IMock<TService>, IBuilder, IBuilder<TService> where TService : class
+    public abstract class FakeBuilderBase<TService> : IMock<TService>, IBuilder, IBuilder<TService>
+        where TService : class
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FakeBuilderBase{TService}"/> class.
         /// </summary>
         protected FakeBuilderBase()
         {
-            
+
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Attest.Fake.Builders
         /// <summary>
         /// Override this method to substitute method calls in the faked service.
         /// </summary>
-        protected abstract void SetupFake();        
+        protected abstract void SetupFake();
 
         private TService BuildImpl()
         {
@@ -70,7 +71,7 @@ namespace Attest.Fake.Builders
         }
 
         /// <summary>
-        /// Verifies that the method on the fake was called exacty once.
+        /// Verifies that the method on the fake was called exactly once.
         /// </summary>
         /// <param name="expression">Method definition.</param>
         public void VerifySingleCall(Expression<Action<TService>> expression)
@@ -78,9 +79,7 @@ namespace Attest.Fake.Builders
             FakeService.VerifySingleCall(expression);
         }
 
-        /// <summary>
-        /// Faked service.
-        /// </summary>
+        /// <inheritdoc />
         public TService Object => FakeService.Object;
 
         object IBuilder.Build()
@@ -94,11 +93,20 @@ namespace Attest.Fake.Builders
         }
 
         /// <summary>
-        /// Base class for service builders, supporting mock and fake capabilties.
+        /// Base class for service builders, supporting mock and fake capabilities.
         /// This class supports basic initial setup.
+        /// This is the recommended way of using <see cref="FakeBuilderBase{TService}"/>
         /// </summary>
         public abstract class WithInitialSetup : FakeBuilderBase<TService>
         {
+            /// <inheritdoc />           
+            protected sealed override void SetupFake()
+            {
+                var initialSetup = CreateInitialSetup();
+                var setup = CreateServiceCall(initialSetup);
+                setup.Build();
+            }
+
             /// <summary>
             /// Creates initial template for the fake setup.
             /// </summary>
@@ -106,14 +114,6 @@ namespace Attest.Fake.Builders
             private IHaveNoMethods<TService> CreateInitialSetup()
             {
                 return ServiceCallFactory.CreateServiceCall(FakeService);
-            }
-
-            /// <inheritdoc />           
-            protected sealed override void SetupFake()
-            {
-                var initialSetup = CreateInitialSetup();
-                var setup = CreateServiceCall(initialSetup);
-                setup.Build();
             }
 
             /// <summary>

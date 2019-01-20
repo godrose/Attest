@@ -14,9 +14,6 @@ namespace Attest.Fake.Setup
         /// </summary>
         protected readonly List<TCallback> Callbacks = new List<TCallback>();
 
-        IEnumerable<TCallback> IHaveCallbacks<TCallback>.Callbacks
-        {
-            get { return Callbacks; }
-        }
+        IEnumerable<TCallback> IHaveCallbacks<TCallback>.Callbacks => Callbacks;
     }
 }

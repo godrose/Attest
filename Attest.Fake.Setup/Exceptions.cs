@@ -23,10 +23,7 @@ namespace Attest.Fake.Setup
 
         private IEnumerable<object> ProgressMessages { get; set; }
 
-        IEnumerable<object> IHaveProgressMessages.ProgressMessages
-        {
-            get { return ProgressMessages; }
-        }
+        IEnumerable<object> IHaveProgressMessages.ProgressMessages => ProgressMessages;
 
         /// <summary>
         /// The callback action.

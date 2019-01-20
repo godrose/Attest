@@ -43,12 +43,9 @@ namespace Attest.Fake.Setup
         /// <value>
         /// The run method description.
         /// </value>
-        public override sealed string RunMethodDescription { get; protected set; }
+        public sealed override string RunMethodDescription { get; protected set; }
 
-        /// <summary>
-        /// Accepts the specified visitor.
-        /// </summary>
-        /// <param name="visitor">The visitor.</param>
+        /// <inheritdoc />
         public abstract void Accept(IMethodCallVisitorAsync<TService> visitor);
     }
 
@@ -261,10 +258,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
-        {
-            get { return _callbacksProducer != null; }
-        }
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback => _callbacksProducer != null;
 
         void IGenerateMethodCallback<T>.GenerateCallback(T arg)
         {
@@ -389,10 +383,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
-        {
-            get { return _callbacksProducer != null; }
-        }
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback => _callbacksProducer != null;
 
         void IGenerateMethodCallback<T1, T2>.GenerateCallback(T1 arg1, T2 arg2)
         {
@@ -514,10 +505,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
-        {
-            get { return _callbacksProducer != null; }
-        }
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback => _callbacksProducer != null;
 
         void IGenerateMethodCallback<T1, T2, T3>.GenerateCallback(T1 arg1, T2 arg2, T3 arg3)
         {
@@ -636,10 +624,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
-        {
-            get { return _callbacksProducer != null; }
-        }
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback => _callbacksProducer != null;
 
         void IGenerateMethodCallback<T1, T2, T3, T4>.GenerateCallback(T1 arg1, T2 arg2, T3 arg3, T4 arg4)
         {
@@ -763,10 +748,7 @@ namespace Attest.Fake.Setup
             return this;
         }
 
-        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback
-        {
-            get { return _callbacksProducer != null; }
-        }
+        bool IGenerateMethodCallbackConditionChecker.CanGenerateCallback => _callbacksProducer != null;
 
         void IGenerateMethodCallback<T1, T2, T3, T4, T5>.GenerateCallback(T1 arg1, T2 arg2, T3 arg3, T4 arg4, T5 arg5)
         {

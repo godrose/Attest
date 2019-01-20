@@ -37,58 +37,37 @@ namespace Attest.Fake.Setup
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Sets the method that is executed when the operation is cancelled.
-        /// </summary>
-        /// <param name="onCancel">The method to invoke on cancellation.</param>
-        /// <returns></returns>
+        /// <inheritdoc />        
         public IOperation WithCancel(Action onCancel)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Sets the method that is executed when the operation yields a progress message.
-        /// </summary>
-        /// <param name="onProgress">The method to invoke on progress message arrival.</param>
-        /// <returns></returns>
+        /// <inheritdoc />        
         public IOperation WithProgress(Action<object> onProgress)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Withes the errorSets the method that is executed when the operation throws an exception.
-        /// </summary>
-        /// <param name="onError">The method to invoke on exception throwing.</param>
-        /// <returns></returns>
+        /// <inheritdoc />       
         public IOperation WithError(Action<Exception> onError)
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Starts the operation.
-        /// </summary>
+        /// <inheritdoc />
         public void Start()
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Cancels the operation.
-        /// </summary>
+        /// <inheritdoc />       
         public void Cancel()
         {
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Gets the service.
-        /// </summary>
-        /// <value>
-        /// The service.
-        /// </value>
+        /// <inheritdoc />       
         public TService Service { get; private set; }
     }
 
@@ -118,11 +97,7 @@ namespace Attest.Fake.Setup
             }
         }
 
-        /// <summary>
-        /// Creates the operation.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <returns></returns>
+        /// <inheritdoc />
         public IOperation<TService> CreateOperation<TService>() where TService : class
         {
             var match = _services[typeof (TService)];

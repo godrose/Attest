@@ -27,10 +27,10 @@ namespace Attest.Fake.Setup.Contracts
         /// <param name="methodCallsWithResultAsync">List of async method calls with return value</param>
         /// <returns>Fake after the setup</returns>
         IFake<TService> SetupFakeService(
-            IFake<TService> fake, 
+            IFake<TService> fake,
             IEnumerable<IMethodCall<TService>> methodCalls,
             IEnumerable<IMethodCallAsync<TService>> methodCallsAsync,
             IEnumerable<IMethodCallWithResult<TService>> methodCallsWithResult,
-            IEnumerable<IMethodCallWithResultAsync<TService>> methodCallsWithResultAsync);        
+            IEnumerable<IMethodCallWithResultAsync<TService>> methodCallsWithResultAsync);
     }
 }

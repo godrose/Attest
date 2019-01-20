@@ -28,14 +28,9 @@ namespace Attest.Fake.Setup
 
         private readonly List<IMethodCallMetaData> _methodCalls = new List<IMethodCallMetaData>();
 
-        private IEnumerable<IMethodCallMetaData> MethodCalls
-        {
-            get { return _methodCalls; }
-        }
-        IEnumerable<IMethodCallMetaData> IHaveMethods<TService>.MethodCalls 
-        {
-            get { return MethodCalls; }
-        }
+        private IEnumerable<IMethodCallMetaData> MethodCalls => _methodCalls;
+
+        IEnumerable<IMethodCallMetaData> IHaveMethods<TService>.MethodCalls => MethodCalls;
 
         /// <summary>
         /// Creates a new instance of <see cref="ServiceCall{TService}"/> without method calls.
@@ -61,7 +56,7 @@ namespace Attest.Fake.Setup
                 {
                     throw new ArgumentException(
                         "Only method calls that implement acceptor for either MethodCall or MethodCallWithResult visitors are allowed",
-                        "methodCallMetaData");
+                        nameof(methodCallMetaData));
                 }
                 AddMethodCallWithResultImpl(methodCallMetaData, newMethodWithResultInfo);
             }

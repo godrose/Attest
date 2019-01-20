@@ -26,7 +26,7 @@ namespace Attest.Fake.Setup.Contracts
         /// <returns></returns>
         IOperation WithProgress(Action<object> onProgress);
         /// <summary>
-        /// Withes the errorSets the method that is executed when the operation throws an exception.
+        /// Sets the method that is executed when the operation throws an exception.
         /// </summary>
         /// <param name="onError">The on error.</param>
         /// <returns></returns>
