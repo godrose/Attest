@@ -2,11 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Attest.Fake.FakeItEasy</AssemblyName>
-    <RootNamespace>Attest.Fake.FakeItEasy</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Version>2.0.0</Version>
   </PropertyGroup>
@@ -14,6 +9,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
     <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Fake.FakeItEasy.xml</DocumentationFile>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>  
 
   <ItemGroup>
