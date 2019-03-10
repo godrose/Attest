@@ -4,7 +4,7 @@ using Attest.Testing.Contracts;
 using Solid.Practices.IoC;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.EndToEnd
+namespace Attest.Testing.Lifecycle
 {
     /// <inheritdoc />
     public sealed class StaticSetupService : IStaticSetupService

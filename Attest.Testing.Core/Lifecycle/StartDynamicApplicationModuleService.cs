@@ -1,13 +1,11 @@
 using System.IO;
 using Attest.Testing.Contracts;
+using Attest.Testing.Core;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.EndToEnd
+namespace Attest.Testing.Lifecycle
 {
-    /// <summary>
-    /// Represents an implementation of <see cref="IStartDynamicApplicationModuleService"/> 
-    /// for end-to-end tests.
-    /// </summary>
+    /// <inheritdoc />
     public sealed class StartDynamicApplicationModuleService : IStartDynamicApplicationModuleService
     {
         /// <inheritdoc />

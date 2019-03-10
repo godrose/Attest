@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection;
 using Solid.Bootstrapping;
 using Solid.Common;
 using Solid.Core;
@@ -20,9 +21,11 @@ namespace Attest.Testing.Bootstrapping
         IExtensible<BootstrapperBase>,
         IHaveAspects<BootstrapperBase>,
         ICompositionModulesProvider,
+        IAssemblySourceProvider,
         IHaveRegistrator
     {
         private ModularityAspect _modularityAspect;
+        private DiscoveryAspect _discoveryAspect;
         private readonly ExtensibilityAspect<BootstrapperBase> _concreteExtensibilityAspect;
         private readonly AspectsWrapper _aspectsWrapper = new AspectsWrapper();
 
@@ -56,6 +59,9 @@ namespace Attest.Testing.Bootstrapping
         public virtual CompositionOptions CompositionOptions => new CompositionOptions();
 
         /// <inheritdoc />
+        public IEnumerable<Assembly> Assemblies => _discoveryAspect.Assemblies;
+
+        /// <inheritdoc />
         public void Initialize()
         {
             _aspectsWrapper.UseCoreAspects(CreateCoreAspects());
@@ -65,7 +71,9 @@ namespace Attest.Testing.Bootstrapping
         private IEnumerable<IAspect> CreateCoreAspects()
         {
             var aspects = new List<IAspect> { new PlatformAspect() };
-            _modularityAspect = new ModularityAspect(CompositionOptions);
+            _discoveryAspect = new DiscoveryAspect(CompositionOptions);
+            _modularityAspect = new ModularityAspect(_discoveryAspect, CompositionOptions);
+            aspects.Add(_discoveryAspect);
             aspects.Add(_modularityAspect);
             aspects.Add(_concreteExtensibilityAspect);
             return aspects;
@@ -76,6 +84,6 @@ namespace Attest.Testing.Bootstrapping
         {
             _aspectsWrapper.UseAspect(aspect);
             return this;
-        }
+        }        
     }
 }

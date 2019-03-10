@@ -1,7 +1,6 @@
 using System.IO;
 
-// ReSharper disable once CheckNamespace
-namespace Attest.Testing.EndToEnd
+namespace Attest.Testing.Core
 {
     internal static class PathHelper
     {
