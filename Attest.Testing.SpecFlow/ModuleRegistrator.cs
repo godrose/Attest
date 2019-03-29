@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Attest.Tests.Core;
+using Attest.Testing.Core;
 
-namespace Attest.Tests.SpecFlow
+namespace Attest.Testing.SpecFlow
 {
     /// <summary>
     /// This class provides option to register 

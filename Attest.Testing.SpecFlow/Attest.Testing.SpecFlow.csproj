@@ -1,90 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1CE31BC-5326-41FD-96D8-6481A011301B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Testing.SpecFlow</RootNamespace>
-    <AssemblyName>Attest.Testing.SpecFlow</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Version>2.0.0</Version>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Bin\netstandard2.0\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\Attest.Testing.Specflow.xml</DocumentationFile>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>..\..\Promisec\Trunk\bin\Tests\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>..\Bin\net\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Bin\net\Release\Attest.Testing.SpecFlow.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+
+  <ItemGroup>    
+    <PackageReference Include="Solid.Bootstrapping" Version="2.1.0" />
+    <PackageReference Include="Solid.Core" Version="2.1.0" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.1.0" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.1.0" />
+    <PackageReference Include="SpecFlow" Version="3.0.188" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="EndToEndTestsBase.cs" />
-    <Compile Include="IntegrationTestsBase.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenario.cs" />
-    <Compile Include="StepsBase.cs" />
+    <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
-      <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
-      <Name>Attest.Fake.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj">
-      <Project>{3ca7ca5f-7bea-4a80-a784-9ec889be10d7}</Project>
-      <Name>Attest.Fake.Registration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj">
-      <Project>{5f64e00b-71fc-439f-a9ab-c06f28017a1d}</Project>
-      <Name>Attest.Testing.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping">
-      <Version>2.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="Solid.Core">
-      <Version>2.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="Solid.Patterns.Builder">
-      <Version>2.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="Solid.Practices.IoC">
-      <Version>2.1.0</Version>
-    </PackageReference>
-    <PackageReference Include="SpecFlow">
-      <Version>2.4.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+    <Folder Include="Properties\" />
+  </ItemGroup> 
+
 </Project>

@@ -1,9 +1,9 @@
 using System;
-using Attest.Tests.Core;
+using Attest.Testing.Core;
 using Solid.Practices.IoC;
-using TechTalk.SpecFlow;
+using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
 
-namespace Attest.Tests.SpecFlow
+namespace Attest.Testing.SpecFlow
 {
     /// <summary>
     /// Wrapper class over the scenario context which provides concise API of adding and retrieving services
@@ -148,17 +148,13 @@ namespace Attest.Tests.SpecFlow
             ScenarioContext.Current.Clear();
         }
 
-        internal static object Container
-        {
-            get { return ScenarioContext.Current[ContainerKey]; }
-        }
+        internal static object Container => ScenarioContext.Current[ContainerKey];
+
+        internal static IDependencyRegistrator Registrator => ScenarioContext.Current[ContainerKey] as IDependencyRegistrator;
 
         /// <summary>
         /// Root object instance
         /// </summary>
-        public static object RootObject
-        {
-            get { return ScenarioContext.Current[RootObjectKey]; }
-        }
+        public static object RootObject => ScenarioContext.Current[RootObjectKey];
     }
 }
