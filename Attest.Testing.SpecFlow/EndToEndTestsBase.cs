@@ -1,5 +1,4 @@
-﻿using Attest.Testing.Core;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
 namespace Attest.Testing.SpecFlow
 {
