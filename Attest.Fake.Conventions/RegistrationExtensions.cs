@@ -19,7 +19,7 @@ namespace Attest.Fake.Conventions
         public static void RegisterFakeProviders(this IDependencyRegistrator dependencyRegistrator)
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,
-                new[] { ConventionsStore.ContractsAssemblyEnding(), ConventionsStore.FakeAssemblyEnding() });
+                new[] { ConventionsManager.ContractsAssemblyEnding(), ConventionsManager.FakeAssemblyEnding() });
             var allAssemblies = assembliesProvider.Assemblies.ToArray();
             var contractTypes = allAssemblies.FindContractTypes();
             var fakeTypes = allAssemblies.FindFakeTypes();
@@ -28,7 +28,7 @@ namespace Attest.Fake.Conventions
             {
                 var contractType =
                     contractTypes.FirstOrDefault(
-                        t => t.Name == "I" + type.Name.Replace(ConventionsStore.FakePrefix(), string.Empty));
+                        t => t.Name == "I" + type.Name.Replace(ConventionsManager.FakePrefix(), string.Empty));
                 if (contractType != null)
                 {
                     contractToFakeMatches.Add(contractType, type);
@@ -48,7 +48,7 @@ namespace Attest.Fake.Conventions
         public static IDependencyRegistrator RegisterBuilders(this IDependencyRegistrator dependencyRegistrator)
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,
-                new[] { ConventionsStore.BuildersAssemblyEnding() });
+                new[] { ConventionsManager.BuildersAssemblyEnding() });
             var assemblies = assembliesProvider.Assemblies.ToArray();
             var buildersTypes = assemblies.FindBuildersTypes();
             foreach (var type in buildersTypes)

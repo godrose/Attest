@@ -19,7 +19,7 @@ namespace Attest.Fake.Conventions
         public static Dictionary<Type, Type> FindContractToBuilderMatches()
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,
-                new[] { ConventionsStore.ContractsAssemblyEnding(), ConventionsStore.BuildersAssemblyEnding() });
+                new[] { ConventionsManager.ContractsAssemblyEnding(), ConventionsManager.BuildersAssemblyEnding() });
             var assemblies = assembliesProvider.Assemblies.ToArray();
             var contractTypes = assemblies.FindContractTypes();
             var contractToBuilderMatches = FindContractToBuilderMatchesImpl(assemblies, contractTypes);
@@ -33,7 +33,7 @@ namespace Attest.Fake.Conventions
         public static Dictionary<Type, Type> FindSimulatorToBuilderMatches()
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,
-                new[] { ConventionsStore.SimulatorsAssemblyEnding(), ConventionsStore.BuildersAssemblyEnding() });
+                new[] { ConventionsManager.SimulatorsAssemblyEnding(), ConventionsManager.BuildersAssemblyEnding() });
             var assemblies = assembliesProvider.Assemblies.ToArray();
             var contractTypes = assemblies.FindSimulatorsTypes();
             var contractToBuilderMatches = FindSimulatorToBuilderMatchesImpl(assemblies, contractTypes);
@@ -50,7 +50,7 @@ namespace Attest.Fake.Conventions
             {
                 var contractType =
                     contractTypes.FirstOrDefault(
-                        t => t.Name == "I" + builderType.Name.Replace(ConventionsStore.BuilderEnding(), string.Empty));
+                        t => t.Name == "I" + builderType.Name.Replace(ConventionsManager.BuilderEnding(), string.Empty));
                 if (contractType != null)
                 {
                     contractToBuilderMatches.Add(contractType, builderType);
@@ -69,8 +69,8 @@ namespace Attest.Fake.Conventions
             {
                 var simulatorType =
                     simulatorTypes.FirstOrDefault(
-                        t => t.Name == "I" + builderType.Name.Replace(ConventionsStore.BuilderEnding(), string.Empty)
-                                 .Replace(ConventionsStore.ProviderEnding(), ConventionsStore.SimulatorEnding()));
+                        t => t.Name == "I" + builderType.Name.Replace(ConventionsManager.BuilderEnding(), string.Empty)
+                                 .Replace(ConventionsManager.ProviderEnding(), ConventionsManager.SimulatorEnding()));
                 if (simulatorType != null)
                 {
                     simulatorToBuilderMatches.Add(simulatorType, builderType);
@@ -80,25 +80,25 @@ namespace Attest.Fake.Conventions
         }
        
         internal static Type[] FindContractTypes(this IEnumerable<Assembly> assemblies) => assemblies.FindTypes(
-            ConventionsStore.ContractsAssemblyEnding(),
-            t => t.InterfaceEndsWith(ConventionsStore.ProviderEnding()));
+            ConventionsManager.ContractsAssemblyEnding(),
+            t => t.InterfaceEndsWith(ConventionsManager.ProviderEnding()));
 
         internal static Type[] FindFakeTypes(this IEnumerable<Assembly> assemblies) => assemblies.FindTypes(
-            ConventionsStore.FakeAssemblyEnding(),
-            t => t.ClassEndsWith(ConventionsStore.ProviderEnding()));
+            ConventionsManager.FakeAssemblyEnding(),
+            t => t.ClassEndsWith(ConventionsManager.ProviderEnding()));
 
         internal static Type[] FindBuildersTypes(this IEnumerable<Assembly> assemblies)
         {
-            var buildersAssemblies = assemblies.Where(t => t.GetName().Name.EndsWith(ConventionsStore.BuildersAssemblyEnding()));
+            var buildersAssemblies = assemblies.Where(t => t.GetName().Name.EndsWith(ConventionsManager.BuildersAssemblyEnding()));
             var buildersTypes = buildersAssemblies.SelectMany(k => k.DefinedTypes
-                .Where(t => t.ClassEndsWith(ConventionsStore.BuilderEnding()))
+                .Where(t => t.ClassEndsWith(ConventionsManager.BuilderEnding()))
                 .Select(t => t.AsType())).ToArray();
             return buildersTypes;
         }
 
         internal static Type[] FindSimulatorsTypes(this IEnumerable<Assembly> assemblies) => assemblies.FindTypes(
-            ConventionsStore.SimulatorsAssemblyEnding(),
-            t => t.InterfaceEndsWith(ConventionsStore.SimulatorEnding()));
+            ConventionsManager.SimulatorsAssemblyEnding(),
+            t => t.InterfaceEndsWith(ConventionsManager.SimulatorEnding()));
 
         private static Type[] FindTypes(this IEnumerable<Assembly> assemblies, string assemblyEnding,
             Func<TypeInfo, bool> criterion) => assemblies.Where(t => t.GetName().Name.EndsWith(assemblyEnding))

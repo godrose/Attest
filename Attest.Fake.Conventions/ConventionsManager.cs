@@ -3,9 +3,9 @@
 namespace Attest.Fake.Conventions
 {
     /// <summary>
-    /// Conventions store for provider-contract-builder-fake relationship
+    /// Conventions manager for provider-contract-builder-fake relationship
     /// </summary>
-    public static class ConventionsStore
+    public static class ConventionsManager
     {
         /// <summary>
         /// Gets the default ending for assembly which holds providers' contracts.
