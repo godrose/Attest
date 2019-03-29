@@ -1,75 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3539CAD-E68B-434B-9315-153EBA1022F6}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Fake.Moq.Tests</RootNamespace>
-    <AssemblyName>Attest.Fake.Moq.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="EventInvocationTests.cs" />
-    <Compile Include="IEventProvider.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="FluentAssertions">
-      <Version>5.6.0</Version>
-    </PackageReference>
-    <PackageReference Include="xunit">
-      <Version>2.4.1</Version>
+    <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
-      <Project>{2c31f4fe-a7f6-4e0d-9c22-3a7e493a5556}</Project>
-      <Name>Attest.Fake.Builders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
-      <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
-      <Name>Attest.Fake.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj">
-      <Project>{631e0123-dfe0-42eb-9b52-22e24c7ebf91}</Project>
-      <Name>Attest.Fake.Moq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup\Attest.Fake.Setup.csproj">
-      <Project>{62e41202-991e-47fd-86bb-fe0fce7e8323}</Project>
-      <Name>Attest.Fake.Setup</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Builders", "Builders", "{AE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{73AF5532-128E-4658-A222-55E7D6CCB693}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Testing.SpecFlow", "Attest.Testing.SpecFlow\Attest.Testing.SpecFlow.csproj", "{A1CE31BC-5326-41FD-96D8-6481A011301B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Testing.SpecFlow", "Attest.Testing.SpecFlow\Attest.Testing.SpecFlow.csproj", "{A1CE31BC-5326-41FD-96D8-6481A011301B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LightMock", "LightMock", "{70132CC2-D91B-4BE7-95F0-F0B2FE832BC8}"
 EndProject

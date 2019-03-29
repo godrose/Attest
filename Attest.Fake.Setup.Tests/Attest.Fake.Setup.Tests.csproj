@@ -1,115 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B08E1C97-2C5B-49F6-B1A2-1067F8C87997}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Attest.Fake.Setup.Tests</RootNamespace>
-    <AssemblyName>Attest.Fake.Setup.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AsyncProviderTests.cs" />
-    <Compile Include="ILoginProvider.cs" />
-    <Compile Include="IPhasesProvider.cs" />
-    <Compile Include="IWarehouseProvider.cs" />
-    <Compile Include="LoginProviderBuilder.cs" />
-    <Compile Include="MultipleCallsLightMockTests.cs" />
-    <Compile Include="MultipleCallsTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WarehouseItemDto.cs" />
-    <Compile Include="WarehouseProviderBuilder.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj">
-      <Project>{2c31f4fe-a7f6-4e0d-9c22-3a7e493a5556}</Project>
-      <Name>Attest.Fake.Builders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj">
-      <Project>{59d119f0-1b71-4bee-b5a2-9064215f0d3f}</Project>
-      <Name>Attest.Fake.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.LightMock\Attest.Fake.LightMock.csproj">
-      <Project>{91d1cb6b-2d09-46d2-999f-a275a119d4ff}</Project>
-      <Name>Attest.Fake.LightMock</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj">
-      <Project>{631e0123-dfe0-42eb-9b52-22e24c7ebf91}</Project>
-      <Name>Attest.Fake.Moq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj">
-      <Project>{8ad6083c-054b-4d64-bf03-e276a81d3412}</Project>
-      <Name>Attest.Fake.Setup.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Attest.Fake.Setup\Attest.Fake.Setup.csproj">
-      <Project>{62e41202-991e-47fd-86bb-fe0fce7e8323}</Project>
-      <Name>Attest.Fake.Setup</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LightMock\LightMock.csproj">
-      <Project>{be62e698-7646-41c3-a036-67f3a9cb4124}</Project>
-      <Name>LightMock</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Moq">
-      <Version>4.10.1</Version>
-    </PackageReference>
-    <PackageReference Include="NUnit">
-      <Version>3.11.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
-      <Version>4.5.2</Version>
-    </PackageReference>
-    <PackageReference Include="System.Threading.Tasks.Extensions">
-      <Version>4.5.2</Version>
-    </PackageReference>
-    <PackageReference Include="System.ValueTuple">
-      <Version>4.5.0</Version>
+    <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
+    <ProjectReference Include="..\Attest.Fake.LightMock\Attest.Fake.LightMock.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj" />
+    <ProjectReference Include="..\Attest.Fake.Setup\Attest.Fake.Setup.csproj" />
+    <ProjectReference Include="..\LightMock\LightMock.csproj" />
+  </ItemGroup>
+
 </Project>

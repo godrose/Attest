@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Attest.Fake.Builders;
 using Attest.Fake.LightMock;
+using FluentAssertions;
 using LightMock;
-using NUnit.Framework;
+using Xunit;
 
 namespace Attest.Fake.Setup.Tests
 {
@@ -124,10 +125,9 @@ namespace Attest.Fake.Setup.Tests
         }
     }
 
-    [TestFixture]
     public class MultipleCallsLightMockTests
     {        
-        [Test]
+        [Fact]
         public void MultipleCalls_ResultIsSetAsFunction_ResultsAreDifferent()
         {            
             var loginProviderBuilder = LightMockLoginProviderBuilder.CreateBuilder();
@@ -136,7 +136,7 @@ namespace Attest.Fake.Setup.Tests
             var firstUsers = provider.GetUsers();
             provider.AddUser("Kolya", null);
             var secondUsers = provider.GetUsers();
-            CollectionAssert.AreNotEquivalent(firstUsers, secondUsers);
+            secondUsers.Should().NotBeEquivalentTo(firstUsers);            
         }        
     }
 }

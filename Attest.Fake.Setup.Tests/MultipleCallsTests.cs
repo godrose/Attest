@@ -1,22 +1,21 @@
 ﻿using System;
 using Attest.Fake.Core;
 using Attest.Fake.Moq;
-using NUnit.Framework;
+using FluentAssertions;
 using Solid.Patterns.Builder;
+using Xunit;
 
 namespace Attest.Fake.Setup.Tests
 {
-    [TestFixture]
     public class MultipleCallsTests
     {
-        [OneTimeSetUp]
-        public void TestFixtureSetup()
+        static MultipleCallsTests()
         {
             FakeFactoryContext.Current = new FakeFactory();
             ConstraintFactoryContext.Current = new ConstraintFactory();
-        }
+        }        
 
-        [Test]
+        [Fact]
         public void MultipleCalls_ResultIsSetAsFunction_ResultsAreDifferent()
         {
             var firstGaugeId = Guid.Parse("305f5ac7-0145-4466-bd3b-d851989430f8");
@@ -39,7 +38,7 @@ namespace Attest.Fake.Setup.Tests
             var provider = ((IBuilder<IPhasesProvider>)phasesProviderBuilder).Build();
             var firstPhases = provider.GetPhasesByGauge(firstGaugeId);
             var secondPhases = provider.GetPhasesByGauge(secondGaugeId);
-            CollectionAssert.AreNotEquivalent(firstPhases, secondPhases);
+            secondPhases.Should().NotBeEquivalentTo(firstPhases);
         }
     }
 }
