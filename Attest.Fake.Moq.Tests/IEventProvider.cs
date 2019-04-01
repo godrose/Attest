@@ -59,4 +59,16 @@ namespace Attest.Fake.Moq.Tests
             return this;
         }
     }
+
+    class FakeEventProvider : IEventProvider
+    {
+        public event EventHandler Arrived;
+        public event EventHandler<DataEventArgs> DataArrived;
+        public event CustomEventHandler CustomArrived;
+
+        internal void RaiseDataArrived(object data)
+        {
+            DataArrived?.Invoke(this, new DataEventArgs(data));
+        }
+    }
 }
