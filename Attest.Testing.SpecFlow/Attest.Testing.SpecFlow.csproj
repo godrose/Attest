@@ -18,7 +18,7 @@
     <PackageReference Include="Solid.Core" Version="2.1.0" />
     <PackageReference Include="Solid.Patterns.Builder" Version="2.1.0" />
     <PackageReference Include="Solid.Practices.IoC" Version="2.1.0" />
-    <PackageReference Include="SpecFlow" Version="3.0.188" />
+    <PackageReference Include="SpecFlow" Version="3.0.199" />
   </ItemGroup>
 
   <ItemGroup>
