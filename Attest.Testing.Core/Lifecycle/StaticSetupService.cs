@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Attest.Testing.Contracts;
+using Solid.Core;
 using Solid.Practices.IoC;
 
 // ReSharper disable once CheckNamespace
@@ -16,15 +17,15 @@ namespace Attest.Testing.Lifecycle
 
         private static readonly object OneTimeSetupSyncObject = new object();
         private readonly IDependencyResolver _dependencyResolver;
-        private readonly IStartStaticApplicationModuleService _startApplicationModuleService;
+        private readonly IStartStaticApplicationModuleService _startStaticApplicationModuleService;
 
         /// <inheritdoc />
         public StaticSetupService(
             IDependencyResolver dependencyResolver,
-            IStartStaticApplicationModuleService startApplicationModuleService)
+            IStartStaticApplicationModuleService startStaticApplicationModuleService)
         {
             _dependencyResolver = dependencyResolver;
-            _startApplicationModuleService = startApplicationModuleService;
+            _startStaticApplicationModuleService = startStaticApplicationModuleService;
         }
 
         /// <inheritdoc />
@@ -35,8 +36,9 @@ namespace Attest.Testing.Lifecycle
                 if (_isOneTimeSetupHandled == false)
                 {
                     var staticApplicationModules = _dependencyResolver.ResolveAll<IStaticApplicationModule>();
-                    _handlesMap = staticApplicationModules.ToDictionary(applicationModule =>
-                        _startApplicationModuleService.Start(applicationModule));
+                    var sortedModules = staticApplicationModules.SortTopologically();
+                    _handlesMap = sortedModules.ToDictionary(applicationModule =>
+                        _startStaticApplicationModuleService.Start(applicationModule));
                     _isOneTimeSetupHandled = true;
                 }
                 return _handlesMap;

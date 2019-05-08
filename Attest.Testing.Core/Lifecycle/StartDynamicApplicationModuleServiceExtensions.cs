@@ -19,7 +19,7 @@ namespace Attest.Testing.Lifecycle
             this IStartDynamicApplicationModuleService startDynamicApplicationModuleService,
             IEnumerable<IDynamicApplicationModule> applicationModules)
         {
-            var sortedModules = applicationModules.SortTopologically(r => r.ExtractDependencies(), r => r.ExtractId());
+            var sortedModules = applicationModules.SortTopologically();
             foreach (var module in sortedModules)
             {
                 startDynamicApplicationModuleService.Start(module);
