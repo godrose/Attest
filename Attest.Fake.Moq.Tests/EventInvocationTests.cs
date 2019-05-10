@@ -53,6 +53,6 @@ namespace Attest.Fake.Moq.Tests
             eventProviderBuilder.RaiseCustomEvent(m => m.CustomArrived += null, argsTobeSent);
 
             arrivedArgs.Should().BeSameAs(argsTobeSent);
-        }
+        }        
     }
 }
