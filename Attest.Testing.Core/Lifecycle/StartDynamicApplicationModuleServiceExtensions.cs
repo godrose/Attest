@@ -13,8 +13,8 @@ namespace Attest.Testing.Lifecycle
         /// <summary>
         /// Starts collection of <see cref="IDynamicApplicationModule"/>
         /// </summary>
-        /// <param name="startDynamicApplicationModuleService"></param>
-        /// <param name="applicationModules"></param>
+        /// <param name="startDynamicApplicationModuleService">The means for starting a dynamic application module.</param>
+        /// <param name="applicationModules">The collection of application modules.</param>
         public static void StartCollection(
             this IStartDynamicApplicationModuleService startDynamicApplicationModuleService,
             IEnumerable<IDynamicApplicationModule> applicationModules)

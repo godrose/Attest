@@ -11,7 +11,7 @@ namespace Attest.Testing.Core
 {
     /// <summary>
     /// This middleware registers the main dependencies for
-    /// testing lifecycle <see cref="ISetupService"/> <see cref="ITeardownService"/> and so on
+    /// testing lifecycle: <see cref="ISetupService"/> <see cref="ITeardownService"/> and so on
     /// </summary>
     /// <typeparam name="TBootstrapper"></typeparam>
     public class UseLifecycleMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>

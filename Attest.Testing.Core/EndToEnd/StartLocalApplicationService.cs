@@ -14,8 +14,8 @@ namespace Attest.Testing.EndToEnd
         /// <summary>
         /// Creates a new instance of <see cref="StartLocalApplicationService"/>
         /// </summary>
-        /// <param name="startApplicationService"></param>
-        /// <param name="applicationPathInfo"></param>
+        /// <param name="startApplicationService">The start application service.</param>
+        /// <param name="applicationPathInfo">The application path info.</param>
         public StartLocalApplicationService(
             IStartApplicationService startApplicationService,
             IApplicationPathInfo applicationPathInfo)

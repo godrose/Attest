@@ -19,17 +19,15 @@ namespace Attest.Testing.EndToEnd
             private readonly IApplicationFacade _applicationFacade;
 
             /// <summary>
-            /// 
+            /// Initializes a new instance of <see cref="StartApplicationService.WithFakeProviders"/>
             /// </summary>
             /// <param name="applicationFacade"></param>
             public WithFakeProviders(IApplicationFacade applicationFacade)
             {
                 _applicationFacade = applicationFacade;
             }
-            /// <summary>
-            /// Starts the application.
-            /// </summary>
-            /// <param name="startupPath">The startup path.</param>
+
+            /// <inheritdoc />
             public override void Start(string startupPath)
             {
                 BuildersCollectionContext.SerializeBuilders();
@@ -46,17 +44,15 @@ namespace Attest.Testing.EndToEnd
             private readonly IApplicationFacade _applicationFacade;
 
             /// <summary>
-            /// 
+            /// Initializes a new instance of <see cref="StartApplicationService.WithRealProviders"/>
             /// </summary>
             /// <param name="applicationFacade"></param>
             public WithRealProviders(IApplicationFacade applicationFacade)
             {
                 _applicationFacade = applicationFacade;
             }
-            /// <summary>
-            /// Starts the application.
-            /// </summary>
-            /// <param name="startupPath">The startup path.</param>
+
+            /// <inheritdoc />
             public override void Start(string startupPath)
             {
                 _applicationFacade.Start(startupPath);
