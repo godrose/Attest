@@ -78,7 +78,7 @@ namespace Attest.Fake.Data
         /// <summary>
         /// Resets the builders collection with the provided value.
         /// </summary>
-        /// <param name="buildersCollection"></param>
+        /// <param name="buildersCollection">The builders collection</param>
         public static void Reset(BuildersCollection buildersCollection)
         {
             _buildersCollection = buildersCollection;

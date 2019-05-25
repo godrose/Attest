@@ -19,7 +19,7 @@ namespace Attest.Fake.Moq
         }
 
         /// <summary>
-        /// Matches any value that satisifies the given predicate
+        /// Matches any value that satisfies the given predicate
         /// </summary>
         /// <typeparam name="TValue">Type of value to be matched</typeparam>
         /// <param name="testExpression">Predicate to be satisfied</param>

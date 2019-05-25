@@ -10,8 +10,7 @@ namespace Attest.Fake.LightMock
     /// </summary>
     /// <typeparam name="TFaked">Type of faked service</typeparam>
     public class Fake<TFaked> : IFake<TFaked> where TFaked : class
-    {        
-        private readonly TFaked _fake;
+    {
         private readonly MockContext<TFaked> _context;
 
         /// <summary>
@@ -21,7 +20,7 @@ namespace Attest.Fake.LightMock
         /// <param name="context">The context.</param>
         public Fake(TFaked fake, MockContext<TFaked> context)
         {
-            _fake = fake;
+            Object = fake;
             _context = context;
         }
 
@@ -38,7 +37,7 @@ namespace Attest.Fake.LightMock
         }
 
         /// <inheritdoc />      
-        public TFaked Object => _fake;
+        public TFaked Object { get; }
 
         /// <inheritdoc />       
         public void VerifyCall(Expression<Action<TFaked>> expression)

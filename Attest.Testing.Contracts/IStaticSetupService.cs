@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace Attest.Testing.Contracts
 {
     /// <summary>
-    /// Represents static setup functionality
+    /// Represents static setup functionality.
     /// </summary>
     public interface IStaticSetupService
     {

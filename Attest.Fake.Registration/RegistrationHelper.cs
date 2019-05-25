@@ -46,7 +46,7 @@ namespace Attest.Fake.Registration
         }
 
         /// <summary>
-        /// Constructs the dependency using the suppiled builder and registers it in transient mode.
+        /// Constructs the dependency using the supplied builder and registers it in transient mode.
         /// </summary>
         /// <typeparam name="TDependency">The type of the service.</typeparam>
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
@@ -58,7 +58,7 @@ namespace Attest.Fake.Registration
         }
 
         /// <summary>
-        /// Constructs the dependency using the suppiled builder and registers it in transient mode.
+        /// Constructs the dependency using the supplied builder and registers it in transient mode.
         /// </summary>        
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="dependencyType">The type of the dependency.</param>

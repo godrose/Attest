@@ -11,8 +11,9 @@
         /// <typeparam name="TFaked">Type of fake</typeparam>
         /// <returns>Fake instance</returns>
         IFake<TFaked> CreateFake<TFaked>() where TFaked : class;
+
         /// <summary>
-        /// Return an instance of mock
+        /// Returns an instance of mock
         /// </summary>
         /// <typeparam name="TFaked">Type of mock</typeparam>
         /// <returns>Mock instance</returns>

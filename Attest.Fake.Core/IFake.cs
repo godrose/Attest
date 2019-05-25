@@ -7,7 +7,7 @@ namespace Attest.Fake.Core
     /// Represents an abstraction for a fake object.
     /// </summary>
     /// <typeparam name="TFaked">Type of faked service</typeparam>
-    public interface IFake<TFaked> : IMock<TFaked>, IEventInvocator<TFaked> where TFaked: class
+    public interface IFake<TFaked> : IMock<TFaked>, IEventInvoker<TFaked> where TFaked: class
     {        
         /// <summary>
         /// Sets up the fake according to the provided setup expression of fake call
@@ -29,7 +29,7 @@ namespace Attest.Fake.Core
     /// Represents means for raising events on a fake object.
     /// </summary>
     /// <typeparam name="TFaked">Type of faked service</typeparam>
-    public interface IEventInvocator<TFaked> where TFaked: class
+    public interface IEventInvoker<TFaked> where TFaked: class
     {
         /// <summary>
         /// Raises the specified event on the fake object.

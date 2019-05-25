@@ -9,7 +9,7 @@ namespace Attest.Fake.Moq
     public class FakeFactory : IFakeFactory
     {
         /// <summary>
-        /// Returns an instance of fake
+        /// Returns an instance of fake.
         /// </summary>
         /// <typeparam name="TFaked">Type of fake</typeparam>
         /// <returns>Fake instance</returns>
@@ -19,7 +19,7 @@ namespace Attest.Fake.Moq
         }
 
         /// <summary>
-        /// Return an instance of mock
+        /// Return an instance of mock.
         /// </summary>
         /// <typeparam name="TFaked">Type of mock</typeparam>
         /// <returns>Mock instance</returns>

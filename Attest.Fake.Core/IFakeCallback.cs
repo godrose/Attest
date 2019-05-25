@@ -34,6 +34,7 @@ namespace Attest.Fake.Core
         /// <typeparam name="T3">Type of the third parameter</typeparam>
         /// <param name="action">Action that will be invoked on the fake</param>
         void Callback<T1, T2, T3>(Action<T1, T2, T3> action);
+
         /// <summary>
         /// Sets up the callback to an action with 4 parameters when invoked on the fake
         /// </summary>
@@ -43,6 +44,7 @@ namespace Attest.Fake.Core
         /// <typeparam name="T4">Type of the fourth parameter</typeparam>
         /// <param name="action">Action that will be invoked on the fake</param>
         void Callback<T1, T2, T3, T4>(Action<T1, T2, T3, T4> action);
+
         /// <summary>
         /// Sets up the callback to an action with 5 parameters when invoked on the fake
         /// </summary>

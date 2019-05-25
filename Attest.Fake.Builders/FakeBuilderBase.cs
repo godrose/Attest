@@ -8,9 +8,9 @@ using Solid.Patterns.Builder;
 namespace Attest.Fake.Builders
 {
     /// <summary>
-    /// Base class for service builders, supporting mock and fake capabilities
+    /// Base class for service builders, supporting mock and fake capabilities.
     /// </summary>
-    /// <typeparam name="TService"></typeparam>    
+    /// <typeparam name="TService">The type of the service</typeparam>    
     public abstract class FakeBuilderBase<TService> : IMock<TService>, IBuilder, IBuilder<TService>
         where TService : class
     {
@@ -33,7 +33,6 @@ namespace Attest.Fake.Builders
         }
 
         private IFake<TService> _fakeService;
-
         /// <summary>
         /// Fake service.
         /// </summary>                    

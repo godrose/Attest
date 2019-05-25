@@ -4,7 +4,7 @@ using Solid.Patterns.Builder;
 namespace Attest.Fake.Builders
 {
     /// <summary>
-    /// Base class for data/model providers
+    /// Base class for fake data/model providers.
     /// </summary>
     /// <typeparam name="TBuilder">Type of builder</typeparam>
     /// <typeparam name="TService">Type of service</typeparam>

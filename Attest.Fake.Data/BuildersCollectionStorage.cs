@@ -12,8 +12,8 @@
         /// <summary>
         /// Creates and initializes an instance of <see cref="BuildersCollectionStorage"/>
         /// </summary>
-        /// <param name="converter"></param>
-        /// <param name="dataStorage"></param>
+        /// <param name="converter">The builders collection converter.</param>
+        /// <param name="dataStorage">The data storage</param>
         public BuildersCollectionStorage(
             IBuildersCollectionConverter converter,
             IDataStorage<string> dataStorage)

@@ -5,7 +5,7 @@ using Moq.Language.Flow;
 namespace Attest.Fake.Moq
 {
     /// <summary>
-    /// Implementation of fake callback without return value using Moq framework
+    /// Implementation of fake callback without return value using Moq framework.
     /// </summary>
     /// <typeparam name="TFake">Type of faked service</typeparam>
     class MoqFakeCallback<TFake> : IFakeCallback where TFake : class
@@ -49,7 +49,7 @@ namespace Attest.Fake.Moq
     }
 
     /// <summary>
-    /// Implementation of fake callback with return value using Moq framework
+    /// Implementation of fake callback with return value using Moq framework.
     /// </summary>
     /// <typeparam name="TFake">Type of faked service</typeparam>
     /// <typeparam name="TResult">Type of return value</typeparam>

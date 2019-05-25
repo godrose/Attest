@@ -11,8 +11,6 @@ namespace Attest.Fake.FakeItEasy
     /// <typeparam name="TFaked">Type of faked service</typeparam>
     public class Fake<TFaked> : IFake<TFaked> where TFaked : class
     {
-        private readonly TFaked _fake = A.Fake<TFaked>();
-
         /// <inheritdoc />       
         public void VerifyCall(Expression<Action<TFaked>> expression)
         {
@@ -44,7 +42,7 @@ namespace Attest.Fake.FakeItEasy
         }
 
         /// <inheritdoc />       
-        public TFaked Object => _fake;
+        public TFaked Object { get; } = A.Fake<TFaked>();
 
         /// <inheritdoc />
         public void Raise(Action<TFaked> eventExpression, EventArgs eventArgs)

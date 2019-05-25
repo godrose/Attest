@@ -13,9 +13,9 @@ namespace Attest.Fake.Conventions
     public static class RegistrationExtensions
     {
         /// <summary>
-        /// Registers fake providers' implementations into the provided dependency registrator
+        /// Registers fake providers' implementations into the provided dependency registrator.
         /// </summary>
-        /// <param name="dependencyRegistrator"></param>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
         public static void RegisterFakeProviders(this IDependencyRegistrator dependencyRegistrator)
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,
@@ -42,9 +42,9 @@ namespace Attest.Fake.Conventions
         }
 
         /// <summary>
-        /// Registers providers' builders into the provided dependency registrator
+        /// Registers providers' builders into the provided dependency registrator.
         /// </summary>
-        /// <param name="dependencyRegistrator"></param>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
         public static IDependencyRegistrator RegisterBuilders(this IDependencyRegistrator dependencyRegistrator)
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,

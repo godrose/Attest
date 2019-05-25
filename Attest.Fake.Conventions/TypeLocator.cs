@@ -13,7 +13,7 @@ namespace Attest.Fake.Conventions
     public static class TypeLocator
     {
         /// <summary>
-        /// Find matches between providers' contracts and their respective builders
+        /// Find matches between providers' contracts and their respective builders.
         /// </summary>
         /// <returns></returns>
         public static Dictionary<Type, Type> FindContractToBuilderMatches()
@@ -27,7 +27,7 @@ namespace Attest.Fake.Conventions
         }
 
         /// <summary>
-        /// Find matches between providers' simulators and their respective builders
+        /// Find matches between providers' simulators and their respective builders.
         /// </summary>
         /// <returns></returns>
         public static Dictionary<Type, Type> FindSimulatorToBuilderMatches()

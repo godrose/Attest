@@ -1,7 +1,7 @@
 ﻿namespace Attest.Testing.Contracts
 {
     /// <summary>
-    /// Represents application under test.
+    /// Represents application start/stop facade.
     /// </summary>
     public interface IApplicationFacade
     {
