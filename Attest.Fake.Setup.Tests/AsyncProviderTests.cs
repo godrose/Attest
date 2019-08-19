@@ -156,7 +156,7 @@ namespace Attest.Fake.Setup.Tests
             var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.Login();
 
-            var isLoggedIn = provider.IsLoggedIn;
+            var isLoggedIn = provider.IsLoggedIn();
             isLoggedIn.Should().BeTrue();                     
         }
 
@@ -168,7 +168,7 @@ namespace Attest.Fake.Setup.Tests
             var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithOneParameter("parameter");
 
-            var isLoggedIn = provider.IsLoggedIn;
+            var isLoggedIn = provider.IsLoggedIn();
             isLoggedIn.Should().BeTrue();            
         }
 
@@ -180,7 +180,7 @@ namespace Attest.Fake.Setup.Tests
             var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithTwoParameters("firstParameter", "secondParameter");
 
-            var isLoggedIn = provider.IsLoggedIn;
+            var isLoggedIn = provider.IsLoggedIn();
             isLoggedIn.Should().BeTrue();            
         }
 
@@ -192,7 +192,7 @@ namespace Attest.Fake.Setup.Tests
             var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithThreeParameters("firstParameter", "secondParameter", "thirdParameter");
 
-            var isLoggedIn = provider.IsLoggedIn;
+            var isLoggedIn = provider.IsLoggedIn();
             isLoggedIn.Should().BeTrue();
         }
 
@@ -204,7 +204,7 @@ namespace Attest.Fake.Setup.Tests
             var provider = ((IBuilder<ILoginProvider>)builder).Build();
             await provider.LoginWithFourParameters("firstParameter", "secondParameter", "thirdParameter", "fourthParameter");
 
-            var isLoggedIn = provider.IsLoggedIn;
+            var isLoggedIn = provider.IsLoggedIn();
             isLoggedIn.Should().BeTrue();
         }
 
@@ -218,7 +218,7 @@ namespace Attest.Fake.Setup.Tests
                 provider.LoginWithFiveParameters("firstParameter", "secondParameter", "thirdParameter",
                     "fourthParameter", "fifthParameter");
 
-            var isLoggedIn = provider.IsLoggedIn;
+            var isLoggedIn = provider.IsLoggedIn();
             isLoggedIn.Should().BeTrue();
         }
     }

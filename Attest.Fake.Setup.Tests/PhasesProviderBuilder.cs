@@ -12,7 +12,7 @@ namespace Attest.Fake.Setup.Tests
         Guid[] GetPhasesByGauge(Guid gaugeId);
     }
 
-    public class PhasesProviderBuilder : FakeBuilderBase<IPhasesProvider>
+    public class PhasesProviderBuilder : FakeBuilderBase<IPhasesProvider>.WithInitialSetup
     {
         private readonly Dictionary<Guid, List<PhaseDto>> _phases = new Dictionary<Guid, List<PhaseDto>>();
 
@@ -27,23 +27,19 @@ namespace Attest.Fake.Setup.Tests
             {
                 _phases.Add(gaugeId, new List<PhaseDto>());
             }
+
             _phases[gaugeId].AddRange(phases);
         }
 
-        private IHaveNoMethods<IPhasesProvider> CreateInitialSetup()
+        protected override IServiceCall<IPhasesProvider> CreateServiceCall(
+            IHaveNoMethods<IPhasesProvider> serviceCallTemplate)
         {
-            return ServiceCallFactory.CreateServiceCall(FakeService);
-        }
-
-        protected override void SetupFake()
-        {
-            var initialSetup = CreateInitialSetup();
-            var setup = initialSetup.AddMethodCallWithResult<Guid, Guid[]>(
+            var setup = serviceCallTemplate.AddMethodCallWithResult<Guid, Guid[]>(
                 t => t.GetPhasesByGauge(It.IsAny<Guid>()),
                 (r, id) =>
                     r.Complete(
                         k => _phases[k].Select(t => t.Id).ToArray()));
-            setup.Build();
+            return setup;
         }
     }
 

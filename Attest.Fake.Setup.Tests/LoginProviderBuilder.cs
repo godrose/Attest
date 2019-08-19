@@ -1,10 +1,27 @@
+using System.Threading.Tasks;
 using Attest.Fake.Builders;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;
 
 namespace Attest.Fake.Setup.Tests
 {
-    public class LoginProviderBuilder : FakeBuilderBase<ILoginProvider>
+    public interface ILoginProvider
+    {
+        bool IsLoggedIn();
+
+        Task Login();
+        Task LoginWithOneParameter(string parameter);
+        Task LoginWithTwoParameters(string firstParameter, string secondParameter);
+        Task LoginWithThreeParameters(string firstParameter, string secondParameter, string thirdParameter);
+
+        Task LoginWithFourParameters(string firstParameter, string secondParameter, string thirdParameter,
+            string fourthParameter);
+
+        Task LoginWithFiveParameters(string firstParameter, string secondParameter, string thirdParameter,
+            string fourthParameter, string fifthParameter);
+    }
+
+    public class LoginProviderBuilder : FakeBuilderBase<ILoginProvider>.WithInitialSetup
     {
         private bool _isLoggedIn;        
 
@@ -18,17 +35,10 @@ namespace Attest.Fake.Setup.Tests
             return new LoginProviderBuilder();
         }
 
-        private IHaveNoMethods<ILoginProvider> CreateInitialSetup()
+        protected override IServiceCall<ILoginProvider> CreateServiceCall(IHaveNoMethods<ILoginProvider> serviceCallTemplate)
         {
-            return ServiceCallFactory.CreateServiceCall(FakeService);
-        }
+            var setup = serviceCallTemplate.AddMethodCallAsync(t => t.Login(), r => r.Complete(Login));
 
-        protected override void SetupFake()
-        {
-            var initialSetup = CreateInitialSetup();
-
-            var setup = initialSetup.AddMethodCallAsync(t => t.Login(), r => r.Complete(Login));
-            
             setup.AddMethodCallAsync<string>(t => t.LoginWithOneParameter(It.IsAny<string>()), r => r.Complete(Login));
 
             setup.AddMethodCallAsync<string, string>(
@@ -48,9 +58,9 @@ namespace Attest.Fake.Setup.Tests
                     t.LoginWithFiveParameters(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
                 r => r.Complete(Login));
 
-            setup.Build();
+            setup.AddMethodCallWithResult(t => t.IsLoggedIn(), r => r.Complete(() => _isLoggedIn));
 
-            FakeService.Setup(t => t.IsLoggedIn).Callback(() => _isLoggedIn);
+            return setup;
         }
 
         private void Login()
