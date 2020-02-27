@@ -6,13 +6,16 @@ namespace Attest.Testing.SpecFlow
     /// Base class for all End-To-End tests that use SpecFlow as test framework provider.
     /// </summary>    
     public abstract class EndToEndTestsBase : Core.EndToEndTestsBase
-    {        
+    {
+        private readonly ScenarioHelper _scenarioHelper;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
         /// </summary>        
-        protected EndToEndTestsBase()
+        protected EndToEndTestsBase(ScenarioContext scenarioContext)
         {            
-            Core.ScenarioContext.Current = new Scenario();
+            Core.ScenarioContext.Current = new ScenarioContextWrapper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(scenarioContext);
         }
 
         /// <summary>
@@ -50,7 +53,7 @@ namespace Attest.Testing.SpecFlow
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();            
+            _scenarioHelper.Clear();
         }
 
         /// <summary>
