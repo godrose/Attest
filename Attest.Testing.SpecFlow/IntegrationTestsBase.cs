@@ -3,6 +3,7 @@ using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
+using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
 
 namespace Attest.Testing.SpecFlow
 {
@@ -19,17 +20,22 @@ namespace Attest.Testing.SpecFlow
         where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()   
     {
         private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
+        private readonly ScenarioHelper _scenarioHelper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
+        /// <param name="scenarioContext">The scenario context.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
-        protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
+        protected IntegrationTestsBase(
+            ScenarioContext scenarioContext,
+            InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
-            Core.ScenarioContext.Current = new Scenario();
+            Core.ScenarioContext.Current = new ScenarioContextWrapper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(scenarioContext);
         }
 
         /// <summary>
@@ -58,7 +64,7 @@ namespace Attest.Testing.SpecFlow
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();            
             Registrator = initializationParameters.IocContainer;
             Resolver = initializationParameters.IocContainer;
-            ScenarioHelper.Initialize(initializationParameters.IocContainer, this);
+            _scenarioHelper.Initialize(initializationParameters.IocContainer, this);
         }
 
         /// <summary>
@@ -71,7 +77,7 @@ namespace Attest.Testing.SpecFlow
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();            
+            _scenarioHelper.Clear();          
         }
 
         /// <summary>
@@ -105,6 +111,16 @@ namespace Attest.Testing.SpecFlow
         /// </summary>
         public class WithExplicitRootObjectCreation : IntegrationTestsBase<TRootObject, TBootstrapper>
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}.WithExplicitRootObjectCreation"/> class.
+            /// </summary>
+            /// <param name="scenarioContext"></param>
+            public WithExplicitRootObjectCreation(ScenarioContext scenarioContext)
+                :base(scenarioContext)
+            {
+                    
+            }
+
             /// <inheritdoc />            
             [BeforeScenario]            
             protected override void Setup()
@@ -138,18 +154,22 @@ namespace Attest.Testing.SpecFlow
         where TBootstrapper : IInitializable, IHaveContainer<TContainer>, new()
     {
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
+        private readonly ScenarioHelper _scenarioHelper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
+        /// <param name="scenarioContext">The scenario context.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
+            ScenarioContext scenarioContext,
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
             _initializationParametersManager =
                 ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
-            Core.ScenarioContext.Current = new Scenario();
+            Core.ScenarioContext.Current = new ScenarioContextWrapper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(scenarioContext);
         }
 
         /// <summary>
@@ -179,7 +199,7 @@ namespace Attest.Testing.SpecFlow
             var containerAdapter = CreateAdapter(initializationParameters.IocContainer);
             Registrator = containerAdapter;
             Resolver = containerAdapter;
-            ScenarioHelper.Initialize(containerAdapter, this);
+            _scenarioHelper.Initialize(containerAdapter, this);
         }
 
         /// <summary>
@@ -199,7 +219,7 @@ namespace Attest.Testing.SpecFlow
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();            
+            _scenarioHelper.Clear();            
         }
 
         /// <summary>

@@ -8,33 +8,43 @@ namespace Attest.Testing.SpecFlow
     /// <summary>
     /// Wrapper class over the scenario context which provides concise API of adding and retrieving services
     /// </summary>
-    public static class ScenarioHelper
+    public class ScenarioHelper
     {
+        private readonly ScenarioContext _scenarioContext;
         private const string RootObjectFactoryKey = "rootObjectFactory";
         private const string RootObjectKey = "rootObject";
         private const string ContainerKey = "container";
 
-        internal static void Initialize(
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ScenarioHelper"/> class.
+        /// </summary>
+        /// <param name="scenarioContext"></param>
+        public ScenarioHelper(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
+
+        internal void Initialize(
             IIocContainer iocContainer,
             IRootObjectFactory rootObjectFactory)
         {
-            ScenarioContext.Current.Add(ContainerKey, iocContainer);
-            ScenarioContext.Current.Add(RootObjectFactoryKey, rootObjectFactory);
+            _scenarioContext.Add(ContainerKey, iocContainer);
+            _scenarioContext.Add(RootObjectFactoryKey, rootObjectFactory);
         }
 
-        internal static void Initialize(
+        internal void Initialize(
             IIocContainer iocContainer)
         {
-            ScenarioContext.Current.Add(ContainerKey, iocContainer);            
+            _scenarioContext.Add(ContainerKey, iocContainer);            
         }
 
         /// <summary>
         /// Creates the root object and adds it to the scenario context
         /// </summary>
-        public static void CreateRootObject()
+        public void CreateRootObject()
         {
-            var rootObjectFactory = (IRootObjectFactory)ScenarioContext.Current[RootObjectFactoryKey];
-            ScenarioContext.Current.Add(RootObjectKey, rootObjectFactory.CreateRootObject());
+            var rootObjectFactory = (IRootObjectFactory)_scenarioContext[RootObjectFactoryKey];
+            _scenarioContext.Add(RootObjectKey, rootObjectFactory.CreateRootObject());
         }
 
         /// <summary>
@@ -42,7 +52,7 @@ namespace Attest.Testing.SpecFlow
         /// </summary>
         /// <typeparam name="TItem">Type of item</typeparam>
         /// <param name="item">Item</param>
-        public static void Add<TItem>(TItem item) where TItem : class
+        public void Add<TItem>(TItem item) where TItem : class
         {           
             var typeName = GetKey<TItem>();
             AddImpl(item, typeName);
@@ -54,21 +64,21 @@ namespace Attest.Testing.SpecFlow
         /// <typeparam name="TItem">Type of item</typeparam>
         /// <param name="item">Item</param>
         /// <param name="addAsType">Specific type which will be used to retrieve the item</param>
-        public static void Add<TItem>(TItem item, Type addAsType) where TItem : class
+        public void Add<TItem>(TItem item, Type addAsType) where TItem : class
         {
             var typeName = addAsType.Name;
             AddImpl(item, typeName);
         }
 
-        private static void AddImpl<TItem>(TItem item, string typeName) where TItem : class
+        private void AddImpl<TItem>(TItem item, string typeName) where TItem : class
         {
-            if (ScenarioContext.Current.ContainsKey(typeName))
+            if (_scenarioContext.ContainsKey(typeName))
             {
-                ScenarioContext.Current[typeName] = item;
+                _scenarioContext[typeName] = item;
             }
             else
             {
-                ScenarioContext.Current.Add(typeName, item);
+                _scenarioContext.Add(typeName, item);
             }
         }
 
@@ -77,12 +87,12 @@ namespace Attest.Testing.SpecFlow
         /// </summary>
         /// <typeparam name="TItem">Type of item</typeparam>
         /// <returns>Retrieved item</returns>
-        public static TItem Get<TItem>() where TItem : class
+        public TItem Get<TItem>() where TItem : class
         {
             var typeName = GetKey<TItem>();
-            if (ScenarioContext.Current.ContainsKey(typeName))
+            if (_scenarioContext.ContainsKey(typeName))
             {
-                return ScenarioContext.Current[typeName] as TItem;
+                return _scenarioContext[typeName] as TItem;
             }
             return null;
         }
@@ -92,10 +102,10 @@ namespace Attest.Testing.SpecFlow
         /// </summary>
         /// <typeparam name="TItem">Type of item</typeparam>
         /// <returns>True, if the item is found, otherwise false</returns>
-        public static bool Contains<TItem>() where TItem : class
+        public bool Contains<TItem>() where TItem : class
         {
             var typeName = GetKey<TItem>();
-            return ScenarioContext.Current.ContainsKey(typeName);
+            return _scenarioContext.ContainsKey(typeName);
         }
 
         /// <summary>
@@ -104,7 +114,7 @@ namespace Attest.Testing.SpecFlow
         /// </summary>
         /// <typeparam name="TItem">Type of item</typeparam>
         /// <returns>Item</returns>
-        public static TItem GetOrCreate<TItem>() where TItem : class, new()
+        public TItem GetOrCreate<TItem>() where TItem : class, new()
         {
             return GetOrCreateImpl(() => new TItem());
         }
@@ -116,12 +126,12 @@ namespace Attest.Testing.SpecFlow
         /// <typeparam name="TItem">Type of item</typeparam>
         /// <param name="creatorFunc">Item creation function</param>
         /// <returns>Item</returns>
-        public static TItem GetOrCreate<TItem>(Func<TItem> creatorFunc) where TItem : class
+        public TItem GetOrCreate<TItem>(Func<TItem> creatorFunc) where TItem : class
         {
             return GetOrCreateImpl(creatorFunc);
         }
 
-        private static TItem GetOrCreateImpl<TItem>(Func<TItem> creatorFunc) where TItem : class
+        private TItem GetOrCreateImpl<TItem>(Func<TItem> creatorFunc) where TItem : class
         {
             TItem item;
             if (Contains<TItem>() == false)
@@ -136,25 +146,31 @@ namespace Attest.Testing.SpecFlow
             return item;
         }
 
-        private static string GetKey<TItem>() where TItem : class
+        private string GetKey<TItem>() where TItem : class
         {
             var type = typeof (TItem);
             var typeName = type.Name;
             return typeName;
         }
 
-        internal static void Clear()
+        /// <summary>
+        /// Clears the data.
+        /// </summary>
+        public void Clear()
         {
-            ScenarioContext.Current.Clear();
+            _scenarioContext.Clear();
         }
 
-        internal static object Container => ScenarioContext.Current[ContainerKey];
-
-        internal static IDependencyRegistrator Registrator => ScenarioContext.Current[ContainerKey] as IDependencyRegistrator;
+        internal object Container => _scenarioContext[ContainerKey];
 
         /// <summary>
-        /// Root object instance
+        /// Dependency registrator.
         /// </summary>
-        public static object RootObject => ScenarioContext.Current[RootObjectKey];
+        internal IDependencyRegistrator Registrator => _scenarioContext[ContainerKey] as IDependencyRegistrator;
+
+        /// <summary>
+        /// Root object.
+        /// </summary>
+        public object RootObject => _scenarioContext[RootObjectKey];
     }
 }
