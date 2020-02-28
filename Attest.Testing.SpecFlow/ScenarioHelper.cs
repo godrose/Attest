@@ -153,17 +153,23 @@ namespace Attest.Testing.SpecFlow
             return typeName;
         }
 
-        internal void Clear()
+        /// <summary>
+        /// Clears the data.
+        /// </summary>
+        public void Clear()
         {
             _scenarioContext.Clear();
         }
 
         internal object Container => _scenarioContext[ContainerKey];
 
+        /// <summary>
+        /// Dependency registrator.
+        /// </summary>
         internal IDependencyRegistrator Registrator => _scenarioContext[ContainerKey] as IDependencyRegistrator;
 
         /// <summary>
-        /// Root object instance
+        /// Root object.
         /// </summary>
         public object RootObject => _scenarioContext[RootObjectKey];
     }
