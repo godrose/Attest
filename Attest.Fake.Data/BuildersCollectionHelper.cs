@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Attest.Fake.Builders;
 using Solid.Patterns.Builder;
 
 namespace Attest.Fake.Data
@@ -20,18 +20,8 @@ namespace Attest.Fake.Data
             IEnumerable<Type> buildersTypes, 
             Func<Type, object> builderFactory)
         {
-            var builders = BuildersCollectionContext.GetAllBuilders().ToList();
-            foreach (var builderType in buildersTypes)
-            {                                
-                var typedBuilders = builders.Where(t => t.GetType() == builderType).ToArray();
-                if (typedBuilders.Length == 0)
-                {
-                    var builderInstance = (IBuilder)builderFactory(builderType);
-                    builders.Add(builderInstance);
-                }                
-            }
-
-            return builders.ToArray();
+            return BuildersCollectionFactory.PatchBuilders(BuildersCollectionContext.GetAllBuilders(),
+                buildersTypes, builderFactory);
         }
     }
 }
