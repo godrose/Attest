@@ -57,57 +57,59 @@ namespace Attest.Fake.Moq.Tests
         [When(@"I simulate Arrived event")]
         public void WhenISimulateArrivedEvent()
         {
-            var argsToBeSent = new EventArgs();
-            var providerBuilder = _scenarioContext.Get<EventProviderBuilder>("providerBuilder");
-            providerBuilder.RaiseEvent(m => m.Arrived += null, argsToBeSent);
-            _scenarioContext.Add("argsToBeSent", argsToBeSent);
+            SimulateEvent(() => new EventArgs(),
+                (providerBuilder, argsToBeSent) =>
+                    providerBuilder.RaiseEvent(m => m.Arrived += null, argsToBeSent));
         }
 
         [When(@"I simulate Data Arrived event")]
         public void WhenISimulateDataArrivedEvent()
         {
-            var argsToBeSent = new DataEventArgs(new object());
-            var providerBuilder = _scenarioContext.Get<EventProviderBuilder>("providerBuilder");
-            providerBuilder.RaiseEvent(m => m.DataArrived += null, argsToBeSent);
-            _scenarioContext.Add("argsToBeSent", argsToBeSent);
+            SimulateEvent(() => new DataEventArgs(new object()),
+                (providerBuilder, argsToBeSent) =>
+                    providerBuilder.RaiseEvent(m => m.DataArrived += null, argsToBeSent));
         }
 
         [When(@"I simulate Custom event")]
         public void WhenISimulateCustomEvent()
         {
-            var argsToBeSent = new DataEventArgs(new object());
-            var providerBuilder = _scenarioContext.Get<EventProviderBuilder>("providerBuilder");
-            providerBuilder.RaiseEvent(m => m.CustomArrived += null, argsToBeSent);
-            _scenarioContext.Add("argsToBeSent", argsToBeSent);
+            SimulateEvent(() => new DataEventArgs(new object()),
+                (providerBuilder, argsToBeSent) =>
+                    providerBuilder.RaiseEvent(m => m.CustomArrived += null, argsToBeSent));
         }
 
+        private void SimulateEvent<TEventArgs>(Func<TEventArgs> eventFactory, Action<EventProviderBuilder, TEventArgs> eventInvocation)
+        {
+            var argsToBeSent = eventFactory();
+            var providerBuilder = _scenarioContext.Get<EventProviderBuilder>("providerBuilder");
+            eventInvocation(providerBuilder, argsToBeSent);
+            _scenarioContext.Add("argsToBeSent", argsToBeSent);
+        }
 
         [Then(@"The event arguments should pass as expected")]
         public void ThenTheEventArgumentsShouldPassAsExpected()
         {
-            var arrivedArgsRef = _scenarioContext.Get<WeakReference<EventArgs>>("arrivedArgsRef");
-            arrivedArgsRef.TryGetTarget(out var arrivedArgs);
-            var argsToBeSent = _scenarioContext.Get<EventArgs>("argsToBeSent");
-            arrivedArgs.Should().BeSameAs(argsToBeSent);
+            AssertEventArguments<EventArgs>();
         }
 
         [Then(@"The data event arguments should pass as expected")]
         public void ThenTheDataEventArgumentsShouldPassAsExpected()
         {
-            var arrivedArgsRef = _scenarioContext.Get<WeakReference<DataEventArgs>>("arrivedArgsRef");
-            arrivedArgsRef.TryGetTarget(out var arrivedArgs);
-            var argsToBeSent = _scenarioContext.Get<DataEventArgs>("argsToBeSent");
-            arrivedArgs.Should().BeSameAs(argsToBeSent);
+            AssertEventArguments<DataEventArgs>();
         }
 
         [Then(@"The custom event arguments should pass as expected")]
         public void ThenTheCustomEventArgumentsShouldPassAsExpected()
         {
-            var arrivedArgsRef = _scenarioContext.Get<WeakReference<DataEventArgs>>("arrivedArgsRef");
-            arrivedArgsRef.TryGetTarget(out var arrivedArgs);
-            var argsToBeSent = _scenarioContext.Get<DataEventArgs>("argsToBeSent");
-            arrivedArgs.Should().BeSameAs(argsToBeSent);
+            AssertEventArguments<DataEventArgs>();
         }
 
+        private void AssertEventArguments<TEventArgs>() where TEventArgs : class
+        {
+            var arrivedArgsRef = _scenarioContext.Get<WeakReference<TEventArgs>>("arrivedArgsRef");
+            arrivedArgsRef.TryGetTarget(out var arrivedArgs);
+            var argsToBeSent = _scenarioContext.Get<TEventArgs>("argsToBeSent");
+            arrivedArgs.Should().BeSameAs(argsToBeSent);
+        }
     }
 }
