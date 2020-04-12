@@ -1,5 +1,4 @@
 ﻿using System;
-using Attest.Fake.Core;
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
@@ -14,13 +13,6 @@ namespace Attest.Fake.Moq.Tests
         public EventInvocationStepsAdapter(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-        }
-
-        [Given(@"Moq setup is used")]
-        public void GivenMoqSetupIsUsed()
-        {
-            FakeFactoryContext.Current = new FakeFactory();
-            ConstraintFactoryContext.Current = new ConstraintFactory();
         }
 
         [Given(@"The Arrived event is to be tested")]

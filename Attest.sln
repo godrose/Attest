@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fake", "Fake", "{A4686CE3-29EA-4BB0-BA45-9882BC3F675C}"
 EndProject
@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Testing.SpecFlow", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LightMock", "LightMock", "{70132CC2-D91B-4BE7-95F0-F0B2FE832BC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.FakeItEasy.Tests", "Attest.Fake.FakeItEasy.Tests\Attest.Fake.FakeItEasy.Tests.csproj", "{B1B4C2A6-D5AC-47ED-B0B8-9EBB3CC859EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.FakeItEasy.Tests", "Attest.Fake.FakeItEasy.Tests\Attest.Fake.FakeItEasy.Tests.csproj", "{B1B4C2A6-D5AC-47ED-B0B8-9EBB3CC859EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Setup.Tests", "Attest.Fake.Setup.Tests\Attest.Fake.Setup.Tests.csproj", "{B08E1C97-2C5B-49F6-B1A2-1067F8C87997}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.Setup.Tests", "Attest.Fake.Setup.Tests\Attest.Fake.Setup.Tests.csproj", "{B08E1C97-2C5B-49F6-B1A2-1067F8C87997}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8F1E1F7C-84C7-4AF1-AF6E-4203C1A56747}"
 EndProject
@@ -27,9 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeItEasy", "FakeItEasy", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moq", "Moq", "{EDB89ECD-9F33-4E30-9AD0-EE7028833026}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Testing.Core.Tests", "Attest.Testing.Core.Tests\Attest.Testing.Core.Tests.csproj", "{20BD88D0-7DEA-482F-9E9A-BC195BF8AFA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Testing.Core.Tests", "Attest.Testing.Core.Tests\Attest.Testing.Core.Tests.csproj", "{20BD88D0-7DEA-482F-9E9A-BC195BF8AFA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Moq.Tests", "Attest.Fake.Moq.Tests\Attest.Fake.Moq.Tests.csproj", "{B3539CAD-E68B-434B-9315-153EBA1022F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.Moq.Tests", "Attest.Fake.Moq.Tests\Attest.Fake.Moq.Tests.csproj", "{B3539CAD-E68B-434B-9315-153EBA1022F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.Builders", "Attest.Fake.Builders\Attest.Fake.Builders.csproj", "{2C31F4FE-A7F6-4E0D-9C22-3A7E493A5556}"
 EndProject
@@ -65,7 +65,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.Data", "Attest.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conventions", "Conventions", "{088AB1A1-117C-493A-898B-7ACB4A06912C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Fake.Conventions", "Attest.Fake.Conventions\Attest.Fake.Conventions.csproj", "{F4D472E7-A82A-4568-BFE2-5DECD2FA73A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.Conventions", "Attest.Fake.Conventions\Attest.Fake.Conventions.csproj", "{F4D472E7-A82A-4568-BFE2-5DECD2FA73A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Tests.Infra", "Attest.Tests.Infra\Attest.Tests.Infra.csproj", "{0D72743D-FA77-481A-B52B-433E70944E47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -415,6 +417,22 @@ Global
 		{F4D472E7-A82A-4568-BFE2-5DECD2FA73A3}.Release|x64.Build.0 = Release|Any CPU
 		{F4D472E7-A82A-4568-BFE2-5DECD2FA73A3}.Release|x86.ActiveCfg = Release|Any CPU
 		{F4D472E7-A82A-4568-BFE2-5DECD2FA73A3}.Release|x86.Build.0 = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|ARM.Build.0 = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|x64.Build.0 = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Debug|x86.Build.0 = Debug|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|ARM.ActiveCfg = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|ARM.Build.0 = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|x64.ActiveCfg = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|x64.Build.0 = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|x86.ActiveCfg = Release|Any CPU
+		{0D72743D-FA77-481A-B52B-433E70944E47}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
