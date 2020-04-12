@@ -26,36 +26,33 @@ namespace Attest.Fake.Moq.Tests
         [Given(@"The Arrived event is to be tested")]
         public void GivenTheArrivedEventIsToBeTested()
         {
-            var eventProviderBuilder = EventProviderBuilder.CreateBuilder();
-            var instance = eventProviderBuilder.Object;
-            var arrivedArgs = new WeakReference<EventArgs>(null);
-            instance.Arrived += (sender, args) => arrivedArgs.SetTarget(args);
-            _scenarioContext.Add("providerBuilder", eventProviderBuilder);
-            _scenarioContext.Add("arrivedArgsRef", arrivedArgs);
+            SetupEventToBeTested<EventArgs>((provider, reference) =>
+                provider.Arrived += (sender, args) => reference.SetTarget(args));
         }
 
         [Given(@"The Data Arrived event is to be tested")]
         public void GivenTheDataArrivedEventIsToBeTested()
         {
-            var eventProviderBuilder = EventProviderBuilder.CreateBuilder();
-            var instance = eventProviderBuilder.Object;
-            var arrivedArgs = new WeakReference<DataEventArgs>(null);
-            instance.DataArrived += (sender, args) => arrivedArgs.SetTarget(args);
-            _scenarioContext.Add("providerBuilder", eventProviderBuilder);
-            _scenarioContext.Add("arrivedArgsRef", arrivedArgs);
+            SetupEventToBeTested<DataEventArgs>((provider, reference) =>
+                provider.DataArrived += (sender, args) => reference.SetTarget(args));
         }
 
         [Given(@"The Custom event is to be tested")]
         public void GivenTheCustomEventIsToBeTested()
         {
+            SetupEventToBeTested<DataEventArgs>((provider, reference) =>
+                provider.CustomArrived += (sender, args) => reference.SetTarget(args));
+        }
+
+        private void SetupEventToBeTested<TEventArgs>(Action<IEventProvider, WeakReference<TEventArgs>> eventSubscription) where TEventArgs : class
+        {
             var eventProviderBuilder = EventProviderBuilder.CreateBuilder();
             var instance = eventProviderBuilder.Object;
-            var arrivedArgs = new WeakReference<DataEventArgs>(null);
-            instance.CustomArrived += (sender, args) => arrivedArgs.SetTarget(args);
+            var arrivedArgs = new WeakReference<TEventArgs>(null);
+            eventSubscription(instance, arrivedArgs);
             _scenarioContext.Add("providerBuilder", eventProviderBuilder);
             _scenarioContext.Add("arrivedArgsRef", arrivedArgs);
         }
-
 
         [When(@"I simulate Arrived event")]
         public void WhenISimulateArrivedEvent()
