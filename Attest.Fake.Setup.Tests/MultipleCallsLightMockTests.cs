@@ -9,6 +9,7 @@ using Xunit;
 
 namespace Attest.Fake.Setup.Tests
 {
+    [Obsolete("LightMock no longer supported")]
     public interface ILoginProvider2
     {
         void Login(string username, string password);
@@ -16,6 +17,7 @@ namespace Attest.Fake.Setup.Tests
         string[] GetUsers();
     }
 
+    [Obsolete("LightMock no longer supported")]
     public class LightMockLoginProviderBuilder : FakeBuilderBase<ILoginProvider2>
     {
         class LoginProviderProxy : ProviderProxyBase<ILoginProvider2>, ILoginProvider2
@@ -93,6 +95,7 @@ namespace Attest.Fake.Setup.Tests
         }
     }
 
+    [Obsolete("LightMock no longer supported")]
     class FakeLoginProvider : FakeProviderBase<LightMockLoginProviderBuilder, ILoginProvider2>, ILoginProvider2
     {
         private readonly LightMockLoginProviderBuilder _loginProviderBuilder;
@@ -125,6 +128,7 @@ namespace Attest.Fake.Setup.Tests
         }
     }
 
+    [Obsolete("LightMock no longer supported")]
     public class MultipleCallsLightMockTests
     {        
         [Fact]

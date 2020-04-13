@@ -5,6 +5,12 @@ using It = Attest.Fake.Moq.It;
 
 namespace Attest.Testing.Core.Tests
 {
+    public class UserDto
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
     public interface IAnotherProvider
     {
         void Login(string username, string password);
