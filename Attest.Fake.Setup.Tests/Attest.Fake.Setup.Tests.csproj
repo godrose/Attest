@@ -35,12 +35,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Async Provider.feature</DependentUpon>
     </Compile>
+    <Compile Update="Multiple Calls.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Multiple Calls.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Async Provider.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Async Provider.feature.cs</LastGenOutput>
+    </None>
+    <None Update="Multiple Calls.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Multiple Calls.feature.cs</LastGenOutput>
     </None>
     <None Update="specflow.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
