@@ -5,20 +5,20 @@ namespace Attest.Fake.Data.Modularity
     /// <summary>
     /// Base module for fake context-based providers.
     /// </summary>    
-    /// <seealso cref="Solid.Practices.Modularity.ICompositionModule{TDependencyRegistrator}" />
+    /// <seealso cref="ICompositionModule{TDependencyRegistrator}" />
     public abstract class ProvidersModuleBase<TDependencyRegistrator> : ICompositionModule<TDependencyRegistrator>        
     {
         /// <inheritdoc />        
         public void RegisterModule(TDependencyRegistrator dependencyRegistrator)
         {
-            DeserializeBuiders();
+            DeserializeBuilders();
             RegisterProviders(dependencyRegistrator);            
         }
 
         /// <summary>
         /// Override this method to provide custom builders deserialization logic.
         /// </summary>
-        protected virtual void DeserializeBuiders()
+        protected virtual void DeserializeBuilders()
         {
             BuildersCollectionContext.DeserializeBuilders();
         }
