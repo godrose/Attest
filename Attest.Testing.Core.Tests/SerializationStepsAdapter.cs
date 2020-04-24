@@ -120,19 +120,25 @@ namespace Attest.Testing.Core.Tests
         [When(@"The current context is serialized")]
         public void WhenTheCurrentContextIsSerialized()
         {
-            BuildersCollectionContext.SerializeBuilders();
+            var buildersCollectionContext =
+                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            buildersCollectionContext.SerializeBuilders();
         }
 
         [When(@"The current context is deserialized")]
         public void WhenTheCurrentContextIsDeserialized()
         {
-            BuildersCollectionContext.DeserializeBuilders();
+            var buildersCollectionContext =
+                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            buildersCollectionContext.DeserializeBuilders();
         }
 
         [Then(@"The collection of items inside the current context is identical to the original one")]
         public void ThenTheCollectionOfItemsInsideTheCurrentContextIsIdenticalToTheOriginalOne()
         {
-            var builders = BuildersCollectionContext.GetBuilders<ISimpleProvider>();
+            var buildersCollectionContext =
+                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var builders = buildersCollectionContext.GetBuilders<ISimpleProvider>();
             var actualBuilder = builders.First();
 
             var actualItems = actualBuilder.Build().GetSimpleItems().ToArray();
@@ -150,7 +156,9 @@ namespace Attest.Testing.Core.Tests
         [Then(@"The item inside the current context is identical to the original one")]
         public void ThenTheItemInsideTheCurrentContextIsIdenticalToTheOriginalOne()
         {
-            var anotherBuilders = BuildersCollectionContext.GetBuilders<IAnotherProvider>();
+            var buildersCollectionContext =
+                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var anotherBuilders = buildersCollectionContext.GetBuilders<IAnotherProvider>();
             var actualAnotherBuilder = anotherBuilders.First();
             var actualUsers = actualAnotherBuilder.Build().GetUsers();
             var actualUser = actualUsers.Single();
@@ -160,7 +168,9 @@ namespace Attest.Testing.Core.Tests
         [Then(@"The inherited object inside the current context is identical to the original one")]
         public void ThenTheInheritedObjectInsideTheCurrentContextIsIdenticalToTheOriginalOne()
         {
-            var builders = BuildersCollectionContext.GetBuilders<IInheritanceProvider>();
+            var buildersCollectionContext =
+                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var builders = buildersCollectionContext.GetBuilders<IInheritanceProvider>();
             var actualBuilder = builders.First();
 
             var actualItems = actualBuilder.Build().GetObjects().ToArray();
