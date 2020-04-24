@@ -1,4 +1,5 @@
-﻿using Attest.Testing.Core.FakeData;
+﻿using Attest.Fake.Data;
+using Attest.Testing.Core.FakeData;
 using TechTalk.SpecFlow;
 
 namespace Attest.Testing.Core.Tests
@@ -17,7 +18,10 @@ namespace Attest.Testing.Core.Tests
         [BeforeScenario]
         public void Setup()
         {
-            _scenarioContext.Add("builderRegistrationService", new BuilderRegistrationService());
+            var buildersCollectionContext = new BuildersCollectionContext();
+            _scenarioContext.Add("buildersCollectionContext", buildersCollectionContext);
+            _scenarioContext.Add("builderRegistrationService",
+                new BuilderRegistrationService(buildersCollectionContext));
         }
     }
 }

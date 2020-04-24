@@ -8,25 +8,28 @@ namespace Attest.Fake.Data.Modularity
     /// <seealso cref="ICompositionModule{TDependencyRegistrator}" />
     public abstract class ProvidersModuleBase<TDependencyRegistrator> : ICompositionModule<TDependencyRegistrator>        
     {
+        private readonly BuildersCollectionContext _buildersCollectionContext = new BuildersCollectionContext();
+
         /// <inheritdoc />        
         public void RegisterModule(TDependencyRegistrator dependencyRegistrator)
         {
-            DeserializeBuilders();
-            RegisterProviders(dependencyRegistrator);            
+            DeserializeBuilders(_buildersCollectionContext);
+            RegisterProviders(dependencyRegistrator, _buildersCollectionContext);
         }
 
         /// <summary>
         /// Override this method to provide custom builders deserialization logic.
         /// </summary>
-        protected virtual void DeserializeBuilders()
+        protected virtual void DeserializeBuilders(BuildersCollectionContext buildersCollectionContext)
         {
-            BuildersCollectionContext.DeserializeBuilders();
+            buildersCollectionContext.DeserializeBuilders();
         }
 
         /// <summary>
         /// Implement this method to register providers.
         /// </summary>
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
-        protected abstract void RegisterProviders(TDependencyRegistrator dependencyRegistrator);
+        /// <param name="buildersCollectionContext"></param>
+        protected abstract void RegisterProviders(TDependencyRegistrator dependencyRegistrator, BuildersCollectionContext buildersCollectionContext);
     }
 }

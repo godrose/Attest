@@ -17,20 +17,25 @@ namespace Attest.Testing.EndToEnd
         public class WithFakeProviders : StartApplicationService
         {
             private readonly IApplicationFacade _applicationFacade;
+            private readonly BuildersCollectionContext _buildersCollectionContext;
 
             /// <summary>
             /// Initializes a new instance of <see cref="StartApplicationService.WithFakeProviders"/>
             /// </summary>
             /// <param name="applicationFacade"></param>
-            public WithFakeProviders(IApplicationFacade applicationFacade)
+            /// <param name="buildersCollectionContext"></param>
+            public WithFakeProviders(
+                IApplicationFacade applicationFacade, 
+                BuildersCollectionContext buildersCollectionContext)
             {
                 _applicationFacade = applicationFacade;
+                _buildersCollectionContext = buildersCollectionContext;
             }
 
             /// <inheritdoc />
             public override void Start(string startupPath)
             {
-                BuildersCollectionContext.SerializeBuilders();
+                _buildersCollectionContext.SerializeBuilders();
                 _applicationFacade.Start(startupPath);
             }
         }

@@ -10,10 +10,17 @@ namespace Attest.Testing.Core.FakeData
     /// <seealso cref="IBuilderRegistrationService" />
     public class BuilderRegistrationService : IBuilderRegistrationService
     {
+        private readonly BuildersCollectionContext _buildersCollectionContext;
+
+        public BuilderRegistrationService(BuildersCollectionContext buildersCollectionContext)
+        {
+            _buildersCollectionContext = buildersCollectionContext;
+        }
+
         /// <inheritdoc />        
         public void RegisterBuilder<TService>(IBuilder<TService> builder) where TService : class
         {
-            BuildersCollectionContext.AddBuilder(builder);
+            _buildersCollectionContext.AddBuilder(builder);
         }
     }
 }
