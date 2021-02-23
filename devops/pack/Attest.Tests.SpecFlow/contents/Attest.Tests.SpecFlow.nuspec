@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Attest.Tests.SpecFlow</id>
+    <version>2.1.0-rc2</version>
+    <title>Attest.Testing.SpecFlow</title>
+    <authors>Gennady Verdel</authors>
+    <owners>Gennady Verdel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/godrose/Attest/blob/master/License</licenseUrl>
+    <projectUrl>https://github.com/godrose/Attest</projectUrl>
+    <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
+    <description>This package provides facilities for writing unit, integration and end-to-end tests using SpecFlow.</description>
+    <summary>This package provides facilities for writing unit, integration and end-to-end tests using SpecFlow.</summary>
+    <releaseNotes>1. Using latest SpecFlow version
+2. Using Feature Context as an instance
+3. Added debugging symbols</releaseNotes>
+    <dependencies>
+      <dependency id="Solid.Patterns.Builder" version="2.3.0-rc1" />
+      <dependency id="Solid.Core" version="2.3.0-rc1" />
+      <dependency id="Solid.Practices.IoC" version="2.3.0-rc1" />
+      <dependency id="Solid.Bootstrapping" version="2.3.0-rc1" />
+      <dependency id="Attest.Fake.Core" version="2.1.0-rc2" />
+      <dependency id="Attest.Fake.Registration" version="2.1.0-rc2" />
+      <dependency id="Attest.Tests.Core" version="2.1.0-rc2" />
+      <dependency id="SpecFlow" version="3.1.97" />
+    </dependencies>
+  </metadata>  
+</package>

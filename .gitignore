@@ -194,4 +194,6 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
-
+# Generated packages and intermediate output
+output
+devops/pack/**/contents/lib

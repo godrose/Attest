@@ -9,7 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "Attest.Fake.Registration/2.1.0-rc2": {
         "dependencies": {
-          "Attest.Fake.Core": "2.1.0-rc1",
+          "Attest.Fake.Core": "2.1.0-rc2",
           "NETStandard.Library": "2.0.3",
           "Solid.Patterns.Builder": "2.2.0",
           "Solid.Practices.IoC": "2.2.0"
@@ -40,7 +40,7 @@
           }
         }
       },
-      "Attest.Fake.Core/2.1.0-rc1": {
+      "Attest.Fake.Core/2.1.0-rc2": {
         "runtime": {
           "Attest.Fake.Core.dll": {}
         }
@@ -81,7 +81,7 @@
       "path": "solid.practices.ioc/2.2.0",
       "hashPath": "solid.practices.ioc.2.2.0.nupkg.sha512"
     },
-    "Attest.Fake.Core/2.1.0-rc1": {
+    "Attest.Fake.Core/2.1.0-rc2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -9,8 +9,8 @@
     ".NETStandard,Version=v2.0/": {
       "Attest.Fake.Builders/2.1.0-rc2": {
         "dependencies": {
-          "Attest.Fake.Core": "2.1.0-rc1",
-          "Attest.Fake.Setup": "2.1.0-rc1",
+          "Attest.Fake.Core": "2.1.0-rc2",
+          "Attest.Fake.Setup": "2.1.0-rc2",
           "NETStandard.Library": "2.0.3",
           "Solid.Patterns.Builder": "2.2.0"
         },
@@ -48,15 +48,15 @@
           }
         }
       },
-      "Attest.Fake.Core/2.1.0-rc1": {
+      "Attest.Fake.Core/2.1.0-rc2": {
         "runtime": {
           "Attest.Fake.Core.dll": {}
         }
       },
-      "Attest.Fake.Setup/2.1.0-rc1": {
+      "Attest.Fake.Setup/2.1.0-rc2": {
         "dependencies": {
-          "Attest.Fake.Core": "2.1.0-rc1",
-          "Attest.Fake.Setup.Contracts": "2.1.0-rc1",
+          "Attest.Fake.Core": "2.1.0-rc2",
+          "Attest.Fake.Setup.Contracts": "2.1.0-rc2",
           "Solid.Patterns.Builder": "2.2.0",
           "Solid.Patterns.Visitor": "2.2.0",
           "Solid.Practices.Scheduling": "2.2.0"
@@ -65,7 +65,7 @@
           "Attest.Fake.Setup.dll": {}
         }
       },
-      "Attest.Fake.Setup.Contracts/2.1.0-rc1": {
+      "Attest.Fake.Setup.Contracts/2.1.0-rc2": {
         "runtime": {
           "Attest.Fake.Setup.Contracts.dll": {}
         }
@@ -113,17 +113,17 @@
       "path": "solid.practices.scheduling/2.2.0",
       "hashPath": "solid.practices.scheduling.2.2.0.nupkg.sha512"
     },
-    "Attest.Fake.Core/2.1.0-rc1": {
+    "Attest.Fake.Core/2.1.0-rc2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Attest.Fake.Setup/2.1.0-rc1": {
+    "Attest.Fake.Setup/2.1.0-rc2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Attest.Fake.Setup.Contracts/2.1.0-rc1": {
+    "Attest.Fake.Setup.Contracts/2.1.0-rc2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
