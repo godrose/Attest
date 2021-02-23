@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Attest.Fake.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Attest.Fake.Data.BuilderRegistrationExtensions">
+            <summary>
+            Builder registration extension methods.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.BuilderRegistrationExtensions.RegisterBuilders``1(``0,Attest.Fake.Data.BuildersCollectionContext,System.Action{``0,System.Type,Solid.Patterns.Builder.IBuilder},System.Collections.Generic.Dictionary{System.Type,System.Type},System.Func{System.Type,System.Object})">
+            <summary>
+            Registers builders for the provided types and custom dependency registrator using <see cref="T:Attest.Fake.Data.BuildersCollectionContext"/>.
+            </summary>
+            <typeparam name="TDependencyRegistrator">The type of the dependency registrator.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="buildersCollectionContext">The builders collection context.</param>
+            <param name="registrationMethod">The builder registration method.</param>
+            <param name="contractsToImplementationsMap">The mapping between contracts and their implementations.</param>
+            <param name="builderFactory">The builder factory method.</param>
+        </member>
+        <member name="T:Attest.Fake.Data.BuildersCollection">
+            <summary>
+            Represents builders collection.
+            </summary>    
+        </member>
+        <member name="T:Attest.Fake.Data.BuildersCollectionContext">
+            <summary>
+            Allows managing builders collection, including serialization/deserialization.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionContext.GetBuilders``1">
+            <summary>
+            Gets the builders of the specified service type.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionContext.GetBuilders(System.Type)">
+            <summary>
+            Gets the builders of the specified service type.
+            </summary>
+            <param name="serviceType">The type of the service.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionContext.GetAllBuilders">
+            <summary>
+            Gets all builders.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionContext.AddBuilder``1(Solid.Patterns.Builder.IBuilder{``0})">
+            <summary>
+            Adds the builder of the specified service type.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <param name="builder">The builder.</param>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionContext.SerializeBuilders(System.String)">
+            <summary>
+            Serializes the builders.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionContext.DeserializeBuilders(System.String)">
+            <summary>
+            Deserializes the builders.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionContext.Reset(Attest.Fake.Data.BuildersCollection)">
+            <summary>
+            Resets the builders collection with the provided value.
+            </summary>
+            <param name="buildersCollection">The builders collection</param>
+        </member>
+        <member name="T:Attest.Fake.Data.IBuildersCollectionConverter">
+            <summary>
+            Converts builders collection to and from text. 
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.IBuildersCollectionConverter.Serialize(Attest.Fake.Data.BuildersCollection)">
+            <summary>
+            Converts builders collection to text.
+            </summary>
+            <param name="buildersCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Attest.Fake.Data.IBuildersCollectionConverter.Deserialize(System.String)">
+            <summary>
+            Converts the specified text to builders collection.
+            </summary>
+            <param name="contents"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Attest.Fake.Data.JsonConverter">
+            <summary>
+            Converts builders collection to and from text in JSON format.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.JsonConverter.Serialize(Attest.Fake.Data.BuildersCollection)">
+            <inheritdoc />
+        </member>
+        <member name="M:Attest.Fake.Data.JsonConverter.Deserialize(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Attest.Fake.Data.BuildersCollectionConverterContext">
+            <summary>
+            Ambient context for <see cref="T:Attest.Fake.Data.IBuildersCollectionConverter"/>
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Data.BuildersCollectionConverterContext.Current">
+            <summary>
+            Gets or sets the current value of <see cref="T:Attest.Fake.Data.IBuildersCollectionConverter"/>.
+            </summary>
+            <value>
+            The current value.
+            </value>
+        </member>
+        <member name="T:Attest.Fake.Data.BuildersCollectionHelper">
+            <summary>
+            Helper methods for <see cref="T:Attest.Fake.Data.BuildersCollection"/>
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionHelper.FillMissingBuilders(Attest.Fake.Data.BuildersCollectionContext,System.Collections.Generic.IEnumerable{System.Type},System.Func{System.Type,System.Object})">
+            <summary>
+            Fills the builders missing from <see cref="T:Attest.Fake.Data.BuildersCollectionContext"/>
+            </summary>
+            <param name="buildersCollectionContext">The builders collection context.</param>
+            <param name="buildersTypes">The builders types.</param>
+            <param name="builderFactory">The builder factory method.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Attest.Fake.Data.BuildersCollectionStorage">
+            <summary>
+            Enables storing and loading builders collection.
+            </summary>
+            <seealso cref="T:Attest.Fake.Data.IDataStorage`1" />
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionStorage.#ctor(Attest.Fake.Data.IBuildersCollectionConverter,Attest.Fake.Data.IDataStorage{System.String})">
+            <summary>
+            Creates and initializes an instance of <see cref="T:Attest.Fake.Data.BuildersCollectionStorage"/>
+            </summary>
+            <param name="converter">The builders collection converter.</param>
+            <param name="dataStorage">The data storage</param>
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionStorage.Store(System.String,Attest.Fake.Data.BuildersCollection)">
+            <inheritdoc />       
+        </member>
+        <member name="M:Attest.Fake.Data.BuildersCollectionStorage.Load(System.String)">
+            <inheritdoc />        
+        </member>
+        <member name="T:Attest.Fake.Data.BuildersCollectionStorageContext">
+            <summary>
+            Ambient context for <see cref="T:Attest.Fake.Data.IDataStorage`1"/>
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Data.BuildersCollectionStorageContext.Current">
+            <summary>
+            Gets or sets the current value of <see cref="T:Attest.Fake.Data.IBuildersCollectionConverter"/>.
+            </summary>
+            <value>
+            The current value.
+            </value>
+        </member>
+        <member name="T:Attest.Fake.Data.IDataSourceProvider`1">
+            <summary>
+            Allows extracting data source by key.
+            </summary>
+            <typeparam name="TDataSource"></typeparam>
+        </member>
+        <member name="M:Attest.Fake.Data.IDataSourceProvider`1.GetDataSource(System.String)">
+            <summary>
+            Gets the data source by the key
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Attest.Fake.Data.FileSystemDataSourceProvider`1">
+            <summary>
+            Implementation of <see cref="T:Attest.Fake.Data.IDataSourceProvider`1"/> for local file system.
+            </summary>
+            <typeparam name="TDataSource"></typeparam>
+        </member>
+        <member name="M:Attest.Fake.Data.FileSystemDataSourceProvider`1.GetDataSource(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Attest.Fake.Data.FileSystemDataSourceProvider`1.RelativePath">
+            <summary>
+            Override to provide custom location for data files. The default is the current folder.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Data.FileSystemDataSourceProvider`1.FileExtension">
+            <summary>
+            Override to provide custom extension for data files. The only supported data format is json.
+            </summary>
+        </member>
+        <member name="T:Attest.Fake.Data.IDataStorage`1">
+            <summary>
+            Enables storing and loading data of the specified type.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.IDataStorage`1.Store(System.String,`0)">
+            <summary>
+            Stores the specified data at the specified resource identifier.
+            </summary>
+            <param name="id">The resource identifier.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Attest.Fake.Data.IDataStorage`1.Load(System.String)">
+            <summary>
+            Loads the data using the specified resource identifier.
+            </summary>
+            <param name="id">The resource identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Attest.Fake.Data.LocalFileSystemDataStorage">
+            <summary>
+            Stores and loads data to and from the local file system.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.LocalFileSystemDataStorage.Store(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Attest.Fake.Data.LocalFileSystemDataStorage.Load(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Attest.Fake.Data.Modularity.ProvidersModuleBase`1">
+            <summary>
+            Base module for fake context-based providers.
+            </summary>    
+            <seealso cref="T:Solid.Practices.Modularity.ICompositionModule`1" />
+        </member>
+        <member name="M:Attest.Fake.Data.Modularity.ProvidersModuleBase`1.RegisterModule(`0)">
+            <inheritdoc />        
+        </member>
+        <member name="M:Attest.Fake.Data.Modularity.ProvidersModuleBase`1.DeserializeBuilders(Attest.Fake.Data.BuildersCollectionContext)">
+            <summary>
+            Override this method to provide custom builders deserialization logic.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Data.Modularity.ProvidersModuleBase`1.RegisterProviders(`0,Attest.Fake.Data.BuildersCollectionContext)">
+            <summary>
+            Implement this method to register providers.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="buildersCollectionContext"></param>
+        </member>
+    </members>
+</doc>

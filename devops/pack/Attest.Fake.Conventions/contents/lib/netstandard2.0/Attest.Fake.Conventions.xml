@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Attest.Fake.Conventions</name>
+    </assembly>
+    <members>
+        <member name="T:Attest.Fake.Conventions.BuilderFactory">
+            <summary>
+            Builder factory for convention-based builder creation.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Conventions.BuilderFactory.CreateBuilderInstance(System.Type)">
+            <summary>
+            Creates an instance of builder specified by its type.
+            It uses <see cref="P:Attest.Fake.Conventions.ConventionsManager.CreateBuilderMethodName"/> to resolve the factory method name.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Attest.Fake.Conventions.ConventionsManager">
+            <summary>
+            Conventions manager for provider-contract-builder-fake relationship
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.ContractsAssemblyEnding">
+            <summary>
+            Gets the default ending for assembly which holds providers' contracts.
+            Override to provide custom ending.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.FakeAssemblyEnding">
+            <summary>
+            Gets the default ending for assembly which holds providers' fake implementations.
+            Override to provide custom ending.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.BuildersAssemblyEnding">
+            <summary>
+            Gets the default ending for assembly which holds providers' builders.
+            Override to provide custom ending.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.SimulatorsAssemblyEnding">
+            <summary>
+            Gets the default ending for assembly which holds providers' simulators.
+            Override to provide custom ending.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.BuilderEnding">
+            <summary>
+            Gets the default ending for type which represents provider's builder.
+            Override to provide custom ending.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.ProviderEnding">
+            <summary>
+            Gets the default ending for type which represents provider's contract/fake implementation.
+            Override to provide custom ending.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.SimulatorEnding">
+            <summary>
+            Gets the default ending for type which represents provider's simulator.
+            Override to provide custom ending.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.FakePrefix">
+            <summary>
+            Gets the default prefix for type which represents provider's fake implementation.
+            Override to provide custom prefix.
+            </summary>
+        </member>
+        <member name="P:Attest.Fake.Conventions.ConventionsManager.CreateBuilderMethodName">
+            <summary>
+            Gets the default method name for builder factory method.
+            Override to provide custom name.
+            </summary>
+        </member>
+        <member name="T:Attest.Fake.Conventions.RegistrationExtensions">
+            <summary>
+            Helpers methods for batch convention-based registration 
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Conventions.RegistrationExtensions.RegisterFakeProviders(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers fake providers' implementations into the provided dependency registrator.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="M:Attest.Fake.Conventions.RegistrationExtensions.RegisterBuilders(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers providers' builders into the provided dependency registrator.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="T:Attest.Fake.Conventions.TypeLocator">
+            <summary>
+            Conventions helper
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Conventions.TypeLocator.FindContractToBuilderMatches">
+            <summary>
+            Find matches between providers' contracts and their respective builders.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Attest.Fake.Conventions.TypeLocator.FindSimulatorToBuilderMatches">
+            <summary>
+            Find matches between providers' simulators and their respective builders.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

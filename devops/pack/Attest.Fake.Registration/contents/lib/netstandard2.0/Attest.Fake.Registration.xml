@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Attest.Fake.Registration</name>
+    </assembly>
+    <members>
+        <member name="T:Attest.Fake.Registration.RegistrationHelper">
+            <summary>
+            Provides utilities for registering different types of fake objects into an IoC container.
+            </summary>
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.RegisterInstance``1(Solid.Practices.IoC.IDependencyRegistrator,``0)">
+            <summary>
+            Registers the dependency instance.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="instance">The dependency instance.</param>        
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.RegisterSingleton``2(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers the dependency as singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <typeparam name="TImplementation">The type of the implementation.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.RegisterTransient``2(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers the dependency in the transient mode.
+            </summary>
+            <typeparam name="TService">The type of the dependency.</typeparam>
+            <typeparam name="TImplementation">The type of the implementation.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.RegisterBuilderProduct``1(Solid.Practices.IoC.IDependencyRegistrator,Solid.Patterns.Builder.IBuilder{``0})">
+            <summary>
+            Constructs the dependency using the supplied builder and registers it in transient mode.
+            </summary>
+            <typeparam name="TDependency">The type of the service.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="builder">The dependency builder.</param>
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.RegisterBuilderProduct(Solid.Practices.IoC.IDependencyRegistrator,System.Type,Solid.Patterns.Builder.IBuilder)">
+            <summary>
+            Constructs the dependency using the supplied builder and registers it in transient mode.
+            </summary>        
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyType">The type of the dependency.</param>
+            <param name="builder">The dependency builder.</param>
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.RegisterFake``1(Solid.Practices.IoC.IDependencyRegistrator,Attest.Fake.Core.IFake{``0})">
+            <summary>
+            Registers the dependency as instance.
+            </summary>
+            <typeparam name="TDependency">The type of dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="fake">The fake wrapper of the dependency.</param>
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.RegisterMock``1(Solid.Practices.IoC.IDependencyRegistrator,Attest.Fake.Core.IMock{``0})">
+            <summary>
+            Registers dependency as instance.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="mock">The mock wrapper of the dependency.</param>
+        </member>
+        <member name="M:Attest.Fake.Registration.RegistrationHelper.Resolve``1(Solid.Practices.IoC.IDependencyResolver)">
+            <summary>
+            Resolves dependency.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyResolver">The dependency resolver.</param>
+            <returns>The resolved dependency.</returns>
+        </member>
+    </members>
+</doc>

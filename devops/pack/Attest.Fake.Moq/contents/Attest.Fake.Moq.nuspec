@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Attest.Fake.Moq</id>
+    <version>2.1.0-rc2</version>
+    <title>Attest.Fake.Moq</title>
+    <authors>Gennady Verdel</authors>
+    <owners>Gennady Verdel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/godrose/Attest/blob/master/License</licenseUrl>
+    <projectUrl>https://github.com/godrose/Attest</projectUrl>
+    <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
+    <description>This package provides implementation for fake abstractions using Moq framework</description>
+    <summary>This package provides implementation for fake abstractions using Moq framework</summary>
+    <releaseNotes>Added debugging symbols</releaseNotes>
+    <dependencies>
+      <dependency id="Attest.Fake.Core" version="2.1.0-rc2" />
+      <dependency id="Moq" version="4.13.1" />
+    </dependencies>
+  </metadata>  
+</package>
