@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
     <PackageReference Include="Solid.Common.Core" Version="2.2.0" />
     <PackageReference Include="SpecFlow" Version="3.6.23" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.6.23" />

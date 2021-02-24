@@ -15,7 +15,7 @@
   </PropertyGroup> 
 
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit" Version="3.13.1" />
     <PackageReference Include="Solid.Bootstrapping" Version="2.2.0" />
     <PackageReference Include="Solid.Core" Version="2.2.0" />
     <PackageReference Include="Solid.Patterns.Builder" Version="2.2.0" />
