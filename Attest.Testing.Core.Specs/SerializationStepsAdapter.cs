@@ -6,7 +6,7 @@ using FluentAssertions;
 using Solid.Patterns.Builder;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.Core.Tests
+namespace Attest.Testing.Core.Specs
 {
     [Binding]
     internal sealed class SerializationStepsAdapter

@@ -7,7 +7,7 @@ using FluentAssertions;
 using LightMock;
 using Xunit;
 
-namespace Attest.Fake.Setup.Tests
+namespace Attest.Fake.Setup.Specs
 {
     [Obsolete("LightMock no longer supported")]
     public interface ILoginProvider2

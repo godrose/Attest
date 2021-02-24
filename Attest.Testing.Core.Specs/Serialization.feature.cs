@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Attest.Fake.Moq.Tests
+namespace Attest.Testing.Core.Specs
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,7 +19,7 @@ namespace Attest.Fake.Moq.Tests
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.6.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class EventInvocationFeature : object, Xunit.IClassFixture<EventInvocationFeature.FixtureData>, System.IDisposable
+    public partial class SerializationFeature : object, Xunit.IClassFixture<SerializationFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Attest.Fake.Moq.Tests
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Event Invocation.feature"
+#line 1 "Serialization.feature"
 #line hidden
         
-        public EventInvocationFeature(EventInvocationFeature.FixtureData fixtureData, Attest_Fake_Moq_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public SerializationFeature(SerializationFeature.FixtureData fixtureData, Attest_Testing_Core_Specs_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Attest.Fake.Moq.Tests
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Event Invocation", "\tIn order to test my app for different scenarios\r\n\tAs an app developer\r\n\tI want t" +
-                    "o be able to simulate events invocation", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "", "Serialization", "\tIn order to test different data-related scenarios in my app\r\n\tAs an app develope" +
+                    "r\r\n\tI want to make sure data is serialized correctly", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,7 +81,10 @@ namespace Attest.Fake.Moq.Tests
 #line 6
 #line hidden
 #line 7
- testRunner.Given("Moq setup is used", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("The system runs in .NETStandard environment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 8
+ testRunner.And("Moq setup is used", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
         }
         
@@ -90,15 +93,18 @@ namespace Attest.Fake.Moq.Tests
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Simulating an event invocation should raise correspondent event")]
-        [Xunit.TraitAttribute("FeatureTitle", "Event Invocation")]
-        [Xunit.TraitAttribute("Description", "Simulating an event invocation should raise correspondent event")]
-        public virtual void SimulatingAnEventInvocationShouldRaiseCorrespondentEvent()
+        [Xunit.SkippableFactAttribute(DisplayName="Serializing and deserializing a collection of items should not affect its content" +
+            "s")]
+        [Xunit.TraitAttribute("FeatureTitle", "Serialization")]
+        [Xunit.TraitAttribute("Description", "Serializing and deserializing a collection of items should not affect its content" +
+            "s")]
+        public virtual void SerializingAndDeserializingACollectionOfItemsShouldNotAffectItsContents()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Simulating an event invocation should raise correspondent event", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 9
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Serializing and deserializing a collection of items should not affect its content" +
+                    "s", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -120,73 +126,36 @@ this.ScenarioInitialize(scenarioInfo);
                 this.ScenarioStart();
 #line 6
 this.FeatureBackground();
-#line hidden
-#line 10
- testRunner.Given("The Arrived event is to be tested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
- testRunner.When("I simulate Arrived event", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("The collection of items is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 12
- testRunner.Then("The event arguments should pass as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("The items are added to the current context", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [Xunit.SkippableFactAttribute(DisplayName="Simulating a data event invocation should raise correspondent event")]
-        [Xunit.TraitAttribute("FeatureTitle", "Event Invocation")]
-        [Xunit.TraitAttribute("Description", "Simulating a data event invocation should raise correspondent event")]
-        public virtual void SimulatingADataEventInvocationShouldRaiseCorrespondentEvent()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Simulating a data event invocation should raise correspondent event", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 13
+ testRunner.And("The current context is serialized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
 #line 14
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 6
-this.FeatureBackground();
+ testRunner.And("The current context is deserialized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
- testRunner.Given("The Data Arrived event is to be tested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 16
- testRunner.When("I simulate Data Arrived event", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 17
- testRunner.Then("The data event arguments should pass as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The collection of items inside the current context is identical to the original o" +
+                        "ne", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Simulating a custom event invocation should raise correspondent event")]
-        [Xunit.TraitAttribute("FeatureTitle", "Event Invocation")]
-        [Xunit.TraitAttribute("Description", "Simulating a custom event invocation should raise correspondent event")]
-        public virtual void SimulatingACustomEventInvocationShouldRaiseCorrespondentEvent()
+        [Xunit.SkippableFactAttribute(DisplayName="Serializing and deserializing multiple builders should not affect their contents")]
+        [Xunit.TraitAttribute("FeatureTitle", "Serialization")]
+        [Xunit.TraitAttribute("Description", "Serializing and deserializing multiple builders should not affect their contents")]
+        public virtual void SerializingAndDeserializingMultipleBuildersShouldNotAffectTheirContents()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Simulating a custom event invocation should raise correspondent event", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 19
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Serializing and deserializing multiple builders should not affect their contents", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 17
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -209,14 +178,80 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
+#line 18
+ testRunner.Given("The collection of items is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 19
+ testRunner.And("The single item is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
 #line 20
- testRunner.Given("The Custom event is to be tested", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("The items are added to the current context", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 21
- testRunner.When("I simulate Custom event", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("The single item is added to the current context", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
- testRunner.Then("The custom event arguments should pass as expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("The current context is serialized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 23
+ testRunner.And("The current context is deserialized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
+ testRunner.Then("The collection of items inside the current context is identical to the original o" +
+                        "ne", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 25
+ testRunner.And("The item inside the current context is identical to the original one", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="Serializing and deserializing an inherited object should not affect its contents")]
+        [Xunit.TraitAttribute("FeatureTitle", "Serialization")]
+        [Xunit.TraitAttribute("Description", "Serializing and deserializing an inherited object should not affect its contents")]
+        public virtual void SerializingAndDeserializingAnInheritedObjectShouldNotAffectItsContents()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Serializing and deserializing an inherited object should not affect its contents", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 27
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 6
+this.FeatureBackground();
+#line hidden
+#line 28
+ testRunner.Given("The inherited object is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 29
+ testRunner.When("The inherited object is added to the current context", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 30
+ testRunner.And("The current context is serialized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 31
+ testRunner.And("The current context is deserialized", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 32
+ testRunner.Then("The inherited object inside the current context is identical to the original one", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -229,12 +264,12 @@ this.FeatureBackground();
             
             public FixtureData()
             {
-                EventInvocationFeature.FeatureSetup();
+                SerializationFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                EventInvocationFeature.FeatureTearDown();
+                SerializationFeature.FeatureTearDown();
             }
         }
     }

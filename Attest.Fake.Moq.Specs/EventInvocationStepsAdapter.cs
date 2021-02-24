@@ -2,7 +2,7 @@
 using FluentAssertions;
 using TechTalk.SpecFlow;
 
-namespace Attest.Fake.Moq.Tests
+namespace Attest.Fake.Moq.Specs
 {
     [Binding]
     internal sealed class EventInvocationStepsAdapter

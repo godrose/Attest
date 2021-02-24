@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace Attest.Fake.Setup.Tests
+namespace Attest.Fake.Setup.Specs
 {
     using TechTalk.SpecFlow;
     using System;
@@ -31,7 +31,7 @@ namespace Attest.Fake.Setup.Tests
 #line 1 "Multiple Calls.feature"
 #line hidden
         
-        public MultipleCallsFeature(MultipleCallsFeature.FixtureData fixtureData, Attest_Fake_Setup_Tests_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public MultipleCallsFeature(MultipleCallsFeature.FixtureData fixtureData, Attest_Fake_Setup_Specs_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();

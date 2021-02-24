@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Attest.Fake.Setup.Contracts;
 using It = Attest.Fake.Moq.It;
 
-namespace Attest.Testing.Core.Tests
+namespace Attest.Testing.Core.Specs
 {
     public class UserDto
     {

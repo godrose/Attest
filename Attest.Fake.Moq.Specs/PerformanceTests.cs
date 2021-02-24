@@ -1,11 +1,11 @@
-﻿using Attest.Fake.Core;
-using FluentAssertions;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Attest.Fake.Core;
+using FluentAssertions;
 using Xunit;
 
-namespace Attest.Fake.Moq.Tests
+namespace Attest.Fake.Moq.Specs
 {
     public class PerformanceTests
     {

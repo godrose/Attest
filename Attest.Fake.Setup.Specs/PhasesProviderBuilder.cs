@@ -5,7 +5,7 @@ using Attest.Fake.Builders;
 using Attest.Fake.Core;
 using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Setup.Tests
+namespace Attest.Fake.Setup.Specs
 {
     public interface IPhasesProvider
     {

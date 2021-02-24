@@ -3,7 +3,7 @@ using FluentAssertions;
 using Solid.Patterns.Builder;
 using TechTalk.SpecFlow;
 
-namespace Attest.Fake.Setup.Tests
+namespace Attest.Fake.Setup.Specs
 {
     [Binding]
     internal sealed class MultipleCallsStepsAdapter

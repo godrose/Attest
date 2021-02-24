@@ -2,7 +2,7 @@ using System;
 using Attest.Fake.Builders;
 using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Fake.Moq.Tests
+namespace Attest.Fake.Moq.Specs
 {
     public delegate void CustomEventHandler(object sender, DataEventArgs e);    
 

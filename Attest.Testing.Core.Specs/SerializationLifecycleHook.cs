@@ -2,7 +2,7 @@
 using Attest.Testing.Core.FakeData;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.Core.Tests
+namespace Attest.Testing.Core.Specs
 {
     [Binding]
     internal sealed class SerializationLifecycleHook
