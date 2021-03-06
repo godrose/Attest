@@ -1,3 +1,6 @@
+init:
+  - dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
+
 configuration: Release
 
 before_build:
@@ -5,8 +8,13 @@ before_build:
 
 build:
   verbosity: minimal
-  
-image: Visual Studio 2019
+  project: Attest.sln
+
+test_script:
+  - cd
+  - cd .\devops\test
+  - test-all.bat
+  - cd ..\..\
   
 notifications:
 - provider: Email
@@ -16,6 +24,13 @@ notifications:
   on_build_failure: false
   on_build_status_changed: true
 
-test:  
-  assemblies:    
-    - '**\*.Tests.dll'  
+artifacts:
+  
+  - name: Moq Support Living Documentation
+    path: .\Attest.Fake.Moq.Specs\bin\Release\LivingDoc.html
+
+  - name: Setup Living Documentation
+    path: .\Attest.Fake.Setup.Specs\bin\Release\LivingDoc.html
+
+  - name: Core Living Documentation
+    path: .\Attest.Testing.Core.Specs\bin\Release\LivingDoc.html  
