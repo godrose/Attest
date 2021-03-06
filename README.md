@@ -1,8 +1,9 @@
 # Attest
 
-<img src=https://ci.appveyor.com/api/projects/status/github/godrose/attest>
+<img src=https://ci.appveyor.com/api/projects/status/github/godrose/Attest>
 
 ## Core
+
 
 <img src=https://img.shields.io/nuget/dt/Attest.Tests.Core>
 
