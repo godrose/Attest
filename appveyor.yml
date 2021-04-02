@@ -16,6 +16,11 @@ test_script:
   - test-all.bat
   - cd ..\..\
 
+after_test:
+  - cd devops
+  - cd pack
+  - pack-all
+
 image: Visual Studio 2019
   
 notifications:
@@ -27,6 +32,9 @@ notifications:
   on_build_status_changed: true
 
 artifacts:
+
+  - name: Packages
+    path: .\output\*.nupkg
   
   - name: Moq Support Living Documentation
     path: .\Attest.Fake.Moq.Specs\bin\Release\LivingDoc.html
