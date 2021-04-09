@@ -1,19 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.1.0-rc2</Version>
+    <Version>2.1.0</Version>
   </PropertyGroup>
- 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard\Release\</OutputPath>
     <DocumentationFile>..\Bin\netstandard\Release\Attest.Testing.NUnit.xml</DocumentationFile>
     <EmbedAllSources>True</EmbedAllSources>
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup> 
-
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.13.1" />
     <PackageReference Include="Solid.Bootstrapping" Version="2.2.0" />
@@ -21,11 +18,9 @@
     <PackageReference Include="Solid.Patterns.Builder" Version="2.2.0" />
     <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
     <ProjectReference Include="..\Attest.Fake.Registration\Attest.Fake.Registration.csproj" />
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
   </ItemGroup>
-
 </Project>
