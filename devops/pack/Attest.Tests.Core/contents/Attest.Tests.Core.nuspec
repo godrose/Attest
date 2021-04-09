@@ -29,5 +29,5 @@
       <dependency id="Attest.Fake.Registration" version="2.1.0-rc2" />
       <dependency id="Attest.Testing.Contracts" version="2.1.0-rc2" />
     </dependencies>
-  </metadata> 
+  </metadata>
 </package>

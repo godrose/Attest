@@ -1,11 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
@@ -20,7 +18,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj" />
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
@@ -31,11 +28,9 @@
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
     <ProjectReference Include="..\Attest.Tests.Infra\Attest.Tests.Infra.csproj" />
   </ItemGroup>
-
-  <ItemGroup>  
+  <ItemGroup>
     <None Update="specflow.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>

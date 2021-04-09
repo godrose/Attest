@@ -18,5 +18,5 @@
       <dependency id="Solid.Patterns.Builder" version="2.3.0-rc1" />
       <dependency id="Solid.Practices.IoC" version="2.3.0-rc1" />
     </dependencies>
-  </metadata>  
+  </metadata>
 </package>

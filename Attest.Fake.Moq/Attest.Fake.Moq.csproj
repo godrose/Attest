@@ -1,11 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.1.0-rc2</Version>
-  </PropertyGroup> 
-
+    <Version>2.1.0</Version>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard\Release\</OutputPath>
     <DocumentationFile>..\Bin\netstandard\Release\Attest.Fake.Moq.xml</DocumentationFile>
@@ -13,13 +11,10 @@
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-  
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.16.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
   </ItemGroup>
-
 </Project>
