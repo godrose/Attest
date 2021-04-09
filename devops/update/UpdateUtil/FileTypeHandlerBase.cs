@@ -18,8 +18,7 @@ namespace UpdateUtil
             NavigationHelper.GoUp(4);
             var version = versionInfo.VersionCore;
             var projectFiles =
-                Directory.GetFiles(Directory.GetCurrentDirectory(), "*.csproj", SearchOption.AllDirectories)
-                    .Where(t => t.Contains(prefix));
+                Directory.GetFiles(Directory.GetCurrentDirectory(), "*.csproj", SearchOption.AllDirectories);
             NavigationHelper.Cd("devops");
             NavigationHelper.NavigateToBin();
 
@@ -61,7 +60,7 @@ namespace UpdateUtil
             NavigationHelper.GoUp(4);
             var assemblyInfoFiles =
                 Directory.GetFiles(Directory.GetCurrentDirectory(), "AssemblyInfo.cs", SearchOption.AllDirectories)
-                    .Where(t => !t.Contains("obj") && t.Contains(prefix));
+                    .Where(t => !t.Contains("obj"));
             NavigationHelper.Cd("devops");
             NavigationHelper.NavigateToBin();
             var ps1File = @"..\..\patch-assembly-info.ps1";
@@ -108,35 +107,66 @@ namespace UpdateUtil
 
     class ManifestFileTypeHandler : FileTypeHandlerBase
     {
+        private ManifestFileTypeHandlerOptions _options;
+
+        public ManifestFileTypeHandler(ManifestFileTypeHandlerOptions options)
+        {
+            _options = options;
+        }
+
+        public ManifestFileTypeHandler()
+            :this(new ManifestFileTypeHandlerOptions())
+        {
+
+        }
+
         public override void UpdateFiles(string prefix, VersionInfo versionInfo)
         {
             NavigationHelper.GoUp(3);
             NavigationHelper.Cd("pack");
             var version = versionInfo.ToString();
             var manifestFiles =
-                Directory.GetFiles(Directory.GetCurrentDirectory(), $"*{prefix}*.nuspec", SearchOption.AllDirectories);
+                Directory.GetFiles(Directory.GetCurrentDirectory(), $"*.nuspec", SearchOption.AllDirectories);
             foreach (var manifestFile in manifestFiles)
             {
                 var doc = new XmlDocument();
                 doc.Load(manifestFile);
-                var versionElement = doc.GetElementsByTagName("package")[0]["metadata"]["version"];
-                versionElement.InnerText = version;
-                var dependenciesElement = doc.GetElementsByTagName("package")[0]["metadata"]["dependencies"];
-                if (dependenciesElement != null)
+                if (_options.UpdatePackageVersion)
                 {
-                    var dependencies = dependenciesElement.GetElementsByTagName("dependency");
-                    foreach (XmlNode dependencyElement in dependencies)
+                    var versionElement = doc.GetElementsByTagName("package")[0]["metadata"]["version"];
+                    versionElement.InnerText = version;
+                }
+                if (_options.UpdateDependencyVersion)
+                {
+                    var dependenciesElement = doc.GetElementsByTagName("package")[0]["metadata"]["dependencies"];
+                    if (dependenciesElement != null)
                     {
-                        if (dependencyElement.Attributes["id"].Value.StartsWith(prefix))
+                        var dependencies = dependenciesElement.GetElementsByTagName("dependency");
+                        foreach (XmlNode dependencyElement in dependencies)
                         {
-                            dependencyElement.Attributes["version"].Value = version;
+                            if (dependencyElement.Attributes["id"].Value.StartsWith(prefix))
+                            {
+                                dependencyElement.Attributes["version"].Value = version;
+                            }
                         }
                     }
                 }
+                
                 doc.Save(manifestFile);
             }
             NavigationHelper.GoUp(1);
             NavigationHelper.NavigateToBin();
         }
+    }
+
+    class ManifestFileTypeHandlerOptions
+    {
+        public ManifestFileTypeHandlerOptions()
+        {
+            
+        }
+
+        public bool UpdatePackageVersion {get;set;}
+        public bool UpdateDependencyVersion {get;set;}
     }
 }
