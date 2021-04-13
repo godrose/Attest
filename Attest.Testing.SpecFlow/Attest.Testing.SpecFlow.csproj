@@ -12,10 +12,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="2.2.0" />
-    <PackageReference Include="Solid.Core" Version="2.2.0" />
-    <PackageReference Include="Solid.Patterns.Builder" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Core" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0-rc1" />
     <PackageReference Include="SpecFlow" Version="3.6.23" />
   </ItemGroup>
   <ItemGroup>
