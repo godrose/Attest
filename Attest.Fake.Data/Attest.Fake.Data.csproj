@@ -13,10 +13,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Solid.Common.Core" Version="2.2.0" />
-    <PackageReference Include="Solid.Patterns.Builder" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="2.2.0" />
+    <PackageReference Include="Solid.Common.Core" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0-rc1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj" />
