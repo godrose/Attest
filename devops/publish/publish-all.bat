@@ -1,4 +1,4 @@
-SET package_version=2.1.0-rc2
+SET package_version=2.1.0-rc3
 cd ../build
 call build-all
 cd ../test
