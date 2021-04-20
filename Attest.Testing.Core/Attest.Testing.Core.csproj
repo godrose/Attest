@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -20,6 +20,7 @@
     <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.0-rc1" />
     <PackageReference Include="Solid.Practices.IoC" Version="2.3.0-rc1" />
     <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0-rc1" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
