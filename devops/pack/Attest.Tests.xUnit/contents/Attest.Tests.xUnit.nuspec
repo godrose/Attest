@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Attest.Tests.xUnit</id>
+    <version>2.1.0</version>
+    <title>Attest.Testing.xUnit</title>
+    <authors>Gennady Verdel</authors>
+    <owners>Gennady Verdel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/godrose/Attest/blob/master/License</licenseUrl>
+    <projectUrl>https://github.com/godrose/Attest</projectUrl>
+    <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
+    <description>This package provides facilities for writing unit, integration and end-to-end tests using xUnit.</description>
+    <summary>This package provides facilities for writing unit, integration and end-to-end tests using xUnit.</summary>
+    <releaseNotes>Added debugging symbols</releaseNotes>
+    <dependencies>
+      <dependency id="Solid.Patterns.Builder" version="2.3.0" />
+      <dependency id="Solid.Core" version="2.3.0" />
+      <dependency id="Solid.Practices.IoC" version="2.3.0" />
+      <dependency id="Solid.Bootstrapping" version="2.3.0" />
+      <dependency id="Attest.Fake.Core" version="2.1.0" />
+      <dependency id="Attest.Fake.Registration" version="2.1.0" />
+      <dependency id="Attest.Tests.Core" version="2.1.0" />
+    </dependencies>
+  </metadata>
+</package>

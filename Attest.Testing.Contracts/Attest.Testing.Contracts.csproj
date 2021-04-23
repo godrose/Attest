@@ -1,21 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard\Release\</OutputPath>
     <DocumentationFile>..\Bin\netstandard\Release\Attest.Testing.Contracts.xml</DocumentationFile>
-    <DebugType>full</DebugType>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Solid.Core" Version="2.2.0" />
-    <PackageReference Include="Solid.Patterns.Builder" Version="2.2.0" />
+    <PackageReference Include="Solid.Core" Version="2.3.0" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.0" />
   </ItemGroup>
-
 </Project>

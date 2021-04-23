@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Attest.Fake.LightMock</id>
+    <version>2.1.0</version>
+    <title>Attest.Fake.LightMock</title>
+    <authors>Gennady Verdel</authors>
+    <owners>Gennady Verdel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/godrose/Attest/blob/master/License</licenseUrl>
+    <projectUrl>https://github.com/godrose/Attest</projectUrl>
+    <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
+    <description>This package provides implementation for fake abstractions using LightMock framework</description>
+    <summary>This package provides implementation for fake abstractions using LightMock framework</summary>
+    <releaseNotes>Added debugging symbols</releaseNotes>
+    <dependencies>
+      <dependency id="Attest.Fake.Core" version="2.1.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -123,9 +123,6 @@ DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
 
-# Click-Once directory
-publish/
-
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
@@ -194,4 +191,8 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
-
+#Generated SpecFlow feature.cs files
+*.feature.cs
+# Generated packages and intermediate output
+output
+devops/pack/**/contents/lib

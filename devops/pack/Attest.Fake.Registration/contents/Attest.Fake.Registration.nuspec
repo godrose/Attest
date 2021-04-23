@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>Attest.Fake.Registration</id>
+    <version>2.1.0</version>
+    <title>Attest.Fake.Registration</title>
+    <authors>Gennady Verdel</authors>
+    <owners>Gennady Verdel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/godrose/Attest/blob/master/License</licenseUrl>
+    <projectUrl>https://github.com/godrose/Attest</projectUrl>
+    <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
+    <description>This package provides API for registering fakes into a dependency registrator.</description>
+    <summary>This package provides API for registering fakes into a dependency registrator.</summary>
+    <releaseNotes>Added debugging symbols</releaseNotes>
+    <dependencies>
+      <dependency id="Attest.Fake.Core" version="2.1.0" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.0" />
+      <dependency id="Solid.Practices.IoC" version="2.3.0" />
+    </dependencies>
+  </metadata>
+</package>
