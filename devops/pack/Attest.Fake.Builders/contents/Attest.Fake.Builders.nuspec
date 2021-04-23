@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Attest.Fake.Builders</id>
-    <version>2.1.0-rc4</version>
+    <version>2.1.0</version>
     <title>Attest.Fake.Builders</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -18,8 +18,8 @@ for fake objects in client and server applications.</summary>
 2. Added debugging symbols</releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.0" />
-      <dependency id="Attest.Fake.Core" version="2.1.0-rc4" />
-      <dependency id="Attest.Fake.Setup" version="2.1.0-rc4" />
+      <dependency id="Attest.Fake.Core" version="2.1.0" />
+      <dependency id="Attest.Fake.Setup" version="2.1.0" />
     </dependencies>
   </metadata>
 </package>
