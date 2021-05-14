@@ -37,7 +37,7 @@ namespace Attest.Testing.SpecFlow
 
         protected abstract void InitializeContainer(IIocContainer iocContainer);
         
-        protected void BeforeScenarioOverride(IIocContainer iocContainer)
+        protected virtual void BeforeScenarioOverride(IIocContainer iocContainer)
         {
 
         }
@@ -49,7 +49,7 @@ namespace Attest.Testing.SpecFlow
             AfterScenarioOverride(_iocContainer);
         }
 
-        protected void AfterScenarioOverride(IIocContainer iocContainer)
+        protected virtual void AfterScenarioOverride(IIocContainer iocContainer)
         {
 
         }

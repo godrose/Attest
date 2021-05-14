@@ -1,11 +1,10 @@
 ﻿using System;
-using Attest.Testing.Core;
 using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
 using BootstrapperBase = Attest.Testing.Bootstrapping.BootstrapperBase;
 
-namespace Attest.Testing.SpecFlow
+namespace Attest.Testing.Core
 {
     public class StartupBase<TBootstrapper> : IInitializable where TBootstrapper : BootstrapperBase
     {
@@ -32,7 +31,7 @@ namespace Attest.Testing.SpecFlow
             bootstrapper.Initialize();
         }
 
-        protected void InitializeOverride(TBootstrapper bootstrapper)
+        protected virtual void InitializeOverride(TBootstrapper bootstrapper)
         {
 
         }
