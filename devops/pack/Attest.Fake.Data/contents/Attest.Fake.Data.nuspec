@@ -12,8 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides means of storing and loading fake data using builders</description>
     <summary>This package provides means of storing and loading fake data using builders</summary>
-    <releaseNotes>1. Using Builders Collection Context as an instance instead of static
-2. Added debugging symbols</releaseNotes>
+    <releaseNotes>Bump dependencies</releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.0" />
       <dependency id="Solid.Common.Core" version="2.3.0" />

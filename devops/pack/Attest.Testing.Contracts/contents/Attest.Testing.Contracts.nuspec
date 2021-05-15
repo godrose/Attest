@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides abstractions for writing tests.</description>
     <summary>This package provides abstractions for writing tests.</summary>
-    <releaseNotes>Added debugging symbols</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.0" />
       <dependency id="Solid.Core" version="2.3.0" />

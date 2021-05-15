@@ -12,9 +12,8 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides facilities for writing tests, including unit, integration and end-to-end.</description>
     <summary>This package provides facilities for writing tests, including unit, integration and end-to-end.</summary>
-    <releaseNotes>1. Using Builders Collection Context as an instance
-2. Using Feature Context as an instance
-3. Added debugging symbols</releaseNotes>
+    <releaseNotes>1. Added base class for startup implementation
+2. Bump dependencies</releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.0" />
       <dependency id="Solid.Core" version="2.3.0" />

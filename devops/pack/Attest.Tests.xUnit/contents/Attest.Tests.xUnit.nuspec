@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides facilities for writing unit, integration and end-to-end tests using xUnit.</description>
     <summary>This package provides facilities for writing unit, integration and end-to-end tests using xUnit.</summary>
-    <releaseNotes>Added debugging symbols</releaseNotes>
+    <releaseNotes>Bump dependencies</releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.0" />
       <dependency id="Solid.Core" version="2.3.0" />
