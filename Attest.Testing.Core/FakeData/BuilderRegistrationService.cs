@@ -12,6 +12,10 @@ namespace Attest.Testing.Core.FakeData
     {
         private readonly BuildersCollectionContext _buildersCollectionContext;
 
+        /// <summary>
+        /// Creates an instance of <see cref="BuilderRegistrationService"/>
+        /// </summary>
+        /// <param name="buildersCollectionContext">The builders collection context.</param>
         public BuilderRegistrationService(BuildersCollectionContext buildersCollectionContext)
         {
             _buildersCollectionContext = buildersCollectionContext;
