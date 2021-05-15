@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Attest.Fake.Setup</id>
-    <version>2.1.1-rc2</version>
+    <version>2.1.1</version>
     <title>Attest.Fake.Setup</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -23,7 +23,7 @@ long running operation.</summary>
       <dependency id="Solid.Patterns.Builder" version="2.3.0" />
       <dependency id="Solid.Patterns.Visitor" version="2.3.0" />
       <dependency id="Solid.Practices.Scheduling" version="2.3.0" />
-      <dependency id="Attest.Fake.Core" version="2.1.1-rc2" />
+      <dependency id="Attest.Fake.Core" version="2.1.1" />
     </dependencies>
   </metadata>
 </package>
