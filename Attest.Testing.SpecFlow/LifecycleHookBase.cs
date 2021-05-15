@@ -1,5 +1,4 @@
-﻿using Attest.Fake.Data;
-using Attest.Testing.Contracts;
+﻿using Attest.Testing.Contracts;
 using Attest.Testing.Core;
 using BoDi;
 using Solid.Common;
@@ -40,13 +39,11 @@ namespace Attest.Testing.SpecFlow
         [BeforeScenario]
         public void BeforeScenario()
         {
-            InitializeContainer(_iocContainer);
-            //TODO: Should be initialized once
-            BuildersCollectionStorageContext.Current = _iocContainer.Resolve<IDataStorage<string>>();
+            InitializeContainer(_iocContainer);            
+            BeforeScenarioOverride(_iocContainer);
             _lifecycleService = _iocContainer.Resolve<ILifecycleService>();
             _lifecycleService.Setup();
-            _iocContainer.Setup();
-            BeforeScenarioOverride(_iocContainer);
+            _iocContainer.Setup();            
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace UpdateUtil
                 return;
             }
             var versionInfo = new VersionInfo(version);
-            var handlers = new List<FileTypeHandlerBase>();
+            var handlers = new List<FileTypeHandlerBase>();            
             switch (command)
             {
                 case "bump-version":
