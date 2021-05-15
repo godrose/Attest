@@ -10,10 +10,12 @@ namespace Attest.Testing.Bootstrapping
     /// Represents base bootstrapper for testing
     /// </summary>
     public abstract class BootstrapperBase :
-        Solid.Bootstrapping.BootstrapperBase,       
+        Solid.Bootstrapping.BootstrapperBase,
+        IExtensible<BootstrapperBase>,
         IHaveRegistrator,
-        IExtensible<BootstrapperBase>
-    {        
+        IExtensible<IHaveRegistrator>
+    {
+        private readonly ExtensibilityAspect<IHaveRegistrator> _registratorExtensibilityAspect;
         private readonly ExtensibilityAspect<BootstrapperBase> _concreteExtensibilityAspect;        
 
         /// <summary>
@@ -28,9 +30,15 @@ namespace Attest.Testing.Bootstrapping
 
         private BootstrapperBase()
         {
+            _registratorExtensibilityAspect = new ExtensibilityAspect<IHaveRegistrator>(this);
+            UseAspect(_registratorExtensibilityAspect);
             _concreteExtensibilityAspect = new ExtensibilityAspect<BootstrapperBase>(this);
             UseAspect(_concreteExtensibilityAspect);
         }
+
+        /// <inheritdoc />
+        public IHaveRegistrator Use(IMiddleware<IHaveRegistrator> middleware) =>
+            _registratorExtensibilityAspect.Use(middleware);
 
         /// <inheritdoc />
         public BootstrapperBase Use(IMiddleware<BootstrapperBase> middleware)
