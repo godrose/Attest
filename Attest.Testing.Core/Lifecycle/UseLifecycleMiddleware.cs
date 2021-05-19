@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using Attest.Testing.Contracts;
+using Attest.Testing.Lifecycle;
 using Solid.Bootstrapping;
 using Solid.Practices.Composition.Contracts;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.Lifecycle
+namespace Attest.Testing.Bootstrapping
 {
     /// <summary>
     /// This middleware registers the main dependencies for
