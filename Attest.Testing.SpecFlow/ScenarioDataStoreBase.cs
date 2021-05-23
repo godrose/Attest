@@ -1,12 +1,12 @@
-﻿using System.Runtime.CompilerServices;
-using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
+﻿using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
 
 namespace Attest.Testing.SpecFlow
 {
     /// <summary>
-    /// Base class for scenario data stores. It allows storing and retrieving values dynamically.
+    /// Base class for scenario data stores in SpecFlow-based projects.
+    /// It allows storing and retrieving values dynamically.
     /// </summary>
-    public abstract class ScenarioDataStoreBase
+    public abstract class ScenarioDataStoreBase : Core.ScenarioDataStoreBase
     {
         private readonly ScenarioContext _scenarioContext;
 
@@ -19,34 +19,22 @@ namespace Attest.Testing.SpecFlow
             _scenarioContext = scenarioContext;
         }
 
-        /// <summary>
-        /// Gets stored value by the specified key.
-        /// Returns the specified default value if the value cannot be found using the specified key.
-        /// If no default value is specified then the default value for the type is returned.
-        /// </summary>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <param name="defaultValue">The default value.</param>
-        /// <param name="key">The key.</param>
-        /// <returns></returns>
-        protected T GetValueImpl<T>(T defaultValue = default, [CallerMemberName] string key = default)
+        /// <inheritdoc />
+        protected override bool ContainsKey(string key)
         {
-            return _scenarioContext.ContainsKey(Coerce(key)) ? (T) _scenarioContext[Coerce(key)] : defaultValue;
+            return _scenarioContext.ContainsKey(key);
         }
 
-        /// <summary>
-        /// Sets value using the specified key.
-        /// </summary>
-        /// <typeparam name="T">The type of the value.</typeparam>
-        /// <param name="value">The value.</param>
-        /// <param name="key">The key.</param>
-        protected void SetValueImpl<T>(T value, [CallerMemberName] string key = default)
+        /// <inheritdoc />
+        protected override T GetValueByKey<T>(string key)
         {
-            _scenarioContext[Coerce(key)] = value;
+            return (T) _scenarioContext[key];
         }
 
-        private static string Coerce(string key)
+        /// <inheritdoc />
+        protected override void SetValueByKey<T>(T value, string key)
         {
-            return key ?? string.Empty;
+            _scenarioContext[key] = value;
         }
     }
 }

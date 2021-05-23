@@ -2,9 +2,9 @@
 using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
-using BootstrapperBase = Attest.Testing.Bootstrapping.BootstrapperBase;
 
-namespace Attest.Testing.Core
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Bootstrapping
 {
     /// <summary>
     /// Base class for bootstrapper initialization.

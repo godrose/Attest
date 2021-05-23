@@ -7,7 +7,7 @@ using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.Core
+namespace Attest.Testing.Bootstrapping
 {
     /// <summary>
     /// This middleware registers the main dependencies for
