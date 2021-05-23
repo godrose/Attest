@@ -23,10 +23,28 @@ namespace Attest.Testing.Core
             return ContainsKey(coercedKey) ? GetValueByKey<T>(coercedKey) : defaultValue;
         }
 
+        /// <summary>
+        /// Returns <see typeref="true"/> if the specified key is mapped to a stored value,
+        /// <see typeref="false"/> otherwise.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         protected abstract bool ContainsKey(string key);
 
+        /// <summary>
+        /// Returns value that is mapped to the specified key.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="key"></param>
+        /// <returns></returns>
         protected abstract T GetValueByKey<T>(string key);
 
+        /// <summary>
+        /// Stores the value while mapping it to the specified key.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <param name="key"></param>
         protected abstract void SetValueByKey<T>(T value, string key);
 
         /// <summary>
