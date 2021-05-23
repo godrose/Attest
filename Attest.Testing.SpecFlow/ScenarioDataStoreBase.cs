@@ -19,16 +19,19 @@ namespace Attest.Testing.SpecFlow
             _scenarioContext = scenarioContext;
         }
 
+        /// <inheritdoc />
         protected override bool ContainsKey(string key)
         {
             return _scenarioContext.ContainsKey(key);
         }
 
+        /// <inheritdoc />
         protected override T GetValueByKey<T>(string key)
         {
             return (T) _scenarioContext[key];
         }
 
+        /// <inheritdoc />
         protected override void SetValueByKey<T>(T value, string key)
         {
             _scenarioContext[key] = value;
