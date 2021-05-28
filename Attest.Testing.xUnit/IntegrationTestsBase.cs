@@ -25,12 +25,13 @@ namespace Attest.Testing.xUnit
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
+        /// <param name="keyValueDataStore">The key-value data store.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
-            IKeyedDataStore keyedDataStore,
+            IKeyValueDataStore keyValueDataStore,
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
-            _scenarioHelper = new ScenarioHelper(keyedDataStore);
+            _scenarioHelper = new ScenarioHelper(keyValueDataStore);
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
@@ -135,12 +136,13 @@ namespace Attest.Testing.xUnit
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
+        /// <param name="keyValueDataStore">The key-value data store.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
-            IKeyedDataStore keyedDataStore,
+            IKeyValueDataStore keyValueDataStore,
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
-            _scenarioHelper = new ScenarioHelper(keyedDataStore);
+            _scenarioHelper = new ScenarioHelper(keyValueDataStore);
             _initializationParametersManager =
                 ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);

@@ -34,7 +34,7 @@ namespace Attest.Testing.SpecFlow
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
-            _scenarioHelper = new ScenarioHelper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext));
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Attest.Testing.SpecFlow
             _initializationParametersManager =
                 ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
-            _scenarioHelper = new ScenarioHelper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext));
         }
 
         /// <summary>

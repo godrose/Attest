@@ -8,15 +8,15 @@ namespace Attest.Testing.Core
     /// </summary>
     public abstract class ScenarioDataStoreBase
     {
-        private readonly IKeyedDataStore _keyedDataStore;
+        private readonly IKeyValueDataStore _keyValueDataStore;
 
         /// <summary>
         /// Creates an instance of <see cref="ScenarioDataStoreBase"/>
         /// </summary>
-        /// <param name="keyedDataStore"></param>
-        protected ScenarioDataStoreBase(IKeyedDataStore keyedDataStore)
+        /// <param name="keyValueDataStore"></param>
+        protected ScenarioDataStoreBase(IKeyValueDataStore keyValueDataStore)
         {
-            _keyedDataStore = keyedDataStore;
+            _keyValueDataStore = keyValueDataStore;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Attest.Testing.Core
         protected T GetValueImpl<T>(T defaultValue = default, [CallerMemberName] string key = default)
         {
             var coercedKey = Coerce(key);
-            return _keyedDataStore.ContainsKey(coercedKey) ? _keyedDataStore.GetValueByKey<T>(coercedKey) : defaultValue;
+            return _keyValueDataStore.ContainsKey(coercedKey) ? _keyValueDataStore.GetValueByKey<T>(coercedKey) : defaultValue;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Attest.Testing.Core
         protected void SetValueImpl<T>(T value, [CallerMemberName] string key = default)
         {
             var coercedKey = Coerce(key);
-            _keyedDataStore.SetValueByKey(value, coercedKey);
+            _keyValueDataStore.SetValueByKey(value, coercedKey);
         }
 
         private static string Coerce(string key)

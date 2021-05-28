@@ -1,4 +1,6 @@
-﻿using TechTalk.SpecFlow;
+﻿using Attest.Testing.Core;
+using TechTalk.SpecFlow;
+using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
 
 namespace Attest.Testing.SpecFlow
 {
@@ -14,7 +16,7 @@ namespace Attest.Testing.SpecFlow
         /// </summary>        
         protected EndToEndTestsBase(ScenarioContext scenarioContext)
         {
-            _scenarioHelper = new ScenarioHelper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext));
         }
 
         /// <summary>

@@ -1,6 +1,9 @@
 ﻿namespace Attest.Testing.Core
 {
-    public interface IKeyedDataStore
+    /// <summary>
+    /// Represents a key-value data store 
+    /// </summary>
+    public interface IKeyValueDataStore
     {
         /// <summary>
         /// Returns <see typeref="true"/> if the specified key is mapped to a stored value,

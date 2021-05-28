@@ -13,7 +13,7 @@ namespace Attest.Testing.SpecFlow
         /// </summary>
         /// <param name="scenarioContext"></param>
         protected ScenarioDataStoreBase(ScenarioContext scenarioContext)
-        : base(new ScenarioContextKeyedDataStoreAdapter(scenarioContext))
+        : base(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext))
         {
             
         }

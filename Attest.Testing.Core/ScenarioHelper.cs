@@ -3,16 +3,19 @@
 namespace Attest.Testing.Core
 {
     /// <summary>
-    /// Wrapper class over the scenario context which provides concise API of adding and retrieving services
-    /// as well as scenario initialization logic with respect to the root object and ioc container adapter.
+    /// Helper class which provides initialization logic with respect to the root object and ioc container adapter.
     /// </summary>
     public class ScenarioHelper
     {
         private readonly RootObjectScenarioDataStore _scenarioDataStore;
 
-        public ScenarioHelper(IKeyedDataStore keyedDataStore)
+        /// <summary>
+        /// Initializes a new instance of <see cref="ScenarioHelper"/>
+        /// </summary>
+        /// <param name="keyValueDataStore"></param>
+        public ScenarioHelper(IKeyValueDataStore keyValueDataStore)
         {
-            _scenarioDataStore = new RootObjectScenarioDataStore(keyedDataStore);
+            _scenarioDataStore = new RootObjectScenarioDataStore(keyValueDataStore);
         }
 
         /// <summary>
@@ -35,7 +38,8 @@ namespace Attest.Testing.Core
         public void CreateRootObject()
         {
             var rootObjectFactory = _scenarioDataStore.RootObjectFactory;
-            _scenarioDataStore.RootObject = rootObjectFactory.CreateRootObject();
+            var rootObject = rootObjectFactory.CreateRootObject();
+            _scenarioDataStore.RootObject = rootObject;
         }
     }
 }

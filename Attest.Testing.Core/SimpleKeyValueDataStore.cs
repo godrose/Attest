@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace Attest.Testing.Core
 {
     /// <summary>
-    /// Simple implementation of <see cref="IKeyedDataStore"/> using <see cref="Dictionary{TKey,TValue}"/>.
+    /// Simple implementation of <see cref="IKeyValueDataStore"/> using <see cref="Dictionary{TKey,TValue}"/>.
     /// </summary>
-    public class SimpleKeyedDataStore : IKeyedDataStore
+    public class SimpleKeyValueDataStore : IKeyValueDataStore
     {
         private IDictionary Properties { get; } = new Dictionary<string, object>();
 

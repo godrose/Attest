@@ -4,8 +4,8 @@ namespace Attest.Testing.Core
 {
     public class RootObjectScenarioDataStore : ScenarioDataStoreBase
     {
-        public RootObjectScenarioDataStore(IKeyedDataStore keyedDataStore)
-            :base(keyedDataStore)
+        public RootObjectScenarioDataStore(IKeyValueDataStore keyValueDataStore)
+            :base(keyValueDataStore)
         {
             
         }

@@ -14,7 +14,12 @@ namespace Attest.Testing.xUnit
         private readonly IDependencyRegistrator _dependencyRegistrator;
         private readonly IDependencyResolver _dependencyResolver;
 
-        public StepsBase(
+        /// <summary>
+        /// Initializes a new instance of <see cref="StepsBase"/>.
+        /// </summary>
+        /// <param name="dependencyRegistrator"></param>
+        /// <param name="dependencyResolver"></param>
+        protected StepsBase(
             IDependencyRegistrator dependencyRegistrator,
             IDependencyResolver dependencyResolver)
         {
