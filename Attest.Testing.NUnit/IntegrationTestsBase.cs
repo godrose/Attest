@@ -124,7 +124,6 @@ namespace Attest.Testing.NUnit
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
-        /// <param name="keyValueDataStore">The key-value data store.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
