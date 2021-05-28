@@ -23,13 +23,11 @@ namespace Attest.Testing.NUnit
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
-        /// <param name="keyValueDataStore">The key-value data store</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
-            IKeyValueDataStore keyValueDataStore,
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {         
-            _scenarioHelper = new ScenarioHelper(keyValueDataStore);
+            _scenarioHelper = new ScenarioHelper(new TestContextKeyValueDataStoreAdapter());
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
@@ -129,13 +127,12 @@ namespace Attest.Testing.NUnit
         /// <param name="keyValueDataStore">The key-value data store.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
-            IKeyValueDataStore keyValueDataStore,
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
             _initializationParametersManager =
                 ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
-            _scenarioHelper = new ScenarioHelper(keyValueDataStore);
+            _scenarioHelper = new ScenarioHelper(new TestContextKeyValueDataStoreAdapter());
         }
 
         /// <summary>

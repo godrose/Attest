@@ -144,9 +144,9 @@ namespace Attest.Testing.xUnit
         {            
             _scenarioHelper = new ScenarioHelper(keyValueDataStore);
             _initializationParametersManager =
-                ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
-                    resolutionStyle);
-            ScenarioContext.Current = new Scenario();
+                ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>
+                    .GetInitializationParametersManager(
+                        resolutionStyle);
 
             // ReSharper disable once DoNotCallOverridableMethodsInConstructor
             // xUnit.net does not have dedicated attributes for Setup methods; 

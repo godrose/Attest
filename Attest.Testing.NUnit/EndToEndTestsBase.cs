@@ -7,13 +7,15 @@ namespace Attest.Testing.NUnit
     /// Base class for all End-To-End tests that use NUnit as test framework provider.
     /// </summary>    
     public abstract class EndToEndTestsBase : Core.EndToEndTestsBase        
-    {        
+    {
+        private readonly IKeyValueDataStore _keyValueDataStore;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
         /// </summary>        
-        protected EndToEndTestsBase()
+        protected EndToEndTestsBase(IKeyValueDataStore keyValueDataStore)
         {
-            ScenarioContext.Current = new Scenario();
+            _keyValueDataStore = keyValueDataStore;
         }
 
         /// <summary>

@@ -8,12 +8,14 @@ namespace Attest.Testing.xUnit
     /// </summary>    
     public abstract class EndToEndTestsBase : Core.EndToEndTestsBase, IDisposable
     {
+        private readonly IKeyValueDataStore _keyValueDataStore;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
         /// </summary>        
-        protected EndToEndTestsBase()
+        protected EndToEndTestsBase(IKeyValueDataStore keyValueDataStore)
         {
-            ScenarioContext.Current = new Scenario();
+            _keyValueDataStore = keyValueDataStore;
             // ReSharper disable once DoNotCallOverridableMethodsInConstructor
             // xUnit.net does not have dedicated attributes for Setup methods; 
             // therefore the logic is put inside the constructor instead.
