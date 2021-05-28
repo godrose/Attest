@@ -54,7 +54,7 @@ namespace Attest.Testing.xUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();
+            //ScenarioHelper.Clear();
         }
 
         /// <summary>

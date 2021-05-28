@@ -13,8 +13,7 @@ namespace Attest.Testing.SpecFlow
         /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
         /// </summary>        
         protected EndToEndTestsBase(ScenarioContext scenarioContext)
-        {            
-            Core.ScenarioContext.Current = new ScenarioContextWrapper(scenarioContext);
+        {
             _scenarioHelper = new ScenarioHelper(scenarioContext);
         }
 
@@ -53,7 +52,7 @@ namespace Attest.Testing.SpecFlow
 
         private void TearDownCore()
         {
-            _scenarioHelper.Clear();
+            
         }
 
         /// <summary>

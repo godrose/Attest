@@ -52,7 +52,7 @@ namespace Attest.Testing.NUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();
+            
         }
 
         /// <summary>

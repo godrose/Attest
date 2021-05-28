@@ -19,18 +19,21 @@ namespace Attest.Testing.xUnit
         where TRootObject : class 
         where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
+        private readonly ScenarioHelper _scenarioHelper;
         private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
         /// <param name="resolutionStyle">The resolution style.</param>
-        protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
+        protected IntegrationTestsBase(
+            IKeyedDataStore keyedDataStore,
+            InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
+            _scenarioHelper = new ScenarioHelper(keyedDataStore);
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
-            ScenarioContext.Current = new Scenario();
 
             // ReSharper disable once DoNotCallOverridableMethodsInConstructor
             // xUnit.net does not have dedicated attributes for Setup methods; 
@@ -62,7 +65,7 @@ namespace Attest.Testing.xUnit
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();
             Registrator = initializationParameters.IocContainer;
             Resolver = initializationParameters.IocContainer;
-            ScenarioHelper.Initialize(initializationParameters.IocContainer, this);
+            _scenarioHelper.Initialize(initializationParameters.IocContainer, this);
         }
 
         /// <summary>
@@ -75,7 +78,7 @@ namespace Attest.Testing.xUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();                  
+            //ScenarioHelper.Clear();                  
         }
 
         /// <summary>
@@ -126,14 +129,18 @@ namespace Attest.Testing.xUnit
         where TRootObject : class 
         where TBootstrapper : IInitializable, IHaveContainer<TContainer>, new()
     {
+        private readonly ScenarioHelper _scenarioHelper;
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
         /// <param name="resolutionStyle">The resolution style.</param>
-        protected IntegrationTestsBase(InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
+        protected IntegrationTestsBase(
+            IKeyedDataStore keyedDataStore,
+            InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
+            _scenarioHelper = new ScenarioHelper(keyedDataStore);
             _initializationParametersManager =
                 ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
@@ -170,7 +177,7 @@ namespace Attest.Testing.xUnit
             var containerAdapter = CreateAdapter(initializationParameters.IocContainer);
             Registrator = containerAdapter;
             Resolver = containerAdapter;
-            ScenarioHelper.Initialize(containerAdapter, this);
+            _scenarioHelper.Initialize(containerAdapter, this);
         }
 
         /// <summary>
@@ -190,7 +197,7 @@ namespace Attest.Testing.xUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();            
+            //ScenarioHelper.Clear();            
         }
 
         /// <summary>

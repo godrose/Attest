@@ -8,6 +8,17 @@ namespace Attest.Testing.Core
     /// </summary>
     public abstract class ScenarioDataStoreBase
     {
+        private readonly IKeyedDataStore _keyedDataStore;
+
+        /// <summary>
+        /// Creates an instance of <see cref="ScenarioDataStoreBase"/>
+        /// </summary>
+        /// <param name="keyedDataStore"></param>
+        protected ScenarioDataStoreBase(IKeyedDataStore keyedDataStore)
+        {
+            _keyedDataStore = keyedDataStore;
+        }
+
         /// <summary>
         /// Gets stored value by the specified key.
         /// Returns the specified default value if the value cannot be found using the specified key.
@@ -20,32 +31,8 @@ namespace Attest.Testing.Core
         protected T GetValueImpl<T>(T defaultValue = default, [CallerMemberName] string key = default)
         {
             var coercedKey = Coerce(key);
-            return ContainsKey(coercedKey) ? GetValueByKey<T>(coercedKey) : defaultValue;
+            return _keyedDataStore.ContainsKey(coercedKey) ? _keyedDataStore.GetValueByKey<T>(coercedKey) : defaultValue;
         }
-
-        /// <summary>
-        /// Returns <see typeref="true"/> if the specified key is mapped to a stored value,
-        /// <see typeref="false"/> otherwise.
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        protected abstract bool ContainsKey(string key);
-
-        /// <summary>
-        /// Returns value that is mapped to the specified key.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        protected abstract T GetValueByKey<T>(string key);
-
-        /// <summary>
-        /// Stores the value while mapping it to the specified key.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
-        /// <param name="key"></param>
-        protected abstract void SetValueByKey<T>(T value, string key);
 
         /// <summary>
         /// Sets value using the specified key.
@@ -56,7 +43,7 @@ namespace Attest.Testing.Core
         protected void SetValueImpl<T>(T value, [CallerMemberName] string key = default)
         {
             var coercedKey = Coerce(key);
-            SetValueByKey<T>(value, coercedKey);
+            _keyedDataStore.SetValueByKey(value, coercedKey);
         }
 
         private static string Coerce(string key)

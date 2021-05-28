@@ -11,6 +11,17 @@ namespace Attest.Testing.NUnit
     /// </summary>
     public abstract class StepsBase
     {
+        private readonly IDependencyRegistrator _dependencyRegistrator;
+        private readonly IDependencyResolver _dependencyResolver;
+
+        protected StepsBase(
+            IDependencyRegistrator dependencyRegistrator,
+            IDependencyResolver dependencyResolver)
+        {
+            _dependencyRegistrator = dependencyRegistrator;
+            _dependencyResolver = dependencyResolver;
+        }
+
         /// <summary>
         /// Registers service instance into the scenario context.
         /// </summary>
@@ -26,7 +37,7 @@ namespace Attest.Testing.NUnit
         /// </summary>
         /// <typeparam name="TService">The type of the service.</typeparam>
         /// <typeparam name="TImplementation">The type of the implementation.</typeparam>
-        public static void RegisterTransient<TService, TImplementation>()
+        public void RegisterTransient<TService, TImplementation>()
             where TImplementation : class, TService
         {
             RegistrationHelper.RegisterTransient<TService, TImplementation>(GetRegistrator());
@@ -69,12 +80,12 @@ namespace Attest.Testing.NUnit
         /// <returns>The steps provider.</returns>
         protected TStepsProvider GetStepsProvider<TStepsProvider>() where TStepsProvider : class, IStepsProvider
         {
-            return ScenarioHelper.Get<TStepsProvider>();
+            return _dependencyResolver.Resolve<TStepsProvider>();
         }
 
-        private static IDependencyRegistrator GetRegistrator()
+        private IDependencyRegistrator GetRegistrator()
         {
-            return ScenarioHelper.Registrator;
+            return _dependencyRegistrator;
         }
     }
 }
