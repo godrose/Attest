@@ -6,7 +6,7 @@ namespace Attest.Testing.xUnit
     /// <summary>
     /// Base class for all End-To-End tests that use xUnit.net as test framework provider.
     /// </summary>    
-    public abstract class EndToEndTestsBase : Core.EndToEndTestsBase, IDisposable
+    public abstract class EndToEndTestsBase : EndToEnd.EndToEndTestsBase, IDisposable
     {
         private readonly IKeyValueDataStore _keyValueDataStore;
 

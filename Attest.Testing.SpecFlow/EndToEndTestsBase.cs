@@ -7,7 +7,7 @@ namespace Attest.Testing.SpecFlow
     /// <summary>
     /// Base class for all End-To-End tests that use SpecFlow as test framework provider.
     /// </summary>    
-    public abstract class EndToEndTestsBase : Core.EndToEndTestsBase
+    public abstract class EndToEndTestsBase : EndToEnd.EndToEndTestsBase
     {
         private readonly ScenarioHelper _scenarioHelper;
 
