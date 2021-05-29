@@ -1,5 +1,5 @@
-﻿using Attest.Testing.Core;
-using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
+﻿using Attest.Testing.DataStore;
+using TechTalk.SpecFlow;
 
 namespace Attest.Testing.SpecFlow
 {

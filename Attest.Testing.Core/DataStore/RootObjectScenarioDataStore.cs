@@ -1,6 +1,8 @@
-﻿using Solid.Practices.IoC;
+﻿using Attest.Testing.Core;
+using Solid.Practices.IoC;
 
-namespace Attest.Testing.Core
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.DataStore
 {
     /// <summary>
     /// Represents data store for integration tests with root object.

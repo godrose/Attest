@@ -1,5 +1,5 @@
 ﻿using Attest.Testing.Contracts;
-using Attest.Testing.Core;
+using Attest.Testing.DataStore;
 
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.EndToEnd

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Attest.Testing.Core
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.DataStore
 {
     /// <summary>
     /// Simple implementation of <see cref="IKeyValueDataStore"/> using <see cref="Dictionary{TKey,TValue}"/>.

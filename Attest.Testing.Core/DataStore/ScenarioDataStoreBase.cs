@@ -1,6 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Attest.Testing.Core
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.DataStore
 {
     /// <summary>
     /// Base class for scenario data stores.

@@ -1,4 +1,4 @@
-﻿using Attest.Testing.Core;
+﻿using Attest.Testing.DataStore;
 using Solid.Bootstrapping;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;

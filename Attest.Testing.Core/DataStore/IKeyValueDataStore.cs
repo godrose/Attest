@@ -1,7 +1,8 @@
-﻿namespace Attest.Testing.Core
+﻿// ReSharper disable once CheckNamespace
+namespace Attest.Testing.DataStore
 {
     /// <summary>
-    /// Represents a key-value data store 
+    /// Represents a key-value data store.
     /// </summary>
     public interface IKeyValueDataStore
     {

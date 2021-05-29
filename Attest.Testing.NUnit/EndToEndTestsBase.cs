@@ -1,4 +1,4 @@
-﻿using Attest.Testing.Core;
+﻿using Attest.Testing.DataStore;
 using NUnit.Framework;
 
 namespace Attest.Testing.NUnit

@@ -1,5 +1,5 @@
 ﻿using System;
-using Attest.Testing.Core;
+using Attest.Testing.DataStore;
 
 namespace Attest.Testing.xUnit
 {
