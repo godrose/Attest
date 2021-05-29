@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.1.2</Version>
+    <Version>2.2.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard\Release\</OutputPath>
@@ -11,6 +11,9 @@
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="ScenarioContextWrapper.cs" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Solid.Bootstrapping" Version="2.3.0" />
     <PackageReference Include="Solid.Core" Version="2.3.0" />

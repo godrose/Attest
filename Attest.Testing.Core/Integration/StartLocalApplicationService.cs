@@ -8,7 +8,10 @@ namespace Attest.Testing.Integration
     {
         private readonly IStartApplicationService _startApplicationService;
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of <see cref="StartLocalApplicationService"/>.
+        /// </summary>
+        /// <param name="startApplicationService"></param>
         public StartLocalApplicationService(IStartApplicationService startApplicationService)
         {
             _startApplicationService = startApplicationService;

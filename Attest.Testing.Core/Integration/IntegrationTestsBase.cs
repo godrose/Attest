@@ -1,4 +1,7 @@
-﻿namespace Attest.Testing.Core
+﻿using Attest.Testing.Core;
+
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Integration
 {
     /// <summary>
     /// Base class for all integration-tests fixtures that use ioc container adapter.

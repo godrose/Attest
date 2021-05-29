@@ -6,35 +6,16 @@ namespace Attest.Testing.SpecFlow
     /// Base class for scenario data stores in SpecFlow-based projects.
     /// It allows storing and retrieving values dynamically.
     /// </summary>
-    public abstract class ScenarioDataStoreBase : Core.ScenarioDataStoreBase
+    public abstract class ScenarioDataStoreBase : DataStore.ScenarioDataStoreBase
     {
-        private readonly ScenarioContext _scenarioContext;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ScenarioDataStoreBase"/> class.
         /// </summary>
         /// <param name="scenarioContext"></param>
         protected ScenarioDataStoreBase(ScenarioContext scenarioContext)
+        : base(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext))
         {
-            _scenarioContext = scenarioContext;
-        }
-
-        /// <inheritdoc />
-        protected override bool ContainsKey(string key)
-        {
-            return _scenarioContext.ContainsKey(key);
-        }
-
-        /// <inheritdoc />
-        protected override T GetValueByKey<T>(string key)
-        {
-            return (T) _scenarioContext[key];
-        }
-
-        /// <inheritdoc />
-        protected override void SetValueByKey<T>(T value, string key)
-        {
-            _scenarioContext[key] = value;
+            
         }
     }
 }

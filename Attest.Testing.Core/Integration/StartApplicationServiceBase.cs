@@ -1,5 +1,6 @@
 using Attest.Testing.Contracts;
 using Attest.Testing.Core;
+using Attest.Testing.DataStore;
 
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Integration
@@ -10,12 +11,28 @@ namespace Attest.Testing.Integration
     /// <seealso cref="IStartApplicationService" />    
     public class StartApplicationServiceBase : IStartApplicationService
     {
+        private readonly ScenarioHelper _scenarioHelper;
+        private readonly RootObjectScenarioDataStore _rootObjectScenarioDataStore;
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="StartApplicationServiceBase"/>.
+        /// </summary>
+        /// <param name="scenarioHelper"></param>
+        /// <param name="rootObjectScenarioDataStore"></param>
+        public StartApplicationServiceBase(
+            ScenarioHelper scenarioHelper,
+            RootObjectScenarioDataStore rootObjectScenarioDataStore)
+        {
+            _scenarioHelper = scenarioHelper;
+            _rootObjectScenarioDataStore = rootObjectScenarioDataStore;
+        }
+
         /// <inheritdoc />        
         public void Start(string startupPath)
         {
             Setup();
-            OnStartCore();
-            OnStart(ScenarioHelper.RootObject);
+            _scenarioHelper.CreateRootObject();
+            OnStart(_rootObjectScenarioDataStore.RootObject);
         }
 
         /// <summary>
@@ -32,11 +49,6 @@ namespace Attest.Testing.Integration
         /// <param name="rootObject">The root object.</param>
         protected virtual void OnStart(object rootObject)
         {            
-        }
-
-        private static void OnStartCore()
-        {
-            ScenarioHelper.CreateRootObject();
         }
     }
 }

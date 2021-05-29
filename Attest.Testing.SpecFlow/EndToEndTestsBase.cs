@@ -1,11 +1,13 @@
-﻿using TechTalk.SpecFlow;
+﻿using Attest.Testing.Core;
+using TechTalk.SpecFlow;
+using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
 
 namespace Attest.Testing.SpecFlow
 {
     /// <summary>
     /// Base class for all End-To-End tests that use SpecFlow as test framework provider.
     /// </summary>    
-    public abstract class EndToEndTestsBase : Core.EndToEndTestsBase
+    public abstract class EndToEndTestsBase : EndToEnd.EndToEndTestsBase
     {
         private readonly ScenarioHelper _scenarioHelper;
 
@@ -13,9 +15,8 @@ namespace Attest.Testing.SpecFlow
         /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
         /// </summary>        
         protected EndToEndTestsBase(ScenarioContext scenarioContext)
-        {            
-            Core.ScenarioContext.Current = new ScenarioContextWrapper(scenarioContext);
-            _scenarioHelper = new ScenarioHelper(scenarioContext);
+        {
+            _scenarioHelper = new ScenarioHelper(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext));
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Attest.Testing.SpecFlow
 
         private void TearDownCore()
         {
-            _scenarioHelper.Clear();
+            
         }
 
         /// <summary>
