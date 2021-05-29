@@ -19,7 +19,7 @@ namespace Attest.Testing.Core
         }
 
         /// <summary>
-        /// Initializes the <see cref="ScenarioContext"/>. with the provided container and root object factory.
+        /// Initializes the service data store with the provided container and root object factory.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
         /// <param name="rootObjectFactory">The root object factory.</param>

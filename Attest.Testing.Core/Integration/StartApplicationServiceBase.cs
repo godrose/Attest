@@ -13,6 +13,11 @@ namespace Attest.Testing.Integration
         private readonly ScenarioHelper _scenarioHelper;
         private readonly RootObjectScenarioDataStore _rootObjectScenarioDataStore;
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="StartApplicationServiceBase"/>.
+        /// </summary>
+        /// <param name="scenarioHelper"></param>
+        /// <param name="rootObjectScenarioDataStore"></param>
         public StartApplicationServiceBase(
             ScenarioHelper scenarioHelper,
             RootObjectScenarioDataStore rootObjectScenarioDataStore)

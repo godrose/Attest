@@ -26,7 +26,7 @@ namespace Attest.Testing.Integration
     }
 
     /// <summary>
-    /// This middleware registers dependencies used during integration tests.
+    /// This middleware registers dependencies used during integration tests including start application service.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <typeparam name="TStartApplicationService">The type of the start application service.</typeparam>
