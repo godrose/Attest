@@ -1,6 +1,5 @@
 ﻿using Attest.Testing.DataStore;
 using Solid.Bootstrapping;
-using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
 namespace Attest.Testing.SpecFlow
@@ -15,7 +14,7 @@ namespace Attest.Testing.SpecFlow
         /// <inheritdoc />
         public TBootstrapper Apply(TBootstrapper @object)
         {
-            @object.Registrator.AddSingleton<IKeyValueDataStore, ScenarioContextKeyValueDataStoreAdapter>();
+            @object.Registrator.UseKeyValueStore();
             return @object;
         }
     }
