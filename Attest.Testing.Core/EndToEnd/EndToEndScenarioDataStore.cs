@@ -1,7 +1,8 @@
 ﻿using Attest.Testing.Contracts;
+using Attest.Testing.Core;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.Core
+namespace Attest.Testing.EndToEnd
 {
     /// <summary>
     /// Represents data store for end-to-end tests.

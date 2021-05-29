@@ -1,4 +1,5 @@
 ﻿using Attest.Testing.Core;
+using Attest.Testing.Integration;
 using NUnit.Framework;
 using Solid.Bootstrapping;
 using Solid.Core;

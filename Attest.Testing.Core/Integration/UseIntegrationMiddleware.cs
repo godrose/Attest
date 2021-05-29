@@ -1,5 +1,4 @@
 ﻿using Attest.Testing.Contracts;
-using Attest.Testing.Core;
 using Solid.Bootstrapping;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
@@ -17,10 +16,7 @@ namespace Attest.Testing.Integration
         /// <inheritdoc />
         public TBootstrapper Apply(TBootstrapper @object)
         {
-            @object.Registrator
-                .AddSingleton<ScenarioHelper>()
-                .AddSingleton<RootObjectScenarioDataStore>()
-                .UseLocalApplicationForIntegration();
+            @object.Registrator.UseIntegration();
             return @object;
         }
     }
@@ -39,9 +35,7 @@ namespace Attest.Testing.Integration
         {
             @object.Registrator
                 .AddSingleton<IStartApplicationService, TStartApplicationService>()
-                .AddSingleton<ScenarioHelper>()
-                .AddSingleton<RootObjectScenarioDataStore>()
-                .UseLocalApplicationForIntegration();
+                .UseIntegration();
             return @object;
         }
     }
