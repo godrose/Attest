@@ -12,8 +12,9 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides facilities for writing tests, including unit, integration and end-to-end.</description>
     <summary>This package provides facilities for writing tests, including unit, integration and end-to-end.</summary>
-    <releaseNotes>1. Added base class for startup implementation
-2. Bump dependencies</releaseNotes>
+    <releaseNotes>1. Added definition and simple implementation for key value data store.
+2. Improved flow for integration tests
+3. Bump dependencies.</releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.0" />
       <dependency id="Solid.Core" version="2.3.0" />

@@ -17,7 +17,7 @@ namespace Attest.Testing.NUnit
         public static TBootstrapper UseKeyValueDataStore<TBootstrapper>(this TBootstrapper bootstrapper)
             where TBootstrapper : class, IHaveRegistrator, IExtensible<IHaveRegistrator>
         {
-            bootstrapper.Use(new UseKeyValueStoreMiddleware<IHaveRegistrator>());
+            bootstrapper.Use(new UseKeyValueDataStoreMiddleware<IHaveRegistrator>());
             return bootstrapper;
         }
     }
