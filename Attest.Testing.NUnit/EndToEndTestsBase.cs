@@ -1,4 +1,4 @@
-﻿using Attest.Testing.Core;
+﻿using Attest.Testing.DataStore;
 using NUnit.Framework;
 
 namespace Attest.Testing.NUnit
@@ -6,14 +6,16 @@ namespace Attest.Testing.NUnit
     /// <summary>
     /// Base class for all End-To-End tests that use NUnit as test framework provider.
     /// </summary>    
-    public abstract class EndToEndTestsBase : Core.EndToEndTestsBase        
-    {        
+    public abstract class EndToEndTestsBase : EndToEnd.EndToEndTestsBase        
+    {
+        private readonly IKeyValueDataStore _keyValueDataStore;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
         /// </summary>        
-        protected EndToEndTestsBase()
+        protected EndToEndTestsBase(IKeyValueDataStore keyValueDataStore)
         {
-            ScenarioContext.Current = new Scenario();
+            _keyValueDataStore = keyValueDataStore;
         }
 
         /// <summary>
@@ -52,7 +54,7 @@ namespace Attest.Testing.NUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();
+            
         }
 
         /// <summary>

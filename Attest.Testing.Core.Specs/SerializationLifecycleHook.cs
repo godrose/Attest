@@ -1,5 +1,5 @@
 ﻿using Attest.Fake.Data;
-using Attest.Testing.Core.FakeData;
+using Attest.Testing.FakeData;
 using TechTalk.SpecFlow;
 
 namespace Attest.Testing.Core.Specs
@@ -8,9 +8,9 @@ namespace Attest.Testing.Core.Specs
     internal sealed class SerializationLifecycleHook
     {
         //TODO: Use Container
-        private readonly TechTalk.SpecFlow.ScenarioContext _scenarioContext;
+        private readonly ScenarioContext _scenarioContext;
 
-        public SerializationLifecycleHook(TechTalk.SpecFlow.ScenarioContext scenarioContext)
+        public SerializationLifecycleHook(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
         }

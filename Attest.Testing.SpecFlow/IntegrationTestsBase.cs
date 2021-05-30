@@ -1,4 +1,5 @@
 ﻿using Attest.Testing.Core;
+using Attest.Testing.Integration;
 using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
@@ -34,8 +35,7 @@ namespace Attest.Testing.SpecFlow
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
-            Core.ScenarioContext.Current = new ScenarioContextWrapper(scenarioContext);
-            _scenarioHelper = new ScenarioHelper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext));
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Attest.Testing.SpecFlow
 
         private void TearDownCore()
         {
-            _scenarioHelper.Clear();          
+               
         }
 
         /// <summary>
@@ -168,8 +168,7 @@ namespace Attest.Testing.SpecFlow
             _initializationParametersManager =
                 ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
-            Core.ScenarioContext.Current = new ScenarioContextWrapper(scenarioContext);
-            _scenarioHelper = new ScenarioHelper(scenarioContext);
+            _scenarioHelper = new ScenarioHelper(new ScenarioContextKeyValueDataStoreAdapter(scenarioContext));
         }
 
         /// <summary>
@@ -219,7 +218,7 @@ namespace Attest.Testing.SpecFlow
 
         private void TearDownCore()
         {
-            _scenarioHelper.Clear();            
+                
         }
 
         /// <summary>

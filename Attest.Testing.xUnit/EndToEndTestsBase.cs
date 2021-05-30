@@ -1,19 +1,21 @@
 ﻿using System;
-using Attest.Testing.Core;
+using Attest.Testing.DataStore;
 
 namespace Attest.Testing.xUnit
 {
     /// <summary>
     /// Base class for all End-To-End tests that use xUnit.net as test framework provider.
     /// </summary>    
-    public abstract class EndToEndTestsBase : Core.EndToEndTestsBase, IDisposable
+    public abstract class EndToEndTestsBase : EndToEnd.EndToEndTestsBase, IDisposable
     {
+        private readonly IKeyValueDataStore _keyValueDataStore;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EndToEndTestsBase"/> class.
         /// </summary>        
-        protected EndToEndTestsBase()
+        protected EndToEndTestsBase(IKeyValueDataStore keyValueDataStore)
         {
-            ScenarioContext.Current = new Scenario();
+            _keyValueDataStore = keyValueDataStore;
             // ReSharper disable once DoNotCallOverridableMethodsInConstructor
             // xUnit.net does not have dedicated attributes for Setup methods; 
             // therefore the logic is put inside the constructor instead.
@@ -54,7 +56,7 @@ namespace Attest.Testing.xUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();
+            //ScenarioHelper.Clear();
         }
 
         /// <summary>

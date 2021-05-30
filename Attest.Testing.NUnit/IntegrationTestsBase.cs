@@ -1,4 +1,5 @@
 ﻿using Attest.Testing.Core;
+using Attest.Testing.Integration;
 using NUnit.Framework;
 using Solid.Bootstrapping;
 using Solid.Core;
@@ -17,6 +18,7 @@ namespace Attest.Testing.NUnit
         where TRootObject : class 
         where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
+        private readonly ScenarioHelper _scenarioHelper;
         private readonly IInitializationParametersManager<IocContainerProxy> _initializationParametersManager;
 
         /// <summary>
@@ -25,11 +27,11 @@ namespace Attest.Testing.NUnit
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
-        {            
+        {         
+            _scenarioHelper = new ScenarioHelper(new TestContextKeyValueDataStoreAdapter());
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
-            ScenarioContext.Current = new Scenario();
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace Attest.Testing.NUnit
             var initializationParameters = _initializationParametersManager.GetInitializationParameters();
             Registrator = initializationParameters.IocContainer;
             Resolver = initializationParameters.IocContainer;
-            ScenarioHelper.Initialize(initializationParameters.IocContainer, this);
+            _scenarioHelper.Initialize(initializationParameters.IocContainer, this);
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace Attest.Testing.NUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();            
+            //ScenarioHelper.Clear();            
             //Dispose();
         }
 
@@ -118,6 +120,7 @@ namespace Attest.Testing.NUnit
         where TBootstrapper : IInitializable, IHaveContainer<TContainer>, new()
     {
         private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
+        private readonly ScenarioHelper _scenarioHelper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
@@ -129,7 +132,7 @@ namespace Attest.Testing.NUnit
             _initializationParametersManager =
                 ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
                     resolutionStyle);
-            ScenarioContext.Current = new Scenario();
+            _scenarioHelper = new ScenarioHelper(new TestContextKeyValueDataStoreAdapter());
         }
 
         /// <summary>
@@ -159,7 +162,7 @@ namespace Attest.Testing.NUnit
             var containerAdapter = CreateAdapter(initializationParameters.IocContainer);
             Registrator = containerAdapter;
             Resolver = containerAdapter;
-            ScenarioHelper.Initialize(containerAdapter, this);
+            _scenarioHelper.Initialize(containerAdapter, this);
         }
 
         /// <summary>
@@ -179,7 +182,7 @@ namespace Attest.Testing.NUnit
 
         private void TearDownCore()
         {
-            ScenarioHelper.Clear();           
+            //ScenarioHelper.Clear();           
             //Dispose();
         }
 

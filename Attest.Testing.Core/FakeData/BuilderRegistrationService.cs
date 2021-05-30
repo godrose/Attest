@@ -2,7 +2,8 @@
 using Attest.Testing.Contracts;
 using Solid.Patterns.Builder;
 
-namespace Attest.Testing.Core.FakeData
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.FakeData
 {   
     /// <summary>
     /// Represents builder registration service for context-based scenarios.
