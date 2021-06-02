@@ -10,7 +10,7 @@ namespace Attest.Testing.EndToEnd
     public class EndToEndScenarioDataStore : ScenarioDataStoreBase
     {
         /// <summary>
-        /// Initializes a new instanc eof <see cref="EndToEndScenarioDataStore"/>
+        /// Initializes a new instance of <see cref="EndToEndScenarioDataStore"/>
         /// </summary>
         /// <param name="keyValueDataStore"></param>
         public EndToEndScenarioDataStore(IKeyValueDataStore keyValueDataStore) 
@@ -23,8 +23,8 @@ namespace Attest.Testing.EndToEnd
         /// </summary>
         public IStartApplicationService StartApplicationService
         {
-            get => GetValueImpl<IStartApplicationService>();
-            set => SetValueImpl(value);
+            get => GetValue<IStartApplicationService>();
+            set => SetValue(value);
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace Attest.Testing.EndToEnd
         /// </summary>
         public IBuilderRegistrationService BuilderRegistrationService
         {
-            get => GetValueImpl<IBuilderRegistrationService>();
-            set => SetValueImpl(value);
+            get => GetValue<IBuilderRegistrationService>();
+            set => SetValue(value);
         }
     }
 }
