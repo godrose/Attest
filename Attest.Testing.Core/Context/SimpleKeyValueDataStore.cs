@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.DataStore
+namespace Attest.Testing.Context
 {
     /// <summary>
     /// Simple implementation of <see cref="IKeyValueDataStore"/> using <see cref="Dictionary{TKey,TValue}"/>.
