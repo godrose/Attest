@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Attest.Tests.Core</id>
-    <version>2.2.1</version>
+    <version>2.2.2-rc1</version>
     <title>Attest.Testing.Core</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -24,10 +24,10 @@
       <dependency id="Solid.Practices.Modularity" version="2.3.0" />
       <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
       <dependency id="Solid.Bootstrapping" version="2.3.0" />
-      <dependency id="Attest.Fake.Core" version="2.2.1" />
-      <dependency id="Attest.Fake.Data" version="2.2.1" />
-      <dependency id="Attest.Fake.Registration" version="2.2.1" />
-      <dependency id="Attest.Testing.Contracts" version="2.2.1" />
+      <dependency id="Attest.Fake.Core" version="2.2.2-rc1" />
+      <dependency id="Attest.Fake.Data" version="2.2.2-rc1" />
+      <dependency id="Attest.Fake.Registration" version="2.2.2-rc1" />
+      <dependency id="Attest.Testing.Contracts" version="2.2.2-rc1" />
       <dependency id="System.Management" version="5.0.0" />
     </dependencies>
   </metadata>

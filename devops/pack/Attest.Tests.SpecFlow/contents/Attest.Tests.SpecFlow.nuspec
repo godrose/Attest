@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Attest.Tests.SpecFlow</id>
-    <version>2.2.1</version>
+    <version>2.2.2-rc1</version>
     <title>Attest.Testing.SpecFlow</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -21,9 +21,9 @@
       <dependency id="Solid.Practices.IoC" version="2.3.0" />
       <dependency id="Solid.Bootstrapping" version="2.3.0" />
       <dependency id="Solid.IoC.Adapters.BoDi" version="2.3.0" />
-      <dependency id="Attest.Fake.Core" version="2.2.1" />
-      <dependency id="Attest.Fake.Registration" version="2.2.1" />
-      <dependency id="Attest.Tests.Core" version="2.2.1" />
+      <dependency id="Attest.Fake.Core" version="2.2.2-rc1" />
+      <dependency id="Attest.Fake.Registration" version="2.2.2-rc1" />
+      <dependency id="Attest.Tests.Core" version="2.2.2-rc1" />
       <dependency id="SpecFlow" version="3.8.7" />
     </dependencies>
   </metadata>
