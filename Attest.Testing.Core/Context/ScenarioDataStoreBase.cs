@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.DataStore
+namespace Attest.Testing.Context
 {
     /// <summary>
     /// Base class for scenario data stores.
@@ -61,8 +61,7 @@ namespace Attest.Testing.DataStore
         /// <param name="key">The key.</param>
         protected void SetValue<T>(T value, [CallerMemberName] string key = default)
         {
-            var coercedKey = Coerce(key);
-            _keyValueDataStore.SetValueByKey(value, coercedKey);
+            SetValueImpl(value, key);
         }
 
         /// <summary>

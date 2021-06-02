@@ -1,4 +1,4 @@
-﻿using ScenarioContext = TechTalk.SpecFlow.ScenarioContext;
+﻿using TechTalk.SpecFlow;
 
 namespace Attest.Testing.SpecFlow
 {
@@ -6,7 +6,7 @@ namespace Attest.Testing.SpecFlow
     /// Base class for scenario data stores in SpecFlow-based projects.
     /// It allows storing and retrieving values dynamically.
     /// </summary>
-    public abstract class ScenarioDataStoreBase : DataStore.ScenarioDataStoreBase
+    public abstract class ScenarioDataStoreBase : Context.ScenarioDataStoreBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ScenarioDataStoreBase"/> class.

@@ -1,4 +1,4 @@
-﻿using Attest.Testing.DataStore;
+﻿using Attest.Testing.Context;
 using Solid.Practices.IoC;
 
 namespace Attest.Testing.SpecFlow
