@@ -1,4 +1,4 @@
-﻿using Attest.Testing.Context;
+using Attest.Testing.Context;
 using Attest.Testing.Contracts;
 using Attest.Testing.Core;
 using Solid.Practices.IoC;
