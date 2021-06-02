@@ -1,6 +1,6 @@
-﻿using Attest.Testing.Contracts;
+using Attest.Testing.Context;
+using Attest.Testing.Contracts;
 using Attest.Testing.Core;
-using Attest.Testing.DataStore;
 using Solid.Practices.IoC;
 
 // ReSharper disable once CheckNamespace

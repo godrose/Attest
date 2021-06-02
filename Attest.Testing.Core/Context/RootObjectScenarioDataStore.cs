@@ -2,7 +2,7 @@
 using Solid.Practices.IoC;
 
 // ReSharper disable once CheckNamespace
-namespace Attest.Testing.DataStore
+namespace Attest.Testing.Context
 {
     /// <summary>
     /// Represents data store for integration tests with root object.
@@ -21,20 +21,20 @@ namespace Attest.Testing.DataStore
 
         internal IDependencyRegistrator Registrator
         {
-            get => GetValueImpl<IDependencyRegistrator>();
-            set => SetValueImpl(value);
+            get => GetValue<IDependencyRegistrator>();
+            set => SetValue(value);
         }
 
         internal IDependencyResolver Resolver
         {
-            get => GetValueImpl<IDependencyResolver>();
-            set => SetValueImpl(value);
+            get => GetValue<IDependencyResolver>();
+            set => SetValue(value);
         }
 
         internal IRootObjectFactory RootObjectFactory
         {
-            get => GetValueImpl<IRootObjectFactory>();
-            set => SetValueImpl(value);
+            get => GetValue<IRootObjectFactory>();
+            set => SetValue(value);
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace Attest.Testing.DataStore
         /// </summary>
         public object RootObject
         {
-            get => GetValueImpl<object>();
-            internal set => SetValueImpl(value);
+            get => GetValue<object>();
+            internal set => SetValue(value);
         }
     }
 }
