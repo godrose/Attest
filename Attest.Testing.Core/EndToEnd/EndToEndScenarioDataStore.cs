@@ -1,4 +1,4 @@
-﻿using Attest.Testing.Context;
+using Attest.Testing.Context;
 using Attest.Testing.Contracts;
 
 // ReSharper disable once CheckNamespace
