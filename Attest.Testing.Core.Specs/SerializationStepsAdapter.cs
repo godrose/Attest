@@ -12,9 +12,9 @@ namespace Attest.Testing.Core.Specs
     internal sealed class SerializationStepsAdapter
     {
         //TODO: Use Container
-        private readonly TechTalk.SpecFlow.ScenarioContext _scenarioContext;
+        private readonly ScenarioContext _scenarioContext;
 
-        public SerializationStepsAdapter(TechTalk.SpecFlow.ScenarioContext scenarioContext)
+        public SerializationStepsAdapter(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
         }

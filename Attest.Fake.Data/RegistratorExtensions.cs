@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Attest.Fake.Builders;
 using Solid.Patterns.Builder;
+using Solid.Practices.IoC;
 
 namespace Attest.Fake.Data
 {
     /// <summary>
-    /// Builder registration extension methods.
+    /// The <see cref="IDependencyRegistrator"/> extensions.
     /// </summary>
-    public static class BuilderRegistrationExtensions
+    public static class RegistratorExtensions
     {
         /// <summary>
         /// Registers builders for the provided types and custom dependency registrator using <see cref="BuildersCollectionContext"/>.
@@ -29,6 +30,17 @@ namespace Attest.Fake.Data
         {
             var builders = buildersCollectionContext.GetAllBuilders().ToArray();
             dependencyRegistrator.RegisterBuilders(registrationMethod, contractsToImplementationsMap, builderFactory, builders);
+        }
+
+        /// <summary>
+        /// Uses <see cref="LocalFileSystemDataStorage"/> for data storage.
+        /// </summary>
+        /// <param name="dependencyRegistrator"></param>
+        public static IDependencyRegistrator UseLocalFileSystemDataStorage(this IDependencyRegistrator dependencyRegistrator)
+        {
+            dependencyRegistrator
+                .AddSingleton<IDataStorage<string>, LocalFileSystemDataStorage>();
+            return dependencyRegistrator;
         }
     }
 }
