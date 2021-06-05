@@ -36,10 +36,11 @@ namespace Attest.Fake.Data
         /// Uses <see cref="LocalFileSystemDataStorage"/> for data storage.
         /// </summary>
         /// <param name="dependencyRegistrator"></param>
-        public static void UseLocalFileSystemDataStorage(this IDependencyRegistrator dependencyRegistrator)
+        public static IDependencyRegistrator UseLocalFileSystemDataStorage(this IDependencyRegistrator dependencyRegistrator)
         {
             dependencyRegistrator
                 .AddSingleton<IDataStorage<string>, LocalFileSystemDataStorage>();
+            return dependencyRegistrator;
         }
     }
 }
