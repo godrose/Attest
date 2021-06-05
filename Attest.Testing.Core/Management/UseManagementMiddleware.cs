@@ -1,6 +1,5 @@
 ﻿using Attest.Testing.Contracts;
 using Solid.Bootstrapping;
-using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
 // ReSharper disable once CheckNamespace
@@ -16,7 +15,7 @@ namespace Attest.Testing.Management
         /// <inheritdoc />
         public IHaveRegistrator Apply(IHaveRegistrator @object)
         {
-            @object.Registrator.AddSingleton<IProcessManagementService, TProcessManagementService>();
+            @object.Registrator.UseManagement<TProcessManagementService>();
             return @object;
         }
     }
