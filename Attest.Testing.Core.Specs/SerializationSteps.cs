@@ -11,12 +11,10 @@ namespace Attest.Testing.Core.Specs
     [Binding]
     internal sealed class SerializationSteps
     {
-        private readonly ScenarioContext _scenarioContext;
         private readonly SerializationScenarioDataStore _serializationScenarioDataStore;
 
         public SerializationSteps(ScenarioContext scenarioContext)
         {
-            _scenarioContext = scenarioContext;
             _serializationScenarioDataStore = new SerializationScenarioDataStore(scenarioContext);
         }
 
@@ -87,7 +85,7 @@ namespace Attest.Testing.Core.Specs
         [When(@"The items are added to the current context")]
         public void WhenTheItemsAreAddedToTheCurrentContext()
         {
-            RegisterBuilder<SimpleItemDto[], ISimpleProvider>("Items", d =>
+            RegisterBuilder(r => r.Items, d =>
             {
                 var builder = SimpleProviderBuilder.CreateBuilder();
                 builder.WithWarehouseItems(d);
@@ -98,7 +96,7 @@ namespace Attest.Testing.Core.Specs
         [When(@"The single item is added to the current context")]
         public void WhenTheSingleItemIsAddedToTheCurrentContext()
         {
-            RegisterBuilder<UserDto, IAnotherProvider>("Item", d =>
+            RegisterBuilder(r => r.Item, d =>
             {
                 var builder = AnotherProviderBuilder.CreateBuilder();
                 builder.WithUser(d.Username, d.Password);
@@ -109,7 +107,7 @@ namespace Attest.Testing.Core.Specs
         [When(@"The inherited object is added to the current context")]
         public void WhenTheInheritedObjectIsAddedToTheCurrentContext()
         {
-            RegisterBuilder<InheritanceDto[], IInheritanceProvider>("Inherited", d =>
+            RegisterBuilder(r => r.Inherited, d =>
             {
                 var builder = InheritanceProviderBuilder.CreateBuilder();
                 builder.WithObjects(d);
@@ -118,11 +116,11 @@ namespace Attest.Testing.Core.Specs
         }
 
         private void RegisterBuilder<TData, TService>(
-            string dataKey, 
+            Func<SerializationScenarioDataStore, TData> valueGetter,
             Func<TData, IBuilder<TService>> builderFactory) where TService : class
         {
-            var inherited = _scenarioContext.Get<TData>(dataKey);
-            var builder = builderFactory(inherited);
+            var value = valueGetter(_serializationScenarioDataStore);
+            var builder = builderFactory(value);
             var builderRegistrationService = _serializationScenarioDataStore.BuilderRegistrationService;
             builderRegistrationService.RegisterBuilder(builder);
         }
