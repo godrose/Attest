@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
@@ -11,5 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
     <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj" />
+    <ProjectReference Include="..\Attest.Testing.SpecFlow\Attest.Testing.SpecFlow.csproj" />
   </ItemGroup>
 </Project>
