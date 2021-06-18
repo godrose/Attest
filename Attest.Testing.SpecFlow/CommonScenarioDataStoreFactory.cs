@@ -5,8 +5,14 @@ using TechTalk.SpecFlow;
 
 namespace Attest.Testing.SpecFlow
 {
+    /// <summary>
+    /// Factory which is used to create instances of <see cref="CommonScenarioDataStore{TRootObject}" />
+    /// </summary>    
     public static class CommonScenarioDataStoreFactory
     {
+        /// <summary>
+        /// Creates an instance of <see cref="CommonScenarioDataStore{TRootObject}" />
+        /// </summary>
         public static CommonScenarioDataStore<TRootObject> 
             CreateCommonScenarioDataStore<TRootObject>(
             ScenarioContext scenarioContext,
