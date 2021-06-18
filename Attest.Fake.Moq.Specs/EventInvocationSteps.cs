@@ -5,14 +5,13 @@ using TechTalk.SpecFlow;
 namespace Attest.Fake.Moq.Specs
 {
     [Binding]
-    internal sealed class EventInvocationStepsAdapter
+    internal sealed class EventInvocationSteps
     {
-        //TODO: Use Container
-        private readonly ScenarioContext _scenarioContext;
+        private readonly EventInvocationScenarioDataStore _scenarioDataStore;
 
-        public EventInvocationStepsAdapter(ScenarioContext scenarioContext)
+        public EventInvocationSteps(ScenarioContext scenarioContext)
         {
-            _scenarioContext = scenarioContext;
+            _scenarioDataStore = new EventInvocationScenarioDataStore(scenarioContext);
         }
 
         [Given(@"The Arrived event is to be tested")]
@@ -42,8 +41,8 @@ namespace Attest.Fake.Moq.Specs
             var instance = eventProviderBuilder.Object;
             var arrivedArgs = new WeakReference<TEventArgs>(null);
             eventSubscription(instance, arrivedArgs);
-            _scenarioContext.Add("providerBuilder", eventProviderBuilder);
-            _scenarioContext.Add("arrivedArgsRef", arrivedArgs);
+            _scenarioDataStore.ProviderBuilder = eventProviderBuilder;
+            _scenarioDataStore.ArrivedArgsRef = arrivedArgs;
         }
 
         [When(@"I simulate Arrived event")]
@@ -73,9 +72,9 @@ namespace Attest.Fake.Moq.Specs
         private void SimulateEvent<TEventArgs>(Func<TEventArgs> eventFactory, Action<EventProviderBuilder, TEventArgs> eventInvocation)
         {
             var argsToBeSent = eventFactory();
-            var providerBuilder = _scenarioContext.Get<EventProviderBuilder>("providerBuilder");
+            var providerBuilder = _scenarioDataStore.ProviderBuilder;
             eventInvocation(providerBuilder, argsToBeSent);
-            _scenarioContext.Add("argsToBeSent", argsToBeSent);
+            _scenarioDataStore.ArgsToBeSent = argsToBeSent;
         }
 
         [Then(@"The event arguments should pass as expected")]
@@ -98,9 +97,9 @@ namespace Attest.Fake.Moq.Specs
 
         private void AssertEventArguments<TEventArgs>() where TEventArgs : class
         {
-            var arrivedArgsRef = _scenarioContext.Get<WeakReference<TEventArgs>>("arrivedArgsRef");
+            var arrivedArgsRef = _scenarioDataStore.ArrivedArgsRef as WeakReference<TEventArgs>;
             arrivedArgsRef.TryGetTarget(out var arrivedArgs);
-            var argsToBeSent = _scenarioContext.Get<TEventArgs>("argsToBeSent");
+            var argsToBeSent = _scenarioDataStore.ArgsToBeSent;
             arrivedArgs.Should().BeSameAs(argsToBeSent);
         }
     }
