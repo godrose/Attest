@@ -15,14 +15,14 @@
     <releaseNotes>1. Moved data store classes to Context namespace.
 2. Added GetValue and SetValue methods.</releaseNotes>
     <dependencies>
-      <dependency id="Solid.Patterns.Builder" version="2.3.0" />
-      <dependency id="Solid.Core" version="2.3.0" />
-      <dependency id="Solid.Common.Core" version="2.3.0" />
-      <dependency id="Solid.Extensibility" version="2.3.0" />
-      <dependency id="Solid.Practices.IoC" version="2.3.0" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.0" />
-      <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
-      <dependency id="Solid.Bootstrapping" version="2.3.0" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.1-rc1" />
+      <dependency id="Solid.Core" version="2.3.1-rc1" />
+      <dependency id="Solid.Common.Core" version="2.3.1-rc1" />
+      <dependency id="Solid.Extensibility" version="2.3.1-rc1" />
+      <dependency id="Solid.Practices.IoC" version="2.3.1-rc1" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.1-rc1" />
+      <dependency id="Solid.Practices.Composition.Core" version="2.3.1-rc1" />
+      <dependency id="Solid.Bootstrapping" version="2.3.1-rc1" />
       <dependency id="Attest.Fake.Core" version="2.2.3-rc1" />
       <dependency id="Attest.Fake.Data" version="2.2.3-rc1" />
       <dependency id="Attest.Fake.Registration" version="2.2.3-rc1" />

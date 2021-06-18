@@ -15,8 +15,8 @@
     <releaseNotes>Bump dependencies</releaseNotes>
     <dependencies>
       <dependency id="Attest.Fake.Core" version="2.2.3-rc1" />
-      <dependency id="Solid.Patterns.Builder" version="2.3.0" />
-      <dependency id="Solid.Practices.IoC" version="2.3.0" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.1-rc1" />
+      <dependency id="Solid.Practices.IoC" version="2.3.1-rc1" />
     </dependencies>
   </metadata>
 </package>

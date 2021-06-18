@@ -14,9 +14,9 @@
     <summary>This package provides common conventions' definitions and utilities for fake operations</summary>
     <releaseNotes>Bump dependencies</releaseNotes>
     <dependencies>
-      <dependency id="Solid.Common.Core" version="2.3.0" />
-      <dependency id="Solid.Practices.IoC" version="2.3.0" />
-      <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
+      <dependency id="Solid.Common.Core" version="2.3.1-rc1" />
+      <dependency id="Solid.Practices.IoC" version="2.3.1-rc1" />
+      <dependency id="Solid.Practices.Composition.Core" version="2.3.1-rc1" />
     </dependencies>
   </metadata>
 </package>
