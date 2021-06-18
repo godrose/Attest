@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Solid.Patterns.Builder;
@@ -9,14 +8,13 @@ using TechTalk.SpecFlow;
 namespace Attest.Fake.Setup.Specs
 {
     [Binding]
-    internal sealed class AsyncProviderStepsAdapter
+    internal sealed class AsyncProviderSteps
     {
-        //TODO: Use Container
-        private readonly ScenarioContext _scenarioContext;
-
-        public AsyncProviderStepsAdapter(ScenarioContext scenarioContext)
+        private readonly AsyncProviderScenarioDataStore _scenarioDataStore;
+        
+        public AsyncProviderSteps(ScenarioContext scenarioContext)
         {
-            _scenarioContext = scenarioContext;
+            _scenarioDataStore = new AsyncProviderScenarioDataStore(scenarioContext);
         }
 
         [Given(@"There is provider builder with a collection of items")]
@@ -33,16 +31,16 @@ namespace Attest.Fake.Setup.Specs
             };
             var builder = WarehouseProviderBuilder.CreateBuilder();
             builder.WithWarehouseItems(originalItems);
-            _scenarioContext.Add("builder", builder);
-            _scenarioContext.Add("originalItems", originalItems);
+            _scenarioDataStore.WarehouseProviderBuilder = builder;
+            _scenarioDataStore.OriginalItems = originalItems;
         }
 
         [When(@"The provider for return value case is created")]
         public void WhenTheProviderForReturnValueCaseIsCreated()
         {
-            var builder = _scenarioContext.Get<WarehouseProviderBuilder>("builder");
+            var builder = _scenarioDataStore.WarehouseProviderBuilder;
             var provider = ((IBuilder<IWarehouseProvider>) builder).Build();
-            _scenarioContext.Add("provider", provider);
+            _scenarioDataStore.WarehouseProvider = provider;
         }
 
         [When(@"The provider for no return value case is created")]
@@ -50,7 +48,7 @@ namespace Attest.Fake.Setup.Specs
         {
             var builder = LoginProviderBuilder.CreateBuilder();
             var provider = ((IBuilder<ILoginProvider>) builder).Build();
-            _scenarioContext.Add("provider", provider);
+            _scenarioDataStore.LoginProvider = provider;
         }
 
         [When(@"The provider is passed no parameters and asked to return a collection of items")]
@@ -97,16 +95,16 @@ namespace Attest.Fake.Setup.Specs
         private async Task ReturnCollectionOfItems(
             Func<IWarehouseProvider, Task<IEnumerable<WarehouseItemDto>>> itemsTask)
         {
-            var provider = _scenarioContext.Get<IWarehouseProvider>("provider");
+            var provider = _scenarioDataStore.WarehouseProvider;
             var actualItems = await itemsTask(provider);
-            _scenarioContext.Add("actualItems", actualItems.ToArray());
+            _scenarioDataStore.ActualItems = actualItems;
         }
 
         [Then(@"The returned collection should be identical to the original one")]
         public void ThenTheReturnedCollectionShouldBeIdenticalToTheOriginalOne()
         {
-            var actualItems = _scenarioContext.Get<WarehouseItemDto[]>("actualItems");
-            var originalItems = _scenarioContext.Get<WarehouseItemDto[]>("originalItems");
+            var actualItems = _scenarioDataStore.ActualItems;
+            var originalItems = _scenarioDataStore.OriginalItems;
             actualItems.Should().BeEquivalentTo(originalItems);
         }
 
@@ -114,7 +112,7 @@ namespace Attest.Fake.Setup.Specs
         public void GivenThereIsProviderBuilderWithExpectedFunctionality()
         {
             var builder = LoginProviderBuilder.CreateBuilder();
-            _scenarioContext.Add("builder", builder);
+            _scenarioDataStore.LoginProviderBuilder = builder;
         }
 
         [When(@"The provider is passed no parameters and asked to execute specific functionality")]
@@ -158,14 +156,14 @@ namespace Attest.Fake.Setup.Specs
 
         private Task ExecuteFunctionality(Func<ILoginProvider, Task> functionalityTask)
         {
-            var provider = _scenarioContext.Get<ILoginProvider>("provider");
+            var provider = _scenarioDataStore.LoginProvider;
             return functionalityTask(provider);
         }
 
         [Then(@"The actual functionality is executed as expected")]
         public void ThenTheActualFunctionalityIsExecutedAsExpected()
         {
-            var provider = _scenarioContext.Get<ILoginProvider>("provider");
+            var provider = _scenarioDataStore.LoginProvider;
             var isLoggedIn = provider.IsLoggedIn();
             isLoggedIn.Should().BeTrue();
         }

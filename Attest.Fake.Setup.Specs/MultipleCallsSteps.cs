@@ -6,13 +6,13 @@ using TechTalk.SpecFlow;
 namespace Attest.Fake.Setup.Specs
 {
     [Binding]
-    internal sealed class MultipleCallsStepsAdapter
+    internal sealed class MultipleCallsSteps
     {
-        private readonly ScenarioContext _scenarioContext;
+        private readonly MultipleCallsScenarioDataStore _scenarioDataStore;
 
-        public MultipleCallsStepsAdapter(ScenarioContext scenarioContext)
+        public MultipleCallsSteps(ScenarioContext scenarioContext)
         {
-            _scenarioContext = scenarioContext;
+            _scenarioDataStore = new MultipleCallsScenarioDataStore(scenarioContext);
         }
 
         [Given(@"There is a multiple calls setup with different results")]
@@ -24,7 +24,7 @@ namespace Attest.Fake.Setup.Specs
             {
                 new PhaseDto
                 {
-                    Id = Guid.Parse("80f35b7f-1c51-49ce-a93e-152b68b061a3"),
+                    Id = Guid.Parse("80f35b7f-1c51-49ce-a93e-152b68b061a3")
                 },
                 new PhaseDto
                 {
@@ -34,45 +34,45 @@ namespace Attest.Fake.Setup.Specs
             var phasesProviderBuilder = PhasesProviderBuilder.CreateBuilder();
             phasesProviderBuilder.WithPhases(firstGaugeId, phases);
             phasesProviderBuilder.WithPhases(secondGaugeId, new PhaseDto[] { });
-            _scenarioContext.Add("firstId", firstGaugeId);
-            _scenarioContext.Add("secondId", secondGaugeId);
-            _scenarioContext.Add("builder", phasesProviderBuilder);
+            _scenarioDataStore.FirstId = firstGaugeId;
+            _scenarioDataStore.SecondId = secondGaugeId;
+            _scenarioDataStore.ProviderBuilder = phasesProviderBuilder;
         }
 
         [When(@"The provider for multiple calls is created")]
         public void WhenTheProviderForMultipleCallsIsCreated()
         {
-            var builder = _scenarioContext.Get<PhasesProviderBuilder>("builder");
-            var provider = ((IBuilder<IPhasesProvider>)builder).Build();
-            _scenarioContext.Add("provider", provider);
+            var builder = _scenarioDataStore.ProviderBuilder;
+            var provider = ((IBuilder<IPhasesProvider>) builder).Build();
+            _scenarioDataStore.Provider = provider;
         }
 
         [When(@"The provider for multiple calls is invoked with the first id")]
         public void WhenTheProviderForMultipleCallsIsInvokedWithTheFirstId()
         {
-            StoreProviderWithIdCallResult("firstId", "firstResult");
+            StoreProviderWithIdCallResult(r => r.FirstId, (r, value) => r.FirstResult = value);
         }
-
 
         [When(@"The provider for multiple calls is invoked with the second id")]
         public void WhenTheProviderForMultipleCallsIsInvokedWithTheSecondId()
         {
-            StoreProviderWithIdCallResult("secondId", "secondResult");
+            StoreProviderWithIdCallResult(r => r.SecondId, (r, value) => r.SecondResult = value);
         }
 
-        private void StoreProviderWithIdCallResult(string idKey, string resultKey)
+        private void StoreProviderWithIdCallResult(Func<MultipleCallsScenarioDataStore, Guid> valueGetter,
+            Action<MultipleCallsScenarioDataStore, Guid[]> valueSetter)
         {
-            var provider = _scenarioContext.Get<IPhasesProvider>("provider");
-            var id = _scenarioContext.Get<Guid>(idKey);
+            var provider = _scenarioDataStore.Provider;
+            var id = valueGetter(_scenarioDataStore);
             var result = provider.GetPhasesByGauge(id);
-            _scenarioContext.Add(resultKey, result);
+            valueSetter(_scenarioDataStore, result);
         }
 
         [Then(@"The provider calls should return different results for different ids")]
         public void ThenTheProviderCallsShouldReturnDifferentResultsForDifferentIds()
         {
-            var firstResult = _scenarioContext.Get<Guid[]>("firstResult");
-            var secondResult = _scenarioContext.Get<Guid[]>("secondResult");
+            var firstResult = _scenarioDataStore.FirstResult;
+            var secondResult = _scenarioDataStore.SecondResult;
             secondResult.Should().NotBeEquivalentTo(firstResult);
         }
     }
