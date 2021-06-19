@@ -1,5 +1,5 @@
 ﻿using Attest.Testing.Contracts;
-using Attest.Testing.Core;
+using Attest.Testing.Lifecycle;
 using BoDi;
 using Solid.Common;
 using Solid.IoC.Adapters.BoDi;

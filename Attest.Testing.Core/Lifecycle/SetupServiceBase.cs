@@ -1,6 +1,7 @@
 using Attest.Testing.Contracts;
 
-namespace Attest.Testing.Core
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// Empty implementation for <see cref="ISetupService"/>
