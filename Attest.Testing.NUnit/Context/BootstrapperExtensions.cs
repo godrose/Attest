@@ -1,7 +1,8 @@
 ﻿using Solid.Bootstrapping;
 using Solid.Extensibility;
 
-namespace Attest.Testing.NUnit
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.NUnit
 {
     /// <summary>
     /// The bootstrapper extension methods.

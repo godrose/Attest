@@ -1,7 +1,8 @@
 using Attest.Testing.Context;
 using NUnit.Framework;
 
-namespace Attest.Testing.NUnit
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.EndToEnd.NUnit
 {
     /// <summary>
     /// Base class for all End-To-End tests that use NUnit as test framework provider.

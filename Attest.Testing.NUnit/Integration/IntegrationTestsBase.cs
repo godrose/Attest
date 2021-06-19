@@ -1,11 +1,13 @@
-﻿using Attest.Testing.Core;
+﻿using Attest.Testing.Context.NUnit;
+using Attest.Testing.Core;
 using Attest.Testing.Integration;
 using NUnit.Framework;
 using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
 
-namespace Attest.Testing.NUnit
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.EndToEnd.NUnit
 {
     /// <summary>
     /// Base class for all integration-tests fixtures that involve ioc container adapter 

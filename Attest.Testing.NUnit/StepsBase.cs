@@ -1,10 +1,10 @@
 ﻿using Attest.Fake.Core;
 using Attest.Fake.Registration;
-using Attest.Testing.Core;
 using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 
-namespace Attest.Testing.NUnit
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Core.NUnit
 {
     /// <summary>
     /// Base class for step-containing classes, used for [Given] steps.

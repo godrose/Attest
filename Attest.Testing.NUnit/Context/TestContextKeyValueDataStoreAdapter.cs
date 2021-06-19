@@ -1,8 +1,8 @@
-using Attest.Testing.Context;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 
-namespace Attest.Testing.NUnit
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.NUnit
 {
     /// <summary>
     /// Implementation of <see cref="IKeyValueDataStore" /> using <see cref="TestContext.CurrentContext"/>.
