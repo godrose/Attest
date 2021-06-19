@@ -1,4 +1,4 @@
-﻿using Attest.Testing.SpecFlow;
+﻿using Attest.Testing.Context.SpecFlow;
 using TechTalk.SpecFlow;
 
 namespace Attest.Fake.Moq.Specs

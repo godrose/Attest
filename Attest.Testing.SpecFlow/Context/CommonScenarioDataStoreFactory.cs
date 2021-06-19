@@ -3,7 +3,8 @@ using BoDi;
 using Solid.IoC.Adapters.BoDi;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
     /// Factory which is used to create instances of <see cref="CommonScenarioDataStore{TRootObject}" />

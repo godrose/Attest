@@ -1,6 +1,6 @@
 ﻿using Attest.Fake.Data;
+using Attest.Testing.Context.SpecFlow;
 using Attest.Testing.Contracts;
-using Attest.Testing.SpecFlow;
 using TechTalk.SpecFlow;
 
 namespace Attest.Testing.Core.Specs

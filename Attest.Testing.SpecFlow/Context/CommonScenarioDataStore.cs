@@ -1,7 +1,8 @@
 ﻿using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
     /// Data store for common scenarios with root object and inversion-of-control container.

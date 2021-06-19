@@ -1,5 +1,5 @@
 ﻿using System;
-using Attest.Testing.SpecFlow;
+using Attest.Testing.Context.SpecFlow;
 using BoDi;
 using TechTalk.SpecFlow;
 

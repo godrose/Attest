@@ -1,6 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
     /// Base class for scenario data stores in SpecFlow-based projects.
