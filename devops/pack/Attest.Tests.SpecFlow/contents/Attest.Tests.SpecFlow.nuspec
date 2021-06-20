@@ -24,7 +24,7 @@
       <dependency id="Attest.Fake.Core" version="2.3.2-rc1" />
       <dependency id="Attest.Fake.Registration" version="2.3.2-rc1" />
       <dependency id="Attest.Tests.Core" version="2.3.2-rc1" />
-      <dependency id="SpecFlow" version="3.8.7" />
+      <dependency id="SpecFlow" version="3.9.8" />
     </dependencies>
   </metadata>
 </package>
