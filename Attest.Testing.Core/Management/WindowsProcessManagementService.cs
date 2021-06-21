@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using Attest.Testing.Contracts;
 
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Management
@@ -8,7 +7,7 @@ namespace Attest.Testing.Management
     /// <summary>
     /// Represents means for starting and stopping Windows OS processes.
     /// </summary>
-    public class WindowsProcessManagementService : ProcessManagementServiceBase, IProcessManagementService
+    public class WindowsProcessManagementService : ProcessManagementServiceBase
     {
         /// <inheritdoc />
         public override int Start(string tool, string args)

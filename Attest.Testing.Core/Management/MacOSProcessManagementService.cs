@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using Attest.Testing.Contracts;
 
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Management
@@ -9,7 +8,7 @@ namespace Attest.Testing.Management
     /// Represents means for starting and stopping MacOS processes.
     /// </summary>
     // ReSharper disable once InconsistentNaming
-    public class MacOSProcessManagementService : ProcessManagementServiceBase, IProcessManagementService
+    public class MacOSProcessManagementService : ProcessManagementServiceBase
     {
         /// <inheritdoc />
         public override int Start(string tool, string args)
