@@ -1,8 +1,8 @@
-using Attest.Testing.Context;
 using Solid.Bootstrapping;
 using Solid.Practices.Middleware;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
     /// This middleware registers dependencies for using <see cref="IKeyValueDataStore"/>.

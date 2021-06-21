@@ -1,7 +1,8 @@
 ﻿using Solid.Bootstrapping;
 using Solid.Extensibility;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
     /// The bootstrapper extension methods.

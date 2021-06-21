@@ -1,12 +1,12 @@
 ﻿using Attest.Testing.Contracts;
-using Attest.Testing.Core;
 using BoDi;
 using Solid.Common;
 using Solid.IoC.Adapters.BoDi;
 using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Lifecycle.SpecFlow
 {
     /// <summary>
     /// Base class for lifecycle hook to be used during scenario run.

@@ -1,12 +1,13 @@
+﻿using System;
 using Attest.Testing.Context;
-using NUnit.Framework;
 
-namespace Attest.Testing.NUnit
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.EndToEnd.xUnit
 {
     /// <summary>
-    /// Base class for all End-To-End tests that use NUnit as test framework provider.
+    /// Base class for all End-To-End tests that use xUnit.net as test framework provider.
     /// </summary>    
-    public abstract class EndToEndTestsBase : EndToEnd.EndToEndTestsBase        
+    public abstract class EndToEndTestsBase : EndToEnd.EndToEndTestsBase, IDisposable
     {
         private readonly IKeyValueDataStore _keyValueDataStore;
 
@@ -16,12 +17,15 @@ namespace Attest.Testing.NUnit
         protected EndToEndTestsBase(IKeyValueDataStore keyValueDataStore)
         {
             _keyValueDataStore = keyValueDataStore;
+            // ReSharper disable once DoNotCallOverridableMethodsInConstructor
+            // xUnit.net does not have dedicated attributes for Setup methods; 
+            // therefore the logic is put inside the constructor instead.
+            Setup();
         }
 
         /// <summary>
         /// Override this method to implement custom test setup logic.
-        /// </summary>
-        [SetUp]
+        /// </summary>        
         protected override void Setup()
         {
             SetupCore();
@@ -30,8 +34,7 @@ namespace Attest.Testing.NUnit
 
         /// <summary>
         /// Override this method to implement custom test teardown logic.
-        /// </summary>
-        [TearDown]
+        /// </summary>        
         protected override void TearDown()
         {
             OnBeforeTeardown();
@@ -41,7 +44,7 @@ namespace Attest.Testing.NUnit
 
         private void SetupCore()
         {
-            
+
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Attest.Testing.NUnit
 
         private void TearDownCore()
         {
-            
+            //ScenarioHelper.Clear();
         }
 
         /// <summary>
@@ -71,6 +74,11 @@ namespace Attest.Testing.NUnit
         protected virtual void OnAfterTeardown()
         {
 
+        }
+
+        void IDisposable.Dispose()
+        {
+            TearDown();
         }
     }
 }

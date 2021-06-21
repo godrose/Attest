@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Attest.Fake.Data;
-using Attest.Testing.Contracts;
+using Attest.Testing.FakeData;
 using FluentAssertions;
 using Solid.Patterns.Builder;
 using TechTalk.SpecFlow;
@@ -9,15 +9,24 @@ using TechTalk.SpecFlow;
 namespace Attest.Testing.Core.Specs
 {
     [Binding]
-    internal sealed class SerializationStepsAdapter
+    internal sealed class SerializationSteps
     {
-        //TODO: Use Container
-        private readonly ScenarioContext _scenarioContext;
+        private readonly SerializationScenarioDataStore _serializationScenarioDataStore;
 
-        public SerializationStepsAdapter(ScenarioContext scenarioContext)
+        public SerializationSteps(ScenarioContext scenarioContext)
         {
-            _scenarioContext = scenarioContext;
+            _serializationScenarioDataStore = new SerializationScenarioDataStore(scenarioContext);
         }
+
+        [Given(@"The builders collection context is initialized")]
+        public void GivenTheBuildersCollectionContextIsInitialized()
+        {
+            var buildersCollectionContext = new BuildersCollectionContext();
+            _serializationScenarioDataStore.BuildersCollectionContext = buildersCollectionContext;
+            _serializationScenarioDataStore.BuilderRegistrationService =
+                new BuilderRegistrationService(buildersCollectionContext);
+        }
+
 
         [Given(@"The collection of items is created")]
         public void GivenTheCollectionOfItemsIsCreated()
@@ -43,7 +52,7 @@ namespace Attest.Testing.Core.Specs
                     Quantity = 6
                 }
             };
-            _scenarioContext.Add("items", items);
+            _serializationScenarioDataStore.Items = items;
         }
 
         [Given(@"The single item is created")]
@@ -54,7 +63,7 @@ namespace Attest.Testing.Core.Specs
                 Username = "User",
                 Password = "pass"
             };
-            _scenarioContext.Add("item", item);
+            _serializationScenarioDataStore.Item = item;
         }
 
         [Given(@"The inherited object is created")]
@@ -70,13 +79,13 @@ namespace Attest.Testing.Core.Specs
                     Size = 8
                 }
             };
-            _scenarioContext.Add("inherited", items);
+            _serializationScenarioDataStore.Inherited = items;
         }
 
         [When(@"The items are added to the current context")]
         public void WhenTheItemsAreAddedToTheCurrentContext()
         {
-            RegisterBuilder<SimpleItemDto[], ISimpleProvider>("items", d =>
+            RegisterBuilder(r => r.Items, d =>
             {
                 var builder = SimpleProviderBuilder.CreateBuilder();
                 builder.WithWarehouseItems(d);
@@ -87,7 +96,7 @@ namespace Attest.Testing.Core.Specs
         [When(@"The single item is added to the current context")]
         public void WhenTheSingleItemIsAddedToTheCurrentContext()
         {
-            RegisterBuilder<UserDto, IAnotherProvider>("item", d =>
+            RegisterBuilder(r => r.Item, d =>
             {
                 var builder = AnotherProviderBuilder.CreateBuilder();
                 builder.WithUser(d.Username, d.Password);
@@ -98,7 +107,7 @@ namespace Attest.Testing.Core.Specs
         [When(@"The inherited object is added to the current context")]
         public void WhenTheInheritedObjectIsAddedToTheCurrentContext()
         {
-            RegisterBuilder<InheritanceDto[], IInheritanceProvider>("inherited", d =>
+            RegisterBuilder(r => r.Inherited, d =>
             {
                 var builder = InheritanceProviderBuilder.CreateBuilder();
                 builder.WithObjects(d);
@@ -107,42 +116,38 @@ namespace Attest.Testing.Core.Specs
         }
 
         private void RegisterBuilder<TData, TService>(
-            string dataKey, 
+            Func<SerializationScenarioDataStore, TData> valueGetter,
             Func<TData, IBuilder<TService>> builderFactory) where TService : class
         {
-            var inherited = _scenarioContext.Get<TData>(dataKey);
-            var builder = builderFactory(inherited);
-            var builderRegistrationService =
-                _scenarioContext.Get<IBuilderRegistrationService>("builderRegistrationService");
+            var value = valueGetter(_serializationScenarioDataStore);
+            var builder = builderFactory(value);
+            var builderRegistrationService = _serializationScenarioDataStore.BuilderRegistrationService;
             builderRegistrationService.RegisterBuilder(builder);
         }
 
         [When(@"The current context is serialized")]
         public void WhenTheCurrentContextIsSerialized()
         {
-            var buildersCollectionContext =
-                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var buildersCollectionContext = _serializationScenarioDataStore.BuildersCollectionContext;
             buildersCollectionContext.SerializeBuilders();
         }
 
         [When(@"The current context is deserialized")]
         public void WhenTheCurrentContextIsDeserialized()
         {
-            var buildersCollectionContext =
-                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var buildersCollectionContext = _serializationScenarioDataStore.BuildersCollectionContext;
             buildersCollectionContext.DeserializeBuilders();
         }
 
         [Then(@"The collection of items inside the current context is identical to the original one")]
         public void ThenTheCollectionOfItemsInsideTheCurrentContextIsIdenticalToTheOriginalOne()
         {
-            var buildersCollectionContext =
-                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var buildersCollectionContext = _serializationScenarioDataStore.BuildersCollectionContext;
             var builders = buildersCollectionContext.GetBuilders<ISimpleProvider>();
             var actualBuilder = builders.First();
 
             var actualItems = actualBuilder.Build().GetSimpleItems().ToArray();
-            var items = _scenarioContext.Get<SimpleItemDto[]>("items");
+            var items = _serializationScenarioDataStore.Items;
             for (int i = 0; i < Math.Max(items.Length, actualItems.Length); i++)
             {
                 var item = items[i];
@@ -156,8 +161,7 @@ namespace Attest.Testing.Core.Specs
         [Then(@"The item inside the current context is identical to the original one")]
         public void ThenTheItemInsideTheCurrentContextIsIdenticalToTheOriginalOne()
         {
-            var buildersCollectionContext =
-                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var buildersCollectionContext = _serializationScenarioDataStore.BuildersCollectionContext;
             var anotherBuilders = buildersCollectionContext.GetBuilders<IAnotherProvider>();
             var actualAnotherBuilder = anotherBuilders.First();
             var actualUsers = actualAnotherBuilder.Build().GetUsers();
@@ -168,8 +172,7 @@ namespace Attest.Testing.Core.Specs
         [Then(@"The inherited object inside the current context is identical to the original one")]
         public void ThenTheInheritedObjectInsideTheCurrentContextIsIdenticalToTheOriginalOne()
         {
-            var buildersCollectionContext =
-                _scenarioContext.Get<BuildersCollectionContext>("buildersCollectionContext");
+            var buildersCollectionContext = _serializationScenarioDataStore.BuildersCollectionContext;
             var builders = buildersCollectionContext.GetBuilders<IInheritanceProvider>();
             var actualBuilder = builders.First();
 

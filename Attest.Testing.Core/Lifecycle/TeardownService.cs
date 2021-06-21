@@ -1,6 +1,7 @@
 using Attest.Testing.Contracts;
 
-namespace Attest.Testing.Core
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// The basic teardown service which stops the running application.

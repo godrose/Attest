@@ -6,6 +6,7 @@
 Background: 
 	Given The system runs in .NETStandard environment
 	And Moq setup is used
+	And The builders collection context is initialized
 
 Scenario: Serializing and deserializing a collection of items should not affect its contents
 	Given The collection of items is created

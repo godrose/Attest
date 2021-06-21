@@ -1,7 +1,8 @@
 ﻿using Attest.Testing.Contracts;
 using Solid.Practices.IoC;
 
-namespace Attest.Testing.Core
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// The <see cref="IDependencyResolver"/> lifecycle-related extensions
