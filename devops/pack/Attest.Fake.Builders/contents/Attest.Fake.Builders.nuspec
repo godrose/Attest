@@ -16,7 +16,7 @@ for fake objects in client and server applications.</description>
 for fake objects in client and server applications.</summary>
     <releaseNotes>Bump dependencies</releaseNotes>
     <dependencies>
-      <dependency id="Solid.Patterns.Builder" version="2.3.1-rc1" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.1" />
       <dependency id="Attest.Fake.Core" version="2.3.2-rc1" />
       <dependency id="Attest.Fake.Setup" version="2.3.2-rc1" />
     </dependencies>
