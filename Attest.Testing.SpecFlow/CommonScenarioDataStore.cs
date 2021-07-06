@@ -1,4 +1,5 @@
-﻿using Solid.Practices.IoC;
+﻿using Attest.Testing.Context.SpecFlow;
+using Solid.Practices.IoC;
 using TechTalk.SpecFlow;
 
 namespace Attest.Testing.SpecFlow
