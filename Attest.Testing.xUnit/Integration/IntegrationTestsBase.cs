@@ -1,20 +1,23 @@
-﻿using Attest.Testing.Core;
-using Attest.Testing.Integration;
-using NUnit.Framework;
+﻿using System;
+using Attest.Testing.Context;
+using Attest.Testing.Core;
 using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
 
-namespace Attest.Testing.NUnit
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Integration.xUnit
 {
     /// <summary>
-    /// Base class for all integration-tests fixtures that involve ioc container adapter 
-    /// and test bootstrapper and use NUnit as test framework provider.
+    /// Base class for all integration-tests fixtures that use ioc container adapter and test bootstrapper
+    /// and use xUnit.net as test framework provider.
     /// </summary>
     /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
     /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>
-    public abstract class IntegrationTestsBase<TRootObject, TBootstrapper> : 
-        IntegrationTestsBase<TRootObject>, IRootObjectFactory 
+    public abstract class IntegrationTestsBase<TRootObject, TBootstrapper> :
+        IntegrationTestsBase<TRootObject>,
+        IRootObjectFactory,
+        IDisposable 
         where TRootObject : class 
         where TBootstrapper : IInitializable, IHaveRegistrator, IHaveResolver, new()
     {
@@ -24,20 +27,26 @@ namespace Attest.Testing.NUnit
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
+        /// <param name="keyValueDataStore">The key-value data store.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
+            IKeyValueDataStore keyValueDataStore,
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
-        {         
-            _scenarioHelper = new ScenarioHelper(new TestContextKeyValueDataStoreAdapter());
+        {            
+            _scenarioHelper = new ScenarioHelper(keyValueDataStore);
             _initializationParametersManager =
                 ContainerAdapterInitializationParametersManagerStore<TBootstrapper>.GetInitializationParametersManager(
                     resolutionStyle);
+
+            // ReSharper disable once DoNotCallOverridableMethodsInConstructor
+            // xUnit.net does not have dedicated attributes for Setup methods; 
+            // therefore the logic is put inside the constructor instead.
+            Setup();
         }
 
         /// <summary>
         /// Override this method to implement custom test setup logic.
-        /// </summary>
-        [SetUp]
+        /// </summary>        
         protected override void Setup()
         {
             SetupCore();
@@ -46,13 +55,12 @@ namespace Attest.Testing.NUnit
 
         /// <summary>
         /// Override this method to implement custom test teardown logic.
-        /// </summary>
-        [TearDown]
+        /// </summary>        
         protected override void TearDown()
         {
             OnBeforeTeardown();
-            TearDownCore();                
-            OnAfterTeardown();        
+            TearDownCore();
+            OnAfterTeardown();
         }
 
         private void SetupCore()
@@ -68,13 +76,12 @@ namespace Attest.Testing.NUnit
         /// </summary>
         protected virtual void SetupOverride()
         {
-            
+
         }        
 
         private void TearDownCore()
         {
-            //ScenarioHelper.Clear();            
-            //Dispose();
+            //ScenarioHelper.Clear();                  
         }
 
         /// <summary>
@@ -102,43 +109,56 @@ namespace Attest.Testing.NUnit
         {
             return CreateRootObjectTyped();
         }
+
+        void IDisposable.Dispose()
+        {
+            TearDown();
+        }
     }
 
     /// <summary>
     /// Base class for all integration-tests fixtures that involve ioc container, its adapter, and test bootstrapper
-    /// and use NUnit as test framework provider.
+    /// and use xUnit.net as test framework provider.
     /// </summary>
     /// <typeparam name="TContainer">The type of ioc container.</typeparam>
     /// <typeparam name="TContainerAdapter">The type of ioc container adapter.</typeparam>
     /// <typeparam name="TRootObject">The type of root object, from which the test's flow starts.</typeparam>
-    /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>
+    /// <typeparam name="TBootstrapper">The type of bootstrapper.</typeparam>    
     public abstract class IntegrationTestsBase<TContainer, TContainerAdapter, TRootObject, TBootstrapper> :
         IntegrationTestsBase<TRootObject>,
-        IRootObjectFactory        
+        IRootObjectFactory,
+        IDisposable        
         where TContainerAdapter : class, IIocContainer, IIocContainerAdapter<TContainer>
         where TRootObject : class 
         where TBootstrapper : IInitializable, IHaveContainer<TContainer>, new()
     {
-        private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
         private readonly ScenarioHelper _scenarioHelper;
+        private readonly IInitializationParametersManager<TContainer> _initializationParametersManager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IntegrationTestsBase{TRootObject,TBootstrapper}"/> class.
         /// </summary>
+        /// <param name="keyValueDataStore">The key-value data store.</param>
         /// <param name="resolutionStyle">The resolution style.</param>
         protected IntegrationTestsBase(
+            IKeyValueDataStore keyValueDataStore,
             InitializationParametersResolutionStyle resolutionStyle = InitializationParametersResolutionStyle.PerRequest)
         {            
+            _scenarioHelper = new ScenarioHelper(keyValueDataStore);
             _initializationParametersManager =
-                ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>.GetInitializationParametersManager(
-                    resolutionStyle);
-            _scenarioHelper = new ScenarioHelper(new TestContextKeyValueDataStoreAdapter());
+                ContainerInitializationParametersManagerStore<TBootstrapper, TContainer>
+                    .GetInitializationParametersManager(
+                        resolutionStyle);
+
+            // ReSharper disable once DoNotCallOverridableMethodsInConstructor
+            // xUnit.net does not have dedicated attributes for Setup methods; 
+            // therefore the logic is put inside the constructor instead.
+            Setup();
         }
 
         /// <summary>
         /// Override this method to implement custom test setup logic.
-        /// </summary>
-        [SetUp]
+        /// </summary>        
         protected override void Setup()
         {
             SetupCore();
@@ -147,8 +167,7 @@ namespace Attest.Testing.NUnit
 
         /// <summary>
         /// Override this method to implement custom test teardown logic.
-        /// </summary>
-        [TearDown]
+        /// </summary>        
         protected override void TearDown()
         {
             OnBeforeTeardown();
@@ -171,19 +190,18 @@ namespace Attest.Testing.NUnit
         protected virtual void SetupOverride()
         {
 
-        }        
-
+        }
+        
         /// <summary>
         /// Override to provide ioc container adapter creation logic.
         /// </summary>
-        /// <param name="container">The ioc container.</param>
+        /// <param name="container">The ioc container adapter.</param>
         /// <returns></returns>
-        protected abstract TContainerAdapter CreateAdapter(TContainer container);        
+        protected abstract TContainerAdapter CreateAdapter(TContainer container);
 
         private void TearDownCore()
         {
-            //ScenarioHelper.Clear();           
-            //Dispose();
+            //ScenarioHelper.Clear();            
         }
 
         /// <summary>
@@ -210,6 +228,11 @@ namespace Attest.Testing.NUnit
         object IRootObjectFactory.CreateRootObject()
         {
             return CreateRootObjectTyped();
+        }
+
+        void IDisposable.Dispose()
+        {
+            TearDown();
         }
     }
 }

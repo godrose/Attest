@@ -1,7 +1,7 @@
-﻿using Attest.Testing.Context;
-using Solid.Practices.IoC;
+﻿using Solid.Practices.IoC;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
     /// The dependency registrator extension methods.

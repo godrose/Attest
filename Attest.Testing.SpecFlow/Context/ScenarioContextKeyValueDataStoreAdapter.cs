@@ -1,7 +1,7 @@
-using Attest.Testing.Context;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.SpecFlow
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
     /// Implementation of <see cref="IKeyValueDataStore" /> using <see cref="ScenarioContext"/>.

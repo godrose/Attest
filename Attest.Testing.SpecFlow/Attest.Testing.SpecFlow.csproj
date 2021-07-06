@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.2.3</Version>
+    <Version>2.3.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard\Release\</OutputPath>
@@ -15,12 +15,12 @@
     <Compile Remove="ScenarioContextWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0" />
-    <PackageReference Include="Solid.Core" Version="2.3.0" />
-    <PackageReference Include="Solid.IoC.Adapters.BoDi" Version="2.3.0" />
-    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.0" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0" />
-    <PackageReference Include="SpecFlow" Version="3.8.14" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.1" />
+    <PackageReference Include="Solid.Core" Version="2.3.1" />
+    <PackageReference Include="Solid.IoC.Adapters.BoDi" Version="2.3.1" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.1" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.1" />
+    <PackageReference Include="SpecFlow" Version="3.9.8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
