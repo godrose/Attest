@@ -27,6 +27,7 @@
       <dependency id="Attest.Fake.Data" version="2.3.2" />
       <dependency id="Attest.Fake.Registration" version="2.3.2" />
       <dependency id="Attest.Testing.Contracts" version="2.3.2" />
+      <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="5.0.0" />
       <dependency id="System.Management" version="5.0.0" />
     </dependencies>
   </metadata>

@@ -15,6 +15,7 @@
     <releaseNotes>
     </releaseNotes>
     <dependencies>
+      <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="5.0.0" />
       <dependency id="Solid.Patterns.Builder" version="2.3.1" />
       <dependency id="Solid.Core" version="2.3.1" />
     </dependencies>
