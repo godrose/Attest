@@ -33,6 +33,9 @@
     <Compile Update="Configuration\Configuration.feature.cs">
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Update="Configuration\Run guard.feature.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="specflow.json">
@@ -43,6 +46,10 @@
     <SpecFlowFeatureFiles Update="Configuration\Configuration.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Configuration.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Configuration\Run guard.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Run guard.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
   </ItemGroup>
 </Project>
