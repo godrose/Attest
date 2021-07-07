@@ -2,7 +2,7 @@
 using Attest.Fake.Builders;
 using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Testing.Core.Specs
+namespace Attest.Testing.Serialization.Specs
 {
     public class DtoBase
     {

@@ -1,4 +1,6 @@
-namespace Attest.Testing.Contracts
+using Attest.Testing.Modularity;
+
+namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// Represents means of starting an application

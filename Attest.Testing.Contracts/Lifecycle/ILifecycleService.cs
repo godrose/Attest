@@ -1,4 +1,4 @@
-namespace Attest.Testing.Contracts
+namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// Represents a service which possesses both setup and teardown capabilities.

@@ -1,5 +1,4 @@
 ﻿using Attest.Fake.Data;
-using Attest.Testing.Contracts;
 using Solid.Patterns.Builder;
 
 // ReSharper disable once CheckNamespace

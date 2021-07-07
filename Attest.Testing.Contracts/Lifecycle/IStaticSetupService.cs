@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Attest.Testing.Modularity;
 
-namespace Attest.Testing.Contracts
+namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// Represents static setup functionality.

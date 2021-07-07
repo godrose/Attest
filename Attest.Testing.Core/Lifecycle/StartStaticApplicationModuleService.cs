@@ -1,11 +1,10 @@
 using System.IO;
-using Attest.Testing.Contracts;
 using Attest.Testing.Core;
+using Attest.Testing.Modularity;
 
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
 {
-    /// <inheritdoc />
     public sealed class StartStaticApplicationModuleService : IStartStaticApplicationModuleService
     {
         /// <inheritdoc />

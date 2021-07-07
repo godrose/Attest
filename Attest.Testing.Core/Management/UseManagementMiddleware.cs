@@ -1,5 +1,4 @@
-﻿using Attest.Testing.Contracts;
-using Solid.Bootstrapping;
+﻿using Solid.Bootstrapping;
 using Solid.Practices.Middleware;
 
 // ReSharper disable once CheckNamespace

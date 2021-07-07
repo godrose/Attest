@@ -1,5 +1,4 @@
-﻿using Attest.Testing.Contracts;
-using BoDi;
+﻿using BoDi;
 using Solid.Common;
 using Solid.IoC.Adapters.BoDi;
 using Solid.Practices.IoC;

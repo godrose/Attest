@@ -1,4 +1,4 @@
-﻿namespace Attest.Testing.Contracts
+﻿namespace Attest.Testing.Management
 {
     /// <summary>
     /// Represents means for starting and stopping OS processes.

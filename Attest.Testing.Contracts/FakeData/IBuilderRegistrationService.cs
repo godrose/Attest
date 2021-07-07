@@ -1,6 +1,6 @@
 ﻿using Solid.Patterns.Builder;
 
-namespace Attest.Testing.Contracts
+namespace Attest.Testing.FakeData
 {
     /// <summary>
     /// The builder registration service.

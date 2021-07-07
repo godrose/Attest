@@ -1,4 +1,3 @@
-using Attest.Testing.Contracts;
 using Solid.Practices.IoC;
 
 // ReSharper disable once CheckNamespace

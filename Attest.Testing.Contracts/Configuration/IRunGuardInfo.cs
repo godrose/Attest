@@ -1,5 +1,4 @@
-﻿// ReSharper disable once CheckNamespace
-namespace Attest.Testing.Configuration
+﻿namespace Attest.Testing.Configuration
 {
     public interface IRunGuardInfo
     {

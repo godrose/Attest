@@ -1,6 +1,6 @@
 using Attest.Testing.Context;
-using Attest.Testing.Contracts;
 using Attest.Testing.Core;
+using Attest.Testing.Lifecycle;
 
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Integration

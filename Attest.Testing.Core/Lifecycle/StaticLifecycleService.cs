@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Attest.Testing.Contracts;
+using Attest.Testing.Modularity;
 
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
