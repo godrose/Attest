@@ -25,7 +25,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
 </Project>
