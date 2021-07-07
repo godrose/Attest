@@ -1,11 +1,11 @@
 ﻿using Attest.Fake.Core;
 using Attest.Fake.Moq;
-using Attest.Testing.Configuration;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.Core.Specs
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Configuration.Specs
 {
     [Binding]
     internal sealed class ConfigurationSteps

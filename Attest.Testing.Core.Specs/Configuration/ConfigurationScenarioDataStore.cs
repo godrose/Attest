@@ -1,10 +1,10 @@
 ﻿using Attest.Fake.Core;
-using Attest.Testing.Configuration;
 using Attest.Testing.Context.SpecFlow;
 using Microsoft.Extensions.Configuration;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.Core.Specs
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Configuration.Specs
 {
     internal sealed class ConfigurationScenarioDataStore : ScenarioDataStoreBase
     {
