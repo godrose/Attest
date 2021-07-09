@@ -2,7 +2,6 @@
 using Attest.Testing.Modularity;
 using Solid.Core;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
 {
     /// <summary>

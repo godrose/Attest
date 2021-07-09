@@ -1,5 +1,4 @@
-﻿// ReSharper disable once CheckNamespace
-namespace Attest.Testing.Context
+﻿namespace Attest.Testing.Context
 {
     /// <summary>
     /// Represents a key-value data store.

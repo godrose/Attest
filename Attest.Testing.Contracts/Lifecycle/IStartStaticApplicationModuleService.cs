@@ -4,7 +4,7 @@ namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// Represents means of starting an application
-    /// that is started and stopped once during the whole test session.
+    /// that is started and stopped once during the whole test/scenario suite execution.
     /// </summary>
     public interface IStartStaticApplicationModuleService
     {

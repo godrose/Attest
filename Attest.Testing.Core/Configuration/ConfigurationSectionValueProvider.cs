@@ -1,15 +1,21 @@
 ﻿using System.Linq;
 using Microsoft.Extensions.Configuration;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Configuration
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Provides facilities for interacting with configuration sections.
+    /// </summary>
     public class ConfigurationSectionValueProvider : IConfigurationSectionValueProvider
     {
         private readonly IConfigurationSectionKeySplitter _configurationSectionKeySplitter;
 
-        public ConfigurationSectionValueProvider(IConfigurationSectionKeySplitter configurationSectionKeySplitter)
+        /// <summary>
+        /// Initializes a new instance of <see cref="ConfigurationSectionValueProvider"/>
+        /// </summary>
+        /// <param name="configurationSectionKeySplitter">The configuration section key splitter.</param>
+        public ConfigurationSectionValueProvider(
+            IConfigurationSectionKeySplitter configurationSectionKeySplitter)
         {
             _configurationSectionKeySplitter = configurationSectionKeySplitter;
         }
@@ -17,7 +23,7 @@ namespace Attest.Testing.Configuration
         /// <inheritdoc />
         public string GetValue(IConfiguration configuration, string key)
         {
-            var sections = //key.Split(new[] {"__"}, StringSplitOptions.None)
+            var sections = 
                 _configurationSectionKeySplitter.Split(key)
                 .Where(x => !string.IsNullOrEmpty(x))
                 .ToArray();

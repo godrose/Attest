@@ -4,13 +4,18 @@ using Attest.Testing.Modularity;
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Represents a service which manages lifecycle for a collection of <see cref="IStaticApplicationModule"/>.
+    /// </summary>
     public sealed class StaticLifecycleService : ILifecycleService
     {
         private readonly IStaticSetupService _staticSetupService;
         private static Dictionary<int, IStaticApplicationModule> _handlesMap;
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of <see cref="StaticLifecycleService"/>
+        /// </summary>
+        /// <param name="staticSetupService">The setup service for static application modules.</param>
         public StaticLifecycleService(IStaticSetupService staticSetupService)
         {
             _staticSetupService = staticSetupService;

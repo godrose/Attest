@@ -2,9 +2,12 @@ using System.IO;
 using Attest.Testing.Core;
 using Attest.Testing.Modularity;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
 {
+    /// <summary>
+    /// Represents means of starting an application
+    /// that is started and stopped during the test/scenario execution.
+    /// </summary>
     public sealed class StartDynamicApplicationModuleService : IStartDynamicApplicationModuleService
     {
         /// <inheritdoc />

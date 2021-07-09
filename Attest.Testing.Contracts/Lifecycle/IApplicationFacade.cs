@@ -1,4 +1,4 @@
-﻿namespace Attest.Testing.Application
+﻿namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// Represents application start/stop facade.

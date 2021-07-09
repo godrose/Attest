@@ -1,6 +1,3 @@
-using Attest.Testing.Application;
-
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
 {
     /// <summary>

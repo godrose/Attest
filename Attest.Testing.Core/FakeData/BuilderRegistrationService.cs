@@ -1,7 +1,6 @@
 ﻿using Attest.Fake.Data;
 using Solid.Patterns.Builder;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.FakeData
 {   
     /// <summary>

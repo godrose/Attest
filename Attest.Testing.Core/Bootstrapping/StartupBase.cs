@@ -4,7 +4,6 @@ using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Bootstrapping
 {
     /// <summary>

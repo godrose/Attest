@@ -1,7 +1,6 @@
 ﻿using Solid.Bootstrapping;
 using Solid.Extensibility;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Management
 {
     /// <summary>

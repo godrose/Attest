@@ -5,14 +5,13 @@ using Solid.Practices.Composition.Contracts;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// This middleware registers the main dependencies for
     /// testing lifecycle: <see cref="ISetupService"/> <see cref="ITeardownService"/> and so on
     /// </summary>
-    /// <typeparam name="TBootstrapper"></typeparam>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     public class UseLifecycleMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
         where TBootstrapper : class, IHaveRegistrator, IAssemblySourceProvider
     {

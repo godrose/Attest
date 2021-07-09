@@ -1,9 +1,10 @@
 ﻿using System;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Management
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Base class for starting and stopping OS processes.
+    /// </summary>
     public abstract class ProcessManagementServiceBase : IProcessManagementService
     {
         /// <inheritdoc />

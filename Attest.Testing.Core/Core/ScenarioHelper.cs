@@ -13,7 +13,7 @@ namespace Attest.Testing.Core
         /// <summary>
         /// Initializes a new instance of <see cref="ScenarioHelper"/>
         /// </summary>
-        /// <param name="keyValueDataStore"></param>
+        /// <param name="keyValueDataStore">The key value data store.</param>
         public ScenarioHelper(IKeyValueDataStore keyValueDataStore)
         {
             _scenarioDataStore = new RootObjectScenarioDataStore(keyValueDataStore);

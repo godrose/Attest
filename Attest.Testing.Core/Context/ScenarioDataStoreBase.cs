@@ -1,6 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Context
 {
     /// <summary>
