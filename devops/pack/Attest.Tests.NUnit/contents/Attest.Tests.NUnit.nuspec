@@ -23,6 +23,7 @@
       <dependency id="Solid.Bootstrapping" version="2.3.1" />
       <dependency id="Attest.Fake.Core" version="2.4.0-rc1" />
       <dependency id="Attest.Fake.Registration" version="2.4.0-rc1" />
+      <dependency id="Attest.Testing.Contracts" version="2.4.0-rc1" />
       <dependency id="Attest.Tests.Core" version="2.4.0-rc1" />
     </dependencies>
   </metadata>
