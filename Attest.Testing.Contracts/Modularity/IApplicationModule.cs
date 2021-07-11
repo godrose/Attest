@@ -1,6 +1,6 @@
 using Solid.Core;
 
-namespace Attest.Testing.Contracts
+namespace Attest.Testing.Modularity
 {
     /// <summary>
     /// This interface represents an application module that

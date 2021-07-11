@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Configuration
 {
     /// <summary>

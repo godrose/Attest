@@ -1,4 +1,4 @@
-﻿namespace Attest.Testing.Contracts
+﻿namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// Represents means of starting up the application from its path.

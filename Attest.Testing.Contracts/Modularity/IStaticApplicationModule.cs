@@ -1,19 +1,19 @@
-namespace Attest.Testing.Contracts
+namespace Attest.Testing.Modularity
 {
     /// <summary>
     /// Represents an application module that is started and stopped once
-    /// during the whole test session.
+    /// during the whole scenarios/tests suite run.
     /// </summary>
     public interface IStaticApplicationModule : IApplicationModule
     {
         /// <summary>
-        /// Starts the application.
+        /// Starts the application module.
         /// </summary>
         /// <returns></returns>
         int Start();
 
         /// <summary>
-        /// Stops the application.
+        /// Stops the application module.
         /// </summary>
         /// <param name="handle"></param>
         void Stop(int handle);

@@ -2,20 +2,9 @@
 using Attest.Fake.Builders;
 using Attest.Fake.Setup.Contracts;
 
-namespace Attest.Testing.Core.Specs
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Serialization.Specs
 {
-    public class SimpleItemDto
-    {
-        public string Name { get; set; }
-        public double Price { get; set; }
-        public int Quantity { get; set; }
-    }
-
-    public interface ISimpleProvider
-    {
-        IEnumerable<SimpleItemDto> GetSimpleItems();
-    }
-
     class SimpleProviderBuilder : FakeBuilderBase<ISimpleProvider>.WithInitialSetup
     {
         private readonly List<SimpleItemDto> _warehouseItemsStorage = new List<SimpleItemDto>();

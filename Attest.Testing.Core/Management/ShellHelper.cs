@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Management
 {
     internal static class ShellHelper

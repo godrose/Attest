@@ -6,7 +6,8 @@ using FluentAssertions;
 using Solid.Patterns.Builder;
 using TechTalk.SpecFlow;
 
-namespace Attest.Testing.Core.Specs
+// ReSharper disable once CheckNamespace
+namespace Attest.Testing.Serialization.Specs
 {
     [Binding]
     internal sealed class SerializationSteps

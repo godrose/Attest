@@ -1,4 +1,4 @@
-﻿namespace Attest.Testing.Contracts
+﻿namespace Attest.Testing.Lifecycle
 {
     /// <summary>
     /// This service encapsulates functionality which is called when the test/scenario completes.

@@ -1,4 +1,4 @@
-namespace  Attest.Testing.Contracts
+namespace  Attest.Testing.Application
 {
     /// <summary>
     /// Represents the application path information.

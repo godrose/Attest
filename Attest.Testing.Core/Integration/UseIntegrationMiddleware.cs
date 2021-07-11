@@ -1,9 +1,8 @@
-﻿using Attest.Testing.Contracts;
+﻿using Attest.Testing.Lifecycle;
 using Solid.Bootstrapping;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Integration
 {
     /// <summary>

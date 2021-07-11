@@ -1,18 +1,18 @@
-namespace Attest.Testing.Contracts
+namespace Attest.Testing.Modularity
 {
     /// <summary>
-    /// This interface represents an application that
-    /// is started and stopped for each test.
+    /// This interface represents an application module that
+    /// is started and stopped for each scenario/test.
     /// </summary>
     public interface IDynamicApplicationModule : IApplicationModule
     {        
         /// <summary>
-        /// Starts the application.
+        /// Starts the application module.
         /// </summary>
         void Start();
 
         /// <summary>
-        /// Stops the application.
+        /// Stops the application module.
         /// </summary>
         void Stop();
     }
