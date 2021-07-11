@@ -18,7 +18,7 @@ long running operation.</description>
 for complex fake setups:
 chained calls, various methods, 
 long running operation.</summary>
-    <releaseNotes>Bump dependencies</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.1" />
       <dependency id="Solid.Patterns.Visitor" version="2.3.1" />

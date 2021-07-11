@@ -12,9 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides facilities for writing unit, integration and end-to-end tests using NUnit.</description>
     <summary>This package provides facilities for writing unit, integration and end-to-end tests using NUnit.</summary>
-    <releaseNotes>1.Added implementation for key value data store.
-2. Improved flow for integration tests.
-3. Bump dependencies.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="NUnit" version="3.13.2" />
       <dependency id="Solid.Patterns.Builder" version="2.3.1" />

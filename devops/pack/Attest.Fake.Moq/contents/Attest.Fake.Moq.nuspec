@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides implementation for fake abstractions using Moq framework</description>
     <summary>This package provides implementation for fake abstractions using Moq framework</summary>
-    <releaseNotes>Bump dependencies</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Attest.Fake.Core" version="2.4.0-rc1" />
       <dependency id="Moq" version="4.16.1" />
