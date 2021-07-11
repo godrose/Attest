@@ -1,5 +1,5 @@
 rem TODO: Use common source for all version instances
-SET version=2.4.0-rc1
+SET version=2.4.0
 rem TODO: Refactor using loop and automatic discovery
 call deploy-single.bat Attest.Fake.Builders %version% 
 call deploy-single.bat Attest.Fake.Conventions %version% 
