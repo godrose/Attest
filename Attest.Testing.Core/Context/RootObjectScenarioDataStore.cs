@@ -1,7 +1,6 @@
 ﻿using Attest.Testing.Core;
 using Solid.Practices.IoC;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Context
 {
     /// <summary>

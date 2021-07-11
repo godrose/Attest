@@ -1,8 +1,8 @@
 using System.IO;
-using Attest.Testing.Contracts;
+using Attest.Testing.Application;
 using Attest.Testing.Core;
+using Attest.Testing.Lifecycle;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.EndToEnd
 {
     /// <inheritdoc />

@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Management;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Management
 {
     internal static class ProcessExtensions

@@ -3,7 +3,6 @@ using Solid.Extensibility;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Bootstrapping
 {
     /// <summary>

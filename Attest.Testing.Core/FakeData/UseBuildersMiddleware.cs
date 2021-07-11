@@ -1,7 +1,6 @@
 ﻿using Solid.Bootstrapping;
 using Solid.Practices.Middleware;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.FakeData
 {
     /// <summary>

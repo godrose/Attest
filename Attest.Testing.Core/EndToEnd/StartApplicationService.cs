@@ -1,7 +1,6 @@
 using Attest.Fake.Data;
-using Attest.Testing.Contracts;
+using Attest.Testing.Lifecycle;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.EndToEnd
 {
     /// <summary>

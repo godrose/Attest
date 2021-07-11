@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using Attest.Testing.Contracts;
+using Attest.Testing.Modularity;
 using Solid.Core;
 using Solid.Practices.IoC;
 
-// ReSharper disable once CheckNamespace
 namespace Attest.Testing.Lifecycle
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Represents static setup functionality.
+    /// </summary>
     public sealed class StaticSetupService : IStaticSetupService
     {
         private static bool _isOneTimeSetupHandled = false;
@@ -19,7 +20,11 @@ namespace Attest.Testing.Lifecycle
         private readonly IDependencyResolver _dependencyResolver;
         private readonly IStartStaticApplicationModuleService _startStaticApplicationModuleService;
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Initializes a new instance of <see cref="StaticSetupService"/>
+        /// </summary>
+        /// <param name="dependencyResolver">The dependency resolver.</param>
+        /// <param name="startStaticApplicationModuleService">The service for starting collection of static application modules.</param>
         public StaticSetupService(
             IDependencyResolver dependencyResolver,
             IStartStaticApplicationModuleService startStaticApplicationModuleService)
