@@ -17,7 +17,7 @@ namespace Attest.Testing.FakeData
         {
             dependencyRegistrator
                 .AddSingleton<IBuilderRegistrationService, BuilderRegistrationService>()
-                .AddSingleton<BuildersCollectionContext, BuildersCollectionContext>();
+                .AddSingleton<BuildersCollectionContext>();
             return dependencyRegistrator;
         }
     }

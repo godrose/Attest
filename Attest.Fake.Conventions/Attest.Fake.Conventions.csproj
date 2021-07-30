@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -13,6 +13,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Solid.Common.Core" Version="2.3.1" />
+    <PackageReference Include="Solid.IoC.Registration" Version="2.3.1-rc1" />
     <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.1" />
     <PackageReference Include="Solid.Practices.IoC" Version="2.3.1" />
   </ItemGroup>

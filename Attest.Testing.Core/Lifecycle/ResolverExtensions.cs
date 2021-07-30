@@ -1,4 +1,6 @@
-﻿using Attest.Testing.Modularity;
+﻿using System;
+using System.Collections.Generic;
+using Attest.Testing.Modularity;
 using Solid.Practices.IoC;
 
 namespace Attest.Testing.Lifecycle
@@ -15,10 +17,7 @@ namespace Attest.Testing.Lifecycle
         public static void Setup(this IDependencyResolver dependencyResolver)
         {
             var setupServices = dependencyResolver.ResolveAll<ISetupService>();
-            foreach (var setupService in setupServices)
-            {
-                setupService.Setup();
-            }
+            setupServices.ForEachSafe(t => t.Setup());
         }
 
         /// <summary>
@@ -28,14 +27,19 @@ namespace Attest.Testing.Lifecycle
         public static void Teardown(this IDependencyResolver dependencyResolver)
         {
             var applicationModules = dependencyResolver.ResolveAll<IDynamicApplicationModule>();
-            foreach (var applicationModule in applicationModules)
-            {
-                applicationModule.Stop();
-            }
+            applicationModules.ForEachSafe(t => t.Stop());
+
             var teardownServices = dependencyResolver.ResolveAll<ITeardownService>();
-            foreach (var teardownService in teardownServices)
+            teardownServices.ForEachSafe(t => t.Teardown());
+        }
+
+        //TODO: Move to Solid.Core - Collection Extensions
+        private static void ForEachSafe<T>(this IEnumerable<T> collection, Action<T> itemAction)
+        {
+            if (collection == null) return;
+            foreach (var item in collection)
             {
-                teardownService.Teardown();
+                itemAction(item);
             }
         }
     }

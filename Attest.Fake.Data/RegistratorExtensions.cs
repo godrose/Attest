@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Attest.Fake.Builders;
+using Solid.IoC.Registration;
 using Solid.Patterns.Builder;
 using Solid.Practices.IoC;
 
@@ -19,17 +20,17 @@ namespace Attest.Fake.Data
         /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="buildersCollectionContext">The builders collection context.</param>
         /// <param name="registrationMethod">The builder registration method.</param>
-        /// <param name="contractsToImplementationsMap">The mapping between contracts and their implementations.</param>
+        /// <param name="matches">The collection of type matches.</param>
         /// <param name="builderFactory">The builder factory method.</param>
         public static void RegisterBuilders<TDependencyRegistrator>(
             this TDependencyRegistrator dependencyRegistrator,
             BuildersCollectionContext buildersCollectionContext,
             Action<TDependencyRegistrator, Type, IBuilder> registrationMethod,
-            Dictionary<Type, Type> contractsToImplementationsMap,
+            IEnumerable<TypeMatch> matches,
             Func<Type, object> builderFactory)
         {
             var builders = buildersCollectionContext.GetAllBuilders().ToArray();
-            dependencyRegistrator.RegisterBuilders(registrationMethod, contractsToImplementationsMap, builderFactory, builders);
+            dependencyRegistrator.RegisterBuilders(registrationMethod, matches, builderFactory, builders);
         }
 
         /// <summary>

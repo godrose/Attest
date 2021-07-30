@@ -12,6 +12,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Solid.IoC.Registration" Version="2.3.1-rc1" />
     <PackageReference Include="Solid.Patterns.Builder" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
