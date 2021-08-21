@@ -15,10 +15,10 @@
     <releaseNotes>
     </releaseNotes>
     <dependencies>
-      <dependency id="Solid.Common.Core" version="2.3.1" />
-      <dependency id="Solid.IoC.Registration" version="2.3.1" />
-      <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
-      <dependency id="Solid.Practices.IoC" version="2.3.1" />
+      <dependency id="Solid.Common.Core" version="2.3.2-rc1" />
+      <dependency id="Solid.IoC.Registration" version="2.3.2-rc1" />
+      <dependency id="Solid.Practices.Composition.Core" version="2.3.2-rc1" />
+      <dependency id="Solid.Practices.IoC" version="2.3.2-rc1" />
     </dependencies>
   </metadata>
 </package>

@@ -14,14 +14,14 @@
     <summary>This package provides facilities for writing tests, including unit, integration and end-to-end.</summary>
     <releaseNotes>Added support for run guard via configuration.</releaseNotes>
     <dependencies>
-      <dependency id="Solid.Patterns.Builder" version="2.3.1" />
-      <dependency id="Solid.Core" version="2.3.1" />
-      <dependency id="Solid.Common.Core" version="2.3.1" />
-      <dependency id="Solid.Extensibility" version="2.3.1" />
-      <dependency id="Solid.Practices.IoC" version="2.3.1" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.1" />
-      <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
-      <dependency id="Solid.Bootstrapping" version="2.3.1" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.2-rc1" />
+      <dependency id="Solid.Core" version="2.3.2-rc1" />
+      <dependency id="Solid.Common.Core" version="2.3.2-rc1" />
+      <dependency id="Solid.Extensibility" version="2.3.2-rc1" />
+      <dependency id="Solid.Practices.IoC" version="2.3.2-rc1" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.2-rc1" />
+      <dependency id="Solid.Practices.Composition.Core" version="2.3.2-rc1" />
+      <dependency id="Solid.Bootstrapping" version="2.3.2-rc1" />
       <dependency id="Attest.Fake.Core" version="2.4.1-rc1" />
       <dependency id="Attest.Fake.Data" version="2.4.1-rc1" />
       <dependency id="Attest.Fake.Registration" version="2.4.1-rc1" />
