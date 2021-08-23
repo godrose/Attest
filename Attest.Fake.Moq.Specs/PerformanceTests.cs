@@ -49,7 +49,7 @@ namespace Attest.Fake.Moq.Specs
             sw.Stop();
             var fakeElapsed = sw.Elapsed;
 
-            builderElapsed.Should().BeCloseTo(fakeElapsed, precision: 20);
+            builderElapsed.Should().BeCloseTo(fakeElapsed, precision: TimeSpan.FromMilliseconds(20));
         }
     }
 }
