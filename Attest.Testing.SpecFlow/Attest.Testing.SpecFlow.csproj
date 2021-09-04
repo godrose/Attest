@@ -15,11 +15,11 @@
     <Compile Remove="ScenarioContextWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="2.3.2-rc1" />
-    <PackageReference Include="Solid.Core" Version="2.3.2-rc1" />
-    <PackageReference Include="Solid.IoC.Adapters.BoDi" Version="2.3.2-rc1" />
-    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.2-rc1" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.3.2-rc1" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.2-rc2" />
+    <PackageReference Include="Solid.Core" Version="2.3.2-rc2" />
+    <PackageReference Include="Solid.IoC.Adapters.BoDi" Version="2.3.2-rc2" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.2-rc2" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.2-rc2" />
     <PackageReference Include="SpecFlow" Version="3.9.22" />
   </ItemGroup>
   <ItemGroup>

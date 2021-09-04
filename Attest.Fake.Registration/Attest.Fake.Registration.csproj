@@ -12,8 +12,8 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.2-rc1" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.3.2-rc1" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.2-rc2" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.2-rc2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
