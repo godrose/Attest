@@ -12,8 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides common conventions' definitions and utilities for fake operations</description>
     <summary>This package provides common conventions' definitions and utilities for fake operations</summary>
-    <releaseNotes>
-    </releaseNotes>
+    <releaseNotes>Using TypeMatch for type matching.</releaseNotes>
     <dependencies>
       <dependency id="Solid.Common.Core" version="2.3.2-rc2" />
       <dependency id="Solid.IoC.Registration" version="2.3.2-rc2" />
