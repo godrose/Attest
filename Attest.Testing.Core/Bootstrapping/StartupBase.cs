@@ -34,6 +34,7 @@ namespace Attest.Testing.Bootstrapping
         {
             var bootstrapper = _bootstrapperCreator(_iocContainer);
             bootstrapper
+                .Use(new UseDefaultRegistrationMethodMiddleware<BootstrapperBase>())
                 .Use(new RegisterCustomCompositionModulesMiddleware<BootstrapperBase, IDependencyRegistrator>())
                 .Use(new UseLifecycleMiddleware<BootstrapperBase>())
                 .Use(new RegisterResolverMiddleware<BootstrapperBase>(_iocContainer));

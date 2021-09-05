@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Solid.Common;
+using Solid.IoC.Registration;
 using Solid.Practices.Composition;
 
 namespace Attest.Fake.Conventions
@@ -13,10 +14,10 @@ namespace Attest.Fake.Conventions
     public static class TypeLocator
     {
         /// <summary>
-        /// Find matches between providers' contracts and their respective builders.
+        /// Finds matches between providers' contracts and their respective builders.
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<Type, Type> FindContractToBuilderMatches()
+        public static IEnumerable<TypeMatch> FindContractToBuilderMatches()
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,
                 new[] { ConventionsManager.ContractsAssemblyEnding(), ConventionsManager.BuildersAssemblyEnding() });
@@ -27,10 +28,10 @@ namespace Attest.Fake.Conventions
         }
 
         /// <summary>
-        /// Find matches between providers' simulators and their respective builders.
+        /// Finds matches between providers' simulators and their respective builders.
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<Type, Type> FindSimulatorToBuilderMatches()
+        public static IEnumerable<TypeMatch> FindSimulatorToBuilderMatches()
         {
             var assembliesProvider = new CustomAssemblySourceProvider(PlatformProvider.Current.GetRootPath(), null,
                 new[] { ConventionsManager.SimulatorsAssemblyEnding(), ConventionsManager.BuildersAssemblyEnding() });
@@ -40,12 +41,12 @@ namespace Attest.Fake.Conventions
             return contractToBuilderMatches;
         }
 
-        private static Dictionary<Type, Type> FindContractToBuilderMatchesImpl(
+        private static IEnumerable<TypeMatch> FindContractToBuilderMatchesImpl(
             this IEnumerable<Assembly> assemblies,
             Type[] contractTypes)
         {
             var buildersTypes = assemblies.FindBuildersTypes();
-            var contractToBuilderMatches = new Dictionary<Type, Type>();
+            var contractToBuilderMatches = new List<TypeMatch>();
             foreach (var builderType in buildersTypes)
             {
                 var contractType =
@@ -53,18 +54,19 @@ namespace Attest.Fake.Conventions
                         t => t.Name == "I" + builderType.Name.Replace(ConventionsManager.BuilderEnding(), string.Empty));
                 if (contractType != null)
                 {
-                    contractToBuilderMatches.Add(contractType, builderType);
+                    contractToBuilderMatches.Add(
+                        new TypeMatch(contractType, builderType));
                 }
             }
             return contractToBuilderMatches;
         }
 
-        private static Dictionary<Type, Type> FindSimulatorToBuilderMatchesImpl(
+        private static IEnumerable<TypeMatch> FindSimulatorToBuilderMatchesImpl(
             this IEnumerable<Assembly> assemblies,
             Type[] simulatorTypes)
         {
             var buildersTypes = assemblies.FindBuildersTypes();
-            var simulatorToBuilderMatches = new Dictionary<Type, Type>();
+            var simulatorToBuilderMatches = new List<TypeMatch>();
             foreach (var builderType in buildersTypes)
             {
                 var simulatorType =
@@ -73,7 +75,8 @@ namespace Attest.Fake.Conventions
                                  .Replace(ConventionsManager.ProviderEnding(), ConventionsManager.SimulatorEnding()));
                 if (simulatorType != null)
                 {
-                    simulatorToBuilderMatches.Add(simulatorType, builderType);
+                    simulatorToBuilderMatches.Add(
+                        new TypeMatch(simulatorType, builderType));
                 }
             }
             return simulatorToBuilderMatches;
