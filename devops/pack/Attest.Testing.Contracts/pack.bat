@@ -3,6 +3,6 @@ rmdir /Q /S lib
 mkdir lib
 cd lib
 mkdir netstandard2.0\
-robocopy ../../../../../Bin/netstandard/Release netstandard2.0 Attest.Testing.Contracts.* /E
+robocopy ../../../../../src/Bin/netstandard/Release netstandard2.0 Attest.Testing.Contracts.* /E
 cd ../../
 nuget pack contents/Attest.Testing.Contracts.nuspec -OutputDirectory ../../../output
