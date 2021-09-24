@@ -4,10 +4,9 @@
 
 ## Core
 
-
 <img src=https://img.shields.io/nuget/dt/Attest.Tests.Core>
 
-[Living Documentation](https://ci.appveyor.com/api/projects/godrose/Attest/artifacts/Attest.Testing.Core.Specs/bin/Release/LivingDoc.html)
+[Living Documentation](https://ci.appveyor.com/api/projects/godrose/Attest/artifacts/output/Attest.Testing.Core.Specs.LivingDoc.html)
 
 [Get package](https://www.nuget.org/packages/Attest.Tests.Core/)
 
@@ -15,7 +14,7 @@
 
 <img src=https://img.shields.io/nuget/dt/Attest.Fake.Setup>
 
-[Living Documentation](https://ci.appveyor.com/api/projects/godrose/Attest/artifacts/Attest.Fake.Setup.Specs/bin/Release/LivingDoc.html)
+[Living Documentation](https://ci.appveyor.com/api/projects/godrose/Attest/artifacts/output/Attest.Fake.Setup.Specs.LivingDoc.html)
 
 [Get package](https://www.nuget.org/packages/Attest.Fake.Setup)
 
@@ -23,6 +22,6 @@
 
 <img src=https://img.shields.io/nuget/dt/Attest.Fake.Moq>
 
-[Living Documentation](https://ci.appveyor.com/api/projects/godrose/Attest/artifacts/Attest.Fake.Moq.Specs/bin/Release/LivingDoc.html)
+[Living Documentation](https://ci.appveyor.com/api/projects/godrose/Attest/artifacts/output/Attest.Fake.Moq.Specs.LivingDoc.html)
 
 [Get package](https://www.nuget.org/packages/Attest.Fake.Moq/)

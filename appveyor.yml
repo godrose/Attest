@@ -3,15 +3,16 @@ init:
 - dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
 configuration: Release
 before_build:
+- cd src
 - nuget restore
+- cd ..
 build:
   verbosity: minimal
-  project: Attest.sln
+  project: ./src/Attest.sln
 test_script:
-- cd
-- cd .\devops\test
+- cd ./devops/test
 - test-all.bat
-- cd ..\..\
+- cd ../..
 after_test:
 - cd devops
 - cd pack
@@ -26,11 +27,11 @@ notifications:
   on_build_status_changed: true
 artifacts:
 - name: Packages
-  path: .\output\*.nupkg
+  path: ./output/*.nupkg
 - name: Moq Support Living Documentation
-  path: .\Attest.Fake.Moq.Specs\bin\Release\LivingDoc.html
+  path: ./output/Attest.Fake.Moq.Specs.LivingDoc.html
 - name: Setup Living Documentation
-  path: .\Attest.Fake.Setup.Specs\bin\Release\LivingDoc.html
+  path: ./output/Attest.Fake.Setup.Specs.LivingDoc.html
 - name: Core Living Documentation
-  path: .\Attest.Testing.Core.Specs\bin\Release\LivingDoc.html
+  path: ./output/Attest.Testing.Core.Specs.LivingDoc.html
 ...
