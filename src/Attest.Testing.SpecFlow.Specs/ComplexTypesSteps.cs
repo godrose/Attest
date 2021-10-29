@@ -32,5 +32,12 @@ namespace Attest.Testing.SpecFlow.Specs
         {
             _scenarioDataStore.Error.Should().BeNull();
         }
+
+        [Then(@"The entry has been added to this property")]
+        public void ThenTheEntryHasBeenAddedToThisProperty()
+        {
+            var entry = _scenarioDataStore.ComplexType.ContainsKey("name");
+            entry.Should().BeTrue();
+        }
     }
 }

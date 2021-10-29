@@ -13,7 +13,7 @@ namespace Attest.Testing.SpecFlow.Specs
 
         public Dictionary<string, string> ComplexType
         {
-            get => GetValue<Dictionary<string, string>>();
+            get => GetValue(new Dictionary<string, string>());
             set => SetValue(value);
         }
 
