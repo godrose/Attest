@@ -3,20 +3,20 @@
 namespace Attest.Testing.Context
 {
     /// <summary>
-    /// Base class for scenario data stores.
-    /// It allows accessing scenario-related data via named properties.
+    /// Base class for context data stores.
+    /// It allows accessing context-specific data via named properties.
     /// </summary>
-    public abstract class ScenarioDataStoreBase
+    public abstract class ContextDataStoreBase
     {
         private static readonly string MissingKey = string.Empty;
 
         private readonly IKeyValueDataStore _keyValueDataStore;
 
         /// <summary>
-        /// Creates an instance of <see cref="ScenarioDataStoreBase"/>
+        /// Creates an instance of <see cref="ContextDataStoreBase"/>
         /// </summary>
         /// <param name="keyValueDataStore"></param>
-        protected ScenarioDataStoreBase(IKeyValueDataStore keyValueDataStore)
+        protected ContextDataStoreBase(IKeyValueDataStore keyValueDataStore)
         {
             _keyValueDataStore = keyValueDataStore;
         }
