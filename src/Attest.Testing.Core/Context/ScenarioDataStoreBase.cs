@@ -8,6 +8,8 @@ namespace Attest.Testing.Context
     /// </summary>
     public abstract class ScenarioDataStoreBase
     {
+        private static readonly string MissingKey = string.Empty;
+
         private readonly IKeyValueDataStore _keyValueDataStore;
 
         /// <summary>
@@ -31,9 +33,17 @@ namespace Attest.Testing.Context
         protected T GetValue<T>(T defaultValue = default, [CallerMemberName] string key = default)
         {
             var coercedKey = Coerce(key);
-            return _keyValueDataStore.ContainsKey(coercedKey)
-                ? _keyValueDataStore.GetValueByKey<T>(coercedKey)
-                : defaultValue;
+            if (coercedKey == MissingKey)
+            {
+                return default;
+            }
+            var containsKey = _keyValueDataStore.ContainsKey(coercedKey);
+            if (containsKey == false)
+            {
+                _keyValueDataStore.SetValueByKey(defaultValue, key);
+            }
+
+            return _keyValueDataStore.GetValueByKey<T>(coercedKey);
         }
 
         /// <summary>
@@ -45,12 +55,16 @@ namespace Attest.Testing.Context
         protected void SetValue<T>(T value, [CallerMemberName] string key = default)
         {
             var coercedKey = Coerce(key);
+            if (coercedKey == MissingKey)
+            {
+                return;
+            }
             _keyValueDataStore.SetValueByKey(value, coercedKey);
         }
 
         private static string Coerce(string key)
         {
-            return key ?? string.Empty;
+            return key ?? MissingKey;
         }
     }
 }
