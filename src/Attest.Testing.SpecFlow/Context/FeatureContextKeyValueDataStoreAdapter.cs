@@ -4,37 +4,17 @@ using TechTalk.SpecFlow;
 namespace Attest.Testing.Context.SpecFlow
 {
     /// <summary>
-    /// Implementation of <see cref="IKeyValueDataStore" /> using <see cref="FeatureContext"/>.
+    ///     Implementation of <see cref="IKeyValueDataStore" /> using <see cref="FeatureContext" />.
     /// </summary>
-    public class FeatureContextKeyValueDataStoreAdapter : IKeyValueDataStore
+    public class FeatureContextKeyValueDataStoreAdapter : KeyValueDataStoreAdapterBase<FeatureContext>
     {
-        private readonly FeatureContext _featureContext;
-
         /// <summary>
-        /// Initializes a new instance of <see cref="ScenarioContextKeyValueDataStoreAdapter"/>
+        ///     Initializes a new instance of <see cref="ScenarioContextKeyValueDataStoreAdapter" />
         /// </summary>
         /// <param name="featureContext"></param>
         public FeatureContextKeyValueDataStoreAdapter(FeatureContext featureContext)
+            : base(featureContext)
         {
-            _featureContext = featureContext;
-        }
-
-        /// <inheritdoc />
-        public bool ContainsKey(string key)
-        {
-            return _featureContext.ContainsKey(key);
-        }
-
-        /// <inheritdoc />
-        public T GetValueByKey<T>(string key)
-        {
-            return (T)_featureContext[key];
-        }
-
-        /// <inheritdoc />
-        public void SetValueByKey<T>(T value, string key)
-        {
-            _featureContext[key] = value;
         }
     }
 }
