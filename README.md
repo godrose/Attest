@@ -10,6 +10,14 @@
 
 [Get package](https://www.nuget.org/packages/Attest.Tests.Core/)
 
+## SpecFlow support
+
+<img src=https://img.shields.io/nuget/dt/Attest.Tests.SpecFlow>
+
+[Living Documentation](https://ci.appveyor.com/api/projects/godrose/Attest/artifacts/output/Attest.Testing.SpecFlow.Specs.LivingDoc.html)
+
+[Get package](https://www.nuget.org/packages/Attest.Tests.SpecFlow/)
+
 ## Setup
 
 <img src=https://img.shields.io/nuget/dt/Attest.Fake.Setup>

@@ -34,4 +34,6 @@ artifacts:
   path: ./output/Attest.Fake.Setup.Specs.LivingDoc.html
 - name: Core Living Documentation
   path: ./output/Attest.Testing.Core.Specs.LivingDoc.html
+- name: SpecFlow Living Documentation
+  path: ./output/Attest.Testing.SpecFlow.Specs.LivingDoc.html
 ...
