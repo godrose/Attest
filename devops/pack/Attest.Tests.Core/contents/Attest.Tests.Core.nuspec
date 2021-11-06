@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides facilities for writing tests, including unit, integration and end-to-end.</description>
     <summary>This package provides facilities for writing tests, including unit, integration and end-to-end.</summary>
-    <releaseNotes>Added support for run guard via configuration.</releaseNotes>
+    <releaseNotes>Added base class for context data store.</releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.2" />
       <dependency id="Solid.Core" version="2.3.2" />
