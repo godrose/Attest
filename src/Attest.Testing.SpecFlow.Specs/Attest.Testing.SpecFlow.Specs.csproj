@@ -7,31 +7,22 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
-    <PackageReference Include="Solid.Common.Core" Version="2.3.2" />
     <PackageReference Include="SpecFlow" Version="3.9.22" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.22" />
     <PackageReference Include="SpecFlow.xUnit" Version="3.9.22" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Attest.Fake.Builders\Attest.Fake.Builders.csproj" />
-    <ProjectReference Include="..\Attest.Fake.Core\Attest.Fake.Core.csproj" />
-    <ProjectReference Include="..\Attest.Fake.Data\Attest.Fake.Data.csproj" />
-    <ProjectReference Include="..\Attest.Fake.Moq\Attest.Fake.Moq.csproj" />
-    <ProjectReference Include="..\Attest.Fake.Setup.Contracts\Attest.Fake.Setup.Contracts.csproj" />
-    <ProjectReference Include="..\Attest.Testing.Contracts\Attest.Testing.Contracts.csproj" />
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
     <ProjectReference Include="..\Attest.Testing.SpecFlow\Attest.Testing.SpecFlow.csproj" />
-    <ProjectReference Include="..\Attest.Tests.Infra\Attest.Tests.Infra.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="specflow.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

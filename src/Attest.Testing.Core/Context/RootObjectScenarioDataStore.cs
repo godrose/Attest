@@ -6,7 +6,7 @@ namespace Attest.Testing.Context
     /// <summary>
     /// Represents data store for integration tests with root object.
     /// </summary>
-    public class RootObjectScenarioDataStore : ScenarioDataStoreBase
+    public class RootObjectScenarioDataStore : ContextDataStoreBase
     {
         /// <summary>
         /// Initializes a new instance of <see cref="RootObjectScenarioDataStore"/>.

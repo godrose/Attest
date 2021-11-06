@@ -7,7 +7,7 @@ namespace Attest.Testing.EndToEnd
     /// <summary>
     /// Represents data store for end-to-end tests.
     /// </summary>
-    public class EndToEndScenarioDataStore : ScenarioDataStoreBase
+    public class EndToEndScenarioDataStore : ContextDataStoreBase
     {
         /// <summary>
         /// Initializes a new instance of <see cref="EndToEndScenarioDataStore"/>
