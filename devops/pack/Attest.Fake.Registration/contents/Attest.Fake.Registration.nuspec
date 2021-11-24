@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Attest.Fake.Registration</id>
-    <version>2.4.2</version>
+    <version>2.4.3</version>
     <title>Attest.Fake.Registration</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -15,9 +15,9 @@
     <releaseNotes>
     </releaseNotes>
     <dependencies>
-      <dependency id="Attest.Fake.Core" version="2.4.2" />
-      <dependency id="Solid.Patterns.Builder" version="2.3.2" />
-      <dependency id="Solid.Practices.IoC" version="2.3.2" />
+      <dependency id="Attest.Fake.Core" version="2.4.3" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.3" />
+      <dependency id="Solid.Practices.IoC" version="2.3.3" />
     </dependencies>
   </metadata>
 </package>
