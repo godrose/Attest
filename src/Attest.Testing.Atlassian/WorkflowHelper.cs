@@ -23,7 +23,7 @@ namespace Attest.Testing.Atlassian
             if (File.Exists(file))
             {
                 //TODO: Use env vars
-                var contents = File.ReadAllText("secret.json");
+                var contents = File.ReadAllText(file);
                 var data = JsonConvert.DeserializeObject<JObject>(contents);
                 User = data["user"].ToString();
                 Secret = data["secret"].ToString();
