@@ -1,19 +1,19 @@
 namespace Attest.Testing.Atlassian.Specs
 {
     [Binding]
-    public class TheUserShouldBeAbleToConnectToJIRASteps
+    public class TheUserShouldBeAbleToConnectToJiraSteps
     {
-        private WorkflowHelper _workflowHelper;
+        private readonly WorkflowHelper _workflowHelper;
         private int _ticketId;
         private bool _result;
         private const string Prefix = "BDD";
 
-        public TheUserShouldBeAbleToConnectToJIRASteps()
+        public TheUserShouldBeAbleToConnectToJiraSteps()
         {
             _workflowHelper = new WorkflowHelper();
         }
 
-        [Given(@"There is an account in JIRA")]
+        [Given(@"There is an account in Jira")]
         public void GivenThereIsAnAccountInJIRA()
         {
            //for readability

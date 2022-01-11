@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	  <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Attest.Testing.Atlassian\Attest.Testing.Atlassian.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Features\Jira\The user should be able to connect to JIRA.feature.cs">
+      <DependentUpon>The user should be able to connect to Jira.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

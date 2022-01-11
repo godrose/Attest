@@ -196,4 +196,6 @@ FakesAssemblies/
 # Generated packages and intermediate output
 output
 devops/pack/**/contents/lib
-/src/Attest.Testing.Atlassian/secret.json
+**/secret.json
+**/FeatureData.json
+**/TestExecution.json

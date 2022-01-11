@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using Attest.Testing.Atlassian.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -32,8 +33,7 @@ namespace Attest.Testing.Atlassian
 
         public bool IsCurrentSprint(int ticket)
         {
-            var restClient = new RestClient(JiraUrl);
-            restClient.Authenticator = new HttpBasicAuthenticator(User, Secret);
+            var restClient = CreateRestClient();
             var request = new RestRequest($"rest/api/3/issue/BDD-{ticket}", Method.GET);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");
@@ -59,6 +59,43 @@ namespace Attest.Testing.Atlassian
             }
 
             return false;
+        }
+
+        private RestClient CreateRestClient()
+        {
+            var restClient = new RestClient(JiraUrl);
+            restClient.Authenticator = new HttpBasicAuthenticator(User, Secret);
+            return restClient;
+        }
+
+        public int SendContentGetRequest(int pageId)
+        {
+            var client = CreateRestClient();
+            var request = new RestRequest($"wiki/rest/api/content/{pageId}/", Method.GET);
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Content-Type", "application/json");
+            var response = client.Execute(request);
+            ConfluenceContentResponseModel model = JsonConvert.DeserializeObject<ConfluenceContentResponseModel>(response.Content);
+            var newVersion = model.Version.Number + 1;
+            return newVersion;
+        }
+
+        public void SendPostRequest(int pageId, object body)
+        {
+            RestClient client = CreateRestClient();
+            RestRequest request = new RestRequest($"wiki/rest/api/content/{pageId}/", Method.PUT);
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("expand", "body.storage", ParameterType.QueryString);
+
+            string bodyAsString = JsonConvert.SerializeObject(body);
+            request.AddJsonBody(bodyAsString);
+
+            var response = client.Execute(request);
+
+            int statusCode = (int)response.StatusCode;
+            if (statusCode != 200)
+                throw new Exception("request failed, status code - " + statusCode);
         }
     }
 }
