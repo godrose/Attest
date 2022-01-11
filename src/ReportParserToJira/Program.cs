@@ -11,8 +11,14 @@ namespace ReportParserToJira
         {
             string pathToFeatureDataPath = $"{GetPathToSolutionRoot()}FeatureData.json";
             string pathToTestResultsPath = $"{GetPathToSolutionRoot()}TestExecution.json";
+            var workflowHelper = new WorkflowHelper();
+            int pageId = 327681;
             var confluenceParser = new ReportToConfluence();
-            confluenceParser.Parse(327681, pathToFeatureDataPath, pathToTestResultsPath,args);
+            var contents = confluenceParser.Parse(pageId, pathToFeatureDataPath, pathToTestResultsPath,args).ToArray();
+            foreach (var content in contents)
+            {
+                workflowHelper.SendPostRequest(pageId, content);
+            }
         }
 
         private static string GetPathToSolutionRoot()

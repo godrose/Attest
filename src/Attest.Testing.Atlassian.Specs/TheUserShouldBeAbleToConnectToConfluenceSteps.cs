@@ -31,7 +31,6 @@ namespace Attest.Testing.Atlassian.Specs
             _workflowHelper.SendPostRequest(_pageId, null);
         }
 
-
         [Then(@"I am able to see the version number")]
         public void ThenIAmAbleToSeeTheVersionNumber()
         {

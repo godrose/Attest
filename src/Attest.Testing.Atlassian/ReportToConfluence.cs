@@ -13,7 +13,7 @@ namespace Attest.Testing.Atlassian
         public const string JiraUserStoryPrefix = "BDD-";
         public const string UserStoryTag = "@" + JiraUserStoryPrefix;
 
-        public void Parse(int pageId, string pathToFeatureData, string pathToTestResults, string[] args)
+        public IEnumerable<object> Parse(int pageId, string pathToFeatureData, string pathToTestResults, string[] args)
         {
             var featureDataNodes =
                 JsonConvert.DeserializeObject<FeatureData>(File.ReadAllText(pathToFeatureData)).Nodes;
@@ -22,10 +22,10 @@ namespace Attest.Testing.Atlassian
 
             foreach (var node in featureDataNodes)
             foreach (var folder in node.Folders)
-                BuildContent(pageId, executionResults.ExecutionResults, folder, executionResults.ExecutionTime, args);
+                yield return BuildContent(pageId, executionResults.ExecutionResults, folder, executionResults.ExecutionTime, args);
         }
 
-        private void BuildContent(
+        private object BuildContent(
             int pageId,
             List<ExecutionResult> executionResults,
             Folder folder,
@@ -56,8 +56,10 @@ namespace Attest.Testing.Atlassian
             if (scenarioRows.Count > 0)
             {
                 var confluenceTable = BuildConfluenceTable(scenarioRows, versionNumber, executionTime, args);
-                workflowHelper.SendPostRequest(pageId, confluenceTable);
+                return confluenceTable;
             }
+
+            return null;
         }
 
         private string AddScenarioRows(List<ExecutionResult> results, string ScenarioTitle, string ticket)
