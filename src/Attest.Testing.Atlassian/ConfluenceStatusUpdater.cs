@@ -15,8 +15,7 @@ namespace Attest.Testing.Atlassian
             _workflowHelper = workflowHelper;
         }
 
-        public void UpdateFromReport(
-            int pageId)
+        public void UpdateFromReport(int pageId)
         {
             var contents = _confluenceContentsFactory.BuildContents(
                     pageId,

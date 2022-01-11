@@ -6,7 +6,7 @@ using RestSharp.Authenticators;
 
 namespace Attest.Testing.Atlassian
 {
-    internal class RestClientFactory
+    public class RestClientFactory
     {
         //TODO: Put into config
         private const string JiraUrl = "https://godrose.atlassian.net/";

@@ -6,11 +6,10 @@ namespace Attest.Testing.Atlassian.Specs
         private readonly WorkflowHelper _workflowHelper;
         private int _ticketId;
         private bool _result;
-        private const string Prefix = "BDD";
 
-        public TheUserShouldBeAbleToConnectToJiraSteps()
+        public TheUserShouldBeAbleToConnectToJiraSteps(WorkflowHelper workflowHelper)
         {
-            _workflowHelper = new WorkflowHelper();
+            _workflowHelper = workflowHelper;
         }
 
         [Given(@"There is an account in Jira")]

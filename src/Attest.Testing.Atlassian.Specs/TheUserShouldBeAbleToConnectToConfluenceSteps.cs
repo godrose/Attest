@@ -5,15 +5,16 @@ namespace Attest.Testing.Atlassian.Specs
     {
         private int _pageId;
         private readonly WorkflowHelper _workflowHelper;
-        private readonly ConfluenceContentsFactory _confluenceContentsFactory;
         private readonly ConfluenceStatusUpdater _confluenceStatusUpdater;
         private int _versionNumber;
 
-        public TheUserShouldBeAbleToConnectToConfluenceSteps()
+        public TheUserShouldBeAbleToConnectToConfluenceSteps(
+            WorkflowHelper workflowHelper,
+            ConfluenceContentsFactory confluenceContentsFactory,
+            ConfluenceStatusUpdater confluenceStatusUpdater)
         {
-            _workflowHelper = new WorkflowHelper();
-            _confluenceContentsFactory = new ConfluenceContentsFactory(new FileSystemSpecsInfo());
-            _confluenceStatusUpdater = new ConfluenceStatusUpdater(_confluenceContentsFactory, _workflowHelper);
+            _workflowHelper = workflowHelper;
+            _confluenceStatusUpdater = confluenceStatusUpdater;
         }
 
         [Given(@"There is a page which holds the current status content")]
