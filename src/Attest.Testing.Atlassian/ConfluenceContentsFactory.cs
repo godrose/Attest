@@ -1,36 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
 using Attest.Testing.Atlassian.Models;
-using Newtonsoft.Json;
 
 namespace Attest.Testing.Atlassian
 {
-    public class ReportToConfluence
+    public class ConfluenceContentsFactory
     {
         public const string JiraUserStoryPrefix = "BDD-";
         public const string UserStoryTag = "@" + JiraUserStoryPrefix;
+        private readonly ISpecsInfo _specsInfo;
 
-        public IEnumerable<object> Parse(int pageId, string pathToFeatureData, string pathToTestResults, string[] args)
+        public ConfluenceContentsFactory(ISpecsInfo specsInfo)
         {
-            var featureDataNodes =
-                JsonConvert.DeserializeObject<FeatureData>(File.ReadAllText(pathToFeatureData)).Nodes;
-            var executionResults =
-                JsonConvert.DeserializeObject<TestExecution>(File.ReadAllText(pathToTestResults));
+            _specsInfo = specsInfo;
+        }
 
-            foreach (var node in featureDataNodes)
+        public IEnumerable<object> BuildContents(int pageId, string env)
+        {
+            foreach (var node in _specsInfo.FeatureData.Nodes)
             foreach (var folder in node.Folders)
-                yield return BuildContent(pageId, executionResults.ExecutionResults, folder, executionResults.ExecutionTime, args);
+                yield return BuildContent(pageId, _specsInfo.TestExecution.ExecutionResults, folder, _specsInfo.TestExecution.ExecutionTime, env);
         }
 
         private object BuildContent(
             int pageId,
-            List<ExecutionResult> executionResults,
+            IEnumerable<ExecutionResult> executionResults,
             Folder folder,
             DateTime executionTime,
-            string[] args)
+            string env)
         {
             var workflowHelper = new WorkflowHelper();
             var scenarioRows = new List<string>();
@@ -55,46 +53,52 @@ namespace Attest.Testing.Atlassian
             var versionNumber = workflowHelper.SendContentGetRequest(pageId);
             if (scenarioRows.Count > 0)
             {
-                var confluenceTable = BuildConfluenceTable(scenarioRows, versionNumber, executionTime, args);
+                var confluenceTable = BuildConfluenceTable(scenarioRows, versionNumber, executionTime, env);
                 return confluenceTable;
             }
 
             return null;
         }
 
-        private string AddScenarioRows(List<ExecutionResult> results, string ScenarioTitle, string ticket)
+        private string AddScenarioRows(IEnumerable<ExecutionResult> results, string ScenarioTitle, string ticket)
         {
-            var ScenarioRow = string.Empty;
+            var scenarioRow = string.Empty;
             foreach (var result in results)
                 if (result.ScenarioTitle == ScenarioTitle)
                 {
                     if (ticket != string.Empty)
-                        ScenarioRow =
+                        scenarioRow =
                             $"<tr><td><p>{result.ScenarioTitle}</p></td><td><p>{result.Status}</p></td><td><p>{ticket}</p></td></tr>";
                     else
-                        ScenarioRow =
+                        scenarioRow =
                             $"<tr><td><p>{result.ScenarioTitle}</p></td><td><p>{result.Status}</p></td><td><p>No Linked User Story</p></td></tr>";
                 }
 
-            return ScenarioRow;
+            return scenarioRow;
         }
 
-        private CRoot BuildConfluenceTable(List<string> scenarioRows, int versionNumber, DateTime ExecTime,
-            string[] args)
+        private CRoot BuildConfluenceTable(
+            IEnumerable<string> scenarioRows, 
+            int versionNumber, 
+            DateTime executionTime,
+            string env)
         {
-            var tableparams =
+            var tableParameters =
                 "<table data-layout=\"default\" ac:local-id=\"f247c0de-3d7d-4d66-a0dc-2fe5e6e60424\"><colgroup><col style=\"width: 226.67px;\" /><col style=\"width: 226.67px;\" /><col style=\"width: 226.67px;\"";
-            var TableHeader =
+            var tableHeader =
                 "/></colgroup><tbody><tr><th><p><strong>Scenario name</strong></p></th><th><p><strong>Execution Status</strong></p></th><th><p><strong>User Story</strong></p></th></tr>";
-            var Comment =
-                $"<p><strong>Execution time: {ExecTime.ToLocalTime()}</strong></p> <p><strong>Environment: {args.FirstOrDefault()} </strong></p>";
+            var comment =
+                $"<p><strong>Execution time: {executionTime.ToLocalTime()}</strong></p> <p><strong>Environment: {env} </strong></p>";
             var EndTable = "</tbody></table><p/>";
             var sb = new StringBuilder();
-            sb.AppendLine(tableparams);
-            sb.AppendLine(TableHeader);
-            foreach (var scenario in scenarioRows) sb.AppendLine(scenario);
+            sb.AppendLine(tableParameters);
+            sb.AppendLine(tableHeader);
+            foreach (var scenario in scenarioRows)
+            {
+                sb.AppendLine(scenario);
+            }
             sb.AppendLine(EndTable);
-            sb.AppendLine(Comment);
+            sb.AppendLine(comment);
 
             var root = new CRoot();
             var body = new CBody();

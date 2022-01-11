@@ -1,39 +1,26 @@
 ﻿using System;
-using System.IO;
 using System.Net;
 using Attest.Testing.Atlassian.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
-using RestSharp.Authenticators;
 
 namespace Attest.Testing.Atlassian
 {
     public class WorkflowHelper
     {
-        private const string JiraUrl = "https://godrose.atlassian.net/";
-        private readonly string User;
-        private readonly string Secret;
         private const string SprintsFieldId = "customfield_10020";
         private const string IsActive = "active";
+        private readonly RestClientFactory _restClientFactory;
 
         public WorkflowHelper()
         {
-            //TODO: Move to Hook
-            var file = "secret.json";
-            if (File.Exists(file))
-            {
-                //TODO: Use env vars
-                var contents = File.ReadAllText(file);
-                var data = JsonConvert.DeserializeObject<JObject>(contents);
-                User = data["user"].ToString();
-                Secret = data["secret"].ToString();
-            }
+            _restClientFactory = new RestClientFactory();
         }
 
         public bool IsCurrentSprint(int ticket)
         {
-            var restClient = CreateRestClient();
+            var restClient = _restClientFactory.CreateRestClient();
             var request = new RestRequest($"rest/api/3/issue/BDD-{ticket}", Method.GET);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");
@@ -61,16 +48,9 @@ namespace Attest.Testing.Atlassian
             return false;
         }
 
-        private RestClient CreateRestClient()
-        {
-            var restClient = new RestClient(JiraUrl);
-            restClient.Authenticator = new HttpBasicAuthenticator(User, Secret);
-            return restClient;
-        }
-
         public int SendContentGetRequest(int pageId)
         {
-            var client = CreateRestClient();
+            var client = _restClientFactory.CreateRestClient();
             var request = new RestRequest($"wiki/rest/api/content/{pageId}/", Method.GET);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");
@@ -82,7 +62,7 @@ namespace Attest.Testing.Atlassian
 
         public void SendPostRequest(int pageId, object body)
         {
-            RestClient client = CreateRestClient();
+            RestClient client = _restClientFactory.CreateRestClient();
             RestRequest request = new RestRequest($"wiki/rest/api/content/{pageId}/", Method.PUT);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");

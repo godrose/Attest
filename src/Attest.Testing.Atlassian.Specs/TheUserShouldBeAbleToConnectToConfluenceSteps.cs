@@ -5,11 +5,15 @@ namespace Attest.Testing.Atlassian.Specs
     {
         private int _pageId;
         private readonly WorkflowHelper _workflowHelper;
+        private readonly ConfluenceContentsFactory _confluenceContentsFactory;
+        private readonly ConfluenceStatusUpdater _confluenceStatusUpdater;
         private int _versionNumber;
 
         public TheUserShouldBeAbleToConnectToConfluenceSteps()
         {
             _workflowHelper = new WorkflowHelper();
+            _confluenceContentsFactory = new ConfluenceContentsFactory(new FileSystemSpecsInfo());
+            _confluenceStatusUpdater = new ConfluenceStatusUpdater(_confluenceContentsFactory, _workflowHelper);
         }
 
         [Given(@"There is a page which holds the current status content")]
@@ -28,7 +32,7 @@ namespace Attest.Testing.Atlassian.Specs
         [When(@"I update the current status")]
         public void WhenIUpdateTheCurrentStatus()
         {
-            _workflowHelper.SendPostRequest(_pageId, null);
+            _confluenceStatusUpdater.UpdateFromReport(_pageId);
         }
 
         [Then(@"I am able to see the version number")]
