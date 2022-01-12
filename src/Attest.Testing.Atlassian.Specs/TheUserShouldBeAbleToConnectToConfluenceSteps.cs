@@ -1,33 +1,37 @@
+using Microsoft.Extensions.Configuration;
+
 namespace Attest.Testing.Atlassian.Specs
 {
     [Binding]
     public class TheUserShouldBeAbleToConnectToConfluenceSteps
     {
         private int _pageId;
-        private readonly WorkflowHelper _workflowHelper;
+        private readonly ConfluenceProvider _confluenceProvider;
         private readonly ConfluenceStatusUpdater _confluenceStatusUpdater;
+        private readonly IConfiguration _configuration;
         private int _versionNumber;
 
         public TheUserShouldBeAbleToConnectToConfluenceSteps(
-            WorkflowHelper workflowHelper,
-            ConfluenceContentsFactory confluenceContentsFactory,
-            ConfluenceStatusUpdater confluenceStatusUpdater)
+            ConfluenceProvider confluenceProvider,
+            ConfluenceStatusUpdater confluenceStatusUpdater,
+            IConfiguration configuration)
         {
-            _workflowHelper = workflowHelper;
+            _confluenceProvider = confluenceProvider;
             _confluenceStatusUpdater = confluenceStatusUpdater;
+            _configuration = configuration;
         }
 
         [Given(@"There is a page which holds the current status content")]
         public void GivenThereIsAPageWhichHoldsTheCurrentStatusContent()
         {
             //for readability
-            _pageId = 327681;
+            _pageId = int.Parse(_configuration.GetSection("Atlassian").GetSection("Confluence").GetSection("StatusPageId").Value);
         }
 
         [When(@"I get the page")]
         public void WhenIGetThePage()
         {
-            _versionNumber = _workflowHelper.GetNewPageVersion(_pageId);
+            _versionNumber = _confluenceProvider.GetNewPageVersion(_pageId);
         }
 
         [When(@"I update the current status")]

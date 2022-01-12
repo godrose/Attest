@@ -4,25 +4,43 @@ using System.Text;
 using Attest.Testing.Atlassian.Models;
 using Attest.Testing.Execution;
 using Attest.Testing.Execution.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Attest.Testing.Atlassian
 {
-    public class ConfluenceContentsFactory
+    public sealed class ConfluenceContentsFactory
     {
-        public const string JiraUserStoryPrefix = "BDD-";
-        public const string UserStoryTag = "@" + JiraUserStoryPrefix;
+        private const string JiraIssueSeparator = "-";
+        private const string TagPrefix = "@";
+        private readonly ConfluenceProvider _confluenceProvider;
+        private readonly JiraProvider _jiraProvider;
         private readonly ISpecsInfo _specsInfo;
+        private readonly string _jiraIssuePrefix;
+        private readonly string _userStoryTag;
+        private readonly string _baseUrl;
 
-        public ConfluenceContentsFactory(ISpecsInfo specsInfo)
+        public ConfluenceContentsFactory(
+            ConfluenceProvider confluenceProvider,
+            JiraProvider jiraProvider,
+            IConfiguration configuration,
+            ISpecsInfo specsInfo)
         {
+            _confluenceProvider = confluenceProvider;
+            _jiraProvider = jiraProvider;
             _specsInfo = specsInfo;
+            var atlassianSection = configuration.GetSection("Atlassian");
+            _jiraIssuePrefix = atlassianSection.GetSection("Jira").GetSection("IssuePrefix").Value
+                               + JiraIssueSeparator;
+            _userStoryTag = TagPrefix + _jiraIssuePrefix;
+            _baseUrl = atlassianSection.GetSection("BaseUrl").Value;
         }
 
         public IEnumerable<object> BuildContents(int pageId, string env)
         {
             foreach (var node in _specsInfo.FeatureData.Nodes)
             foreach (var folder in node.Folders)
-                yield return BuildContent(pageId, _specsInfo.TestExecution.ExecutionResults, folder, _specsInfo.TestExecution.ExecutionTime, env);
+                yield return BuildContent(pageId, _specsInfo.TestExecution.ExecutionResults, folder,
+                    _specsInfo.TestExecution.ExecutionTime, env);
         }
 
         private object BuildContent(
@@ -32,7 +50,6 @@ namespace Attest.Testing.Atlassian
             DateTime executionTime,
             string env)
         {
-            var workflowHelper = new WorkflowHelper();
             var scenarioRows = new List<string>();
 
             foreach (var fold in folder.Folders)
@@ -43,16 +60,16 @@ namespace Attest.Testing.Atlassian
                         if (scenario.Title == result.ScenarioTitle)
                         {
                             var ticket = ExtractTicket(scenario.Tags);
-                            var issue = GetTicket(scenario.Tags);
+                            var issue = GetIssueIdFromTags(scenario.Tags);
                             if (issue != default)
-                                if (workflowHelper.IsIssueIncludedInTheCurrentSprint(issue))
+                                if (_jiraProvider.IsIssueIncludedInTheCurrentSprint(issue))
                                 {
                                     var scenarioRow = BuildScenarioRow(executionResults, scenario.Title, ticket);
                                     scenarioRows.Add(scenarioRow);
                                 }
                         }
 
-            var versionNumber = workflowHelper.GetNewPageVersion(pageId);
+            var versionNumber = _confluenceProvider.GetNewPageVersion(pageId);
             if (scenarioRows.Count > 0)
             {
                 var confluenceTable = BuildConfluenceTable(scenarioRows, versionNumber, executionTime, env);
@@ -80,8 +97,8 @@ namespace Attest.Testing.Atlassian
         }
 
         private CRoot BuildConfluenceTable(
-            IEnumerable<string> scenarioRows, 
-            int versionNumber, 
+            IEnumerable<string> scenarioRows,
+            int versionNumber,
             DateTime executionTime,
             string env)
         {
@@ -95,10 +112,7 @@ namespace Attest.Testing.Atlassian
             var sb = new StringBuilder();
             sb.AppendLine(tableParameters);
             sb.AppendLine(tableHeader);
-            foreach (var scenario in scenarioRows)
-            {
-                sb.AppendLine(scenario);
-            }
+            foreach (var scenario in scenarioRows) sb.AppendLine(scenario);
             sb.AppendLine(EndTable);
             sb.AppendLine(comment);
 
@@ -117,28 +131,28 @@ namespace Attest.Testing.Atlassian
             return root;
         }
 
-        private int GetTicket(List<string> tags)
+        private int GetIssueIdFromTags(List<string> tags)
         {
-            var ticket = default(int);
-            foreach (var tag in tags) 
-                if (tag.StartsWith(UserStoryTag))
+            var issueId = default(int);
+            foreach (var tag in tags)
+                if (tag.StartsWith(_userStoryTag))
                 {
-                    ticket = GetTicketFromTag(tag);
-                    return ticket;
+                    issueId = GetIssueIdFromTag(tag);
+                    return issueId;
                 }
 
-            return ticket;
+            return issueId;
         }
 
         private string ExtractTicket(List<string> tags)
         {
             var renderedIssue = string.Empty;
             foreach (var tag in tags)
-                if (tag.StartsWith(UserStoryTag))
+                if (tag.StartsWith(_userStoryTag))
                 {
-                    var ticket = GetTicketFromTag(tag);
+                    var issueId = GetIssueIdFromTag(tag);
                     renderedIssue =
-                        $"<ac:structured-macro  ac:name=\"jira\"  ac:schema-version=\"1\" ac:macro-id=\"ce876bed-eeb4-4592-9255-a3a216c1d507\">  <ac:parameter ac:name=\"server\">System JIRA</ac:parameter> <ac:parameter ac:name=\"serverId\">https://godrose.atlassian.net/</ac:parameter> <ac:parameter ac:name=\"key\">{JiraUserStoryPrefix}{ticket}</ac:parameter></ac:structured-macro>";
+                        $"<ac:structured-macro  ac:name=\"jira\"  ac:schema-version=\"1\" ac:macro-id=\"ce876bed-eeb4-4592-9255-a3a216c1d507\">  <ac:parameter ac:name=\"server\">System JIRA</ac:parameter> <ac:parameter ac:name=\"serverId\">{_baseUrl}</ac:parameter> <ac:parameter ac:name=\"key\">{_jiraIssuePrefix}{issueId}</ac:parameter></ac:structured-macro>";
                 }
                 else
                 {
@@ -148,9 +162,9 @@ namespace Attest.Testing.Atlassian
             return renderedIssue;
         }
 
-        private int GetTicketFromTag(string tag)
+        private int GetIssueIdFromTag(string tag)
         {
-            return int.Parse(tag.Substring(UserStoryTag.Length));
+            return int.Parse(tag.Substring(_userStoryTag.Length));
         }
     }
 }

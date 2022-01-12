@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FSharp.Data" Version="4.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.13.0" />
   </ItemGroup>
@@ -15,6 +16,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Attest.Testing.Atlassian\Attest.Testing.Atlassian.csproj" />
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

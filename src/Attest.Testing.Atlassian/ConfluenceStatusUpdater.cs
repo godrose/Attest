@@ -2,17 +2,17 @@
 
 namespace Attest.Testing.Atlassian
 {
-    public class ConfluenceStatusUpdater
+    public sealed class ConfluenceStatusUpdater
     {
         private readonly ConfluenceContentsFactory _confluenceContentsFactory;
-        private readonly WorkflowHelper _workflowHelper;
+        private readonly ConfluenceProvider _confluenceProvider;
 
         public ConfluenceStatusUpdater(
             ConfluenceContentsFactory confluenceContentsFactory,
-            WorkflowHelper workflowHelper)
+            ConfluenceProvider confluenceProvider)
         {
             _confluenceContentsFactory = confluenceContentsFactory;
-            _workflowHelper = workflowHelper;
+            _confluenceProvider = confluenceProvider;
         }
 
         public void UpdateFromReport(int pageId)
@@ -24,7 +24,7 @@ namespace Attest.Testing.Atlassian
 
             foreach (var content in contents)
             {
-                _workflowHelper.UpdatePage(pageId, content);
+                _confluenceProvider.UpdatePage(pageId, content);
             }
         }
     }

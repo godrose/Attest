@@ -3,17 +3,17 @@ namespace Attest.Testing.Atlassian.Specs
     [Binding]
     public class TheUserShouldBeAbleToConnectToJiraSteps
     {
-        private readonly WorkflowHelper _workflowHelper;
+        private readonly JiraProvider _jiraProvider;
         private int _ticketId;
         private bool _result;
 
-        public TheUserShouldBeAbleToConnectToJiraSteps(WorkflowHelper workflowHelper)
+        public TheUserShouldBeAbleToConnectToJiraSteps(JiraProvider jiraProvider)
         {
-            _workflowHelper = workflowHelper;
+            _jiraProvider = jiraProvider;
         }
 
         [Given(@"There is an account in Jira")]
-        public void GivenThereIsAnAccountInJIRA()
+        public void GivenThereIsAnAccountInJira()
         {
            //for readability
         }
@@ -27,7 +27,7 @@ namespace Attest.Testing.Atlassian.Specs
         [When(@"The user wants to find out whether this ticket belongs to the current sprint")]
         public void WhenTheUserWantsToFindOutWhetherThisTicketBelongsToTheCurrentSprint()
         {
-            _result = _workflowHelper.IsIssueIncludedInTheCurrentSprint(_ticketId);
+            _result = _jiraProvider.IsIssueIncludedInTheCurrentSprint(_ticketId);
         }
 
         [Then(@"The result is positive")]

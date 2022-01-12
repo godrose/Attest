@@ -1,5 +1,7 @@
 ﻿using Attest.Testing.Execution;
 using BoDi;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Json;
 
 namespace Attest.Testing.Atlassian.Specs
 {
@@ -16,11 +18,16 @@ namespace Attest.Testing.Atlassian.Specs
         [BeforeScenario]
         public void RegisterDependencies()
         {
-            _container.RegisterTypeAs<WorkflowHelper, WorkflowHelper>();
+            //TODO: Split registration into Modules
+            var configuration = new ConfigurationBuilder().Add(new JsonConfigurationSource
+            {
+                Path = "./appsettings.json"
+            }).Build();
+            _container.RegisterInstanceAs<IConfiguration>(configuration);
+            _container.RegisterTypeAs<ConfluenceProvider, ConfluenceProvider>();
             _container.RegisterTypeAs<ConfluenceContentsFactory, ConfluenceContentsFactory>();
             _container.RegisterTypeAs<ConfluenceStatusUpdater, ConfluenceStatusUpdater>();
             _container.RegisterTypeAs<FileSystemSpecsInfo, ISpecsInfo>();
-            _container.RegisterTypeAs<RestClientFactory, RestClientFactory>();
         }
     }
 }

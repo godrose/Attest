@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -8,13 +9,15 @@ namespace Attest.Testing.Atlassian
 {
     public class RestClientFactory
     {
+        private readonly IConfiguration _configuration;
+
         //TODO: Put into config
-        private const string JiraUrl = "https://godrose.atlassian.net/";
         private readonly string User;
         private readonly string Secret;
 
-        public RestClientFactory()
+        public RestClientFactory(IConfiguration configuration)
         {
+            _configuration = configuration;
             var file = "secret.json";
             if (File.Exists(file))
             {
@@ -28,7 +31,8 @@ namespace Attest.Testing.Atlassian
 
         public RestClient CreateRestClient()
         {
-            var restClient = new RestClient(JiraUrl)
+            var baseUrl = _configuration.GetSection("Atlassian").GetSection("BaseUrl").Value;
+            var restClient = new RestClient(baseUrl)
             {
                 Authenticator = new HttpBasicAuthenticator(User, Secret)
             };
