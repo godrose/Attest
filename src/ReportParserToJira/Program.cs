@@ -24,7 +24,7 @@ namespace ReportParserToJira
                 jiraProvider,
                 atlassianConfigurationProvider,
                 atlassianApiHelper,
-                new ReportConfigurationProvider(configuration),
+                new IssueTagParser(new ReportConfigurationProvider(configuration)),
                 new FileSystemSpecsInfo());
             var contents = confluenceContentsFactory.BuildContents(
                     pageId,

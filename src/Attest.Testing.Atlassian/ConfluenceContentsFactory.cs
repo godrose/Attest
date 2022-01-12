@@ -9,12 +9,11 @@ namespace Attest.Testing.Atlassian
 {
     public sealed class ConfluenceContentsFactory
     {
-        private const string TagPrefix = "@";
         private readonly ConfluenceProvider _confluenceProvider;
         private readonly JiraProvider _jiraProvider;
         private readonly AtlassianApiHelper _atlassianApiHelper;
+        private readonly IssueTagParser _issueTagParser;
         private readonly ISpecsInfo _specsInfo;
-        private readonly string _issueTag;
         private readonly string _baseUrl;
 
         public ConfluenceContentsFactory(
@@ -22,16 +21,14 @@ namespace Attest.Testing.Atlassian
             JiraProvider jiraProvider,
             AtlassianConfigurationProvider atlassianConfigurationProvider,
             AtlassianApiHelper atlassianApiHelper,
-            ReportConfigurationProvider reportConfigurationProvider,
+            IssueTagParser issueTagParser,
             ISpecsInfo specsInfo)
         {
             _confluenceProvider = confluenceProvider;
             _jiraProvider = jiraProvider;
             _atlassianApiHelper = atlassianApiHelper;
+            _issueTagParser = issueTagParser;
             _specsInfo = specsInfo;
-            ResolveValue(out var tagIssueSeparator, reportConfigurationProvider.TagIssueSeparator, Consts.DefaultTagIssueSeparator);
-            ResolveValue(out var tagIssuePrefix, reportConfigurationProvider.TagIssuePrefix, Consts.DefaultTagIssuePrefix);
-            _issueTag = TagPrefix + tagIssuePrefix + tagIssueSeparator;
             _baseUrl = atlassianConfigurationProvider.BaseUrl;
         }
 
@@ -59,19 +56,19 @@ namespace Attest.Testing.Atlassian
                     foreach (var scenario in feature.ScenarioDefinitions)
                         if (scenario.Title == result.ScenarioTitle)
                         {
-                            var ticket = ExtractTicket(scenario.Tags);
-                            var issue = GetIssueIdFromTags(scenario.Tags);
-                            if (issue != default)
-                                if (_jiraProvider.IsIssueIncludedInTheCurrentSprint(issue))
+                            var issueId = _issueTagParser.GetIssueIdFromTags(scenario.Tags);
+                            if (issueId != IssueTagParser.DefaultIssueId)
+                                if (_jiraProvider.IsIssueIncludedInTheCurrentSprint(issueId))
                                 {
-                                    var scenarioRow = BuildScenarioRow(executionResults, scenario.Title, ticket);
+                                    var issueLink = BuildIssueLink(issueId); 
+                                    var scenarioRow = BuildScenarioRow(executionResults, scenario.Title, issueLink);
                                     scenarioRows.Add(scenarioRow);
                                 }
                         }
 
-            var versionNumber = _confluenceProvider.GetNewPageVersion(pageId);
             if (scenarioRows.Count > 0)
             {
+                var versionNumber = _confluenceProvider.GetNewPageVersion(pageId);
                 var confluenceTable = BuildConfluenceTable(scenarioRows, versionNumber, executionTime, env);
                 return confluenceTable;
             }
@@ -131,50 +128,18 @@ namespace Attest.Testing.Atlassian
             return root;
         }
 
-        private int GetIssueIdFromTags(List<string> tags)
-        {
-            var issueId = default(int);
-            foreach (var tag in tags)
-                if (tag.StartsWith(_issueTag))
-                {
-                    issueId = GetIssueIdFromTag(tag);
-                    return issueId;
-                }
-
-            return issueId;
-        }
-
-        private string ExtractTicket(List<string> tags)
+        private string BuildIssueLink(int issueId)
         {
             var renderedIssue = string.Empty;
-            foreach (var tag in tags)
-                if (tag.StartsWith(_issueTag))
-                {
-                    var issueId = GetIssueIdFromTag(tag);
-                    var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
-                    renderedIssue =
-                        $"<ac:structured-macro  ac:name=\"jira\"  ac:schema-version=\"1\" ac:macro-id=\"ce876bed-eeb4-4592-9255-a3a216c1d507\">  <ac:parameter ac:name=\"server\">System JIRA</ac:parameter> <ac:parameter ac:name=\"serverId\">{_baseUrl}</ac:parameter> <ac:parameter ac:name=\"key\">{issueResourceId}</ac:parameter></ac:structured-macro>";
-                }
-                else
-                {
-                    renderedIssue = string.Empty;
-                }
+            if (issueId != IssueTagParser.DefaultIssueId)
+            {
+                var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
+                renderedIssue =
+                    $"<ac:structured-macro  ac:name=\"jira\"  ac:schema-version=\"1\" ac:macro-id=\"ce876bed-eeb4-4592-9255-a3a216c1d507\">  <ac:parameter ac:name=\"server\">System JIRA</ac:parameter> <ac:parameter ac:name=\"serverId\">{_baseUrl}</ac:parameter> <ac:parameter ac:name=\"key\">{issueResourceId}</ac:parameter></ac:structured-macro>";
+            }
 
             return renderedIssue;
         }
 
-        private int GetIssueIdFromTag(string tag)
-        {
-            return int.Parse(tag.Substring(_issueTag.Length));
-        }
-
-        private void ResolveValue(out string field, string value, string defaultValue)
-        {
-            field = value;
-            if (string.IsNullOrWhiteSpace(field))
-            {
-                field = defaultValue;
-            }
-        }
     }
 }
