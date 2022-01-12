@@ -10,13 +10,10 @@ namespace Attest.Testing.Atlassian
     public sealed class ConfluenceContentsFactory
     {
         private const string TagPrefix = "@";
-        private const string TagIssueSeparator = "-";
-        private const string TagIssuePrefix = "BDD";
         private readonly ConfluenceProvider _confluenceProvider;
         private readonly JiraProvider _jiraProvider;
         private readonly AtlassianApiHelper _atlassianApiHelper;
         private readonly ISpecsInfo _specsInfo;
-        private readonly string _jiraIssuePrefix;
         private readonly string _issueTag;
         private readonly string _baseUrl;
 
@@ -25,14 +22,16 @@ namespace Attest.Testing.Atlassian
             JiraProvider jiraProvider,
             AtlassianConfigurationProvider atlassianConfigurationProvider,
             AtlassianApiHelper atlassianApiHelper,
+            ReportConfigurationProvider reportConfigurationProvider,
             ISpecsInfo specsInfo)
         {
             _confluenceProvider = confluenceProvider;
             _jiraProvider = jiraProvider;
             _atlassianApiHelper = atlassianApiHelper;
             _specsInfo = specsInfo;
-            _jiraIssuePrefix = TagIssuePrefix + TagIssueSeparator;
-            _issueTag = TagPrefix + _jiraIssuePrefix;
+            ResolveValue(out var tagIssueSeparator, reportConfigurationProvider.TagIssueSeparator, Consts.DefaultTagIssueSeparator);
+            ResolveValue(out var tagIssuePrefix, reportConfigurationProvider.TagIssuePrefix, Consts.DefaultTagIssuePrefix);
+            _issueTag = TagPrefix + tagIssuePrefix + tagIssueSeparator;
             _baseUrl = atlassianConfigurationProvider.BaseUrl;
         }
 
@@ -167,6 +166,15 @@ namespace Attest.Testing.Atlassian
         private int GetIssueIdFromTag(string tag)
         {
             return int.Parse(tag.Substring(_issueTag.Length));
+        }
+
+        private void ResolveValue(out string field, string value, string defaultValue)
+        {
+            field = value;
+            if (string.IsNullOrWhiteSpace(field))
+            {
+                field = defaultValue;
+            }
         }
     }
 }

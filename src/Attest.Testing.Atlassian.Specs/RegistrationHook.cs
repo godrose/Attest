@@ -25,6 +25,7 @@ namespace Attest.Testing.Atlassian.Specs
             }).Build();
             _container.RegisterInstanceAs<IConfiguration>(configuration);
             _container.RegisterTypeAs<AtlassianConfigurationProvider, AtlassianConfigurationProvider>();
+            _container.RegisterTypeAs<ReportConfigurationProvider, ReportConfigurationProvider>();
             _container.RegisterTypeAs<ConfluenceProvider, ConfluenceProvider>();
             _container.RegisterTypeAs<ConfluenceContentsFactory, ConfluenceContentsFactory>();
             _container.RegisterTypeAs<ConfluenceStatusUpdater, ConfluenceStatusUpdater>();

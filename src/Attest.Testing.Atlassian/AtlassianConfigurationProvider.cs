@@ -11,13 +11,13 @@ namespace Attest.Testing.Atlassian
             _configuration = configuration;
         }
 
-        public string BaseUrl => GetAtlassianSection().GetSection("BaseUrl").Value;
+        public string BaseUrl => GetAtlassianSection().GetSection(nameof(BaseUrl)).Value;
 
         public string IssuePrefix =>
-            GetAtlassianSection().GetSection("Jira").GetSection("IssuePrefix").Value;
+            GetAtlassianSection().GetSection("Jira").GetSection(nameof(IssuePrefix)).Value;
 
         public int StatusPageId => int.Parse(GetAtlassianSection().GetSection("Confluence")
-            .GetSection("StatusPageId").Value);
+            .GetSection(nameof(StatusPageId)).Value);
 
         private IConfigurationSection GetAtlassianSection()
         {
