@@ -1,5 +1,3 @@
-using Microsoft.Extensions.Configuration;
-
 namespace Attest.Testing.Atlassian.Specs
 {
     [Binding]
@@ -8,24 +6,24 @@ namespace Attest.Testing.Atlassian.Specs
         private int _pageId;
         private readonly ConfluenceProvider _confluenceProvider;
         private readonly ConfluenceStatusUpdater _confluenceStatusUpdater;
-        private readonly IConfiguration _configuration;
+        private readonly AtlassianConfigurationProvider _atlassianConfigurationProvider;
         private int _versionNumber;
 
         public TheUserShouldBeAbleToConnectToConfluenceSteps(
             ConfluenceProvider confluenceProvider,
             ConfluenceStatusUpdater confluenceStatusUpdater,
-            IConfiguration configuration)
+            AtlassianConfigurationProvider atlassianConfigurationProvider)
         {
             _confluenceProvider = confluenceProvider;
             _confluenceStatusUpdater = confluenceStatusUpdater;
-            _configuration = configuration;
+            _atlassianConfigurationProvider = atlassianConfigurationProvider;
         }
 
         [Given(@"There is a page which holds the current status content")]
         public void GivenThereIsAPageWhichHoldsTheCurrentStatusContent()
         {
             //for readability
-            _pageId = int.Parse(_configuration.GetSection("Atlassian").GetSection("Confluence").GetSection("StatusPageId").Value);
+            _pageId = _atlassianConfigurationProvider.StatusPageId;
         }
 
         [When(@"I get the page")]
