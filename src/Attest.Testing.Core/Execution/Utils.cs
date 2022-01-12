@@ -5,9 +5,9 @@ using System.Linq;
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Common
 {
-    public static class Utils
+    static class Utils
     {
-        public static string GetPathToSolutionRoot()
+        internal static string GetPathToSolutionRoot()
         {
             var dirPath = AppDomain.CurrentDomain.BaseDirectory;
             while (!Directory.GetFiles(dirPath, "*.sln", SearchOption.TopDirectoryOnly).Any())

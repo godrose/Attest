@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Attest.Testing.Atlassian.Models;
+using Attest.Testing.Execution;
+using Attest.Testing.Execution.Models;
 
 namespace Attest.Testing.Atlassian
 {
@@ -45,8 +47,8 @@ namespace Attest.Testing.Atlassian
                             if (issue != default)
                                 if (workflowHelper.IsCurrentSprint(issue))
                                 {
-                                    var Scenario = AddScenarioRows(executionResults, scenario.Title, ticket);
-                                    scenarioRows.Add(Scenario);
+                                    var scenarioRow = BuildScenarioRow(executionResults, scenario.Title, ticket);
+                                    scenarioRows.Add(scenarioRow);
                                 }
                         }
 
@@ -60,7 +62,7 @@ namespace Attest.Testing.Atlassian
             return null;
         }
 
-        private string AddScenarioRows(IEnumerable<ExecutionResult> results, string ScenarioTitle, string ticket)
+        private string BuildScenarioRow(IEnumerable<ExecutionResult> results, string ScenarioTitle, string ticket)
         {
             var scenarioRow = string.Empty;
             foreach (var result in results)

@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using Attest.Testing.Atlassian.Models;
 using Attest.Testing.Common;
+using Attest.Testing.Execution.Models;
 using Newtonsoft.Json;
 
-namespace Attest.Testing.Atlassian
+namespace Attest.Testing.Execution
 {
     public class FileSystemSpecsInfo : ISpecsInfo
     {

@@ -1,6 +1,6 @@
-﻿using Attest.Testing.Atlassian.Models;
+﻿using Attest.Testing.Execution.Models;
 
-namespace Attest.Testing.Atlassian
+namespace Attest.Testing.Execution
 {
     public interface ISpecsInfo
     {

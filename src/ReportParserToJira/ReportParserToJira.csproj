@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Attest.Testing.Atlassian\Attest.Testing.Atlassian.csproj" />
+    <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
   </ItemGroup>
 
 </Project>

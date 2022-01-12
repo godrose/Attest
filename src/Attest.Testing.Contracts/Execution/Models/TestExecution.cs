@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Attest.Testing.Atlassian.Models
+namespace Attest.Testing.Execution.Models
 {
     public class StepResult
     {

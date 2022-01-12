@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Attest.Testing.Contracts\Attest.Testing.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="secret.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
