@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Attest.Testing.Atlassian.Models
 {
-    public class Attrs
+    internal class Attrs
     {
         [JsonProperty("isNumberColumnEnabled")]
         public bool IsNumberColumnEnabled { get; set; }
@@ -12,8 +12,7 @@ namespace Attest.Testing.Atlassian.Models
         public string Layout { get; set; }
     }
 
-
-    public class Content
+    internal class Content
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -23,7 +22,7 @@ namespace Attest.Testing.Atlassian.Models
 
     }
 
-    public class JiraTable
+    internal class JiraTable
     {
         [JsonProperty("type")]
         public string Type = "table";
@@ -35,7 +34,7 @@ namespace Attest.Testing.Atlassian.Models
         public List<JiraTableRow> table { get; set; } = new List<JiraTableRow>();
     }
 
-    public class CellContent
+    internal class CellContent
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -45,7 +44,7 @@ namespace Attest.Testing.Atlassian.Models
 
     }
 
-    public class JiraCell
+    internal class JiraCell
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -55,7 +54,7 @@ namespace Attest.Testing.Atlassian.Models
 
     }
 
-    public class JiraTableRow
+    internal class JiraTableRow
     {
         [JsonProperty("type")]
         public string Type = "tableRow";
@@ -65,7 +64,7 @@ namespace Attest.Testing.Atlassian.Models
 
     }
 
-    public class Body
+    internal class Body
     {
         [JsonProperty("version")]
         public int Version = 1;
@@ -77,13 +76,13 @@ namespace Attest.Testing.Atlassian.Models
         public List<JiraTable> Content { get; set; } = new List<JiraTable>();
     }
 
-    public class Root
+    internal class Root
     {
         [JsonProperty("body")]
         public Body Body { get; set; }
     }
 
-    public class Comment
+    internal class Comment
     {
         [JsonProperty("type")]
         public string type = "paragraph";

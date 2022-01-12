@@ -2,13 +2,13 @@
 
 namespace Attest.Testing.Atlassian.Models
 {
-    public class CVersion
+    internal class CVersion
     {
         [JsonProperty("number")]
         public int Number { get; set; }
     }
 
-    public class Storage
+    internal class Storage
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -17,13 +17,13 @@ namespace Attest.Testing.Atlassian.Models
         public string Representation { get; set; }
     }
 
-    public class CBody
+    internal class CBody
     {
         [JsonProperty("storage")]
         public Storage Storage { get; set; }
     }
 
-    public class CRoot
+    internal class CRoot
     {
         [JsonProperty("version")]
         public CVersion version { get; set; }

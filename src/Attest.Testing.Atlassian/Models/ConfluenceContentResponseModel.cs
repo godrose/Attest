@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Attest.Testing.Atlassian.Models
 {
-    public class Expandable
+    internal class Expandable
     {
         [JsonProperty("settings")]
         public string Settings { get; set; }
@@ -108,7 +108,7 @@ namespace Attest.Testing.Atlassian.Models
         public string Base { get; set; }
     }
 
-    public class Space
+    internal class Space
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -147,7 +147,7 @@ namespace Attest.Testing.Atlassian.Models
         public bool IsDefault { get; set; }
     }
 
-    public class CreatedBy
+    internal class CreatedBy
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -180,7 +180,7 @@ namespace Attest.Testing.Atlassian.Models
         public Links Links { get; set; }
     }
 
-    public class History
+    internal class History
     {
         [JsonProperty("latest")]
         public bool Latest { get; set; }
@@ -198,7 +198,7 @@ namespace Attest.Testing.Atlassian.Models
         public Links Links { get; set; }
     }
 
-    public class By
+    internal class By
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -231,7 +231,7 @@ namespace Attest.Testing.Atlassian.Models
         public Links Links { get; set; }
     }
 
-    public class Version
+    internal class Version
     {
         [JsonProperty("by")]
         public By By { get; set; }
@@ -280,7 +280,7 @@ namespace Attest.Testing.Atlassian.Models
         public int Position { get; set; }
     }
 
-    public class ConfluenceContentResponseModel
+    internal class ConfluenceContentResponseModel
     {
         [JsonProperty("id")]
         public string Id { get; set; }
