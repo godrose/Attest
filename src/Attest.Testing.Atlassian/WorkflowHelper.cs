@@ -18,10 +18,10 @@ namespace Attest.Testing.Atlassian
             _restClientFactory = new RestClientFactory();
         }
 
-        public bool IsCurrentSprint(int ticket)
+        public bool IsIssueIncludedInTheCurrentSprint(int issueId)
         {
             var restClient = _restClientFactory.CreateRestClient();
-            var request = new RestRequest($"rest/api/3/issue/BDD-{ticket}", Method.GET);
+            var request = new RestRequest($"rest/api/3/issue/BDD-{issueId}", Method.GET);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");
             var response = restClient.Execute(request); 
@@ -48,7 +48,7 @@ namespace Attest.Testing.Atlassian
             return false;
         }
 
-        public int SendContentGetRequest(int pageId)
+        public int GetNewPageVersion(int pageId)
         {
             var client = _restClientFactory.CreateRestClient();
             var request = new RestRequest($"wiki/rest/api/content/{pageId}/", Method.GET);
@@ -60,7 +60,7 @@ namespace Attest.Testing.Atlassian
             return newVersion;
         }
 
-        public void SendPostRequest(int pageId, object body)
+        public void UpdatePage(int pageId, object body)
         {
             RestClient client = _restClientFactory.CreateRestClient();
             RestRequest request = new RestRequest($"wiki/rest/api/content/{pageId}/", Method.PUT);

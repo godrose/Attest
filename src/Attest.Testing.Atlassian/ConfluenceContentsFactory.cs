@@ -45,14 +45,14 @@ namespace Attest.Testing.Atlassian
                             var ticket = ExtractTicket(scenario.Tags);
                             var issue = GetTicket(scenario.Tags);
                             if (issue != default)
-                                if (workflowHelper.IsCurrentSprint(issue))
+                                if (workflowHelper.IsIssueIncludedInTheCurrentSprint(issue))
                                 {
                                     var scenarioRow = BuildScenarioRow(executionResults, scenario.Title, ticket);
                                     scenarioRows.Add(scenarioRow);
                                 }
                         }
 
-            var versionNumber = workflowHelper.SendContentGetRequest(pageId);
+            var versionNumber = workflowHelper.GetNewPageVersion(pageId);
             if (scenarioRows.Count > 0)
             {
                 var confluenceTable = BuildConfluenceTable(scenarioRows, versionNumber, executionTime, env);

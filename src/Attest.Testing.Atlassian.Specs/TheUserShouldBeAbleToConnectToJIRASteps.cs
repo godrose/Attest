@@ -27,7 +27,7 @@ namespace Attest.Testing.Atlassian.Specs
         [When(@"The user wants to find out whether this ticket belongs to the current sprint")]
         public void WhenTheUserWantsToFindOutWhetherThisTicketBelongsToTheCurrentSprint()
         {
-            _result = _workflowHelper.IsCurrentSprint(_ticketId);
+            _result = _workflowHelper.IsIssueIncludedInTheCurrentSprint(_ticketId);
         }
 
         [Then(@"The result is positive")]

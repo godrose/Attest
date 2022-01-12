@@ -24,7 +24,7 @@ namespace Attest.Testing.Atlassian
 
             foreach (var content in contents)
             {
-                _workflowHelper.SendPostRequest(pageId, content);
+                _workflowHelper.UpdatePage(pageId, content);
             }
         }
     }

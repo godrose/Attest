@@ -27,7 +27,7 @@ namespace Attest.Testing.Atlassian.Specs
         [When(@"I get the page")]
         public void WhenIGetThePage()
         {
-            _versionNumber = _workflowHelper.SendContentGetRequest(_pageId);
+            _versionNumber = _workflowHelper.GetNewPageVersion(_pageId);
         }
 
         [When(@"I update the current status")]

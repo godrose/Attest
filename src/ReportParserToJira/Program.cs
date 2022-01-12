@@ -18,7 +18,7 @@ namespace ReportParserToJira
 
             foreach (var content in contents)
             {
-                workflowHelper.SendPostRequest(pageId, content);
+                workflowHelper.UpdatePage(pageId, content);
             }
         }
     }
