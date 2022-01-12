@@ -1,7 +1,7 @@
 namespace Attest.Testing.Atlassian.Specs
 {
     [Binding]
-    public class TheUserShouldBeAbleToConnectToConfluenceSteps
+    public class ConfluenceSteps
     {
         private int _pageId;
         private readonly ConfluenceProvider _confluenceProvider;
@@ -9,7 +9,7 @@ namespace Attest.Testing.Atlassian.Specs
         private readonly AtlassianConfigurationProvider _atlassianConfigurationProvider;
         private int _versionNumber;
 
-        public TheUserShouldBeAbleToConnectToConfluenceSteps(
+        public ConfluenceSteps(
             ConfluenceProvider confluenceProvider,
             ConfluenceStatusUpdater confluenceStatusUpdater,
             AtlassianConfigurationProvider atlassianConfigurationProvider)

@@ -1,21 +1,15 @@
 namespace Attest.Testing.Atlassian.Specs
 {
     [Binding]
-    public class TheUserShouldBeAbleToConnectToJiraSteps
+    public class JiraSteps
     {
         private readonly JiraProvider _jiraProvider;
         private int _ticketId;
         private bool _result;
 
-        public TheUserShouldBeAbleToConnectToJiraSteps(JiraProvider jiraProvider)
+        public JiraSteps(JiraProvider jiraProvider)
         {
             _jiraProvider = jiraProvider;
-        }
-
-        [Given(@"There is an account in Jira")]
-        public void GivenThereIsAnAccountInJira()
-        {
-           //for readability
         }
 
         [Given(@"There is a ticket with id (.*) which belongs to the current sprint")]
