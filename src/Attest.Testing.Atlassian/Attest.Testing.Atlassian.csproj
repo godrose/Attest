@@ -20,6 +20,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Attest.Testing.Contracts\Attest.Testing.Contracts.csproj" />
+		<ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

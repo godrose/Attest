@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace Attest.Testing.Atlassian
+namespace Attest.Testing.Reporting
 {
     public class ReportConfigurationProvider
     {

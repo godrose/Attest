@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Attest.Testing.Atlassian
+namespace Attest.Testing.Reporting
 {
     public class IssueTagParser
     {
-        internal const int DefaultIssueId = default;
+        public const int DefaultIssueId = default;
         private const string TagPrefix = "@";
         private readonly string _issueTag;
 

@@ -1,9 +1,10 @@
 ﻿using System.IO;
 using Attest.Testing.Common;
+using Attest.Testing.Execution;
 using Attest.Testing.Execution.Models;
 using Newtonsoft.Json;
 
-namespace Attest.Testing.Execution
+namespace Attest.Testing.Reporting
 {
     public class FileSystemSpecsInfo : ISpecsInfo
     {

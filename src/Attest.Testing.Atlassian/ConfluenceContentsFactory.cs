@@ -4,6 +4,7 @@ using System.Text;
 using Attest.Testing.Atlassian.Models;
 using Attest.Testing.Execution;
 using Attest.Testing.Execution.Models;
+using Attest.Testing.Reporting;
 
 namespace Attest.Testing.Atlassian
 {

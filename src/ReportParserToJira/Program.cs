@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Attest.Testing.Atlassian;
-using Attest.Testing.Execution;
+using Attest.Testing.Reporting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 

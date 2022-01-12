@@ -1,4 +1,5 @@
 ﻿using Attest.Testing.Execution;
+using Attest.Testing.Reporting;
 using BoDi;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
