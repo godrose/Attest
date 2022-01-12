@@ -1,6 +1,5 @@
 ﻿using System;
 using Attest.Testing.Atlassian.Models;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -10,9 +9,9 @@ namespace Attest.Testing.Atlassian
     {
         private readonly RestClientFactory _restClientFactory;
 
-        public ConfluenceProvider(IConfiguration configuration)
+        public ConfluenceProvider(AtlassianConfigurationProvider atlassianConfigurationProvider)
         {
-            _restClientFactory = new RestClientFactory(configuration);
+            _restClientFactory = new RestClientFactory(atlassianConfigurationProvider);
         }
 
         public int GetNewPageVersion(int pageId)

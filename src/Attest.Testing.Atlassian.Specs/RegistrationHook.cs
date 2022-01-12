@@ -24,6 +24,7 @@ namespace Attest.Testing.Atlassian.Specs
                 Path = "./appsettings.json"
             }).Build();
             _container.RegisterInstanceAs<IConfiguration>(configuration);
+            _container.RegisterTypeAs<AtlassianConfigurationProvider, AtlassianConfigurationProvider>();
             _container.RegisterTypeAs<ConfluenceProvider, ConfluenceProvider>();
             _container.RegisterTypeAs<ConfluenceContentsFactory, ConfluenceContentsFactory>();
             _container.RegisterTypeAs<ConfluenceStatusUpdater, ConfluenceStatusUpdater>();

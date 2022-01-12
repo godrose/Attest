@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -9,15 +8,15 @@ namespace Attest.Testing.Atlassian
 {
     public class RestClientFactory
     {
-        private readonly IConfiguration _configuration;
+        private readonly AtlassianConfigurationProvider _atlassianConfigurationProvider;
 
         //TODO: Put into config
         private readonly string User;
         private readonly string Secret;
 
-        public RestClientFactory(IConfiguration configuration)
+        public RestClientFactory(AtlassianConfigurationProvider atlassianConfigurationProvider)
         {
-            _configuration = configuration;
+            _atlassianConfigurationProvider = atlassianConfigurationProvider;
             var file = "secret.json";
             if (File.Exists(file))
             {
@@ -31,7 +30,7 @@ namespace Attest.Testing.Atlassian
 
         public RestClient CreateRestClient()
         {
-            var baseUrl = _configuration.GetSection("Atlassian").GetSection("BaseUrl").Value;
+            var baseUrl = _atlassianConfigurationProvider.BaseUrl;
             var restClient = new RestClient(baseUrl)
             {
                 Authenticator = new HttpBasicAuthenticator(User, Secret)

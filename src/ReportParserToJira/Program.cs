@@ -6,25 +6,28 @@ using Microsoft.Extensions.Configuration.Json;
 
 namespace ReportParserToJira
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var configuration = new ConfigurationBuilder().Add(new JsonConfigurationSource
             {
                 Path = "./appsettings.json"
             }).Build();
-            var confluenceProvider = new ConfluenceProvider(configuration);
-            var jiraProvider = new JiraProvider(configuration);
-            var pageId = int.Parse(configuration.GetSection("Atlassian").GetSection("Confluence").GetSection("StatusPageId").Value);
+            var atlassianConfigurationProvider = new AtlassianConfigurationProvider(configuration);
+            var confluenceProvider = new ConfluenceProvider(atlassianConfigurationProvider);
+            var atlassianApiHelper = new AtlassianApiHelper(atlassianConfigurationProvider);
+            var jiraProvider = new JiraProvider(atlassianConfigurationProvider, atlassianApiHelper);
+            var pageId = atlassianConfigurationProvider.StatusPageId;
             var confluenceContentsFactory = new ConfluenceContentsFactory(
                 confluenceProvider,
                 jiraProvider,
-                configuration, 
+                atlassianConfigurationProvider,
+                atlassianApiHelper,
                 new FileSystemSpecsInfo());
             var contents = confluenceContentsFactory.BuildContents(
-                pageId,
-                args.FirstOrDefault())
+                    pageId,
+                    args.FirstOrDefault())
                 .ToArray();
 
             foreach (var content in contents)

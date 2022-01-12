@@ -4,35 +4,36 @@ using System.Text;
 using Attest.Testing.Atlassian.Models;
 using Attest.Testing.Execution;
 using Attest.Testing.Execution.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace Attest.Testing.Atlassian
 {
     public sealed class ConfluenceContentsFactory
     {
-        private const string JiraIssueSeparator = "-";
         private const string TagPrefix = "@";
+        private const string TagIssueSeparator = "-";
+        private const string TagIssuePrefix = "BDD";
         private readonly ConfluenceProvider _confluenceProvider;
         private readonly JiraProvider _jiraProvider;
+        private readonly AtlassianApiHelper _atlassianApiHelper;
         private readonly ISpecsInfo _specsInfo;
         private readonly string _jiraIssuePrefix;
-        private readonly string _userStoryTag;
+        private readonly string _issueTag;
         private readonly string _baseUrl;
 
         public ConfluenceContentsFactory(
             ConfluenceProvider confluenceProvider,
             JiraProvider jiraProvider,
-            IConfiguration configuration,
+            AtlassianConfigurationProvider atlassianConfigurationProvider,
+            AtlassianApiHelper atlassianApiHelper,
             ISpecsInfo specsInfo)
         {
             _confluenceProvider = confluenceProvider;
             _jiraProvider = jiraProvider;
+            _atlassianApiHelper = atlassianApiHelper;
             _specsInfo = specsInfo;
-            var atlassianSection = configuration.GetSection("Atlassian");
-            _jiraIssuePrefix = atlassianSection.GetSection("Jira").GetSection("IssuePrefix").Value
-                               + JiraIssueSeparator;
-            _userStoryTag = TagPrefix + _jiraIssuePrefix;
-            _baseUrl = atlassianSection.GetSection("BaseUrl").Value;
+            _jiraIssuePrefix = TagIssuePrefix + TagIssueSeparator;
+            _issueTag = TagPrefix + _jiraIssuePrefix;
+            _baseUrl = atlassianConfigurationProvider.BaseUrl;
         }
 
         public IEnumerable<object> BuildContents(int pageId, string env)
@@ -135,7 +136,7 @@ namespace Attest.Testing.Atlassian
         {
             var issueId = default(int);
             foreach (var tag in tags)
-                if (tag.StartsWith(_userStoryTag))
+                if (tag.StartsWith(_issueTag))
                 {
                     issueId = GetIssueIdFromTag(tag);
                     return issueId;
@@ -148,11 +149,12 @@ namespace Attest.Testing.Atlassian
         {
             var renderedIssue = string.Empty;
             foreach (var tag in tags)
-                if (tag.StartsWith(_userStoryTag))
+                if (tag.StartsWith(_issueTag))
                 {
                     var issueId = GetIssueIdFromTag(tag);
+                    var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
                     renderedIssue =
-                        $"<ac:structured-macro  ac:name=\"jira\"  ac:schema-version=\"1\" ac:macro-id=\"ce876bed-eeb4-4592-9255-a3a216c1d507\">  <ac:parameter ac:name=\"server\">System JIRA</ac:parameter> <ac:parameter ac:name=\"serverId\">{_baseUrl}</ac:parameter> <ac:parameter ac:name=\"key\">{_jiraIssuePrefix}{issueId}</ac:parameter></ac:structured-macro>";
+                        $"<ac:structured-macro  ac:name=\"jira\"  ac:schema-version=\"1\" ac:macro-id=\"ce876bed-eeb4-4592-9255-a3a216c1d507\">  <ac:parameter ac:name=\"server\">System JIRA</ac:parameter> <ac:parameter ac:name=\"serverId\">{_baseUrl}</ac:parameter> <ac:parameter ac:name=\"key\">{issueResourceId}</ac:parameter></ac:structured-macro>";
                 }
                 else
                 {
@@ -164,7 +166,7 @@ namespace Attest.Testing.Atlassian
 
         private int GetIssueIdFromTag(string tag)
         {
-            return int.Parse(tag.Substring(_userStoryTag.Length));
+            return int.Parse(tag.Substring(_issueTag.Length));
         }
     }
 }
