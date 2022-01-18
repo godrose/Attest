@@ -21,7 +21,7 @@ namespace Attest.Testing.Atlassian.Specs
         public void WhenIUpdateTheUserStoryDescriptionFromTheCorrespondentFeatureFiles()
         {
             var specsSynchronizer = new SpecsSynchronizer(_jiraProvider);
-            specsSynchronizer.SyncDescription(_issueId);
+            specsSynchronizer.SyncDescriptionFromFilesToJira(_issueId);
         }
 
         [Then(@"The user story description is updated")]

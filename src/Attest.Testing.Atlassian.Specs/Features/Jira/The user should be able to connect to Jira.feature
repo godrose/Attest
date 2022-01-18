@@ -1,4 +1,9 @@
-﻿Feature: The user should be able to connect to Jira
+﻿@BDD-1
+Feature: The user should be able to connect to Jira
+
+In order to see clearer picture
+As a stakeholder
+I would like an option to filter issues easily
 
 @BDD-1
 Scenario: The user should be able to find out whether ticket belongs to the current sprint

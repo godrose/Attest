@@ -1,4 +1,5 @@
-﻿Feature: The user should be able to update issue description automatically
+﻿@BDD-
+Feature: The user should be able to update issue description automatically
 
 In order to have single source of truth
 As a product owner 

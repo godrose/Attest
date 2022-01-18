@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.Text;
-using Attest.Testing.Atlassian.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -119,7 +118,6 @@ namespace Attest.Testing.Atlassian
             var restClient = _restClientFactory.CreateRestClient();
             var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
             var currentDescription = @object["fields"]["description"];
-            var descObject = new Description(currentDescription["content"] as JArray);
             var request = new RestRequest($"rest/api/3/issue/{issueResourceId}", Method.PUT);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");
@@ -127,7 +125,7 @@ namespace Attest.Testing.Atlassian
             {
                 [0] =
                 {
-                    ["set"] = "Test Issue 1"
+                    ["set"] = "Test Issue"
                 }
             };
             var updateBody = new JObject(

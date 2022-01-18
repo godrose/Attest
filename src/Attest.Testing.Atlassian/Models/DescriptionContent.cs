@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 
 namespace Attest.Testing.Atlassian.Models
 {
-    public class Description
+    public class DescriptionContent
     {
-        private List<JToken> _beforeSpecs = new List<JToken>();
+        private readonly List<JToken> _beforeSpecs = new List<JToken>();
         private List<JToken> _specs = new List<JToken>();
 
-        public Description(JArray raw)
+        public DescriptionContent(JArray raw)
         {
             AnalyzeRaw(raw);
         }
@@ -53,6 +54,13 @@ namespace Attest.Testing.Atlassian.Models
                     }
                 }
             }
+        }
+
+        public List<JToken> GetAll()
+        {
+            return _beforeSpecs
+                //.Concat(Paragraph.TextToJiraParagraph("Specs:"))
+                .Concat(_specs).ToList();
         }
     }
 }

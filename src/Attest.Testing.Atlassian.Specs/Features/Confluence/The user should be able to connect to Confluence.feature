@@ -1,6 +1,9 @@
-﻿Feature: The user should be able to connect to Confluence
+﻿@BDD-1
+Feature: The user should be able to connect to Confluence
 
-A short summary of the feature
+In order to see the last project status
+As a stakeholder
+I would like the system to update the status automtically based on automated execution report
 
 @BDD-1
 Scenario: The user should be able to get a Confluence page version
