@@ -4,12 +4,12 @@ namespace Attest.Testing.Atlassian.Specs
     public class JiraSyncSteps
     {
         private readonly JiraProvider _jiraProvider;
-        private readonly DescriptionContentFactory _descriptionContentFactory;
+        private readonly DescriptionContentWithSpecsFactory _descriptionContentFactory;
         private int _issueId;
 
         public JiraSyncSteps(
             JiraProvider jiraProvider, 
-            DescriptionContentFactory descriptionContentFactory)
+            DescriptionContentWithSpecsFactory descriptionContentFactory)
         {
             _jiraProvider = jiraProvider;
             _descriptionContentFactory = descriptionContentFactory;
@@ -63,8 +63,10 @@ Given There is an Atlassian account
 And There is a page which holds the current status content
 When I update the current status
 Then The status is updated";
-            var description = _jiraProvider.GetIssueSpecsSection(_issueId);
-            description.Should().Be(expectedDescription);
+            var issue = _jiraProvider.GetIssue(_issueId);
+            var descriptionContentWithSpecs = _descriptionContentFactory.Create(issue);
+            var specsPresentation = descriptionContentWithSpecs.GetSpecsPresentation();
+            specsPresentation.Should().Be(expectedDescription);
         }
     }
 }

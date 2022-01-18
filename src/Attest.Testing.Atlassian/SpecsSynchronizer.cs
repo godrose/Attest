@@ -12,11 +12,11 @@ namespace Attest.Testing.Atlassian
     public class SpecsSynchronizer
     {
         private readonly JiraProvider _jiraProvider;
-        private readonly DescriptionContentFactory _descriptionContentFactory;
+        private readonly DescriptionContentWithSpecsFactory _descriptionContentFactory;
 
         public SpecsSynchronizer(
             JiraProvider jiraProvider, 
-            DescriptionContentFactory descriptionContentFactory
+            DescriptionContentWithSpecsFactory descriptionContentFactory
             )
         {
             _jiraProvider = jiraProvider;
@@ -64,7 +64,7 @@ namespace Attest.Testing.Atlassian
                 lines.RemoveAt(lines.Count-1);
             }
 
-            var issue = _jiraProvider.GetIssueRaw(issueId);
+            var issue = _jiraProvider.GetIssue(issueId);
             var descObject = _descriptionContentFactory.Create(issue);
             var specs = new List<JToken>();
             foreach (var line in lines)
@@ -83,10 +83,9 @@ namespace Attest.Testing.Atlassian
             }
             descObject.UpdateSpecs(specs);
             var content = new JArray(descObject.GetAll());
-            var descriptionRoot = issue["fields"]["description"] as JObject;
-            descriptionRoot["content"] = content;
+            issue.Description.Content = content;
 
-            _jiraProvider.UpdateIssueDescription(issueId, descriptionRoot);
+            _jiraProvider.UpdateIssueDescription(issueId, issue.Description);
         }
 
         

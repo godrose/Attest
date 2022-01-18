@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.Text;
 using Attest.Testing.Atlassian.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -13,16 +12,13 @@ namespace Attest.Testing.Atlassian
         private const string SprintsFieldId = "customfield_10020";
         private const string IsActive = "active";
         private readonly AtlassianApiHelper _atlassianApiHelper;
-        private readonly DescriptionContentFactory _descriptionContentFactory;
         private readonly RestClientFactory _restClientFactory;
 
         public JiraProvider(
             AtlassianConfigurationProvider atlassianConfigurationProvider,
-            AtlassianApiHelper atlassianApiHelper,
-            DescriptionContentFactory descriptionContentFactory)
+            AtlassianApiHelper atlassianApiHelper)
         {
             _atlassianApiHelper = atlassianApiHelper;
-            _descriptionContentFactory = descriptionContentFactory;
             _restClientFactory = new RestClientFactory(atlassianConfigurationProvider);
         }
 
@@ -38,40 +34,29 @@ namespace Attest.Testing.Atlassian
             return false;
         }
 
-        public string GetIssueSpecsSection(int issueId)
+        public void UpdateIssueDescription(int issueId, Description descriptionRoot)
         {
-            var mainContent = GetDescriptionContent(issueId);
-            var stringBuilder = new StringBuilder();
-            var specContentItems = mainContent.GetSpecs();
-            foreach (var specContentItem in specContentItems)
-            {
-                var type = specContentItem["type"].ToString();
-                if (type == "paragraph")
-                {
-                    var innerContent = specContentItem["content"];
-                    foreach (var innerContentItem in innerContent)
-                    {
-                        var innerType = innerContentItem["type"].ToString();
-                        if (innerType == "text")
-                        {
-                            var innerContentText = innerContentItem["text"].ToString();
-                            stringBuilder.Append(innerContentText);
-                        }
+            var restClient = _restClientFactory.CreateRestClient();
+            var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
+            var request = new RestRequest($"rest/api/3/issue/{issueResourceId}", Method.PUT);
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Content-Type", "application/json");
+            var updateBody = new JObject(
+                new JProperty("fields", new JObject(new JProperty("description", descriptionRoot.GetRaw()))));
 
-                        if (innerType == "hardBreak") stringBuilder.AppendLine();
-                    }
-
-                    stringBuilder.AppendLine();
-                }
-            }
-
-            return stringBuilder.ToString().TrimEnd();
+            request.AddJsonBody(JsonConvert.SerializeObject(updateBody));
+            var response = restClient.Execute(request);
+            var statusCode = response.StatusCode;
+            //TODO: Log exception
+            if (statusCode != HttpStatusCode.OK && statusCode != HttpStatusCode.NoContent)
+                throw new Exception($"Failed to connect to Atlassian API, status code is {statusCode}");
         }
 
-        private DescriptionContent GetDescriptionContent(int issueId)
+        public Issue GetIssue(int issueId)
         {
-            var issue = GetIssueImpl(issueId);
-            return _descriptionContentFactory.Create(issue);
+            var issueRaw = GetIssueImpl(issueId);
+            var issue = new Issue(issueRaw);
+            return issue;
         }
 
         private JObject GetIssueImpl(int issueId)
@@ -89,29 +74,6 @@ namespace Attest.Testing.Atlassian
 
             var json = JsonConvert.DeserializeObject<JObject>(response.Content);
             return json;
-        }
-
-        public void UpdateIssueDescription(int issueId, JObject descriptionRoot)
-        {
-            var restClient = _restClientFactory.CreateRestClient();
-            var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
-            var request = new RestRequest($"rest/api/3/issue/{issueResourceId}", Method.PUT);
-            request.AddHeader("Accept", "application/json");
-            request.AddHeader("Content-Type", "application/json");
-            var updateBody = new JObject(
-                new JProperty("fields", new JObject(new JProperty("description", descriptionRoot))));
-
-            request.AddJsonBody(JsonConvert.SerializeObject(updateBody));
-            var response = restClient.Execute(request);
-            var statusCode = response.StatusCode;
-            //TODO: Log exception
-            if (statusCode != HttpStatusCode.OK && statusCode != HttpStatusCode.NoContent)
-                throw new Exception($"Failed to connect to Atlassian API, status code is {statusCode}");
-        }
-
-        public JObject GetIssueRaw(int issueId)
-        {
-            return GetIssueImpl(issueId);
         }
     }
 }

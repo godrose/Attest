@@ -30,7 +30,7 @@ namespace Attest.Testing.Atlassian.Specs
             _container.RegisterTypeAs<ConfluenceProvider, ConfluenceProvider>();
             _container.RegisterTypeAs<ConfluenceContentsFactory, ConfluenceContentsFactory>();
             _container.RegisterTypeAs<ConfluenceStatusUpdater, ConfluenceStatusUpdater>();
-            _container.RegisterTypeAs<DescriptionContentFactory, DescriptionContentFactory>();
+            _container.RegisterTypeAs<DescriptionContentWithSpecsFactory, DescriptionContentWithSpecsFactory>();
             _container.RegisterTypeAs<FileSystemSpecsInfo, ISpecsInfo>();
         }
     }

@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using Attest.Testing.Atlassian.Models;
 using Newtonsoft.Json.Linq;
 
-namespace Attest.Testing.Atlassian.Models
+namespace Attest.Testing.Atlassian
 {
-    public class DescriptionContent
+    public class DescriptionContentWithSpecs
     {
         private readonly AtlassianConfigurationProvider _atlassianConfigurationProvider;
         private readonly List<JToken> _beforeSpecs = new List<JToken>();
         private List<JToken> _specs = new List<JToken>();
 
-        public DescriptionContent(
+        public DescriptionContentWithSpecs(
             AtlassianConfigurationProvider atlassianConfigurationProvider,
             JArray source)
         {
@@ -62,9 +64,32 @@ namespace Attest.Testing.Atlassian.Models
                 .Concat(_specs).ToList();
         }
 
-        public IEnumerable<JToken> GetSpecs()
+        public string GetSpecsPresentation()
         {
-            return _specs.ToList();
+            var stringBuilder = new StringBuilder();
+            foreach (var specContentItem in _specs)
+            {
+                var type = specContentItem["type"].ToString();
+                if (type == "paragraph")
+                {
+                    var innerContent = specContentItem["content"];
+                    foreach (var innerContentItem in innerContent)
+                    {
+                        var innerType = innerContentItem["type"].ToString();
+                        if (innerType == "text")
+                        {
+                            var innerContentText = innerContentItem["text"].ToString();
+                            stringBuilder.Append(innerContentText);
+                        }
+
+                        if (innerType == "hardBreak") stringBuilder.AppendLine();
+                    }
+
+                    stringBuilder.AppendLine();
+                }
+            }
+
+            return stringBuilder.ToString().TrimEnd();
         }
     }
 }
