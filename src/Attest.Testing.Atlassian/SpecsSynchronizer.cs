@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Attest.Testing.Atlassian.Models;
+using Attest.Testing.Reporting;
 using Gherkin;
 using Gherkin.Ast;
 using Newtonsoft.Json.Linq;
@@ -13,21 +14,26 @@ namespace Attest.Testing.Atlassian
     {
         private readonly JiraProvider _jiraProvider;
         private readonly DescriptionContentWithSpecsFactory _descriptionContentFactory;
+        private readonly IssueTagParser _issueTagParser;
+        private readonly SpecsConfigurationProvider _specsConfigurationProvider;
 
         public SpecsSynchronizer(
             JiraProvider jiraProvider, 
-            DescriptionContentWithSpecsFactory descriptionContentFactory
-            )
+            DescriptionContentWithSpecsFactory descriptionContentFactory, 
+            IssueTagParser issueTagParser,
+            SpecsConfigurationProvider specsConfigurationProvider)
         {
             _jiraProvider = jiraProvider;
             _descriptionContentFactory = descriptionContentFactory;
+            _issueTagParser = issueTagParser;
+            _specsConfigurationProvider = specsConfigurationProvider;
         }
 
         public void SyncDescriptionFromFilesToJira(int issueId)
         {
-            var expectedTag = $"@BDD-{issueId}"; //TODO: use common approach
+            var expectedTag = _issueTagParser.BuildTagFromIssueId(issueId);
             var parser = new Parser();
-            var rootDir = "..\\..\\..\\Attest.Testing.Atlassian.Specs\\Features";
+            var rootDir = _specsConfigurationProvider.RootDir;
             var featureFiles = Directory.GetFiles(rootDir, "*.feature", SearchOption.AllDirectories).ToArray();
             var lines = new List<string>();
 

@@ -42,6 +42,11 @@ namespace Attest.Testing.Reporting
             return default;
         }
 
+        public string BuildTagFromIssueId(int issueId)
+        {
+            return $"{_issueTag}{issueId}";
+        }
+
         private void ResolveValue(out string field, string value, string defaultValue)
         {
             field = value;

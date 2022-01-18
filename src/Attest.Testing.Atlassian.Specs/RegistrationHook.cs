@@ -31,6 +31,8 @@ namespace Attest.Testing.Atlassian.Specs
             _container.RegisterTypeAs<ConfluenceContentsFactory, ConfluenceContentsFactory>();
             _container.RegisterTypeAs<ConfluenceStatusUpdater, ConfluenceStatusUpdater>();
             _container.RegisterTypeAs<DescriptionContentWithSpecsFactory, DescriptionContentWithSpecsFactory>();
+            _container.RegisterTypeAs<IssueTagParser, IssueTagParser>();
+            _container.RegisterTypeAs<SpecsConfigurationProvider, SpecsConfigurationProvider>();
             _container.RegisterTypeAs<FileSystemSpecsInfo, ISpecsInfo>();
         }
     }

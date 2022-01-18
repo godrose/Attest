@@ -3,14 +3,17 @@ namespace Attest.Testing.Atlassian.Specs
     [Binding]
     public class JiraSyncSteps
     {
+        private readonly SpecsSynchronizer _specsSynchronizer;
         private readonly JiraProvider _jiraProvider;
         private readonly DescriptionContentWithSpecsFactory _descriptionContentFactory;
         private int _issueId;
 
         public JiraSyncSteps(
+            SpecsSynchronizer specsSynchronizer,
             JiraProvider jiraProvider, 
             DescriptionContentWithSpecsFactory descriptionContentFactory)
         {
+            _specsSynchronizer = specsSynchronizer;
             _jiraProvider = jiraProvider;
             _descriptionContentFactory = descriptionContentFactory;
         }
@@ -24,8 +27,7 @@ namespace Attest.Testing.Atlassian.Specs
         [When(@"I update the user story description from the correspondent feature files")]
         public void WhenIUpdateTheUserStoryDescriptionFromTheCorrespondentFeatureFiles()
         {
-            var specsSynchronizer = new SpecsSynchronizer(_jiraProvider, _descriptionContentFactory);
-            specsSynchronizer.SyncDescriptionFromFilesToJira(_issueId);
+            _specsSynchronizer.SyncDescriptionFromFilesToJira(_issueId);
         }
 
         [Then(@"The user story description is updated")]
