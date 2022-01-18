@@ -59,7 +59,7 @@ namespace Attest.Testing.Atlassian.Models
         public List<JToken> GetAll()
         {
             return _beforeSpecs
-                //.Concat(Paragraph.TextToJiraParagraph("Specs:"))
+                .Concat(new JToken[]{Paragraph.TextToJiraParagraph("Specs:")})
                 .Concat(_specs).ToList();
         }
     }

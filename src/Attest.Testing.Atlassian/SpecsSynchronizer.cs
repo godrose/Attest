@@ -40,6 +40,7 @@ namespace Attest.Testing.Atlassian
                     [] { Environment.NewLine },
                     StringSplitOptions.RemoveEmptyEntries);
                 lines.AddRange(descriptionParts);
+                lines.Add(Environment.NewLine);
                 var scenarios = gherkinDocument.Feature.Children.OfType<Scenario>();
                 foreach (var scenario in scenarios)
                 {
@@ -47,10 +48,15 @@ namespace Attest.Testing.Atlassian
                     lines.Add(Environment.NewLine);
                     foreach (var step in scenario.Steps)
                     {
-                        lines.Add($"{step.Keyword} {step.Text}");
-                        lines.Add(Environment.NewLine);
+                        lines.Add($"{step.Keyword.Trim()} {step.Text}");
                     }
+                    lines.Add(Environment.NewLine);
                 }
+            }
+
+            if (lines.Last() == Environment.NewLine)
+            {
+                lines.RemoveAt(lines.Count-1);
             }
 
             var raw = _jiraProvider.GetIssueRaw(issueId);
@@ -73,9 +79,10 @@ namespace Attest.Testing.Atlassian
             }
             descObject.UpdateSpecs(specs);
             var content = new JArray(descObject.GetAll());
-            raw["fields"]["description"]["content"] = content;
+            var descriptionRoot = raw["fields"]["description"] as JObject;
+            descriptionRoot["content"] = content;
 
-            _jiraProvider.UpdateIssueDescription(issueId, raw);
+            _jiraProvider.UpdateIssueDescription(issueId, descriptionRoot);
         }
 
         

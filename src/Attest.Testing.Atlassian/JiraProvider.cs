@@ -78,7 +78,7 @@ namespace Attest.Testing.Atlassian
                 }
             }
 
-            return stringBuilder.ToString();
+            return stringBuilder.ToString().TrimEnd();
         }
 
         private JArray GetDescriptionContent(int issueId)
@@ -113,11 +113,10 @@ namespace Attest.Testing.Atlassian
             return description;
         }
 
-        public void UpdateIssueDescription(int issueId, JObject @object)
+        public void UpdateIssueDescription(int issueId, JObject descriptionRoot)
         {
             var restClient = _restClientFactory.CreateRestClient();
             var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
-            var currentDescription = @object["fields"]["description"];
             var request = new RestRequest($"rest/api/3/issue/{issueResourceId}", Method.PUT);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");
@@ -130,7 +129,7 @@ namespace Attest.Testing.Atlassian
             };
             var updateBody = new JObject(
                 new JProperty("update", new JObject(new JProperty("summary", summary))),
-                new JProperty("fields", new JObject(new JProperty("description", currentDescription))));
+                new JProperty("fields", new JObject(new JProperty("description", descriptionRoot))));
 
             request.AddJsonBody(JsonConvert.SerializeObject(updateBody));
             var response = restClient.Execute(request);
