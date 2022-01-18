@@ -14,8 +14,6 @@ namespace Attest.Testing.Atlassian.Models
             AnalyzeRaw(raw);
         }
 
-        public List<JToken> BeforeSpecs => _beforeSpecs;
-
         public void UpdateSpecs(List<JToken> specs)
         {
             _specs = specs;

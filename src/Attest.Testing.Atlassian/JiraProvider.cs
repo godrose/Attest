@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Text;
+using Attest.Testing.Atlassian.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -41,7 +42,8 @@ namespace Attest.Testing.Atlassian
             var specsSectionStarted = false;
             var stringBuilder = new StringBuilder();
             //TOD: Very naive approach
-            foreach (var mainContentItem in mainContent)
+            var mainContentItems = mainContent.GetAll();
+            foreach (var mainContentItem in mainContentItems)
             {
                 var type = mainContentItem["type"].ToString();
                 if (type == "paragraph")
@@ -81,12 +83,12 @@ namespace Attest.Testing.Atlassian
             return stringBuilder.ToString().TrimEnd();
         }
 
-        private JArray GetDescriptionContent(int issueId)
+        private DescriptionContent GetDescriptionContent(int issueId)
         {
             var issue = GetIssueImpl(issueId);
             var desc = issue["fields"]["description"];
             var mainContent = desc["content"] as JArray;
-            return mainContent;
+            return new DescriptionContent(mainContent);
         }
 
         private JObject GetIssueImpl(int issueId)
@@ -106,15 +108,10 @@ namespace Attest.Testing.Atlassian
             return json;
         }
 
-        //TODO: Use Object Model instead of JSON objects
-        public JArray GetIssueDescription(int issueId)
-        {
-            var description = GetDescriptionContent(issueId);
-            return description;
-        }
-
         public void UpdateIssueDescription(int issueId, JObject descriptionRoot)
         {
+            //TODO: For some reason it's required to send issue name as well - should check
+            var issue = GetIssueImpl(issueId);
             var restClient = _restClientFactory.CreateRestClient();
             var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
             var request = new RestRequest($"rest/api/3/issue/{issueResourceId}", Method.PUT);
@@ -124,7 +121,7 @@ namespace Attest.Testing.Atlassian
             {
                 [0] =
                 {
-                    ["set"] = "Test Issue"
+                    ["set"] = issue["fields"]["summary"]
                 }
             };
             var updateBody = new JObject(
