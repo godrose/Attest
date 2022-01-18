@@ -12,10 +12,15 @@ namespace Attest.Testing.Atlassian
     public class SpecsSynchronizer
     {
         private readonly JiraProvider _jiraProvider;
+        private readonly DescriptionContentFactory _descriptionContentFactory;
 
-        public SpecsSynchronizer(JiraProvider jiraProvider)
+        public SpecsSynchronizer(
+            JiraProvider jiraProvider, 
+            DescriptionContentFactory descriptionContentFactory
+            )
         {
             _jiraProvider = jiraProvider;
+            _descriptionContentFactory = descriptionContentFactory;
         }
 
         public void SyncDescriptionFromFilesToJira(int issueId)
@@ -59,9 +64,8 @@ namespace Attest.Testing.Atlassian
                 lines.RemoveAt(lines.Count-1);
             }
 
-            var raw = _jiraProvider.GetIssueRaw(issueId);
-            var currentDescription = raw["fields"]["description"];
-            var descObject = new DescriptionContent(currentDescription["content"] as JArray);
+            var issue = _jiraProvider.GetIssueRaw(issueId);
+            var descObject = _descriptionContentFactory.Create(issue);
             var specs = new List<JToken>();
             foreach (var line in lines)
             {
@@ -79,7 +83,7 @@ namespace Attest.Testing.Atlassian
             }
             descObject.UpdateSpecs(specs);
             var content = new JArray(descObject.GetAll());
-            var descriptionRoot = raw["fields"]["description"] as JObject;
+            var descriptionRoot = issue["fields"]["description"] as JObject;
             descriptionRoot["content"] = content;
 
             _jiraProvider.UpdateIssueDescription(issueId, descriptionRoot);

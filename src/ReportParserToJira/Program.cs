@@ -17,7 +17,9 @@ namespace ReportParserToJira
             var atlassianConfigurationProvider = new AtlassianConfigurationProvider(configuration);
             var confluenceProvider = new ConfluenceProvider(atlassianConfigurationProvider);
             var atlassianApiHelper = new AtlassianApiHelper(atlassianConfigurationProvider);
-            var jiraProvider = new JiraProvider(atlassianConfigurationProvider, atlassianApiHelper);
+            var jiraProvider = 
+                new JiraProvider(atlassianConfigurationProvider, atlassianApiHelper,
+                    new DescriptionContentFactory(atlassianConfigurationProvider));
             var pageId = atlassianConfigurationProvider.StatusPageId;
             var confluenceContentsFactory = new ConfluenceContentsFactory(
                 confluenceProvider,

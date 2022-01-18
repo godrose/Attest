@@ -13,14 +13,16 @@ namespace Attest.Testing.Atlassian
         private const string SprintsFieldId = "customfield_10020";
         private const string IsActive = "active";
         private readonly AtlassianApiHelper _atlassianApiHelper;
-
+        private readonly DescriptionContentFactory _descriptionContentFactory;
         private readonly RestClientFactory _restClientFactory;
 
         public JiraProvider(
             AtlassianConfigurationProvider atlassianConfigurationProvider,
-            AtlassianApiHelper atlassianApiHelper)
+            AtlassianApiHelper atlassianApiHelper,
+            DescriptionContentFactory descriptionContentFactory)
         {
             _atlassianApiHelper = atlassianApiHelper;
+            _descriptionContentFactory = descriptionContentFactory;
             _restClientFactory = new RestClientFactory(atlassianConfigurationProvider);
         }
 
@@ -39,44 +41,27 @@ namespace Attest.Testing.Atlassian
         public string GetIssueSpecsSection(int issueId)
         {
             var mainContent = GetDescriptionContent(issueId);
-            var specsSectionStarted = false;
             var stringBuilder = new StringBuilder();
-            //TOD: Very naive approach
-            var mainContentItems = mainContent.GetAll();
-            foreach (var mainContentItem in mainContentItems)
+            var specContentItems = mainContent.GetSpecs();
+            foreach (var specContentItem in specContentItems)
             {
-                var type = mainContentItem["type"].ToString();
+                var type = specContentItem["type"].ToString();
                 if (type == "paragraph")
                 {
-                    var innerContent = mainContentItem["content"];
-                    if (specsSectionStarted)
+                    var innerContent = specContentItem["content"];
+                    foreach (var innerContentItem in innerContent)
                     {
-                        foreach (var innerContentItem in innerContent)
-                        {
-                            var innerType = innerContentItem["type"].ToString();
-                            if (innerType == "text")
-                            {
-                                var innerContentText = innerContentItem["text"].ToString();
-                                stringBuilder.Append(innerContentText);
-                            }
-
-                            if (innerType == "hardBreak") stringBuilder.AppendLine();
-                        }
-
-                        stringBuilder.AppendLine();
-                    }
-                    else
-                    {
-                        foreach (var innerContentItem in innerContent)
+                        var innerType = innerContentItem["type"].ToString();
+                        if (innerType == "text")
                         {
                             var innerContentText = innerContentItem["text"].ToString();
-                            if (innerContentText == "Specs:")
-                            {
-                                specsSectionStarted = true;
-                                break;
-                            }
+                            stringBuilder.Append(innerContentText);
                         }
+
+                        if (innerType == "hardBreak") stringBuilder.AppendLine();
                     }
+
+                    stringBuilder.AppendLine();
                 }
             }
 
@@ -86,9 +71,7 @@ namespace Attest.Testing.Atlassian
         private DescriptionContent GetDescriptionContent(int issueId)
         {
             var issue = GetIssueImpl(issueId);
-            var desc = issue["fields"]["description"];
-            var mainContent = desc["content"] as JArray;
-            return new DescriptionContent(mainContent);
+            return _descriptionContentFactory.Create(issue);
         }
 
         private JObject GetIssueImpl(int issueId)
@@ -110,22 +93,12 @@ namespace Attest.Testing.Atlassian
 
         public void UpdateIssueDescription(int issueId, JObject descriptionRoot)
         {
-            //TODO: For some reason it's required to send issue name as well - should check
-            var issue = GetIssueImpl(issueId);
             var restClient = _restClientFactory.CreateRestClient();
             var issueResourceId = _atlassianApiHelper.BuildIssueResourceId(issueId);
             var request = new RestRequest($"rest/api/3/issue/{issueResourceId}", Method.PUT);
             request.AddHeader("Accept", "application/json");
             request.AddHeader("Content-Type", "application/json");
-            var summary = new JArray(new[] { new JObject() })
-            {
-                [0] =
-                {
-                    ["set"] = issue["fields"]["summary"]
-                }
-            };
             var updateBody = new JObject(
-                new JProperty("update", new JObject(new JProperty("summary", summary))),
                 new JProperty("fields", new JObject(new JProperty("description", descriptionRoot))));
 
             request.AddJsonBody(JsonConvert.SerializeObject(updateBody));

@@ -4,11 +4,15 @@ namespace Attest.Testing.Atlassian.Specs
     public class JiraSyncSteps
     {
         private readonly JiraProvider _jiraProvider;
+        private readonly DescriptionContentFactory _descriptionContentFactory;
         private int _issueId;
 
-        public JiraSyncSteps(JiraProvider jiraProvider)
+        public JiraSyncSteps(
+            JiraProvider jiraProvider, 
+            DescriptionContentFactory descriptionContentFactory)
         {
             _jiraProvider = jiraProvider;
+            _descriptionContentFactory = descriptionContentFactory;
         }
 
         [Given(@"There is an issue with id (.*) with specs section")]
@@ -20,7 +24,7 @@ namespace Attest.Testing.Atlassian.Specs
         [When(@"I update the user story description from the correspondent feature files")]
         public void WhenIUpdateTheUserStoryDescriptionFromTheCorrespondentFeatureFiles()
         {
-            var specsSynchronizer = new SpecsSynchronizer(_jiraProvider);
+            var specsSynchronizer = new SpecsSynchronizer(_jiraProvider, _descriptionContentFactory);
             specsSynchronizer.SyncDescriptionFromFilesToJira(_issueId);
         }
 

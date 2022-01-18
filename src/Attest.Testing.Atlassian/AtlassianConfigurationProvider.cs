@@ -16,6 +16,9 @@ namespace Attest.Testing.Atlassian
         public string IssuePrefix =>
             GetAtlassianSection().GetSection("Jira").GetSection(nameof(IssuePrefix)).Value;
 
+        public string SpecsToken =>
+            GetAtlassianSection().GetSection("Jira").GetSection(nameof(SpecsToken)).Value;
+
         public int StatusPageId => int.Parse(GetAtlassianSection().GetSection("Confluence")
             .GetSection(nameof(StatusPageId)).Value);
 

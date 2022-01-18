@@ -6,12 +6,16 @@ namespace Attest.Testing.Atlassian.Models
 {
     public class DescriptionContent
     {
+        private readonly AtlassianConfigurationProvider _atlassianConfigurationProvider;
         private readonly List<JToken> _beforeSpecs = new List<JToken>();
         private List<JToken> _specs = new List<JToken>();
 
-        public DescriptionContent(JArray raw)
+        public DescriptionContent(
+            AtlassianConfigurationProvider atlassianConfigurationProvider,
+            JArray source)
         {
-            AnalyzeRaw(raw);
+            _atlassianConfigurationProvider = atlassianConfigurationProvider;
+            AnalyzeRaw(source);
         }
 
         public void UpdateSpecs(List<JToken> specs)
@@ -38,27 +42,29 @@ namespace Attest.Testing.Atlassian.Models
                         foreach (var innerContentItem in innerContent)
                         {
                             var innerContentText = innerContentItem["text"].ToString();
-                            if (innerContentText == "Specs:")
+                            if (innerContentText == _atlassianConfigurationProvider.SpecsToken)
                             {
                                 specsSectionStarted = true;
                                 break;
                             }
                         }
 
-                        if (!specsSectionStarted)
-                        {
-                            _beforeSpecs.Add(mainContentItem);
-                        }
+                        if (!specsSectionStarted) _beforeSpecs.Add(mainContentItem);
                     }
                 }
             }
         }
 
-        public List<JToken> GetAll()
+        public IEnumerable<JToken> GetAll()
         {
             return _beforeSpecs
-                .Concat(new JToken[]{Paragraph.TextToJiraParagraph("Specs:")})
+                .Concat(new JToken[] { Paragraph.TextToJiraParagraph(_atlassianConfigurationProvider.SpecsToken) })
                 .Concat(_specs).ToList();
+        }
+
+        public IEnumerable<JToken> GetSpecs()
+        {
+            return _specs.ToList();
         }
     }
 }
