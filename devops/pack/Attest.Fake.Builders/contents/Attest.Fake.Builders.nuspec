@@ -16,7 +16,7 @@ for fake objects in client and server applications.</description>
 for fake objects in client and server applications.</summary>
     <releaseNotes>Using TypeMatch for type matching.</releaseNotes>
     <dependencies>
-      <dependency id="Solid.Patterns.Builder" version="2.3.4-rc1" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.4" />
       <dependency id="Attest.Fake.Core" version="2.4.4-rc1" />
       <dependency id="Attest.Fake.Setup" version="2.4.4-rc1" />
     </dependencies>

@@ -15,10 +15,10 @@
     <releaseNotes>
     </releaseNotes>
     <dependencies>
-      <dependency id="Solid.Patterns.Builder" version="2.3.4-rc1" />
-      <dependency id="Solid.Common.Core" version="2.3.4-rc1" />
-      <dependency id="Solid.Practices.IoC" version="2.3.4-rc1" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.4-rc1" />
+      <dependency id="Solid.Patterns.Builder" version="2.3.4" />
+      <dependency id="Solid.Common.Core" version="2.3.4" />
+      <dependency id="Solid.Practices.IoC" version="2.3.4" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.4" />
       <dependency id="Attest.Fake.Registration" version="2.4.4-rc1" />
       <dependency id="Attest.Fake.Builders" version="2.4.4-rc1" />
       <dependency id="Newtonsoft.Json" version="13.0.1" />
