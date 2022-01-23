@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29911.84
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fake", "Fake", "{A4686CE3-29EA-4BB0-BA45-9882BC3F675C}"
 EndProject
@@ -69,7 +69,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Fake.Setup.Specs", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Testing.Core.Specs", "Attest.Testing.Core.Specs\Attest.Testing.Core.Specs.csproj", "{BF11E447-3DCD-4B54-9208-5F1ABB40147D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Attest.Testing.SpecFlow.Specs", "Attest.Testing.SpecFlow.Specs\Attest.Testing.SpecFlow.Specs.csproj", "{7B4E155F-7B5B-48C2-BA18-2F0F297FFB1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Attest.Testing.SpecFlow.Specs", "Attest.Testing.SpecFlow.Specs\Attest.Testing.SpecFlow.Specs.csproj", "{7B4E155F-7B5B-48C2-BA18-2F0F297FFB1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
