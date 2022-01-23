@@ -5,7 +5,7 @@ using System.Linq;
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Common
 {
-    static class Utils
+    internal static class Utils
     {
         internal static string GetPathToSolutionRoot()
         {
