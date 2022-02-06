@@ -17,6 +17,7 @@
     <dependencies>
       <dependency id="Attest.Fake.Core" version="2.4.5-rc1" />
       <dependency id="Moq" version="4.16.1" />
+      <dependency id="Solid.Practices.Middleware" version="2.3.4" />
     </dependencies>
   </metadata>
 </package>
