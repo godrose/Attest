@@ -4,11 +4,10 @@ init:
 configuration: Release
 before_build:
 - cd src
-- nuget restore
+- dotnet restore
 - cd ..
-build:
-  verbosity: minimal
-  project: ./src/Attest.sln
+build_script:
+- ./devops/build-all.bat
 test_script:
 - cd ./devops/test
 - test-all.bat
