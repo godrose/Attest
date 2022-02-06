@@ -9,11 +9,12 @@ before_build:
 build_script:
 - cd devops
 - cd build
-- build-all.bat
+- cd
+- build-all
 - cd ../..
 test_script:
 - cd ./devops/test
-- test-all.bat
+- test-all
 - cd ../..
 after_test:
 - cd devops
