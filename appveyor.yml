@@ -7,8 +7,8 @@ before_build:
 - dotnet restore
 - cd ..
 build_script:
-- cd
-- cd ./devops/build
+- cd devops
+- cd build
 - build-all.bat
 - cd ../..
 test_script:
