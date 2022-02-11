@@ -17,7 +17,7 @@
     <PackageReference Include="Solid.IoC.Adapters.BoDi" Version="2.3.4" />
     <PackageReference Include="Solid.Patterns.Builder" Version="2.3.4" />
     <PackageReference Include="Solid.Practices.IoC" Version="2.3.4" />
-    <PackageReference Include="SpecFlow" Version="3.9.40" />
+    <PackageReference Include="SpecFlow" Version="3.9.50" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
