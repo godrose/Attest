@@ -196,6 +196,7 @@ FakesAssemblies/
 # Generated packages and intermediate output
 output
 devops/pack/**/contents/lib
+!devops/build/
 **/secret.json
 **/FeatureData.json
 **/TestExecution.json

@@ -3,11 +3,19 @@
 // ReSharper disable once CheckNamespace
 namespace Attest.Testing.Context.SpecFlow
 {
+    /// <summary>
+    /// Represents key-value wrapper around a property bag/map implementation.
+    /// </summary>
+    /// <typeparam name="TPropertyBag">The type of the property bag/map.</typeparam>
     public abstract class KeyValueDataStoreAdapterBase<TPropertyBag> : IKeyValueDataStore
         where TPropertyBag : Dictionary<string, object>
     {
         private readonly TPropertyBag _propertyBag;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="KeyValueDataStoreAdapterBase{TPropertyBag}"/> class.
+        /// </summary>
+        /// <param name="propertyBag">The property bag/map.</param>
         protected KeyValueDataStoreAdapterBase(TPropertyBag propertyBag)
         {
             _propertyBag = propertyBag;
