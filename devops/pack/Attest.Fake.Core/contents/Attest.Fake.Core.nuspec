@@ -16,5 +16,6 @@ over fake objects.</description>
 over fake objects.</summary>
     <releaseNotes>
     </releaseNotes>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

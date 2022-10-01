@@ -23,5 +23,6 @@
       <dependency id="Attest.Fake.Builders" version="2.4.6-rc1" />
       <dependency id="Newtonsoft.Json" version="13.0.1" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides facilities for writing unit, integration and end-to-end tests using SpecFlow.</description>
     <summary>This package provides facilities for writing unit, integration and end-to-end tests using SpecFlow.</summary>
-    <releaseNotes>Added base class for feature data store.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.6-rc1" />
       <dependency id="Solid.Core" version="2.3.6-rc1" />
@@ -25,5 +25,6 @@
       <dependency id="Attest.Tests.Core" version="2.4.6-rc1" />
       <dependency id="SpecFlow" version="3.9.74" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

@@ -12,11 +12,12 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides abstractions for writing tests.</description>
     <summary>This package provides abstractions for writing tests.</summary>
-    <releaseNotes>Added support for run guard via configuration.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="5.0.0" />
       <dependency id="Solid.Patterns.Builder" version="2.3.6-rc1" />
       <dependency id="Solid.Core" version="2.3.6-rc1" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

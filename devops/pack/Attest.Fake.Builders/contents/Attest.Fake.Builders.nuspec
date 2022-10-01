@@ -14,11 +14,12 @@
 for fake objects in client and server applications.</description>
     <summary>This package provides base builders
 for fake objects in client and server applications.</summary>
-    <releaseNotes>Using TypeMatch for type matching.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.6-rc1" />
       <dependency id="Attest.Fake.Core" version="2.4.6-rc1" />
       <dependency id="Attest.Fake.Setup" version="2.4.6-rc1" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

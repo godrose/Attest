@@ -17,5 +17,6 @@
     <dependencies>
       <dependency id="Attest.Fake.Core" version="2.4.6-rc1" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

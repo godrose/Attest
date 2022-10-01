@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/godrose/Attest/blob/master/assets/icon.png?raw=true</iconUrl>
     <description>This package provides facilities for writing tests, including unit, integration and end-to-end.</description>
     <summary>This package provides facilities for writing tests, including unit, integration and end-to-end.</summary>
-    <releaseNotes>Added base class for context data store.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Solid.Patterns.Builder" version="2.3.6-rc1" />
       <dependency id="Solid.Core" version="2.3.6-rc1" />
@@ -29,5 +29,6 @@
       <dependency id="Microsoft.Extensions.Configuration.Abstractions" version="5.0.0" />
       <dependency id="System.Management" version="5.0.0" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

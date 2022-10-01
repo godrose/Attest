@@ -19,5 +19,6 @@
       <dependency id="Solid.Patterns.Builder" version="2.3.6-rc1" />
       <dependency id="Solid.Practices.IoC" version="2.3.6-rc1" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>

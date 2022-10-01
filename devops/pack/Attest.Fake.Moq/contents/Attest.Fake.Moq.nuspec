@@ -19,5 +19,6 @@
       <dependency id="Moq" version="4.18.2" />
       <dependency id="Solid.Practices.Middleware" version="2.3.6-rc1" />
     </dependencies>
+    <repository type="Open Source" url="https://github.com/godrose/Attest" />
   </metadata>
 </package>
