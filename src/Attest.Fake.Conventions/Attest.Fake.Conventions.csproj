@@ -12,9 +12,9 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Common.Core" Version="2.3.6-rc1" />
-    <PackageReference Include="Solid.IoC.Registration" Version="2.3.6-rc1" />
-    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.6-rc1" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.3.6-rc1" />
+    <PackageReference Include="Solid.Common.Core" Version="2.3.6" />
+    <PackageReference Include="Solid.IoC.Registration" Version="2.3.6" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.6" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.6" />
   </ItemGroup>
 </Project>
