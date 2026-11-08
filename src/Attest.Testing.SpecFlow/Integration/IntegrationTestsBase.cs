@@ -1,12 +1,24 @@
-﻿using Attest.Testing.Context.SpecFlow;
+﻿#if REQNROLL
+using Attest.Testing.Context.Reqnroll;
+#else
+using Attest.Testing.Context.SpecFlow;
+#endif
 using Attest.Testing.Core;
 using Solid.Bootstrapping;
 using Solid.Core;
 using Solid.Practices.IoC;
+#if REQNROLL
+using Reqnroll;
+#else
 using TechTalk.SpecFlow;
+#endif
 
 // ReSharper disable once CheckNamespace
+#if REQNROLL
+namespace Attest.Testing.Integration.Reqnroll
+#else
 namespace Attest.Testing.Integration.SpecFlow
+#endif
 {
     /// <summary>
     /// Base class for all integration-tests fixtures that involve ioc container adapter and test bootstrapper

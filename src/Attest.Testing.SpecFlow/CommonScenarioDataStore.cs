@@ -1,8 +1,20 @@
-﻿using Attest.Testing.Context.SpecFlow;
+﻿#if REQNROLL
+using Attest.Testing.Context.Reqnroll;
+#else
+using Attest.Testing.Context.SpecFlow;
+#endif
 using Solid.Practices.IoC;
+#if REQNROLL
+using Reqnroll;
+#else
 using TechTalk.SpecFlow;
+#endif
 
+#if REQNROLL
+namespace Attest.Testing.Reqnroll
+#else
 namespace Attest.Testing.SpecFlow
+#endif
 {
     /// <summary>
     /// Data store for common scenarios with root object and inversion-of-control container.

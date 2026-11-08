@@ -1,11 +1,27 @@
-﻿using BoDi;
+﻿#if REQNROLL
+using Reqnroll.BoDi;
+#else
+using BoDi;
+#endif
 using Solid.Common;
+#if REQNROLL
+using Solid.IoC.Adapters.Reqnroll;
+#else
 using Solid.IoC.Adapters.BoDi;
+#endif
 using Solid.Practices.IoC;
+#if REQNROLL
+using Reqnroll;
+#else
 using TechTalk.SpecFlow;
+#endif
 
 // ReSharper disable once CheckNamespace
+#if REQNROLL
+namespace Attest.Testing.Lifecycle.Reqnroll
+#else
 namespace Attest.Testing.Lifecycle.SpecFlow
+#endif
 {
     /// <summary>
     /// Base class for lifecycle hook to be used during scenario run.

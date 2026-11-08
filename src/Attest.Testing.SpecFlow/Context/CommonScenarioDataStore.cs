@@ -1,8 +1,16 @@
 ﻿using Solid.Practices.IoC;
+#if REQNROLL
+using Reqnroll;
+#else
 using TechTalk.SpecFlow;
+#endif
 
 // ReSharper disable once CheckNamespace
+#if REQNROLL
+namespace Attest.Testing.Context.Reqnroll
+#else
 namespace Attest.Testing.Context.SpecFlow
+#endif
 {
     /// <summary>
     /// Data store for common scenarios with root object and inversion-of-control container.

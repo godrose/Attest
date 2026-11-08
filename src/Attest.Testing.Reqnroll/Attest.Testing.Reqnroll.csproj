@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Version>2.4.6</Version>
+    <DefineConstants>$(DefineConstants);REQNROLL</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Bin\netstandard\Release\</OutputPath>
+    <DocumentationFile>..\Bin\netstandard\Release\Attest.Testing.Reqnroll.xml</DocumentationFile>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\Attest.Testing.SpecFlow\**\*.cs" Exclude="..\Attest.Testing.SpecFlow\obj\**;..\Attest.Testing.SpecFlow\bin\**;..\Attest.Testing.SpecFlow\Properties\**" Link="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Reqnroll" Version="3.3.4" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.6" />
+    <PackageReference Include="Solid.Core" Version="2.3.6" />
+    <PackageReference Include="Solid.IoC.Adapters.Reqnroll" Version="2.3.6" />
+    <PackageReference Include="Solid.Patterns.Builder" Version="2.3.6" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Attest.Testing.Core\Attest.Testing.Core.csproj" />
+  </ItemGroup>
+</Project>

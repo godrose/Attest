@@ -1,7 +1,15 @@
-﻿using TechTalk.SpecFlow;
+﻿#if REQNROLL
+using Reqnroll;
+#else
+using TechTalk.SpecFlow;
+#endif
 
 // ReSharper disable once CheckNamespace
+#if REQNROLL
+namespace Attest.Testing.Context.Reqnroll
+#else
 namespace Attest.Testing.Context.SpecFlow
+#endif
 {
     /// <summary>
     /// Base class for feature data stores in SpecFlow-based projects.

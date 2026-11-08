@@ -1,9 +1,21 @@
-﻿using Attest.Testing.Context.SpecFlow;
+﻿#if REQNROLL
+using Attest.Testing.Context.Reqnroll;
+#else
+using Attest.Testing.Context.SpecFlow;
+#endif
 using Attest.Testing.Core;
+#if REQNROLL
+using Reqnroll;
+#else
 using TechTalk.SpecFlow;
+#endif
 
 // ReSharper disable once CheckNamespace
+#if REQNROLL
+namespace Attest.Testing.EndToEnd.Reqnroll
+#else
 namespace Attest.Testing.EndToEnd.SpecFlow
+#endif
 {
     /// <summary>
     /// Base class for all End-To-End tests that use SpecFlow as test framework provider.
