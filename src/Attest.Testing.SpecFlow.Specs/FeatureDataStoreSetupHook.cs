@@ -1,6 +1,14 @@
-﻿using TechTalk.SpecFlow;
+﻿#if REQNROLL
+using Reqnroll;
+#else
+using TechTalk.SpecFlow;
+#endif
 
+#if REQNROLL
+namespace Attest.Testing.Reqnroll.Specs
+#else
 namespace Attest.Testing.SpecFlow.Specs
+#endif
 {
     [Binding]
     internal sealed class FeatureDataStoreSetupHook
