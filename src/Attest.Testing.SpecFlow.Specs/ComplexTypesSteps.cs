@@ -1,8 +1,16 @@
 ﻿using FluentAssertions;
+#if REQNROLL
+using Reqnroll;
+#else
 using TechTalk.SpecFlow;
+#endif
 using Xunit;
 
+#if REQNROLL
+namespace Attest.Testing.Reqnroll.Specs
+#else
 namespace Attest.Testing.SpecFlow.Specs
+#endif
 {
     [Binding]
     internal sealed class ComplexTypesSteps

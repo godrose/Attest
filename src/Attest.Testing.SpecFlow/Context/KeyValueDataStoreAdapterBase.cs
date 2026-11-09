@@ -1,7 +1,11 @@
 ﻿using System.Collections.Generic;
 
 // ReSharper disable once CheckNamespace
+#if REQNROLL
+namespace Attest.Testing.Context.Reqnroll
+#else
 namespace Attest.Testing.Context.SpecFlow
+#endif
 {
     /// <summary>
     /// Represents key-value wrapper around a property bag/map implementation.

@@ -2,7 +2,11 @@
 using Solid.Extensibility;
 
 // ReSharper disable once CheckNamespace
+#if REQNROLL
+namespace Attest.Testing.Context.Reqnroll
+#else
 namespace Attest.Testing.Context.SpecFlow
+#endif
 {
     /// <summary>
     /// The bootstrapper extension methods.
